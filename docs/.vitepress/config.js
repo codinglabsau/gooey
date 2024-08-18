@@ -45,7 +45,7 @@ export default defineConfig({
         text: "UI",
         collapsible: true,
         items: [
-          { text: "Dropdown", link: "/dropdown" },
+          { text: "Dropdown Menu", link: "/dropdown-menu" },
         ],
       },
       {

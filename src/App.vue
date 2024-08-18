@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { CogIcon, CursorArrowRaysIcon, EnvelopeOpenIcon } from "@heroicons/vue/24/solid"
-import { useForm, Link } from "@inertiajs/vue3"
 import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon, ComputerDesktopIcon } from "@heroicons/vue/24/outline"
 
@@ -9,6 +7,12 @@ const mode = useColorMode()
 
 // UI
 import Notifications from "./components/Notifications.vue"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu"
 
 // Alerts
 
@@ -26,39 +30,45 @@ const notificationsConfig = ref<any>({})
 </script>
 
 <template>
-  <div class="bg-gradient-to-b from-[#222441] via-[#222441] to-[#0a0b21] p-2">
+  <div class="p-2">
     <div class="flex w-full items-center justify-between">
-      <div class="flex space-x-2">
-        <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-        <div class="text-xl text-white">GOOEY</div>
+          <div class="text-xl">GOOEY</div>
+        </div>
+
+        <a href="http://gooey-docs.test">Docs</a>
       </div>
 
       <div>
-        <!--        <Dropdown>-->
-        <!--          <template #text>-->
-        <!--            <MoonIcon v-if="mode === 'dark'" class="h-4 w-4" />-->
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <MoonIcon v-if="mode === 'dark'" class="h-6 w-6" />
 
-        <!--            <SunIcon v-if="mode === 'light'" class="h-4 w-4" />-->
+            <SunIcon v-if="mode === 'light'" class="h-6 w-6" />
 
-        <!--            <ComputerDesktopIcon v-if="mode === 'auto'" class="h-4 w-4" />-->
-        <!--          </template>-->
+            <ComputerDesktopIcon v-if="mode === 'auto'" class="h-6 w-6" />
+          </DropdownMenuTrigger>
 
-        <!--          <DropdownItem @click="mode = 'dark'">-->
-        <!--            <MoonIcon class="h-4 w-4 text-white" />-->
-        <!--            Dark mode-->
-        <!--          </DropdownItem>-->
+          <DropdownMenuContent>
+            <DropdownMenuItem @click="mode = 'dark'">
+              <MoonIcon class="mr-1.5 h-4 w-4" />
+              Dark mode
+            </DropdownMenuItem>
 
-        <!--          <DropdownItem @click="mode = 'light'">-->
-        <!--            <SunIcon class="h-4 w-4 text-white" />-->
-        <!--            Day mode-->
-        <!--          </DropdownItem>-->
+            <DropdownMenuItem @click="mode = 'light'">
+              <SunIcon class="mr-1.5 h-4 w-4" />
+              Day mode
+            </DropdownMenuItem>
 
-        <!--          <DropdownItem @click="mode = 'auto'">-->
-        <!--            <ComputerDesktopIcon class="h-4 w-4 text-white" />-->
-        <!--            System-->
-        <!--          </DropdownItem>-->
-        <!--        </Dropdown>-->
+            <DropdownMenuItem @click="mode = 'auto'">
+              <ComputerDesktopIcon class="mr-1.5 h-4 w-4" />
+              System
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   </div>
