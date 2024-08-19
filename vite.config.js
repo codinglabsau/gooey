@@ -7,8 +7,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "./src/index.ts"),
-      name: "ui",
-      fileName: "ui",
+      name: "gooey",
+      fileName: "gooey",
     },
     rollupOptions: {
       external: ["vue", "@inertiajs/vue3"],
