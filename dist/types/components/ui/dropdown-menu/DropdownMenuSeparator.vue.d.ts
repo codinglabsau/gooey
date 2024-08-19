@@ -1,9 +1,9 @@
-import { type HTMLAttributes } from 'vue';
-import { type DropdownMenuSeparatorProps } from 'radix-vue';
+import { type HTMLAttributes } from "vue";
+import { type DropdownMenuSeparatorProps } from "radix-vue";
 declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>>, {}, {}>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

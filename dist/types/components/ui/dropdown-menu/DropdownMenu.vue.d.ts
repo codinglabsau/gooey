@@ -1,4 +1,4 @@
-import { type DropdownMenuRootProps } from 'radix-vue';
+import { type DropdownMenuRootProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:open": (payload: boolean) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>>> & {

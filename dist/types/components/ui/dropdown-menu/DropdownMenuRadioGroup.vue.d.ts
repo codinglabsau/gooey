@@ -1,4 +1,4 @@
-import { type DropdownMenuRadioGroupProps } from 'radix-vue';
+import { type DropdownMenuRadioGroupProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioGroupProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (payload: string) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioGroupProps>>> & {

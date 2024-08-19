@@ -1,4 +1,4 @@
-import { type DropdownMenuTriggerProps } from 'radix-vue';
+import { type DropdownMenuTriggerProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuTriggerProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuTriggerProps>>>, {}, {}>, {
     default?(_: {}): any;
 }>;

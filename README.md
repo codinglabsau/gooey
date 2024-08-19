@@ -11,6 +11,10 @@ cd docs/.vitepress/dist && herd link gooey-docs
 
 The docs will now be available at [http://gooey-docs.test](http://ui-docs.test).
 
+## Testing
+Tests are implemented with Cypress, and can be run on CLI using `npm run tests`.  We are only testing components
+that are customised or wrapping other libraries.
+
 ## Security
 If you discover any security related issues, create an issue on GitHub.
 

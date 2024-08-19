@@ -1,4 +1,4 @@
-import { type DropdownMenuSubContentProps } from 'radix-vue';
+import { type DropdownMenuSubContentProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuSubContentProps & {
     class?: any;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

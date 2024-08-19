@@ -1,4 +1,4 @@
-import { type DropdownMenuRadioItemProps } from 'radix-vue';
+import { type DropdownMenuRadioItemProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioItemProps & {
     class?: any;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

@@ -1,4 +1,4 @@
-import { type DropdownMenuCheckboxItemProps } from 'radix-vue';
+import { type DropdownMenuCheckboxItemProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuCheckboxItemProps & {
     class?: any;
 }>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

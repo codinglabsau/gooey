@@ -1,4 +1,4 @@
-import { type DropdownMenuContentProps } from 'radix-vue';
+import { type DropdownMenuContentProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<DropdownMenuContentProps & {
     class?: any;
 }>, {
