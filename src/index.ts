@@ -1,9 +1,7 @@
 // Tailwind
 import theme from "./tailwind/theme"
 
-export {
-  theme,
-}
+export { theme }
 
 // custom components
 export * from "@/components/notifications"

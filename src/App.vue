@@ -6,13 +6,18 @@ import { MoonIcon, SunIcon, ComputerDesktopIcon } from "@heroicons/vue/24/outlin
 const mode = useColorMode()
 
 // UI
-import Notifications from "./components/Notifications.vue"
+import { Toaster, useToast } from "@/components/toast"
+import { Notifications, useNotification } from "./components/notifications"
+
+const { toast } = useToast()
+const { info, success, warning, error } = useNotification()
+
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/dropdown-menu"
 
 // Alerts
 
@@ -112,6 +117,43 @@ const notificationsConfig = ref<any>({})
             firstname: 'firstname is required',
             surname: 'surname must be of type: that\'s what she said',
           }
+        }
+      "
+    >
+      Errors notification
+    </button>
+  </div>
+
+  <h1 class="mt-6">Toasts</h1>
+
+  <Toaster />
+
+  <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
+    <button
+      @click="
+        toast({
+          title: 'FYI',
+          description: 'This is an info notification',
+        })
+      "
+    >
+      Vanilla toast
+    </button>
+
+    <button @click="info('This is an info notification')">Info toast</button>
+
+    <button @click="success('This is a success notification')">Success notification</button>
+
+    <button @click="warning('This is a warning notification')">Warning notification</button>
+
+    <button
+      @click="
+        () => {
+          notificationsConfig['show-error-keys'] = false
+          error({
+            firstname: 'firstname is required',
+            surname: 'surname must be of type: that\'s what she said',
+          })
         }
       "
     >

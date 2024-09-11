@@ -1,7 +1,7 @@
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
-  InformationCircleIcon
+  InformationCircleIcon,
 } from "@heroicons/vue/24/outline"
 import { type Toast, useToast } from "../toast/use-toast"
 import { computed } from "vue"
@@ -34,14 +34,14 @@ function useNotification() {
         description: message,
       })
     },
-    error: (message: Array<string>) => {
+    error: (message: Object) => {
       toast({
         icon: ExclamationCircleIcon,
         iconClasses: "text-red-400",
         title: "Oh snap! Some errors were encountered.",
         messages: message,
       })
-    }
+    },
   }
 }
 

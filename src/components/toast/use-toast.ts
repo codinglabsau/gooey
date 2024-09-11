@@ -2,15 +2,26 @@ import { computed, ref } from "vue"
 import type { Component, VNode } from "vue"
 import type { ToastProps } from "."
 
-const TOAST_LIMIT = 1
+// const TOAST_LIMIT = 1
+const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
 
 export type StringOrVNode = string | VNode | (() => VNode)
 
+// type ToasterToast = ToastProps & {
+//   id: string
+//   title?: string
+//   description?: StringOrVNode
+//   action?: Component
+// }
+
 type ToasterToast = ToastProps & {
   id: string
+  icon?: Component
+  iconClasses?: string
   title?: string
   description?: StringOrVNode
+  messages?: Array<string>
   action?: Component
 }
 
