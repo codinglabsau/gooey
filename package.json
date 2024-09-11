@@ -24,7 +24,9 @@
     "type-check": "vue-tsc --declaration --emitDeclarationOnly",
     "format": "prettier \"src/**/*.{js,ts,vue}\" --write",
     "lint": "eslint \"src/**/*.{js,ts,vue}\" --fix",
-    "test": "cypress run --component"
+    "test": "cypress run",
+    "testc": "cypress run --component",
+    "teste": "cypress run --e2e"
   },
   "publishConfig": {
     "@codinglabsau:registry": "https://npm.pkg.github.com"
