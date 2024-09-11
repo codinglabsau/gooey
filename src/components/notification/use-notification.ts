@@ -1,10 +1,9 @@
+import { type Toast, useToast } from "@/components/toast/use-toast"
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   InformationCircleIcon,
 } from "@heroicons/vue/24/outline"
-import { type Toast, useToast } from "../toast/use-toast"
-import { computed } from "vue"
 
 const { toast } = useToast()
 
