@@ -26,7 +26,7 @@ const components = [ // todo: integrate with vue-router defined routes
 ]
 
 const layouts = [ // todo: layouts
-  // { id: 1, name: "TwoColumn", href: "#", initial: "2", current: false },
+                  // { id: 1, name: "TwoColumn", href: "#", initial: "2", current: false },
 ]
 
 const sidebarOpen = ref(false)
@@ -160,7 +160,7 @@ const sidebarOpen = ref(false)
                 <li v-for="component in components" :key="component.name">
                   <RouterLink
                     :to="component.href"
-                    :class="[component.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white', 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6']"
+                    class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                   >
                     {{ component.name }}
                   </RouterLink>
