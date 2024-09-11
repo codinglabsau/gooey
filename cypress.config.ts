@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress"
-import fs from 'fs'
+import vitePreprocessor from "cypress-vite"
+import fs from "fs"
 
 export default defineConfig({
   component: {
@@ -18,6 +19,31 @@ export default defineConfig({
           return null
         }
       })
+    }
+  },
+
+  e2e: {
+    baseUrl: "http://localhost:5173",
+    specPattern: 'src/components/**/*.spec.ts',
+
+    setupNodeEvents(on, config) {
+      // todo: get vite to launch if not already running
+      // on("before:run", () => {
+      //   const viteProcess = spawn("npm", ["run", "dev"], { stdio: "inherit" })
+      //
+      //   // Wait for the Vite server to start
+      //   return new Promise((resolve) => {
+      //     viteProcess.stdout.on("data", (data) => {
+      //       if (data.toString().includes("Vite v")) {
+      //         resolve()
+      //       }
+      //     })
+      //   }).then(() => {
+      //     console.log("Vite server started")
+      //   })
+      // })
+
+      on("file:preprocessor", vitePreprocessor())
     }
   }
 })
