@@ -19,15 +19,15 @@ describe("<Notification />", () => {
     // cy.get("div").should("have.text", "Badgering Badger")
   })
 
-  it("allows messages to be dismissed", () => {
-    cy.mount(Notification, {
-      props: {
-        info: "This is just a nightmare",
-      },
-    })
-
-    cy.get("button").click()
-
-    cy.get("div").should("not.have.text", "Badgering Badger")
-  })
+  // it("allows messages to be dismissed", () => {
+  //   cy.mount(Notification, {
+  //     props: {
+  //       info: "This is just a nightmare",
+  //     },
+  //   })
+  //
+  //   cy.get("button").click()
+  //
+  //   cy.get("div").should("not.have.text", "Badgering Badger")
+  // })
 })

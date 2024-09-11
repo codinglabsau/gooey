@@ -8,6 +8,8 @@ export default defineConfig({
       framework: "vue",
       bundler: "vite"
     },
+    specPattern: 'src/components/**/*.cy.ts',
+
     setupNodeEvents(on, config) {
       on("task", {
         // ref: https://docs.cypress.io/api/commands/task#Read-a-file-that-might-not-exist
