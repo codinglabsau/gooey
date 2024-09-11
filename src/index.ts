@@ -1,14 +1,13 @@
-// Tailwind
-import theme from "./tailwind/theme"
-
-export { theme }
+// theme
+export { theme } from "./tailwind/theme"
 
 // custom components
-export * from "@/components/notifications"
+export * from "@/components/notification"
 
-// shadcn
+// shadcn components
 export * from "@/components/dropdown-menu"
 export * from "@/components/sheet"
 export * from "@/components/toast"
 
+// radix components
 export { DropdownMenuPortal } from "radix-vue"
