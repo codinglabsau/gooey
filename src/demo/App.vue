@@ -7,7 +7,7 @@ const mode = useColorMode()
 
 // UI
 import { Toaster, useToast } from "@/components/toast"
-import { Notifications, useNotification } from "./components/notifications"
+import { Notifications, useNotification } from "@/components/notification"
 
 const { toast } = useToast()
 const { info, success, warning, error } = useNotification()
