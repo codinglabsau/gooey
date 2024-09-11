@@ -45,11 +45,11 @@ const notificationsConfig = ref<any>({})
       <div>
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <MoonIcon v-if="mode === 'dark'" class="h-6 w-6" />
+            <MoonIcon v-if="mode === 'dark'" class="size-6" />
 
-            <SunIcon v-if="mode === 'light'" class="h-6 w-6" />
+            <SunIcon v-if="mode === 'light'" class="size-6" />
 
-            <ComputerDesktopIcon v-if="mode === 'auto'" class="h-6 w-6" />
+            <ComputerDesktopIcon v-if="mode === 'auto'" class="size-6" />
           </DropdownMenuTrigger>
 
           <DropdownMenuContent>
