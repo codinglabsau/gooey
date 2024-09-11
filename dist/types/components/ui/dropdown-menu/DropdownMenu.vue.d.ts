@@ -1,9 +1,9 @@
 import { type DropdownMenuRootProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:open": (payload: boolean) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>>> & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRootProps>>> & Readonly<{
     "onUpdate:open"?: ((payload: boolean) => any) | undefined;
-}, {}, {}>, {
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

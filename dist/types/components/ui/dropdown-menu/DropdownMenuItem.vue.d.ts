@@ -1,11 +1,11 @@
 import { type DropdownMenuItemProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuItemProps & {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuItemProps & {
     class?: any;
     inset?: boolean | undefined;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuItemProps & {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuItemProps & {
     class?: any;
     inset?: boolean | undefined;
-}>>>, {}, {}>, {
+}>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

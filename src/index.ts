@@ -31,3 +31,7 @@ export {
   // Tailwind
   theme,
 }
+
+export { DropdownMenuPortal } from "radix-vue"
+
+export * from "./components/ui/dropdown-menu"

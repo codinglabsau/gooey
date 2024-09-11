@@ -1,9 +1,9 @@
 import { type DropdownMenuContentProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<DropdownMenuContentProps & {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<DropdownMenuContentProps & {
     class?: any;
 }>, {
     sideOffset: number;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     escapeKeyDown: (event: KeyboardEvent) => void;
     pointerDownOutside: (event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent) => void;
     focusOutside: (event: import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => void;
@@ -13,15 +13,15 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     class?: any;
 }>, {
     sideOffset: number;
-}>>> & {
+}>>> & Readonly<{
     onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
     onPointerDownOutside?: ((event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent) => any) | undefined;
     onFocusOutside?: ((event: import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => any) | undefined;
     onInteractOutside?: ((event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent | import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => any) | undefined;
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
-}, {
+}>, {
     sideOffset: number;
-}, {}>, {
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

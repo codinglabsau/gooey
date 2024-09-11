@@ -1,13 +1,13 @@
 import { type DropdownMenuRadioItemProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioItemProps & {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioItemProps & {
     class?: any;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     select: (event: Event) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuRadioItemProps & {
     class?: any;
-}>>> & {
+}>>> & Readonly<{
     onSelect?: ((event: Event) => any) | undefined;
-}, {}, {}>, {
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

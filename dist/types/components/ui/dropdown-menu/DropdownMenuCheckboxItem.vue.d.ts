@@ -1,15 +1,15 @@
 import { type DropdownMenuCheckboxItemProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuCheckboxItemProps & {
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuCheckboxItemProps & {
     class?: any;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     select: (event: Event) => void;
     "update:checked": (payload: boolean) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuCheckboxItemProps & {
     class?: any;
-}>>> & {
+}>>> & Readonly<{
     onSelect?: ((event: Event) => any) | undefined;
     "onUpdate:checked"?: ((payload: boolean) => any) | undefined;
-}, {}, {}>, {
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

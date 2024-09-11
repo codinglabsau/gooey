@@ -1,4 +1,4 @@
-declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
@@ -6,7 +6,7 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     showErrorKeys?: boolean | undefined;
 }>, {
     showErrorKeys: boolean;
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
@@ -14,9 +14,9 @@ declare const _default: import("vue").DefineComponent<__VLS_WithDefaults<__VLS_T
     showErrorKeys?: boolean | undefined;
 }>, {
     showErrorKeys: boolean;
-}>>>, {
+}>>> & Readonly<{}>, {
     showErrorKeys: boolean;
-}, {}>;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {

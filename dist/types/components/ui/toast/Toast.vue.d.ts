@@ -1,14 +1,14 @@
-import { type ToastProps } from ".";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<ToastProps>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    escapeKeyDown: (event: KeyboardEvent) => void;
+import { type ToastProps } from '.';
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<ToastProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     pause: () => void;
+    escapeKeyDown: (event: KeyboardEvent) => void;
     resume: () => void;
     swipeStart: (event: import("radix-vue/dist/Toast/utils").SwipeEvent) => void;
     swipeMove: (event: import("radix-vue/dist/Toast/utils").SwipeEvent) => void;
     swipeCancel: (event: import("radix-vue/dist/Toast/utils").SwipeEvent) => void;
     swipeEnd: (event: import("radix-vue/dist/Toast/utils").SwipeEvent) => void;
     "update:open": (value: boolean) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<ToastProps>>> & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<ToastProps>>> & Readonly<{
     onPause?: (() => any) | undefined;
     onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
     onResume?: (() => any) | undefined;
@@ -17,7 +17,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<__
     onSwipeCancel?: ((event: import("radix-vue/dist/Toast/utils").SwipeEvent) => any) | undefined;
     onSwipeEnd?: ((event: import("radix-vue/dist/Toast/utils").SwipeEvent) => any) | undefined;
     "onUpdate:open"?: ((value: boolean) => any) | undefined;
-}, {}, {}>, {
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
 export default _default;

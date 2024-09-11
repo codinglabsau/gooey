@@ -1,10 +1,10 @@
 import { type HTMLAttributes } from "vue";
 import { type DropdownMenuSeparatorProps } from "radix-vue";
-declare const _default: import("vue").DefineComponent<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
+declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
     class?: HTMLAttributes["class"];
-}>, {}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
+}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSeparatorProps & {
     class?: HTMLAttributes["class"];
-}>>>, {}, {}>;
+}>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {
