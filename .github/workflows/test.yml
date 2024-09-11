@@ -12,5 +12,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: cypress-io/github-action@v6
-        with:
-          component: true
