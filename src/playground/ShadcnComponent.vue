@@ -12,6 +12,6 @@ const currentRoute = computed(() => router.currentRoute)
   <p>{{ currentRoute.value.name }} is exporting directly from without modification.</p>
 
   <a :href="`https://www.shadcn-vue.com/docs${currentRoute.value.path}.html`" target="__blank">
-    See the Shadcn {{ currentRoute.value.name }} docs
+    See the shadcn-vue {{ currentRoute.value.name }} docs
   </a>
 </template>
