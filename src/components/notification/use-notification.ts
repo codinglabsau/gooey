@@ -1,8 +1,8 @@
-import { type Toast, useToast } from "@/components/toast/use-toast"
+import { type Toast, type Message, useToast } from "@/components/toast/use-toast"
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
-  InformationCircleIcon,
+  InformationCircleIcon
 } from "@heroicons/vue/24/outline"
 
 const { toast } = useToast()
@@ -14,7 +14,7 @@ function useNotification() {
         icon: InformationCircleIcon,
         iconClasses: "text-blue-400",
         title: "FYI",
-        description: message,
+        description: message
       })
     },
     success: (message: string) => {
@@ -22,7 +22,7 @@ function useNotification() {
         icon: CheckCircleIcon,
         iconClasses: "text-green-400",
         title: "Success",
-        description: message,
+        description: message
       })
     },
     warning: (message: string) => {
@@ -30,17 +30,19 @@ function useNotification() {
         icon: ExclamationCircleIcon,
         iconClasses: "text-orange-400",
         title: "Warning",
-        description: message,
+        description: message
       })
     },
-    error: (message: Object) => {
+    error: (message: Message, showErrorKeys: boolean = false) => {
       toast({
         icon: ExclamationCircleIcon,
         iconClasses: "text-red-400",
         title: "Oh snap! Some errors were encountered.",
-        messages: message,
+        messages: showErrorKeys
+          ? Object.keys(message!)
+          : Object.values(message!)
       })
-    },
+    }
   }
 }
 

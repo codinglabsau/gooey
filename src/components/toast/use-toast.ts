@@ -15,13 +15,17 @@ export type StringOrVNode = string | VNode | (() => VNode)
 //   action?: Component
 // }
 
+export type Message = {
+  [key: string]: string;
+};
+
 type ToasterToast = ToastProps & {
   id: string
   icon?: Component
   iconClasses?: string
   title?: string
   description?: StringOrVNode
-  messages?: Array<string>
+  messages?: Array<Message>
   action?: Component
 }
 
