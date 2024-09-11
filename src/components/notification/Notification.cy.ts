@@ -1,8 +1,8 @@
-import Notifications from "./Notifications.vue"
+import Notification from "./Notification.vue"
 
-describe("<Notifications />", () => {
+describe("<Notification />", () => {
   it("renders nothing when mounted", () => {
-    cy.mount(Notifications)
+    cy.mount(Notification)
 
     cy.get("div").then(($el) => {
       !Cypress.dom.isVisible($el)
@@ -10,7 +10,7 @@ describe("<Notifications />", () => {
   })
 
   it("renders info messages", () => {
-    cy.mount(Notifications, {
+    cy.mount(Notification, {
       props: {
         info: "This is just a nightmare",
       },
@@ -20,7 +20,7 @@ describe("<Notifications />", () => {
   })
 
   it("allows messages to be dismissed", () => {
-    cy.mount(Notifications, {
+    cy.mount(Notification, {
       props: {
         info: "This is just a nightmare",
       },
