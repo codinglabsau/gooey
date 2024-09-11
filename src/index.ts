@@ -1,37 +1,15 @@
-// Alerts
-
-// Badges
-
-// Buttons
-
-// Kpi
-
-// UI
-import Notifications from "./components/Notifications.vue"
-
-// Form
-
 // Tailwind
 import theme from "./tailwind/theme"
 
 export {
-  // Alerts
-
-  // Badges
-
-  // Buttons
-
-  // Kpi
-
-  // UI
-  Notifications,
-
-  // Form
-
-  // Tailwind
   theme,
 }
 
-export { DropdownMenuPortal } from "radix-vue"
+// custom components
+export * from "@/components/notifications"
 
-export * from "./components/ui/dropdown-menu"
+// shadcn
+export * from "@/components/dropdown-menu"
+export * from "@/components/toast"
+
+export { DropdownMenuPortal } from "radix-vue"
