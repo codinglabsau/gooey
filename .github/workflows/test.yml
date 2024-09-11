@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cypress-io/github-action@v6
         with:
-          start: vite
+          start: npm run dev
