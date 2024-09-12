@@ -11,17 +11,17 @@ const routes = [
     path: "/components",
     name: "Components",
     children: [
-      { name: "Dropdown Menu", path: "dropdown-menu", component: ShadcnComponent },
-      { name: "Notification", path: "notification", component: Notification },
-      { name: "Sheet", path: "sheet", component: ShadcnComponent },
-      { name: "Switch", path: "switch", component: ShadcnComponent },
-      { name: "Toast", path: "toast", component: Toast },
+      { name: "Dropdown Menu", path: "/components/dropdown-menu", component: ShadcnComponent },
+      { name: "Notification", path: "/components/notification", component: Notification },
+      { name: "Sheet", path: "/components/sheet", component: ShadcnComponent },
+      { name: "Switch", path: "/components/switch", component: ShadcnComponent },
+      { name: "Toast", path: "/components/toast", component: Toast },
     ],
   },
   {
     path: "/layouts",
     name: "Layouts",
-    children: [{ name: "Two Column", path: "dropdown-menu", component: ShadcnComponent }],
+    children: [{ name: "Two Column", path: "/components/dropdown-menu", component: ShadcnComponent }],
   },
 ]
 
