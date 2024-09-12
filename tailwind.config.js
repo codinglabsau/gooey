@@ -1,4 +1,3 @@
-import theme from "./src/tailwind/theme"
 import forms from "@tailwindcss/forms"
 
 const animate = require("tailwindcss-animate")
@@ -89,6 +88,5 @@ export default {
     forms({
       strategy: "class"
     }),
-    theme()
   ]
 }

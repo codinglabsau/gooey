@@ -1,5 +1,7 @@
-// theme
-export * from "@/tailwind/theme"
+// tailwind plugin
+import gooeyTailwindPlugin from "@/tailwind/plugin"
+
+export { gooeyTailwindPlugin }
 
 // custom components
 export * from "@/components/notification"
