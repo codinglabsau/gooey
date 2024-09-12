@@ -44,7 +44,7 @@ const sidebarOpen = ref(false)
           </SheetDescription>
         </VisuallyHidden>
 
-        <SidebarNavigation :items="navigation" />
+        <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
       </SheetContent>
     </Sheet>
 

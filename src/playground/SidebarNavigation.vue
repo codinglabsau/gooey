@@ -5,6 +5,10 @@ defineProps<{
     required: true,
   },
 }>()
+
+defineEmits<{
+  navigated: void
+}>()
 </script>
 
 <template>
@@ -19,6 +23,7 @@ defineProps<{
               <RouterLink
                 :to="route.path"
                 class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 hover:underline"
+                @click="$emit('navigated')"
               >
                 {{ route.name }}
               </RouterLink>
