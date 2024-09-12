@@ -18,7 +18,7 @@ defineProps<{
             <li v-for="route in group.children" :key="route.name">
               <RouterLink
                 :to="route.path"
-                class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 hover:bg-zinc-800 hover:text-white"
+                class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 hover:underline"
               >
                 {{ route.name }}
               </RouterLink>
