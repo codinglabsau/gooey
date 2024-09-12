@@ -1,5 +1,4 @@
 import plugin from "tailwindcss/plugin"
-import colors from "tailwindcss/colors"
 
 type OptionsConfig = {
   colors?: {
@@ -10,23 +9,20 @@ type OptionsConfig = {
 }
 
 const theme = plugin.withOptions(
-  function () {
-    return function () {
+  function() {
+    return function() {
       /* Nothing needs to be done here yet */
     }
   },
-  function (options: OptionsConfig = {}) {
+  function(options: OptionsConfig = {}) {
     return {
       theme: {
         extend: {
           colors: {
-            primary: {
-              ...colors.indigo,
-              ...options?.colors?.primary,
-            },
-          },
-        },
-      },
+            ...options?.colors
+          }
+        }
+      }
     }
   }
 )
