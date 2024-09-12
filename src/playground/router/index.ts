@@ -15,22 +15,20 @@ const routes = [
       { name: "Notification", path: "notification", component: Notification },
       { name: "Sheet", path: "sheet", component: ShadcnComponent },
       { name: "Switch", path: "switch", component: ShadcnComponent },
-      { name: "Toast", path: "toast", component: Toast }
-    ]
+      { name: "Toast", path: "toast", component: Toast },
+    ],
   },
   {
     path: "/layouts",
     name: "Layouts",
-    children: [
-      { name: "Two Column", path: "dropdown-menu", component: ShadcnComponent },
-    ]
+    children: [{ name: "Two Column", path: "dropdown-menu", component: ShadcnComponent }],
   },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   linkActiveClass: "!font-bold",
-  routes
+  routes,
 })
 
 export default router

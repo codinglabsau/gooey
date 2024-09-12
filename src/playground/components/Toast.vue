@@ -42,7 +42,11 @@ function calculateDaysUntilHalloween() {
       @click="
         toast({
           title: 'Boo!',
-          description: calculateDaysUntilHalloween() + ' days until halloween ' + new Date().getFullYear() + ' 🎃',
+          description:
+            calculateDaysUntilHalloween() +
+            ' days until halloween ' +
+            new Date().getFullYear() +
+            ' 🎃',
           icon: Ghost,
           iconClasses: 'text-red-400',
         })
@@ -58,7 +62,7 @@ function calculateDaysUntilHalloween() {
           messages: [
             'That\'s what she said.',
             'Identity theft is not a joke, Jim!',
-            'I have a lot of questions. Number one, how dare you?'
+            'I have a lot of questions. Number one, how dare you?',
           ],
         })
       "

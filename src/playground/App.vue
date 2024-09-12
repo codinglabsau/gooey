@@ -5,13 +5,7 @@ import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon, Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
 
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle
-} from "@/components/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 
 import { Switch } from "@/components/switch"
 import SidebarNavigation from "./SidebarNavigation.vue"
@@ -19,7 +13,7 @@ import SidebarNavigation from "./SidebarNavigation.vue"
 const router = useRouter()
 const mode = useColorMode()
 const colorMode = ref(mode.value === "dark")
-watch(colorMode, (value) => mode.value = value ? "dark" : "light")
+watch(colorMode, (value) => (mode.value = value ? "dark" : "light"))
 
 const navigation = router.getRoutes().filter((route) => route.children.length > 0)
 
@@ -27,7 +21,7 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <div class="h-full bg-white dark:bg-zinc-950 dark:text-white">
+  <div class="h-full bg-background dark:text-white">
     <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
       <SheetContent side="left">
         <SheetHeader>
@@ -39,9 +33,7 @@ const sidebarOpen = ref(false)
         </SheetHeader>
 
         <VisuallyHidden as-child>
-          <SheetDescription>
-            Sidebar navigation
-          </SheetDescription>
+          <SheetDescription> Sidebar navigation </SheetDescription>
         </VisuallyHidden>
 
         <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
@@ -72,7 +64,11 @@ const sidebarOpen = ref(false)
       <div
         class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-zinc-600 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
       >
-        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" @click="sidebarOpen = true">
+        <button
+          type="button"
+          class="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+          @click="sidebarOpen = true"
+        >
           <span class="sr-only">Open sidebar</span>
 
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />

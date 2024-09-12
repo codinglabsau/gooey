@@ -60,9 +60,7 @@ watch(
   () => props.errors,
   () => {
     if (Object.keys(props.errors!).length > 0) {
-      error(
-        props.showErrorKeys ? Object.keys(props.errors!) : Object.values(props.errors!)
-      )
+      error(props.showErrorKeys ? Object.keys(props.errors!) : Object.values(props.errors!))
     }
   }
 )

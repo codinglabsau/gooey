@@ -16,8 +16,8 @@ export type StringOrVNode = string | VNode | (() => VNode)
 // }
 
 export type Message = {
-  [key: string]: string;
-};
+  [key: string]: string
+}
 
 type ToasterToast = ToastProps & {
   id: string

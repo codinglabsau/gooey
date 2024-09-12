@@ -1,9 +1,9 @@
 <script setup lang="ts">
 defineProps<{
   items: {
-    type: Array,
-    required: true,
-  },
+    type: Array
+    required: true
+  }
 }>()
 
 defineEmits<{
