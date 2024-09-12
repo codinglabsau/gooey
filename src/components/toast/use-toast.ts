@@ -15,9 +15,7 @@ export type StringOrVNode = string | VNode | (() => VNode)
 //   action?: Component
 // }
 
-export type Message = {
-  [key: string]: string
-}
+export type Messages = Record<string, string>
 
 type ToasterToast = ToastProps & {
   id: string
@@ -25,7 +23,7 @@ type ToasterToast = ToastProps & {
   iconClasses?: string
   title?: string
   description?: StringOrVNode
-  messages?: Array<Message>
+  messages?: Messages
   action?: Component
 }
 

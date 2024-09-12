@@ -1,4 +1,4 @@
-import { type Toast, type Message, useToast } from "@/components/toast/use-toast"
+import { type Messages, useToast } from "@/components/toast/use-toast"
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
@@ -17,6 +17,7 @@ function useNotification() {
         description: message,
       })
     },
+
     success: (message: string) => {
       toast({
         icon: CheckCircleIcon,
@@ -25,6 +26,7 @@ function useNotification() {
         description: message,
       })
     },
+
     warning: (message: string) => {
       toast({
         icon: ExclamationCircleIcon,
@@ -33,12 +35,28 @@ function useNotification() {
         description: message,
       })
     },
-    error: (message: Message, showErrorKeys: boolean = false) => {
+
+    error: (
+      messages: Messages,
+      showErrorKeys: boolean = false,
+      showErrorValues: boolean = true
+    ) => {
       toast({
         icon: ExclamationCircleIcon,
         iconClasses: "text-red-400",
         title: "Oh snap! Some errors were encountered.",
-        messages: showErrorKeys ? Object.keys(message!) : Object.values(message!),
+        //   messages: Object.entries(messages)
+        //     .map((value: string, key: string) => {
+        //       if (showErrorKeys && showErrorValues) {
+        //         return [key, `${key}: ${value}`]
+        //       }
+        //
+        //       if (showErrorKeys) {
+        //         return [key, key]
+        //       }
+        //
+        //       return [key, value]
+        //     })
       })
     },
   }

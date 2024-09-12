@@ -9,20 +9,20 @@ type OptionsConfig = {
 }
 
 const theme = plugin.withOptions(
-  function() {
-    return function() {
+  function () {
+    return function () {
       /* Nothing needs to be done here yet */
     }
   },
-  function(options: OptionsConfig = {}) {
+  function (options: OptionsConfig = {}) {
     return {
       theme: {
         extend: {
           colors: {
-            ...options?.colors
-          }
-        }
-      }
+            ...options?.colors,
+          },
+        },
+      },
     }
   }
 )

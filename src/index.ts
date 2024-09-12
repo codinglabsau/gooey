@@ -1,5 +1,5 @@
 // theme
-export { theme } from "./tailwind/theme"
+export * from "@/tailwind/theme"
 
 // custom components
 export * from "@/components/notification"

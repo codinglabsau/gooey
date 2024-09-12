@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { watch } from "vue"
-import { type Message } from "@/components/toast/use-toast"
+import type { Messages } from "@/components/toast/use-toast"
 import { Toaster } from "@/components/toast"
 import { useNotification } from "./use-notification"
 
@@ -9,11 +9,13 @@ const props = withDefaults(
     info?: string
     success?: string
     warning?: string
-    errors?: Record<Message>
+    errors?: Messages
     showErrorKeys?: boolean
+    showErrorValues?: boolean
   }>(),
   {
     showErrorKeys: false,
+    showErrorValues: true,
   }
 )
 
@@ -28,7 +30,7 @@ watch(
   () => props.info,
   (newVal) => {
     if (newVal) {
-      infoNotification(props.info)
+      infoNotification(props.info as string)
     }
   },
   {
@@ -40,7 +42,7 @@ watch(
   () => props.success,
   (newVal) => {
     if (newVal) {
-      successNotification(props.success)
+      successNotification(props.success as string)
     }
   },
   { immediate: true }
@@ -50,7 +52,7 @@ watch(
   () => props.warning,
   (newVal) => {
     if (newVal) {
-      warningNotification(props.warning)
+      warningNotification(props.warning as string)
     }
   },
   { immediate: true }
@@ -59,8 +61,8 @@ watch(
 watch(
   () => props.errors,
   () => {
-    if (Object.keys(props.errors!).length > 0) {
-      error(props.showErrorKeys ? Object.keys(props.errors!) : Object.values(props.errors!))
+    if (props.errors !== undefined && Object.keys(props.errors!).length > 0) {
+      error(props.errors)
     }
   }
 )

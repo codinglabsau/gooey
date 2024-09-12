@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import Home from "@/playground/Home.vue"
-import ShadcnComponent from "@/playground/ShadcnComponent.vue"
-import Notification from "@/playground/components/Notification.vue"
-import Toast from "@/playground/components/Toast.vue"
+import Home from "@app/Home.vue"
+import ShadcnComponent from "@app/ShadcnComponent.vue"
+import Notification from "@app/pages/Notification.vue"
+import Toast from "@app/pages/Toast.vue"
 
 const routes = [
   { path: "/", component: Home },

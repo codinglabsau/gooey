@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 
@@ -8,17 +8,21 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "./src/index.ts"),
       name: "gooey",
-      fileName: "gooey",
+      fileName: "gooey"
     },
     rollupOptions: {
-      external: ["vue", "@inertiajs/vue3"],
+      external: [
+        "vue",
+        "@inertiajs/vue3"
+      ]
     },
-    emptyOutDir: false,
+    emptyOutDir: false
   },
   plugins: [vue()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
-  },
+      "@": path.resolve(__dirname, "./src"),
+      "@app": path.resolve(__dirname, "./app")
+    }
+  }
 })

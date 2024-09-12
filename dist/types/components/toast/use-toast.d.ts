@@ -1,13 +1,14 @@
 import type { Component, VNode } from "vue";
 import type { ToastProps } from ".";
 export type StringOrVNode = string | VNode | (() => VNode);
+export type Messages = Record<string, string>;
 type ToasterToast = ToastProps & {
     id: string;
     icon?: Component;
     iconClasses?: string;
     title?: string;
     description?: StringOrVNode;
-    messages?: Array<string>;
+    messages?: Messages;
     action?: Component;
 };
 declare function useToast(): {
@@ -102,7 +103,7 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 3 | 2 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 3 | 2) | undefined;
+                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;
@@ -222,7 +223,7 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 3 | 2 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 3 | 2) | undefined;
+                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;
@@ -263,7 +264,7 @@ declare function useToast(): {
         iconClasses?: string | undefined;
         title?: string | undefined;
         description?: StringOrVNode | undefined;
-        messages?: string[] | undefined;
+        messages?: Messages | undefined;
         action?: import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
             __isFragment?: undefined;
@@ -345,7 +346,7 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 3 | 2 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 3 | 2) | undefined;
+                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;

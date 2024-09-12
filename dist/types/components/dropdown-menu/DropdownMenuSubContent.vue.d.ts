@@ -2,9 +2,9 @@ import { type DropdownMenuSubContentProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSubContentProps & {
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    escapeKeyDown: (event: KeyboardEvent) => void;
     entryFocus: (event: Event) => void;
     openAutoFocus: (event: Event) => void;
+    escapeKeyDown: (event: KeyboardEvent) => void;
     pointerDownOutside: (event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent) => void;
     focusOutside: (event: import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => void;
     interactOutside: (event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent | import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => void;
@@ -12,9 +12,9 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSubContentProps & {
     class?: any;
 }>>> & Readonly<{
-    onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
     onEntryFocus?: ((event: Event) => any) | undefined;
     onOpenAutoFocus?: ((event: Event) => any) | undefined;
+    onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
     onPointerDownOutside?: ((event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent) => any) | undefined;
     onFocusOutside?: ((event: import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => any) | undefined;
     onInteractOutside?: ((event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent | import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => any) | undefined;

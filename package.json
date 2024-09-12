@@ -17,13 +17,14 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "run-p format lint type-check && vite build",
+    "build": "run-p format type-check && vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "prepare": "relative-deps",
     "type-check": "vue-tsc --declaration --emitDeclarationOnly",
-    "format": "prettier \"src/**/*.{js,ts,vue}\" --write",
-    "lint": "eslint \"src/**/*.{js,ts,vue}\" --fix",
+    "format": "run-p prettier lint",
+    "prettier": "prettier 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --write",
+    "lint": "eslint 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --fix",
     "test": "cypress run",
     "testc": "cypress run --component",
     "teste": "cypress run --e2e"
