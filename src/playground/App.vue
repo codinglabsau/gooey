@@ -14,15 +14,14 @@ import {
 } from "@/components/sheet"
 
 import { Switch } from "@/components/switch"
+import SidebarNavigation from "./SidebarNavigation.vue"
 
 const router = useRouter()
 const mode = useColorMode()
 const colorMode = ref(mode.value === "dark")
 watch(colorMode, (value) => mode.value = value ? "dark" : "light")
 
-const navigation = router.getRoutes()
-const components = navigation.filter((route) => route.path.startsWith("/components"))
-const layouts = navigation.filter((route) => route.path.startsWith("/layouts"))
+const navigation = router.getRoutes().filter((route) => route.children.length > 0)
 
 const sidebarOpen = ref(false)
 </script>
@@ -45,31 +44,14 @@ const sidebarOpen = ref(false)
           </SheetDescription>
         </VisuallyHidden>
 
-        <nav class="flex flex-1 flex-col">
-          <ul role="list" class="flex flex-1 flex-col gap-y-7">
-            <li>
-              <div class="text-xs font-semibold leading-6 text-gray-400">Components</div>
-
-              <ul role="list" class="-mx-2 space-y-1">
-                <li v-for="component in components" :key="component.name">
-                  <RouterLink
-                    :to="component.path"
-                    class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-zinc-800 hover:text-white"
-                  >
-                    {{ component.name }}
-                  </RouterLink>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+        <SidebarNavigation :items="navigation" />
       </SheetContent>
     </Sheet>
 
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
       <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="flex grow flex-col gap-y-5 overflow-y-auto">
+      <div class="gap-y-5 overflow-y-auto">
         <div class="flex h-16 shrink-0 items-center border-b border-zinc-600">
           <div class="flex items-center space-x-4 px-6">
             <RouterLink to="/">
@@ -82,37 +64,7 @@ const sidebarOpen = ref(false)
           </div>
         </div>
 
-        <nav class="flex flex-1 flex-col px-6 pb-4">
-          <div class="text-md font-bold leading-6 text-white">Components</div>
-
-          <ul role="list" class="mt-2 flex flex-1 flex-col gap-y-7">
-            <li>
-              <ul role="list" class="-mx-2 space-y-1">
-                <li v-for="component in components" :key="component.name">
-                  <RouterLink
-                    :to="component.path"
-                    class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 text-gray-200 hover:bg-zinc-800 hover:text-white"
-                  >
-                    {{ component.name }}
-                  </RouterLink>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <ul role="list" class="-mx-2 space-y-1">
-                <li v-for="layout in layouts" :key="layout.name">
-                  <RouterLink
-                    :to="layout.path"
-                    class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-zinc-800 hover:text-white"
-                  >
-                    {{ layout.name }}
-                  </RouterLink>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
+        <SidebarNavigation :items="navigation" />
       </div>
     </div>
 
@@ -148,16 +100,6 @@ const sidebarOpen = ref(false)
           </form>
 
           <div class="flex items-center gap-x-4 lg:gap-x-6">
-            <!--            <button type="button" class="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">-->
-            <!--              <span class="sr-only">View notifications</span>-->
-
-            <!--              <BellIcon class="h-6 w-6" aria-hidden="true" />-->
-            <!--            </button>-->
-
-            <!--            &lt;!&ndash; Separator &ndash;&gt;-->
-            <!--            <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-zinc-900/10" aria-hidden="true" />-->
-
-            <!-- Dropdown -->
             <div class="flex items-center space-x-2">
               <SunIcon class="size-5 text-zinc-400" />
 
