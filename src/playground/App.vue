@@ -1,19 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
 import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, ComputerDesktopIcon,  Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
-
-const router = useRouter()
-const mode = useColorMode()
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/dropdown-menu"
+import { MoonIcon, SunIcon, Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
 
 import {
   Sheet,
@@ -22,6 +12,13 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/sheet"
+
+import { Switch } from "@/components/switch"
+
+const router = useRouter()
+const mode = useColorMode()
+const colorMode = ref(mode.value === "dark")
+watch(colorMode, (value) => mode.value = value ? "dark" : "light")
 
 const navigation = router.getRoutes()
 const components = navigation.filter((route) => route.path.startsWith("/components"))
@@ -161,32 +158,13 @@ const sidebarOpen = ref(false)
             <!--            <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-zinc-900/10" aria-hidden="true" />-->
 
             <!-- Dropdown -->
-            <DropdownMenu>
-              <DropdownMenuTrigger>
-                <MoonIcon v-if="mode === 'dark'" class="size-6" />
+            <div class="flex items-center space-x-2">
+              <SunIcon class="size-5 text-zinc-400" />
 
-                <SunIcon v-if="mode === 'light'" class="size-6" />
+              <Switch v-model:checked="colorMode" />
 
-                <ComputerDesktopIcon v-if="mode === 'auto'" class="size-6" />
-              </DropdownMenuTrigger>
-
-              <DropdownMenuContent>
-                <DropdownMenuItem @click="mode = 'dark'">
-                  <MoonIcon class="mr-1.5 h-4 w-4" />
-                  Dark mode
-                </DropdownMenuItem>
-
-                <DropdownMenuItem @click="mode = 'light'">
-                  <SunIcon class="mr-1.5 h-4 w-4" />
-                  Day mode
-                </DropdownMenuItem>
-
-                <DropdownMenuItem @click="mode = 'auto'">
-                  <ComputerDesktopIcon class="mr-1.5 h-4 w-4" />
-                  System
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+              <MoonIcon class="size-5 text-zinc-400" />
+            </div>
           </div>
         </div>
       </div>
