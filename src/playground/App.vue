@@ -3,7 +3,7 @@ import { ref } from "vue"
 import { VisuallyHidden } from "radix-vue"
 import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, ComputerDesktopIcon } from "@heroicons/vue/24/outline"
+import { MoonIcon, SunIcon, ComputerDesktopIcon,  Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
 
 const router = useRouter()
 const mode = useColorMode()
@@ -23,12 +23,6 @@ import {
   SheetTitle
 } from "@/components/sheet"
 
-import {
-  Bars3Icon,
-  LifebuoyIcon,
-  MagnifyingGlassIcon
-} from "@heroicons/vue/24/outline"
-
 const navigation = router.getRoutes()
 const components = navigation.filter((route) => route.path.startsWith("/components"))
 const layouts = navigation.filter((route) => route.path.startsWith("/layouts"))
@@ -37,15 +31,7 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-white">
-    <body class="h-full">
-    ```
-  -->
-  <div>
+  <div class="h-full bg-white dark:bg-zinc-950 dark:text-white">
     <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
       <SheetContent side="left">
         <SheetHeader>
@@ -56,7 +42,7 @@ const sidebarOpen = ref(false)
           </SheetTitle>
         </SheetHeader>
 
-        <VisuallyHidden asChild>
+        <VisuallyHidden as-child>
           <SheetDescription>
             Sidebar navigation
           </SheetDescription>
@@ -77,16 +63,6 @@ const sidebarOpen = ref(false)
                   </RouterLink>
                 </li>
               </ul>
-            </li>
-
-            <li class="mt-auto">
-              <a
-                href="http://gooey-docs.test"
-                class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-zinc-800 hover:text-white"
-              >
-                <LifebuoyIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
-                Docs
-              </a>
             </li>
           </ul>
         </nav>
@@ -112,13 +88,13 @@ const sidebarOpen = ref(false)
         <nav class="flex flex-1 flex-col px-6 pb-4">
           <div class="text-md font-bold leading-6 text-white">Components</div>
 
-          <ul role="list" class="flex flex-1 flex-col gap-y-7 mt-2">
+          <ul role="list" class="mt-2 flex flex-1 flex-col gap-y-7">
             <li>
               <ul role="list" class="-mx-2 space-y-1">
                 <li v-for="component in components" :key="component.name">
                   <RouterLink
                     :to="component.path"
-                    class="group flex gap-x-3 rounded-md px-2 leading-5 text-sm font-light text-gray-200 hover:bg-zinc-800 hover:text-white"
+                    class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 text-gray-200 hover:bg-zinc-800 hover:text-white"
                   >
                     {{ component.name }}
                   </RouterLink>
@@ -137,16 +113,6 @@ const sidebarOpen = ref(false)
                   </RouterLink>
                 </li>
               </ul>
-            </li>
-
-            <li class="mt-auto">
-              <a
-                href="http://gooey-docs.test"
-                class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-zinc-800 hover:text-white"
-              >
-                <LifebuoyIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
-                Docs
-              </a>
             </li>
           </ul>
         </nav>
@@ -177,8 +143,10 @@ const sidebarOpen = ref(false)
 
             <input
               id="search-field"
-              class="bg-zinc-800 block h-full w-full border-0 py-0 pl-12 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm"
-              placeholder="Search..." type="search" name="search"
+              class="block h-full w-full border-0 py-0 pl-12 pr-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:bg-zinc-800 sm:text-sm"
+              placeholder="Search..."
+              type="search"
+              name="search"
             />
           </form>
 
@@ -224,7 +192,7 @@ const sidebarOpen = ref(false)
       </div>
 
       <main class="py-10">
-        <div class="px-4 sm:px-6 lg:px-8">
+        <div class="sm:px-6 lg:px-8">
           <RouterView />
         </div>
       </main>
