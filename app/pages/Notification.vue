@@ -22,6 +22,7 @@ const props = ref<any>({})
     <button
       @click="
         () => {
+          props.errorFormat = 'value'
           props.errors = {
             firstname: 'firstname is required',
             surname: 'surname must be of type: that\'s what she said',
@@ -29,13 +30,13 @@ const props = ref<any>({})
         }
       "
     >
-      Errors notification
+      Errors (default)
     </button>
 
     <button
       @click="
         () => {
-          props.showErrorKeys = true
+          props.errorFormat = 'key'
           props.errors = {
             firstname: 'firstname is required',
             surname: 'surname must be of type: that\'s what she said',
@@ -44,6 +45,20 @@ const props = ref<any>({})
       "
     >
       Errors (keys only)
+    </button>
+
+    <button
+      @click="
+        () => {
+          props.errorFormat = 'both'
+          props.errors = {
+            firstname: 'firstname is required',
+            surname: 'surname must be of type: that\'s what she said',
+          }
+        }
+      "
+    >
+      Errors (keys and values)
     </button>
   </div>
 
@@ -66,7 +81,7 @@ const props = ref<any>({})
         }
       "
     >
-      Errors
+      Errors (default)
     </button>
 
     <button
@@ -77,12 +92,28 @@ const props = ref<any>({})
               firstname: 'firstname is required',
               surname: 'surname must be of type: that\'s what she said',
             },
-            true
+            'key'
           )
         }
       "
     >
       Errors (keys only)
+    </button>
+
+    <button
+      @click="
+        () => {
+          error(
+            {
+              firstname: 'firstname is required',
+              surname: 'surname must be of type: that\'s what she said',
+            },
+            'both'
+          )
+        }
+      "
+    >
+      Errors (keys and values)
     </button>
   </div>
 </template>

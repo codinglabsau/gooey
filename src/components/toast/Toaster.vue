@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component, isVNode } from "vue"
+import { isVNode } from "vue"
 import { useToast } from "./use-toast"
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "."
 
@@ -22,15 +22,29 @@ const { toasts } = useToast()
               <component :is="toast.description" />
             </ToastDescription>
 
+            <p
+              v-for="(value, key) in toast.description"
+              v-else-if="typeof toast.description === 'object'"
+              :key="key"
+              class="text-sm opacity-90"
+            >
+              <template v-if="toast.errorFormat === 'value'">
+                {{ value }}
+              </template>
+
+              <template v-if="toast.errorFormat === 'key'">
+                {{ key }}
+              </template>
+
+              <template v-if="toast.errorFormat === 'both'">
+                <span class="font-bold">{{ key }}</span
+                >: {{ value }}
+              </template>
+            </p>
+
             <ToastDescription v-else>
               {{ toast.description }}
             </ToastDescription>
-          </template>
-
-          <template v-if="toast.messages">
-            <p v-for="(message, idx) in toast.messages" :key="idx" class="text-sm opacity-90">
-              {{ message }}
-            </p>
           </template>
 
           <ToastClose />

@@ -1,11 +1,15 @@
-import { type Messages, useToast } from "@/components/toast/use-toast"
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   InformationCircleIcon,
 } from "@heroicons/vue/24/outline"
 
+import { useToast } from "@/components/toast/use-toast"
+
 const { toast } = useToast()
+
+export type ErrorBag = Record<string, string>
+export type ErrorFormat = "key" | "value" | "both"
 
 function useNotification() {
   return {
@@ -36,27 +40,13 @@ function useNotification() {
       })
     },
 
-    error: (
-      messages: Messages,
-      showErrorKeys: boolean = false,
-      showErrorValues: boolean = true
-    ) => {
+    error: (errors: ErrorBag, errorFormat: ErrorFormat = "value") => {
       toast({
         icon: ExclamationCircleIcon,
         iconClasses: "text-red-400",
         title: "Oh snap! Some errors were encountered.",
-        //   messages: Object.entries(messages)
-        //     .map((value: string, key: string) => {
-        //       if (showErrorKeys && showErrorValues) {
-        //         return [key, `${key}: ${value}`]
-        //       }
-        //
-        //       if (showErrorKeys) {
-        //         return [key, key]
-        //       }
-        //
-        //       return [key, value]
-        //     })
+        description: errors,
+        errorFormat: errorFormat,
       })
     },
   }

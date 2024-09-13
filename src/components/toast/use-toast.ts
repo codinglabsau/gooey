@@ -1,30 +1,29 @@
 import { computed, ref } from "vue"
 import type { Component, VNode } from "vue"
 import type { ToastProps } from "."
+import type { ErrorFormat } from "@/components/notification/use-notification"
 
 // const TOAST_LIMIT = 1
 const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
 
-export type StringOrVNode = string | VNode | (() => VNode)
+export type StringOrObjectOrVNode = string | object | VNode | (() => VNode)
 
 // type ToasterToast = ToastProps & {
 //   id: string
 //   title?: string
-//   description?: StringOrVNode
+//   description?: StringOrObjectOrVNode
 //   action?: Component
 // }
-
-export type Messages = Record<string, string>
 
 type ToasterToast = ToastProps & {
   id: string
   icon?: Component
   iconClasses?: string
   title?: string
-  description?: StringOrVNode
-  messages?: Messages
+  description?: StringOrObjectOrVNode
   action?: Component
+  errorFormat?: ErrorFormat
 }
 
 const actionTypes = {

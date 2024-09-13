@@ -1,27 +1,22 @@
-import type { Messages } from "@/components/toast/use-toast";
+import { type ErrorBag, type ErrorFormat } from "./use-notification";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
-    errors?: Messages | undefined;
-    showErrorKeys?: boolean | undefined;
-    showErrorValues?: boolean | undefined;
+    errors?: ErrorBag | undefined;
+    errorFormat?: ErrorFormat | undefined;
 }>, {
-    showErrorKeys: boolean;
-    showErrorValues: boolean;
+    errorFormat: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
-    errors?: Messages | undefined;
-    showErrorKeys?: boolean | undefined;
-    showErrorValues?: boolean | undefined;
+    errors?: ErrorBag | undefined;
+    errorFormat?: ErrorFormat | undefined;
 }>, {
-    showErrorKeys: boolean;
-    showErrorValues: boolean;
+    errorFormat: string;
 }>>> & Readonly<{}>, {
-    showErrorKeys: boolean;
-    showErrorValues: boolean;
+    errorFormat: ErrorFormat;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

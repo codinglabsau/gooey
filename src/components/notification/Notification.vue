@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { watch } from "vue"
-import type { Messages } from "@/components/toast/use-toast"
 import { Toaster } from "@/components/toast"
-import { useNotification } from "./use-notification"
+import { useNotification, type ErrorBag, type ErrorFormat } from "./use-notification"
 
 const props = withDefaults(
   defineProps<{
     info?: string
     success?: string
     warning?: string
-    errors?: Messages
-    showErrorKeys?: boolean
-    showErrorValues?: boolean
+    errors?: ErrorBag
+    errorFormat?: ErrorFormat
   }>(),
   {
-    showErrorKeys: false,
-    showErrorValues: true,
+    errorFormat: "value",
   }
 )
 
@@ -23,7 +20,7 @@ const {
   info: infoNotification,
   success: successNotification,
   warning: warningNotification,
-  error,
+  error: errorNotification,
 } = useNotification()
 
 watch(
@@ -62,14 +59,10 @@ watch(
   () => props.errors,
   () => {
     if (props.errors !== undefined && Object.keys(props.errors!).length > 0) {
-      error(props.errors)
+      errorNotification(props.errors, props.errorFormat)
     }
   }
 )
-</script>
-
-<script lang="ts">
-export default { name: "Notifications" }
 </script>
 
 <template>

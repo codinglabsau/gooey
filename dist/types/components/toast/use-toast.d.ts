@@ -1,15 +1,15 @@
 import type { Component, VNode } from "vue";
 import type { ToastProps } from ".";
-export type StringOrVNode = string | VNode | (() => VNode);
-export type Messages = Record<string, string>;
+import type { ErrorFormat } from "@/components/notification/use-notification";
+export type StringOrObjectOrVNode = string | object | VNode | (() => VNode);
 type ToasterToast = ToastProps & {
     id: string;
     icon?: Component;
     iconClasses?: string;
     title?: string;
-    description?: StringOrVNode;
-    messages?: Messages;
+    description?: StringOrObjectOrVNode;
     action?: Component;
+    errorFormat?: ErrorFormat;
 };
 declare function useToast(): {
     toasts: import("vue").ComputedRef<{
@@ -263,8 +263,7 @@ declare function useToast(): {
         } | undefined;
         iconClasses?: string | undefined;
         title?: string | undefined;
-        description?: StringOrVNode | undefined;
-        messages?: Messages | undefined;
+        description?: StringOrObjectOrVNode | undefined;
         action?: import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
             __isFragment?: undefined;
@@ -384,6 +383,7 @@ declare function useToast(): {
             __file?: string | undefined;
             __name?: string | undefined;
         } | undefined;
+        errorFormat?: ErrorFormat | undefined;
     }[]>;
     toast: typeof toast;
     dismiss: (toastId?: string) => void;
