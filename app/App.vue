@@ -12,8 +12,8 @@ import SidebarNavigation from "./SidebarNavigation.vue"
 
 const router = useRouter()
 const mode = useColorMode()
-const colorMode = ref(mode.value === "dark")
-watch(colorMode, (value) => (mode.value = value ? "dark" : "light"))
+const colourMode = ref(mode.value === "dark")
+watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 
 const navigation = router.getRoutes().filter((route) => route.children.length > 0)
 
@@ -93,11 +93,11 @@ const sidebarOpen = ref(false)
 
           <div class="flex items-center gap-x-4 lg:gap-x-6">
             <div class="group flex cursor-pointer items-center space-x-2">
-              <SunIcon class="size-5 text-primary" @click="colorMode = false" />
+              <SunIcon class="size-5 text-primary" @click="colourMode = false" />
 
-              <Switch v-model:checked="colorMode" />
+              <Switch v-model:checked="colourMode" />
 
-              <MoonIcon class="size-5 text-primary" @click="colorMode = true" />
+              <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
             </div>
           </div>
         </div>

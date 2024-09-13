@@ -3,5 +3,6 @@ import { DropdownMenuPortal } from "radix-vue";
 export * from "@/components/notification";
 export * from "@/components/dropdown-menu";
 export * from "@/components/sheet";
+export * from "@/components/switch";
 export * from "@/components/toast";
 export { preset, DropdownMenuPortal };

@@ -10,6 +10,7 @@ export * from "@/components/notification"
 // shadcn components
 export * from "@/components/dropdown-menu"
 export * from "@/components/sheet"
+export * from "@/components/switch"
 export * from "@/components/toast"
 
 export { preset, DropdownMenuPortal }
