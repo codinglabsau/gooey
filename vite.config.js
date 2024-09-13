@@ -17,7 +17,8 @@ export default defineConfig({
         "@inertiajs/vue3"
       ]
     },
-    emptyOutDir: false
+    copyPublicDir: false,
+    emptyOutDir: false,
   },
   plugins: [
     vue(),

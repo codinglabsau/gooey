@@ -12,6 +12,10 @@
     ".": {
       "import": "./dist/gooey.js",
       "require": "./dist/gooey.umd.cjs"
+    },
+    "./dist/presets/*.css": {
+      "import": "./dist/presets/*.css",
+      "require": "./dist/presets/*.css"
     }
   },
   "types": "./dist/types/index.d.ts",
