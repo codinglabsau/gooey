@@ -1,7 +1,8 @@
-// tailwind plugin
-import gooeyTailwindPlugin from "@/tailwind/plugin"
+// tailwind presets
+import preset from "@/presets/preset"
 
-export { gooeyTailwindPlugin }
+// radix components
+import { DropdownMenuPortal } from "radix-vue"
 
 // custom components
 export * from "@/components/notification"
@@ -11,5 +12,4 @@ export * from "@/components/dropdown-menu"
 export * from "@/components/sheet"
 export * from "@/components/toast"
 
-// radix components
-export { DropdownMenuPortal } from "radix-vue"
+export { preset, DropdownMenuPortal }

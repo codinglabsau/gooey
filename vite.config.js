@@ -1,6 +1,7 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
+import { viteStaticCopy } from "vite-plugin-static-copy"
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +19,17 @@ export default defineConfig({
     },
     emptyOutDir: false
   },
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "src/presets/slate.css",
+          dest: "presets"
+        }
+      ]
+    })
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
