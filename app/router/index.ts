@@ -21,7 +21,9 @@ const routes = [
   {
     path: "/layouts",
     name: "Layouts",
-    children: [{ name: "Two Column", path: "/components/dropdown-menu", component: ShadcnComponent }],
+    children: [
+      { name: "Two Column", path: "/components/dropdown-menu", component: ShadcnComponent },
+    ],
   },
 ]
 
