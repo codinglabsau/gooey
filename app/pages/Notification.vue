@@ -18,52 +18,58 @@ const props = ref<any>({})
       <h2 class="text-2xl">Notification via props</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button @click="props.info = 'This is an info notification'">
+        <Button data-cy="prop-info" @click="props.info = 'This is an info notification'">
           Info
         </Button>
 
-        <Button @click="props.success = 'This is a success notification'">Success</Button>
+        <Button data-cy="prop-success" @click="props.success = 'This is a success notification'">
+          Success
+        </Button>
 
-        <Button @click="props.warning = 'This is a warning notification'">Warning</Button>
+        <Button data-cy="prop-warning" @click="props.warning = 'This is a warning notification'">
+          Warning
+        </Button>
 
         <Button
-          @click="
-        () => {
-          props.errorFormat = 'value'
-          props.errors = {
-            firstname: 'firstname is required',
-            surname: 'surname must be of type: that\'s what she said',
+          data-cy="prop-errors"
+          @click="() => {
+            props.errorFormat = 'value'
+            props.errors = {
+              firstname: 'firstname is required',
+              surname: 'surname must be of type: that\'s what she said',
+            }
           }
-        }
-      "
+        "
         >
           Errors (default)
         </Button>
 
         <Button
+          data-cy="prop-errors-key"
           @click="
-        () => {
-          props.errorFormat = 'key'
-          props.errors = {
-            firstname: 'firstname is required',
-            surname: 'surname must be of type: that\'s what she said',
-          }
-        }
-      "
+            () => {
+              props.errorFormat = 'key'
+              props.errors = {
+                firstname: 'firstname is required',
+                surname: 'surname must be of type: that\'s what she said',
+              }
+            }
+          "
         >
           Errors (keys only)
         </Button>
 
         <Button
+          data-cy="prop-errors-both"
           @click="
-        () => {
-          props.errorFormat = 'both'
-          props.errors = {
-            firstname: 'firstname is required',
-            surname: 'surname must be of type: that\'s what she said',
-          }
-        }
-      "
+            () => {
+              props.errorFormat = 'both'
+              props.errors = {
+                firstname: 'firstname is required',
+                surname: 'surname must be of type: that\'s what she said',
+              }
+            }
+          "
         >
           Errors (keys and values)
         </Button>
@@ -74,53 +80,56 @@ const props = ref<any>({})
       <h2 class="text-2xl">Notification via helper</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button @click="info('This is an info notification')">Info toast</Button>
+        <Button data-cy="info" @click="info('This is an info notification')">Info toast</Button>
 
-        <Button @click="success('This is a success notification')">Success</Button>
+        <Button data-cy="success" @click="success('This is a success notification')">Success</Button>
 
-        <Button @click="warning('This is a warning notification')">Warning</Button>
+        <Button data-cy="warning" @click="warning('This is a warning notification')">Warning</Button>
 
         <Button
+          data-cy="errors"
           @click="
-        () => {
-          error({
-            firstname: 'firstname is required',
-            surname: 'surname must be of type: that\'s what she said',
-          })
-        }
-      "
+            () => {
+              error({
+                firstname: 'firstname is required',
+                surname: 'surname must be of type: that\'s what she said',
+              })
+            }
+          "
         >
           Errors (default)
         </Button>
 
         <Button
+          data-cy="errors-key"
           @click="
-        () => {
-          error(
-            {
-              firstname: 'firstname is required',
-              surname: 'surname must be of type: that\'s what she said',
-            },
-            'key'
-          )
-        }
-      "
+            () => {
+              error(
+                {
+                  firstname: 'firstname is required',
+                  surname: 'surname must be of type: that\'s what she said',
+                },
+                'key'
+              )
+            }
+          "
         >
           Errors (keys only)
         </Button>
 
         <Button
+          data-cy="errors-both"
           @click="
-        () => {
-          error(
-            {
-              firstname: 'firstname is required',
-              surname: 'surname must be of type: that\'s what she said',
-            },
-            'both'
-          )
-        }
-      "
+            () => {
+              error(
+                {
+                  firstname: 'firstname is required',
+                  surname: 'surname must be of type: that\'s what she said',
+                },
+                'both'
+              )
+            }
+          "
         >
           Errors (keys and values)
         </Button>
