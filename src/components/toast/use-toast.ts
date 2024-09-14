@@ -1,7 +1,7 @@
 import { computed, ref } from "vue"
 import type { Component, VNode } from "vue"
 import type { ToastProps } from "."
-import type { ErrorFormat } from "@/components/notification/use-notification"
+import type { objectFormat } from "@/components/notification/use-notification"
 
 // const TOAST_LIMIT = 1
 const TOAST_LIMIT = 3
@@ -23,7 +23,7 @@ type ToasterToast = ToastProps & {
   title?: string
   description?: StringOrObjectOrVNode
   action?: Component
-  errorFormat?: ErrorFormat
+  objectFormat?: objectFormat
 }
 
 const actionTypes = {

@@ -11,9 +11,7 @@ const props = ref<any>({})
 <template>
   <Notification v-bind="props" />
 
-  <h2 class="text-3xl">Notifications</h2>
-
-  <div class="mt-4 space-y-8">
+  <div class="space-y-12">
     <section>
       <h2 class="text-2xl">Notification via props</h2>
 
@@ -33,7 +31,7 @@ const props = ref<any>({})
         <Button
           data-cy="prop-errors"
           @click="() => {
-            props.errorFormat = 'value'
+            props.objectFormat = 'value'
             props.errors = {
               firstname: 'firstname is required',
               surname: 'surname must be of type: that\'s what she said',
@@ -48,7 +46,7 @@ const props = ref<any>({})
           data-cy="prop-errors-key"
           @click="
             () => {
-              props.errorFormat = 'key'
+              props.objectFormat = 'key'
               props.errors = {
                 firstname: 'firstname is required',
                 surname: 'surname must be of type: that\'s what she said',
@@ -63,7 +61,7 @@ const props = ref<any>({})
           data-cy="prop-errors-both"
           @click="
             () => {
-              props.errorFormat = 'both'
+              props.objectFormat = 'both'
               props.errors = {
                 firstname: 'firstname is required',
                 surname: 'surname must be of type: that\'s what she said',

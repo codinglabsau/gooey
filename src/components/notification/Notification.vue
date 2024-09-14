@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue"
 import { Toaster } from "@/components/toast"
-import { useNotification, type ErrorBag, type ErrorFormat } from "./use-notification"
+import { useNotification, type ErrorBag, type objectFormat } from "./use-notification"
 
 const props = withDefaults(
   defineProps<{
@@ -9,10 +9,10 @@ const props = withDefaults(
     success?: string
     warning?: string
     errors?: ErrorBag
-    errorFormat?: ErrorFormat
+    objectFormat?: objectFormat
   }>(),
   {
-    errorFormat: "value",
+    objectFormat: "value",
   }
 )
 
@@ -59,7 +59,7 @@ watch(
   () => props.errors,
   () => {
     if (props.errors !== undefined && Object.keys(props.errors!).length > 0) {
-      errorNotification(props.errors, props.errorFormat)
+      errorNotification(props.errors, props.objectFormat)
     }
   }
 )

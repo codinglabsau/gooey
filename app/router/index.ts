@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import { Index, Button, DropdownMenu, Notification, Sheet, Toast } from "@app/pages"
+import { Index, Button, DropdownMenu, Notification, Sheet, Switch, Toast } from "@app/pages"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
@@ -33,7 +33,12 @@ const routes = [
         component: Sheet,
         meta: { layout: ComponentLayout, shadcn: true }
       },
-      // { name: "Switch", path: "/components/switch", component: ShadcnComponent },
+      {
+        name: "Switch",
+        path: "/components/switch",
+        component: Switch,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
       {
         name: "Toast",
         path: "/components/toast",
