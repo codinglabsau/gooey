@@ -13,7 +13,8 @@ const currentRoute = computed(() => router.currentRoute)
 
     <ShadcnComponent v-if="$route.meta.shadcn" />
 
-    <slot />
+    <h2 class="mb-2 text-2xl">Example</h2>
 
+    <slot />
   </article>
 </template>

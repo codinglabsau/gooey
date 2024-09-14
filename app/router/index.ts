@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import { Index, DropdownMenu, Notification, ShadcnComponent, Toast } from "@app/pages"
+import { Index, Button, DropdownMenu, Notification, Sheet, Toast } from "@app/pages"
+import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
   { path: "/", component: Index },
@@ -8,27 +9,52 @@ const routes = [
     path: "/components",
     name: "Components",
     children: [
-      { name: "Button", path: "/components/button", component: ShadcnComponent },
-      { name: "Dropdown Menu", path: "/components/dropdown-menu", component: DropdownMenu },
-      { name: "Notification", path: "/components/notification", component: Notification },
-      { name: "Sheet", path: "/components/sheet", component: ShadcnComponent },
-      { name: "Switch", path: "/components/switch", component: ShadcnComponent },
-      { name: "Toast", path: "/components/toast", component: Toast },
-    ],
+      {
+        name: "Button",
+        path: "/components/button",
+        component: Button,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Dropdown Menu",
+        path: "/components/dropdown-menu",
+        component: DropdownMenu,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Notification",
+        path: "/components/notification",
+        component: Notification,
+        meta: { layout: ComponentLayout }
+      },
+      {
+        name: "Sheet",
+        path: "/components/sheet",
+        component: Sheet,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      // { name: "Switch", path: "/components/switch", component: ShadcnComponent },
+      {
+        name: "Toast",
+        path: "/components/toast",
+        component: Toast,
+        meta: { layout: ComponentLayout, shadcn: true }
+      }
+    ]
   },
   {
     path: "/layouts",
     name: "Layouts",
     children: [
-      { name: "Two Column", path: "/components/dropdown-menu", component: ShadcnComponent },
-    ],
-  },
+      // { name: "Two Column", path: "/components/dropdown-menu", component: TwoColumn },
+    ]
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   linkActiveClass: "!font-bold",
-  routes,
+  routes
 })
 
 export default router

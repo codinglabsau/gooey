@@ -3,6 +3,6 @@ describe("template spec", () => {
     cy.visit("/components/dropdown-menu")
 
     cy.get("[data-cy=\"button\"]").click()
-    cy.get("[data-radix-menu-content]").contains("My Account")
+      .get("[data-radix-menu-content]").contains("My Account")
   })
 })
