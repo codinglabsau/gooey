@@ -28,17 +28,17 @@ const { toasts } = useToast()
               :key="key"
               class="text-sm opacity-90"
             >
-              <template v-if="toast.objectFormat === 'value'">
-                {{ value }}
-              </template>
-
               <template v-if="toast.objectFormat === 'key'">
                 {{ key }}
               </template>
 
-              <template v-if="toast.objectFormat === 'both'">
+              <template v-else-if="toast.objectFormat === 'both'">
                 <span class="font-bold">{{ key }}</span
                 >: {{ value }}
+              </template>
+
+              <template v-else>
+                {{ value }}
               </template>
             </p>
 

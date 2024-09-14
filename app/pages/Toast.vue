@@ -22,8 +22,6 @@ function calculateDaysUntilHalloween() {
 </script>
 
 <template>
-  <h1 class="mt-6">Toasts</h1>
-
   <Toaster />
 
   <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
@@ -58,16 +56,17 @@ function calculateDaysUntilHalloween() {
     <button
       @click="
         toast({
-          title: 'FYI',
-          messages: [
-            'That\'s what she said.',
-            'Identity theft is not a joke, Jim!',
-            'I have a lot of questions. Number one, how dare you?',
-          ],
+          title: 'Objects',
+          description: {
+            Michael: 'That\'s what she said.',
+            Dwight: 'Identity theft is not a joke, Jim!',
+            Kelly: 'I have a lot of questions. Number one, how dare you?',
+          },
+          objectFormat: 'both',
         })
       "
     >
-      Toast with messages
+      Toast with object description
     </button>
   </div>
 </template>
