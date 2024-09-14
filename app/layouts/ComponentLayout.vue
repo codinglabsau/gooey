@@ -1,0 +1,19 @@
+<script setup lang="ts">
+import { computed } from "vue"
+import { useRouter } from "vue-router"
+import ShadcnComponent from "@app/components/ShadcnComponent.vue"
+
+const router = useRouter()
+const currentRoute = computed(() => router.currentRoute)
+</script>
+
+<template>
+  <article>
+  <h1 class="text-3xl">{{ currentRoute.value.name }}</h1>
+
+    <ShadcnComponent v-if="$route.meta.shadcn" />
+
+    <slot />
+
+  </article>
+</template>

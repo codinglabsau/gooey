@@ -104,9 +104,9 @@ const sidebarOpen = ref(false)
       </div>
 
       <main class="py-10">
-        <div class="sm:px-6 lg:px-8">
+        <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
           <RouterView />
-        </div>
+        </component>
       </main>
     </div>
   </div>
