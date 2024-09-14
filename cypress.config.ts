@@ -10,6 +10,11 @@ export default defineConfig({
     },
     specPattern: 'src/components/**/*.cy.ts',
 
+    // component: {
+    //   // Other configurations...
+    //   experimentalJustInTimeCompile: true,
+    // },3
+
     setupNodeEvents(on, config) {
       on("task", {
         // ref: https://docs.cypress.io/api/commands/task#Read-a-file-that-might-not-exist
