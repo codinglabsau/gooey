@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue"
 import { Notification, useNotification } from "@/components/notification"
+import { Button } from "@/components/button"
 
 const { info, success, warning, error } = useNotification()
 
@@ -10,17 +11,23 @@ const props = ref<any>({})
 <template>
   <Notification v-bind="props" />
 
-  <h1 class="mt-6">Notification</h1>
+  <h2 class="text-3xl">Notifications</h2>
 
-  <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
-    <button @click="props.info = 'This is an info notification'">Info</button>
+  <div class="mt-4 space-y-8">
+    <section>
+      <h2 class="text-2xl">Notification via props</h2>
 
-    <button @click="props.success = 'This is a success notification'">Success</button>
+      <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
+        <Button @click="props.info = 'This is an info notification'">
+          Info
+        </Button>
 
-    <button @click="props.warning = 'This is a warning notification'">Warning</button>
+        <Button @click="props.success = 'This is a success notification'">Success</Button>
 
-    <button
-      @click="
+        <Button @click="props.warning = 'This is a warning notification'">Warning</Button>
+
+        <Button
+          @click="
         () => {
           props.errorFormat = 'value'
           props.errors = {
@@ -29,12 +36,12 @@ const props = ref<any>({})
           }
         }
       "
-    >
-      Errors (default)
-    </button>
+        >
+          Errors (default)
+        </Button>
 
-    <button
-      @click="
+        <Button
+          @click="
         () => {
           props.errorFormat = 'key'
           props.errors = {
@@ -43,12 +50,12 @@ const props = ref<any>({})
           }
         }
       "
-    >
-      Errors (keys only)
-    </button>
+        >
+          Errors (keys only)
+        </Button>
 
-    <button
-      @click="
+        <Button
+          @click="
         () => {
           props.errorFormat = 'both'
           props.errors = {
@@ -57,22 +64,24 @@ const props = ref<any>({})
           }
         }
       "
-    >
-      Errors (keys and values)
-    </button>
-  </div>
+        >
+          Errors (keys and values)
+        </Button>
+      </div>
+    </section>
 
-  <h1 class="mt-6">Helpers</h1>
+    <section>
+      <h2 class="text-2xl">Notification via helper</h2>
 
-  <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
-    <button @click="info('This is an info notification')">Info toast</button>
+      <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
+        <Button @click="info('This is an info notification')">Info toast</Button>
 
-    <button @click="success('This is a success notification')">Success</button>
+        <Button @click="success('This is a success notification')">Success</Button>
 
-    <button @click="warning('This is a warning notification')">Warning</button>
+        <Button @click="warning('This is a warning notification')">Warning</Button>
 
-    <button
-      @click="
+        <Button
+          @click="
         () => {
           error({
             firstname: 'firstname is required',
@@ -80,12 +89,12 @@ const props = ref<any>({})
           })
         }
       "
-    >
-      Errors (default)
-    </button>
+        >
+          Errors (default)
+        </Button>
 
-    <button
-      @click="
+        <Button
+          @click="
         () => {
           error(
             {
@@ -96,12 +105,12 @@ const props = ref<any>({})
           )
         }
       "
-    >
-      Errors (keys only)
-    </button>
+        >
+          Errors (keys only)
+        </Button>
 
-    <button
-      @click="
+        <Button
+          @click="
         () => {
           error(
             {
@@ -112,8 +121,10 @@ const props = ref<any>({})
           )
         }
       "
-    >
-      Errors (keys and values)
-    </button>
+        >
+          Errors (keys and values)
+        </Button>
+      </div>
+    </section>
   </div>
 </template>

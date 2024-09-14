@@ -10,10 +10,10 @@ export default defineConfig({
     },
     specPattern: 'src/components/**/*.cy.ts',
 
-    // component: {
-    //   // Other configurations...
-    //   experimentalJustInTimeCompile: true,
-    // },3
+    component: {
+      // Other configurations...
+      experimentalJustInTimeCompile: true,
+    },
 
     setupNodeEvents(on, config) {
       on("task", {
