@@ -30,14 +30,15 @@ const props = ref<any>({})
 
         <Button
           data-cy="prop-errors"
-          @click="() => {
-            props.objectFormat = 'value'
-            props.errors = {
-              firstname: 'firstname is required',
-              surname: 'surname must be of type: that\'s what she said',
+          @click="
+            () => {
+              props.objectFormat = 'value'
+              props.errors = {
+                firstname: 'firstname is required',
+                surname: 'surname must be of type: that\'s what she said',
+              }
             }
-          }
-        "
+          "
         >
           Errors (default)
         </Button>
@@ -80,9 +81,13 @@ const props = ref<any>({})
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
         <Button data-cy="info" @click="info('This is an info notification')">Info toast</Button>
 
-        <Button data-cy="success" @click="success('This is a success notification')">Success</Button>
+        <Button data-cy="success" @click="success('This is a success notification')"
+          >Success</Button
+        >
 
-        <Button data-cy="warning" @click="warning('This is a warning notification')">Warning</Button>
+        <Button data-cy="warning" @click="warning('This is a warning notification')"
+          >Warning</Button
+        >
 
         <Button
           data-cy="errors"

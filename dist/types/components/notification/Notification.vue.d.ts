@@ -1,22 +1,22 @@
-import { type ErrorBag, type ErrorFormat } from "./use-notification";
+import { type ErrorBag, type ObjectFormat } from "./use-notification";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
     errors?: ErrorBag | undefined;
-    errorFormat?: ErrorFormat | undefined;
+    objectFormat?: ObjectFormat | undefined;
 }>, {
-    errorFormat: string;
+    objectFormat: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;
     warning?: string | undefined;
     errors?: ErrorBag | undefined;
-    errorFormat?: ErrorFormat | undefined;
+    objectFormat?: ObjectFormat | undefined;
 }>, {
-    errorFormat: string;
+    objectFormat: string;
 }>>> & Readonly<{}>, {
-    errorFormat: ErrorFormat;
+    objectFormat: ObjectFormat;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

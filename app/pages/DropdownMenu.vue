@@ -13,7 +13,7 @@ import {
   Settings,
   User,
   UserPlus,
-  Users
+  Users,
 } from "lucide-vue-next"
 
 import { Button } from "@/components/button"
@@ -29,7 +29,7 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "@/components/dropdown-menu"
 </script>
 
@@ -37,9 +37,7 @@ import {
   <section>
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
-        <Button variant="outline" data-cy="button">
-          Open
-        </Button>
+        <Button variant="outline" data-cy="button"> Open </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent class="w-56">

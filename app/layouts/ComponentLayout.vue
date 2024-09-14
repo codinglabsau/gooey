@@ -9,7 +9,7 @@ const currentRoute = computed(() => router.currentRoute)
 
 <template>
   <article>
-  <h1 class="mb-4 text-3xl">{{ currentRoute.value.name }}</h1>
+    <h1 class="mb-4 text-3xl">{{ currentRoute.value.name }}</h1>
 
     <ShadcnComponent v-if="$route.meta.shadcn" />
 

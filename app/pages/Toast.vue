@@ -26,6 +26,7 @@ function calculateDaysUntilHalloween() {
 
   <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
     <button
+      data-cy="toast"
       @click="
         toast({
           title: 'FYI',
@@ -37,6 +38,7 @@ function calculateDaysUntilHalloween() {
     </button>
 
     <button
+      data-cy="toast-icon"
       @click="
         toast({
           title: 'Boo!',
@@ -54,6 +56,40 @@ function calculateDaysUntilHalloween() {
     </button>
 
     <button
+      data-cy="toast-object"
+      @click="
+        toast({
+          title: 'Objects',
+          description: {
+            Michael: 'That\'s what she said.',
+            Dwight: 'Identity theft is not a joke, Jim!',
+            Kelly: 'I have a lot of questions. Number one, how dare you?',
+          },
+        })
+      "
+    >
+      Toast with object description (default)
+    </button>
+
+    <button
+      data-cy="toast-object-key"
+      @click="
+        toast({
+          title: 'Objects',
+          description: {
+            Michael: 'That\'s what she said.',
+            Dwight: 'Identity theft is not a joke, Jim!',
+            Kelly: 'I have a lot of questions. Number one, how dare you?',
+          },
+          objectFormat: 'key',
+        })
+      "
+    >
+      Toast with object description (key)
+    </button>
+
+    <button
+      data-cy="toast-object-both"
       @click="
         toast({
           title: 'Objects',
@@ -66,7 +102,7 @@ function calculateDaysUntilHalloween() {
         })
       "
     >
-      Toast with object description
+      Toast with object description (both)
     </button>
   </div>
 </template>

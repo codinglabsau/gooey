@@ -9,7 +9,7 @@ import { useToast } from "@/components/toast/use-toast"
 const { toast } = useToast()
 
 export type ErrorBag = Record<string, string>
-export type objectFormat = "key" | "value" | "both"
+export type ObjectFormat = "key" | "value" | "both"
 
 function useNotification() {
   return {
@@ -40,7 +40,7 @@ function useNotification() {
       })
     },
 
-    error: (errors: ErrorBag, objectFormat: objectFormat = "value") => {
+    error: (errors: ErrorBag, objectFormat: ObjectFormat = "value") => {
       toast({
         icon: ExclamationCircleIcon,
         iconClasses: "text-red-400",

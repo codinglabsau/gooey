@@ -20,10 +20,13 @@ const currentRoute = computed(() => router.currentRoute)
       <p class="mx-auto mt-6 text-lg leading-8 text-card-foreground">
         This component is imported directly from Shadcn Vue without modification.
       </p>
+
       <div class="mt-10 flex items-center justify-center gap-x-6">
         <Button
-          :href="`https://www.shadcn-vue.com/docs${currentRoute.value.path}.html`" target="__blank"
-          class="bg-foreground text-muted">
+          :href="`https://www.shadcn-vue.com/docs${currentRoute.value.path}.html`"
+          target="__blank"
+          class="bg-foreground text-muted"
+        >
           See Shadcn Vue Docs
           <ArrowRight />
         </Button>

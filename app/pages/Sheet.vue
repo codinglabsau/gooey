@@ -16,8 +16,6 @@ const sheetOpen = ref(false)
   </Sheet>
 
   <section>
-    <Button data-cy="button" @click="sheetOpen = !sheetOpen">
-      Sheet
-    </Button>
+    <Button data-cy="button" @click="sheetOpen = !sheetOpen"> Sheet </Button>
   </section>
 </template>

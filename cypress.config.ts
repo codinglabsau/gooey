@@ -3,31 +3,31 @@ import vitePreprocessor from "cypress-vite"
 import fs from "fs"
 
 export default defineConfig({
-  component: {
-    devServer: {
-      framework: "vue",
-      bundler: "vite"
-    },
-    specPattern: 'src/components/**/*.cy.ts',
-
-    component: {
-      // Other configurations...
-      experimentalJustInTimeCompile: true,
-    },
-
-    setupNodeEvents(on, config) {
-      on("task", {
-        // ref: https://docs.cypress.io/api/commands/task#Read-a-file-that-might-not-exist
-        readFileMaybe(filename: string) {
-          if (fs.existsSync(filename)) {
-            return fs.readFileSync(filename, "utf8")
-          }
-
-          return null
-        }
-      })
-    }
-  },
+  // component: {
+  //   devServer: {
+  //     framework: "vue",
+  //     bundler: "vite"
+  //   },
+  //   specPattern: 'src/components/**/*.cy.ts',
+  //
+  //   component: {
+  //     // Other configurations...
+  //     experimentalJustInTimeCompile: true,
+  //   },
+  //
+  //   setupNodeEvents(on, config) {
+  //     on("task", {
+  //       // ref: https://docs.cypress.io/api/commands/task#Read-a-file-that-might-not-exist
+  //       readFileMaybe(filename: string) {
+  //         if (fs.existsSync(filename)) {
+  //           return fs.readFileSync(filename, "utf8")
+  //         }
+  //
+  //         return null
+  //       }
+  //     })
+  //   }
+  // },
 
   e2e: {
     baseUrl: "http://localhost:5173",

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue"
 import { Toaster } from "@/components/toast"
-import { useNotification, type ErrorBag, type objectFormat } from "./use-notification"
+import { useNotification, type ErrorBag, type ObjectFormat } from "./use-notification"
 
 const props = withDefaults(
   defineProps<{
@@ -9,7 +9,7 @@ const props = withDefaults(
     success?: string
     warning?: string
     errors?: ErrorBag
-    objectFormat?: objectFormat
+    objectFormat?: ObjectFormat
   }>(),
   {
     objectFormat: "value",
