@@ -2,18 +2,18 @@
 A private collection of Vue components for use in Coding Labs projects, based on Tailwind Shadcn-vue and others.
 
 ## Documentation
-The documentation is gitignored, so it must be built locally. To do so, run:
+The documentation is available in the `./app` directory. This serves as documentation, test target, and sandbox for prototyping.
 
 ```bash
-npm run docs:build
-cd docs/.vitepress/dist && herd link gooey-docs
+vite
 ```
 
-The docs will now be available at [http://gooey-docs.test](http://ui-docs.test).
-
 ## Testing
-Tests are implemented with Cypress, and can be run on CLI using `npm run tests`.  We are only testing components
-that are customised or wrapping other libraries.
+Tests are implemented with Cypress, and can be run on CLI using `npm run tests`.  We are implementing end-to-end tests as most components are tested upstream.
+
+For shadcn components, we do simple smoke tests to ensure they are not generating errors with basic usage.
+
+For custom components, we are testing the functionality in depth.
 
 ## Security
 If you discover any security related issues, create an issue on GitHub.

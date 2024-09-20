@@ -29,9 +29,7 @@
     "format": "run-p prettier lint",
     "prettier": "prettier 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --write",
     "lint": "eslint 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --fix",
-    "test": "cypress run",
-    "testc": "cypress run --component",
-    "teste": "cypress run --e2e"
+    "test": "cypress run"
   },
   "publishConfig": {
     "@codinglabsau:registry": "https://npm.pkg.github.com"
