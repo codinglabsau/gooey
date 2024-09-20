@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import { Index, Button, DropdownMenu, Notification, Sheet, Switch, Toast } from "@app/pages"
+import { Index, Button, DropdownMenu, GooeyLink, Notification, Sheet, Switch, Toast } from "@app/pages"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
@@ -25,6 +25,12 @@ const routes = [
         name: "Notification",
         path: "/components/notification",
         component: Notification,
+        meta: { layout: ComponentLayout },
+      },
+      {
+        name: "Gooey Link",
+        path: "/components/gooey-link",
+        component: GooeyLink,
         meta: { layout: ComponentLayout },
       },
       {
