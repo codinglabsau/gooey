@@ -14,10 +14,6 @@
 /*   --background: yellow; */
 /* } */
 
-.dark .prose {
-  @apply prose-invert; /* Apply inverted styles for dark mode */
-}
-
 /* Additional custom styles for dark mode */
 .dark .prose h1,
 .dark .prose h2,
@@ -31,21 +27,21 @@
 .dark .prose p,
 .dark .prose a,
 .dark .prose li {
-  @apply text-gray-300; /* Set paragraph and link text to gray */
+  @apply text-gray-300;
 }
 
 .dark .prose blockquote {
-  @apply border-gray-600 text-gray-400; /* Style blockquotes */
+  @apply border-gray-600 text-gray-400;
 }
 
 .dark .prose img {
-  @apply opacity-90; /* Adjust image opacity */
+  @apply opacity-90;
 }
 
 .dark .prose code {
-  @apply bg-gray-800 text-yellow-400; /* Style code snippets */
+  @apply text-indigo-50;
 }
 
 .dark .prose pre {
-  @apply bg-gray-900 text-gray-200; /* Style preformatted text */
+  @apply bg-gray-900 text-gray-200;
 }
