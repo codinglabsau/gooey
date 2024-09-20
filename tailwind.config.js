@@ -1,5 +1,6 @@
 import preset from "./src/presets/preset"
 
+
 /** @type {import("tailwindcss").Config} */
 export default {
   presets: [preset],
@@ -13,5 +14,7 @@ export default {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    require("@tailwindcss/typography")
+  ]
 }

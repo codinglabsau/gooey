@@ -2,6 +2,7 @@ import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import { viteStaticCopy } from "vite-plugin-static-copy"
+import Markdown from 'unplugin-vue-markdown/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +22,10 @@ export default defineConfig({
     emptyOutDir: false
   },
   plugins: [
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/],
+    }),
+    Markdown({ /* options */ }),
     viteStaticCopy({
       targets: [
         {

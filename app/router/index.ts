@@ -1,12 +1,35 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import { Index, Button, DropdownMenu, Notification, Sheet, Switch, Toast } from "@app/pages"
+import { Installation, ContributionGuide, Theme, Index, Button, DropdownMenu, Notification, Sheet, Switch, Toast } from "@app/pages"
+import ArticleLayout from "@app/layouts/ArticleLayout.vue"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
-  { path: "/", component: Index },
+  { path: "", component: Index },
   {
-    path: "/components",
+    name: "Getting Started",
+    children: [
+      {
+        name: "Installation",
+        path: "/installation",
+        component: Installation,
+        meta: { layout: ArticleLayout, shadcn: true },
+      },
+      {
+        name: "Theme",
+        path: "/theme",
+        component: Theme,
+        meta: { layout: ArticleLayout, shadcn: true },
+      },
+      {
+        name: "Contribution Guide",
+        path: "/contribution-guide",
+        component: ContributionGuide,
+        meta: { layout: ArticleLayout, shadcn: true },
+      },
+    ],
+  },
+  {
     name: "Components",
     children: [
       {

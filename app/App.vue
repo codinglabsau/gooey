@@ -6,8 +6,8 @@ import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon, Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
 
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
-
 import { Switch } from "@/components/switch"
+
 import SidebarNavigation from "./SidebarNavigation.vue"
 
 const router = useRouter()

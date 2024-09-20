@@ -13,3 +13,39 @@
 /* :root { */
 /*   --background: yellow; */
 /* } */
+
+.dark .prose {
+  @apply prose-invert; /* Apply inverted styles for dark mode */
+}
+
+/* Additional custom styles for dark mode */
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  @apply text-white; /* Set headings to white */
+}
+
+.dark .prose p,
+.dark .prose a,
+.dark .prose li {
+  @apply text-gray-300; /* Set paragraph and link text to gray */
+}
+
+.dark .prose blockquote {
+  @apply border-gray-600 text-gray-400; /* Style blockquotes */
+}
+
+.dark .prose img {
+  @apply opacity-90; /* Adjust image opacity */
+}
+
+.dark .prose code {
+  @apply bg-gray-800 text-yellow-400; /* Style code snippets */
+}
+
+.dark .prose pre {
+  @apply bg-gray-900 text-gray-200; /* Style preformatted text */
+}
