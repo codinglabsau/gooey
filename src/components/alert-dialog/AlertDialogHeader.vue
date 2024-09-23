@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { type BadgeVariants, badgeVariants } from "."
 import { cn } from "@/utils/shadcdn"
 
 const props = defineProps<{
-  variant?: BadgeVariants["variant"]
   class?: HTMLAttributes["class"]
 }>()
 </script>
 
 <template>
-  <div :class="cn(badgeVariants({ variant }), props.class)">
+  <div :class="cn('flex flex-col gap-y-2 text-center sm:text-left', props.class)">
     <slot />
   </div>
 </template>

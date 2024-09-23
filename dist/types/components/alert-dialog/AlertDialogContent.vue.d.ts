@@ -1,5 +1,5 @@
-import { type DropdownMenuSubContentProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSubContentProps & {
+import { type AlertDialogContentProps } from "radix-vue";
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<AlertDialogContentProps & {
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     escapeKeyDown: (event: KeyboardEvent) => void;
@@ -8,8 +8,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     interactOutside: (event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent | import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => void;
     openAutoFocus: (event: Event) => void;
     closeAutoFocus: (event: Event) => void;
-    entryFocus: (event: Event) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DropdownMenuSubContentProps & {
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<AlertDialogContentProps & {
     class?: any;
 }>>> & Readonly<{
     onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
@@ -18,7 +17,6 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     onInteractOutside?: ((event: import("radix-vue/dist/DismissableLayer").PointerDownOutsideEvent | import("radix-vue/dist/DismissableLayer").FocusOutsideEvent) => any) | undefined;
     onOpenAutoFocus?: ((event: Event) => any) | undefined;
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
-    onEntryFocus?: ((event: Event) => any) | undefined;
 }>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;

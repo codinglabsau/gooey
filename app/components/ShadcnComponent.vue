@@ -22,12 +22,14 @@ const currentRoute = computed(() => router.currentRoute)
       </p>
 
       <div class="mt-10 flex items-center justify-center gap-x-6">
-        <Button
-          :href="`https://www.shadcn-vue.com/docs${currentRoute.value.path}.html`"
-          target="__blank"
-          class="bg-foreground text-muted"
-        >
-          See Shadcn Vue Docs
+        <Button as-child>
+          <a
+            :href="`https://www.shadcn-vue.com/docs${currentRoute.value.path}.html`"
+            target="__blank"
+          >
+            See Shadcn Vue Docs
+          </a>
+
           <ArrowRight />
         </Button>
       </div>

@@ -30,9 +30,7 @@ defineEmits<{
                 {{ route.name }}
               </RouterLink>
 
-              <Badge v-if="! route.meta.shadcn" variant="secondary">
-                custom
-              </Badge>
+              <Badge v-if="!route.meta.shadcn" variant="secondary"> custom </Badge>
             </li>
           </ul>
         </li>

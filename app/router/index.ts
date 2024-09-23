@@ -9,6 +9,7 @@ import {
   Theme,
 
   // components
+  AlertDialog,
   Badge,
   Button,
   DropdownMenu,
@@ -48,6 +49,12 @@ const routes = [
   {
     name: "Components",
     children: [
+      {
+        name: "Alert Dialog",
+        path: "/components/alert-dialog",
+        component: AlertDialog,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
       {
         name: "Badge",
         path: "/components/badge",

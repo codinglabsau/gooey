@@ -8,6 +8,8 @@ import { DropdownMenuPortal } from "radix-vue"
 export * from "@/components/notification"
 
 // shadcn components
+export * from "@/components/alert-dialog"
+export * from "@/components/badge"
 export * from "@/components/button"
 export * from "@/components/dropdown-menu"
 export * from "@/components/sheet"
