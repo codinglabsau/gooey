@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { cn } from '@/utils/shadcdn'
+import type { HTMLAttributes } from "vue"
+import { cn } from "@/utils/shadcdn"
 
 interface SkeletonProps {
-  class?: HTMLAttributes['class']
+  class?: HTMLAttributes["class"]
 }
 
 const props = defineProps<SkeletonProps>()

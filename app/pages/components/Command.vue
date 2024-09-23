@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from 'lucide-vue-next'
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from "lucide-vue-next"
 
 import {
   Command,
@@ -17,8 +10,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '@/components/command'
-
+} from "@/components/command"
 </script>
 
 <template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
-import { Progress } from '@/components/progress'
+import { ref, watchEffect } from "vue"
+import { Progress } from "@/components/progress"
 
 const progress = ref(13)
 
 watchEffect((cleanupFn) => {
-  const timer = setTimeout(() => progress.value = 66, 500)
+  const timer = setTimeout(() => (progress.value = 66), 500)
   cleanupFn(() => clearTimeout(timer))
 })
 </script>

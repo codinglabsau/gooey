@@ -3,8 +3,19 @@ import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
 import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
+import { MoonIcon, SunIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
 
+import {
+  TwoColumnLayout,
+  TwoColumnLayoutLeft,
+  TwoColumnLayoutLeftDesktop,
+  TwoColumnLayoutLeftDesktopHeader,
+  TwoColumnLayoutLeftMobile,
+  TwoColumnLayoutLeftTrigger,
+  TwoColumnLayoutRight,
+  TwoColumnLayoutRightHeader,
+  TwoColumnLayoutContent,
+} from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 
@@ -21,57 +32,46 @@ const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <div class="h-full bg-background dark:text-white">
-    <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
-      <SheetContent side="left">
-        <SheetHeader>
-          <SheetTitle class="flex items-center space-x-2">
-            <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
-
-            <div class="text-xl">GOOEY</div>
-          </SheetTitle>
-        </SheetHeader>
-
-        <VisuallyHidden as-child>
-          <SheetDescription> Sidebar navigation</SheetDescription>
-        </VisuallyHidden>
-
-        <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
-      </SheetContent>
-    </Sheet>
-
-    <!-- Static sidebar for desktop -->
-    <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <div class="gap-y-5 overflow-y-auto">
-        <div class="flex h-16 shrink-0 items-center border-b border-accent">
-          <div class="flex items-center space-x-4 px-6">
-            <RouterLink to="/">
-              <div class="flex items-center space-x-2">
+  <TwoColumnLayout>
+    <TwoColumnLayoutLeft>
+      <TwoColumnLayoutLeftMobile>
+        <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
+          <SheetContent side="left">
+            <SheetHeader>
+              <SheetTitle class="flex items-center space-x-2">
                 <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
                 <div class="text-xl">GOOEY</div>
-              </div>
-            </RouterLink>
-          </div>
-        </div>
+              </SheetTitle>
+            </SheetHeader>
+
+            <VisuallyHidden as-child>
+              <SheetDescription> Sidebar navigation</SheetDescription>
+            </VisuallyHidden>
+
+            <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
+          </SheetContent>
+        </Sheet>
+      </TwoColumnLayoutLeftMobile>
+
+      <TwoColumnLayoutLeftDesktop>
+        <TwoColumnLayoutLeftDesktopHeader>
+          <RouterLink to="/">
+            <div class="flex items-center space-x-2">
+              <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+
+              <div class="text-xl">GOOEY</div>
+            </div>
+          </RouterLink>
+        </TwoColumnLayoutLeftDesktopHeader>
 
         <SidebarNavigation :items="navigation" />
-      </div>
-    </div>
+      </TwoColumnLayoutLeftDesktop>
+    </TwoColumnLayoutLeft>
 
-    <div class="lg:pl-72">
-      <div
-        class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-accent px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8"
-      >
-        <button type="button" class="-m-2.5 p-2.5 lg:hidden" @click="sidebarOpen = true">
-          <span class="sr-only">Open sidebar</span>
-
-          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-        </button>
-
-        <!-- Separator -->
-        <div class="h-6 w-px bg-accent lg:hidden" aria-hidden="true" />
+    <TwoColumnLayoutRight>
+      <TwoColumnLayoutRightHeader>
+        <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
 
         <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
           <form class="relative flex flex-1" action="#" method="GET">
@@ -101,13 +101,13 @@ const sidebarOpen = ref(false)
             </div>
           </div>
         </div>
-      </div>
+      </TwoColumnLayoutRightHeader>
 
-      <main class="py-10">
+      <TwoColumnLayoutContent>
         <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
           <RouterView />
         </component>
-      </main>
-    </div>
-  </div>
+      </TwoColumnLayoutContent>
+    </TwoColumnLayoutRight>
+  </TwoColumnLayout>
 </template>

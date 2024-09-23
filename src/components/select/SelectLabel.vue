@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { SelectLabel, type SelectLabelProps } from 'radix-vue'
-import { cn } from '@/utils/shadcdn'
+import type { HTMLAttributes } from "vue"
+import { SelectLabel, type SelectLabelProps } from "radix-vue"
+import { cn } from "@/utils/shadcdn"
 
-const props = defineProps<SelectLabelProps & { class?: HTMLAttributes['class'] }>()
+const props = defineProps<SelectLabelProps & { class?: HTMLAttributes["class"] }>()
 </script>
 
 <template>

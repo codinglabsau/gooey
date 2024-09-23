@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/avatar'
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/avatar"
 </script>
 
 <template>
