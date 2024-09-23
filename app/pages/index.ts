@@ -5,6 +5,7 @@ export { default as Installation } from "./installation.md"
 export { default as Theme } from "./theme.md"
 
 // components
+export { default as Badge } from "./components/Badge.vue"
 export { default as Button } from "./components/Button.vue"
 export { default as DropdownMenu } from "./components/DropdownMenu.vue"
 export { default as Notification } from "./components/Notification.vue"

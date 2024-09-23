@@ -8,7 +8,7 @@ import { MoonIcon, SunIcon, Bars3Icon, MagnifyingGlassIcon } from "@heroicons/vu
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 
-import SidebarNavigation from "./SidebarNavigation.vue"
+import SidebarNavigation from "@app/components/SidebarNavigation.vue"
 
 const router = useRouter()
 const mode = useColorMode()

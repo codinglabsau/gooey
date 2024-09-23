@@ -1,6 +1,22 @@
 import { createRouter, createWebHistory } from "vue-router"
 
-import { Installation, ContributionGuide, Theme, Index, Button, DropdownMenu, Notification, Sheet, Switch, Toast } from "@app/pages"
+import {
+  Index,
+
+  // getting started
+  Installation,
+  ContributionGuide,
+  Theme,
+
+  // components
+  Badge,
+  Button,
+  DropdownMenu,
+  Notification,
+  Sheet,
+  Switch,
+  Toast,
+} from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
@@ -32,6 +48,12 @@ const routes = [
   {
     name: "Components",
     children: [
+      {
+        name: "Badge",
+        path: "/components/badge",
+        component: Badge,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
       {
         name: "Button",
         path: "/components/button",

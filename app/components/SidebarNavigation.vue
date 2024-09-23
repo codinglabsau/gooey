@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Badge } from "@/components/badge"
+
 defineProps<{
   items: {
     type: Array
@@ -18,8 +20,8 @@ defineEmits<{
 
       <ul role="list" class="mt-2 flex flex-1 flex-col gap-y-7">
         <li>
-          <ul role="list" class="-mx-2 space-y-1">
-            <li v-for="route in group.children" :key="route.name">
+          <ul role="list" class="-mx-2 space-y-1.5">
+            <li v-for="route in group.children" :key="route.name" class="flex items-center">
               <RouterLink
                 :to="route.path"
                 class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 hover:underline"
@@ -27,6 +29,10 @@ defineEmits<{
               >
                 {{ route.name }}
               </RouterLink>
+
+              <Badge v-if="! route.meta.shadcn" variant="secondary">
+                custom
+              </Badge>
             </li>
           </ul>
         </li>
