@@ -9,6 +9,7 @@ import {
   Theme,
 
   // components
+  Avatar,
   AlertDialog,
   Badge,
   Button,
@@ -49,6 +50,12 @@ const routes = [
   {
     name: "Components",
     children: [
+      {
+        name: "Avatar",
+        path: "/components/avatar",
+        component: Avatar,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
       {
         name: "Alert Dialog",
         path: "/components/alert-dialog",
