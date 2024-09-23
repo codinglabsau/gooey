@@ -20,8 +20,13 @@ export * from "@/components/label"
 export * from "@/components/notification"
 export * from "@/components/popover"
 export * from "@/components/progress"
+export * from "@/components/select"
 export * from "@/components/sheet"
+export * from "@/components/skeleton"
+export * from "@/components/slider"
 export * from "@/components/switch"
+export * from "@/components/table"
+export * from "@/components/textarea"
 export * from "@/components/toast"
 
 export { preset, DropdownMenuPortal }

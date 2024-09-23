@@ -21,8 +21,13 @@ import {
   Notification,
   Popover,
   Progress,
+  Select,
   Sheet,
+  Skeleton,
+  Slider,
   Switch,
+  Table,
+  Textarea,
   Toast
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
@@ -129,15 +134,45 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true }
       },
       {
+        name: "Select",
+        path: "/components/select",
+        component: Select,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
         name: "Sheet",
         path: "/components/sheet",
         component: Sheet,
         meta: { layout: ComponentLayout, shadcn: true }
       },
       {
+        name: "Skeleton",
+        path: "/components/skeleton",
+        component: Skeleton,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Slider",
+        path: "/components/slider",
+        component: Slider,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
         name: "Switch",
         path: "/components/switch",
         component: Switch,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Table",
+        path: "/components/table",
+        component: Table,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Textarea",
+        path: "/components/textarea",
+        component: Textarea,
         meta: { layout: ComponentLayout, shadcn: true }
       },
       {
