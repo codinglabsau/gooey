@@ -20,6 +20,7 @@ import {
   Label,
   Notification,
   Popover,
+  Progress,
   Sheet,
   Switch,
   Toast
@@ -119,6 +120,12 @@ const routes = [
         name: "Popover",
         path: "/components/popover",
         component: Popover,
+        meta: { layout: ComponentLayout, shadcn: true }
+      },
+      {
+        name: "Progress",
+        path: "/components/progress",
+        component: Progress,
         meta: { layout: ComponentLayout, shadcn: true }
       },
       {
