@@ -8,6 +8,9 @@ import {
   ContributionGuide,
   Theme,
 
+  // demos
+  TwoColumnLayoutDemo,
+
   // components
   Avatar,
   AlertDialog,
@@ -36,6 +39,7 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
   { path: "", component: Index },
+  { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo },
   {
     name: "Getting Started",
     children: [

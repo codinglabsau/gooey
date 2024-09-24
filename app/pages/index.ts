@@ -4,6 +4,9 @@ export { default as ContributionGuide } from "./contribution-guide.md"
 export { default as Installation } from "./installation.md"
 export { default as Theme } from "./theme.md"
 
+// demos
+export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
+
 // components
 export { default as AlertDialog } from "./components/AlertDialog.vue"
 export { default as Avatar } from "./components/Avatar.vue"
