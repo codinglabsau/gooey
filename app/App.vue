@@ -9,12 +9,10 @@ import {
   TwoColumnLayout,
   TwoColumnLayoutLeft,
   TwoColumnLayoutLeftDesktop,
-  TwoColumnLayoutLeftDesktopHeader,
   TwoColumnLayoutLeftMobile,
   TwoColumnLayoutLeftTrigger,
-  TwoColumnLayoutRight,
-  TwoColumnLayoutRightHeader,
-  TwoColumnLayoutContent,
+  Header,
+  Main
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
@@ -33,6 +31,47 @@ const sidebarOpen = ref(false)
 
 <template>
   <TwoColumnLayout>
+    <Header>
+      <RouterLink to="/" class="hidden lg:block">
+        <div class="flex items-center space-x-2">
+          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+
+          <div class="text-xl">GOOEY</div>
+        </div>
+      </RouterLink>
+
+      <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
+
+      <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+        <form class="relative flex flex-1" action="#" method="GET">
+          <label for="search-field" class="sr-only">Search</label>
+
+          <MagnifyingGlassIcon
+            class="pointer-events-none absolute inset-y-0 left-4 h-full w-5 text-foreground"
+            aria-hidden="true"
+          />
+
+          <input
+            id="search-field"
+            class="block h-full w-full border-0 bg-accent py-0 pl-12 pr-0 placeholder:text-foreground focus:ring-0 sm:text-sm"
+            placeholder="Search..."
+            type="search"
+            name="search"
+          />
+        </form>
+      </div>
+
+      <div class="flex w-full justify-between">
+        <div class="group flex cursor-pointer items-center space-x-2">
+          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+
+          <Switch v-model:checked="colourMode" />
+
+          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
+        </div>
+      </div>
+    </Header>
+
     <TwoColumnLayoutLeft>
       <TwoColumnLayoutLeftMobile>
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
@@ -55,59 +94,14 @@ const sidebarOpen = ref(false)
       </TwoColumnLayoutLeftMobile>
 
       <TwoColumnLayoutLeftDesktop>
-        <TwoColumnLayoutLeftDesktopHeader>
-          <RouterLink to="/">
-            <div class="flex items-center space-x-2">
-              <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
-
-              <div class="text-xl">GOOEY</div>
-            </div>
-          </RouterLink>
-        </TwoColumnLayoutLeftDesktopHeader>
-
         <SidebarNavigation :items="navigation" />
       </TwoColumnLayoutLeftDesktop>
     </TwoColumnLayoutLeft>
 
-    <TwoColumnLayoutRight>
-      <TwoColumnLayoutRightHeader>
-        <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
-
-        <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-          <form class="relative flex flex-1" action="#" method="GET">
-            <label for="search-field" class="sr-only">Search</label>
-
-            <MagnifyingGlassIcon
-              class="pointer-events-none absolute inset-y-0 left-4 h-full w-5 text-foreground"
-              aria-hidden="true"
-            />
-
-            <input
-              id="search-field"
-              class="block h-full w-full border-0 bg-accent py-0 pl-12 pr-0 placeholder:text-foreground focus:ring-0 sm:text-sm"
-              placeholder="Search..."
-              type="search"
-              name="search"
-            />
-          </form>
-
-          <div class="flex items-center gap-x-4 lg:gap-x-6">
-            <div class="group flex cursor-pointer items-center space-x-2">
-              <SunIcon class="size-5 text-primary" @click="colourMode = false" />
-
-              <Switch v-model:checked="colourMode" />
-
-              <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
-            </div>
-          </div>
-        </div>
-      </TwoColumnLayoutRightHeader>
-
-      <TwoColumnLayoutContent>
-        <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
-          <RouterView />
-        </component>
-      </TwoColumnLayoutContent>
-    </TwoColumnLayoutRight>
+    <Main>
+      <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
+        <RouterView />
+      </component>
+    </Main>
   </TwoColumnLayout>
 </template>

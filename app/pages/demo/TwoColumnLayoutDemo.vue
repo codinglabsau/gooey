@@ -1,20 +1,21 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
-import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
+import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
 import {
   TwoColumnLayout,
   TwoColumnLayoutLeft,
   TwoColumnLayoutLeftDesktop,
-  TwoColumnLayoutLeftDesktopHeader,
+  // TwoColumnLayoutLeftDesktopHeader,
   TwoColumnLayoutLeftMobile,
   TwoColumnLayoutLeftTrigger,
-  TwoColumnLayoutRight,
-  TwoColumnLayoutRightHeader,
-  TwoColumnLayoutContent
+  // TwoColumnLayoutRight,
+  // TwoColumnLayoutRightHeader,
+  // TwoColumnLayoutContent,
+  Header,
+  Main,
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
@@ -28,6 +29,28 @@ const sidebarOpen = ref(false)
 
 <template>
   <TwoColumnLayout class="absolute inset-0 z-50">
+    <Header>
+      <RouterLink to="/" class="hidden lg:block">
+        <div class="flex items-center space-x-2">
+          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+
+          <div class="text-xl">Brand</div>
+        </div>
+      </RouterLink>
+
+      <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
+
+      <div class="flex w-full justify-end">
+        <div class="group flex cursor-pointer items-center space-x-2">
+          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+
+          <Switch v-model:checked="colourMode" />
+
+          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
+        </div>
+      </div>
+    </Header>
+
     <TwoColumnLayoutLeft>
       <TwoColumnLayoutLeftMobile>
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
@@ -50,38 +73,38 @@ const sidebarOpen = ref(false)
       </TwoColumnLayoutLeftMobile>
 
       <TwoColumnLayoutLeftDesktop>
-        <TwoColumnLayoutLeftDesktopHeader>
-          <RouterLink to="/">
-            <div class="flex items-center space-x-2">
-              <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
-
-              <div class="text-xl">Brand</div>
-            </div>
-          </RouterLink>
-        </TwoColumnLayoutLeftDesktopHeader>
-
         desktop navigation
       </TwoColumnLayoutLeftDesktop>
     </TwoColumnLayoutLeft>
 
-    <TwoColumnLayoutRight>
-      <TwoColumnLayoutRightHeader>
-        <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
-
-        <div class="flex w-full justify-end">
-          <div class="group flex cursor-pointer items-center space-x-2">
-            <SunIcon class="size-5 text-primary" @click="colourMode = false" />
-
-            <Switch v-model:checked="colourMode" />
-
-            <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
-          </div>
-        </div>
-      </TwoColumnLayoutRightHeader>
-
-      <TwoColumnLayoutContent>
-        main
-      </TwoColumnLayoutContent>
-    </TwoColumnLayoutRight>
+      <Main>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+        main<br>
+      </Main>
   </TwoColumnLayout>
 </template>
