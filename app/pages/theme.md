@@ -1,99 +1,45 @@
 # Theme
+This package requires configuration with tailwind to render styles, you can reference [Using CSS variables](https://tailwindcss.com/docs/customizing-colors#using-css-variables)
+from the documentation:
 
-This package comes with a tailwind plugin that contains a custom theme used by all the ui components.
-
-## Primary Colour
-Some ui components use the primary colour classes for the primary button, tab accents, highlights, input focus etc. which can be customised to fit your projects theme.
-
-### Basic Replacement
-To simply replace the default primary colour with another colour tailwind offers you can do the following:
+### Import variables
+This package comes with a `preset` file which will define all the required tailwind variables for the package. 
+Add the following to your `tailwind.config.js`:
 ```js
-// tailwind.config.js
+import { preset } from '@codinglabsau/gooey'
 
-import { theme } from '@codinglabsau/ui'
-import colors from 'tailwindcss/colors'
-
-plugins: [
-  theme({
-    colors: {
-      primary: colors.teal
-    }
-  })
-]
+module.exports = {
+  presets: [preset],
+  // ... the rest of your tailwind configuration
+}
 ```
 
-### Advanced Replacement
-To replace specific levels you can simply provide only the levels you would like to replace, for example:
-```js
-// tailwind.config.js
-
-import { theme } from '@codinglabsau/ui'
-
-plugins: [
-  theme({
-    colors: {
-      primary: {
-        '500': 'purple'
-      }
-    }
-  })
-]
-```
-::: info
-Note: with the above config it will not replace all the other levels, so `text-primary-400` would still exist as the default colour.
-:::
-
-If you want to replace the entire range you must provide a value for each level, for example:
-```js
-// tailwind.config.js
-
-import { theme } from '@codinglabsau/ui'
-
-plugins: [
-  theme({
-    colors: {
-      primary: {
-        // gray
-        '50': '#ecfeff',
-        '100': '#cffafe',
-        '200': '#a5f3fc',
-        '300': '#67e8f9',
-        '400': '#22d3ee',
-        '500': '#06b6d4',
-        '600': '#0891b2',
-        '700': '#0e7490',
-        '800': '#155e75',
-        '900': '#164e63',
-      }
-    }
-  })
-]
+### Import styles
+Import the `slate.css` file, which contains styles for these variables into your main CSS file 
+(`app.css` or similar file depending on your project):
+```css
+@import '@codinglabsau/gooey/dist/presets/slate.css';
 ```
 
-## Plugin Options Api
+### Customising the styles
+Most projects using this package will have a different colour requirement. The files in the previous
+steps define:
+- Primary (black)
+- Secondary (slate)
+- Destructive (red)
 
-| key            | type   | Description                                                                                                                                |
-|----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| **colors**     | object | Object containing all colours that can be customised                                                                                       |
-| colors.primary | object | Object containing a [tailwind colour object](https://tailwindcss.com/docs/customizing-colors#color-object-syntax). This defaults to indigo |
+Foreground colours for each of these are a lighter/muted variant within the same hue family (see [tailwind colours](https://tailwindcss.com/docs/customizing-colors))
 
-Example of full options config:
-```js
-  theme({
-    colors: {
-      primary: {
-        // teal
-        '50': '#ecfeff',
-        '100': '#cffafe',
-        '200': '#a5f3fc',
-        '300': '#67e8f9',
-        '400': '#22d3ee',
-        '500': '#06b6d4',
-        '600': '#0891b2',
-        '700': '#0e7490',
-        '800': '#155e75',
-        '900': '#164e63',
-      }
-    }
-  })
+To customise these, you can define them like so in the same `css` file you used in the previous step:
+```css
+:root {
+  --primary: 243 75% 59%; /* indigo-600 */
+  --primary-foreground: 210 40% 98%; /* indigo-300 */
+}
+
+/* Define dark mode specific styles */
+.dark {
+  --primary: 243 75% 59%;
+  --primary-foreground: 210 40% 98%;
+}
 ```

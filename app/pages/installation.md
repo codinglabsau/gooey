@@ -32,16 +32,3 @@ content: [
   // ...
 ]
 ```
-
-For the styles to work you will need to also import the theme and add it as a plugin:
-
-```js
-import { theme } from '@codinglabsau/gooey'
-
-export default {
-    // ...
-    plugins: [
-        theme()
-    ],
-}
-```
