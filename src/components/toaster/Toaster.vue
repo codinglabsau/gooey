@@ -6,7 +6,7 @@ import {
   ToastDescription,
   ToastProvider,
   ToastTitle,
-  ToastViewport
+  ToastViewport,
 } from "@/components/toast"
 import { useToaster, type ErrorBag, type ObjectFormat } from "./use-toaster"
 

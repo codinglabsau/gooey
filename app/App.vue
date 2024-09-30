@@ -12,7 +12,7 @@ import {
   TwoColumnLayoutLeftMobile,
   TwoColumnLayoutLeftTrigger,
   Header,
-  Main
+  Main,
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"

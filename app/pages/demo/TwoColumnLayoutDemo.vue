@@ -72,39 +72,63 @@ const sidebarOpen = ref(false)
         </Sheet>
       </TwoColumnLayoutLeftMobile>
 
-      <TwoColumnLayoutLeftDesktop>
-        desktop navigation
-      </TwoColumnLayoutLeftDesktop>
+      <TwoColumnLayoutLeftDesktop> desktop navigation </TwoColumnLayoutLeftDesktop>
     </TwoColumnLayoutLeft>
 
-      <Main>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-        main<br>
-      </Main>
+    <Main>
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+    </Main>
   </TwoColumnLayout>
 </template>
