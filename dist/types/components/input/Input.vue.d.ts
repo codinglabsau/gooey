@@ -1,14 +1,14 @@
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from "vue";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     defaultValue?: string | number | undefined;
     modelValue?: string | number | undefined;
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (payload: string | number) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
     defaultValue?: string | number | undefined;
     modelValue?: string | number | undefined;
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((payload: string | number) => any) | undefined;
 }>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;

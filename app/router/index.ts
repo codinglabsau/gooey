@@ -8,6 +8,9 @@ import {
   ContributionGuide,
   Theme,
 
+  // demos
+  TwoColumnLayoutDemo,
+
   // components
   Avatar,
   AlertDialog,
@@ -16,9 +19,9 @@ import {
   Command,
   Dialog,
   DropdownMenu,
+  Flasher,
   Input,
   Label,
-  Notification,
   Popover,
   Progress,
   Select,
@@ -36,6 +39,7 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
   { path: "", component: Index },
+  { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo },
   {
     name: "Getting Started",
     children: [
@@ -105,6 +109,12 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
+        name: "Flasher",
+        path: "/components/flasher",
+        component: Flasher,
+        meta: { layout: ComponentLayout },
+      },
+      {
         name: "Input",
         path: "/components/input",
         component: Input,
@@ -115,12 +125,6 @@ const routes = [
         path: "/components/label",
         component: Label,
         meta: { layout: ComponentLayout, shadcn: true },
-      },
-      {
-        name: "Notification",
-        path: "/components/notification",
-        component: Notification,
-        meta: { layout: ComponentLayout },
       },
       {
         name: "Popover",

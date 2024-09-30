@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'vue';
+import type { HTMLAttributes } from "vue";
 interface SkeletonProps {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SkeletonProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SkeletonProps>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;

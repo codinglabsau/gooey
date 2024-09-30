@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
-import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
+import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
 import {
   TwoColumnLayout,
@@ -17,51 +16,27 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 
-import SidebarNavigation from "@app/components/SidebarNavigation.vue"
-
-const router = useRouter()
 const mode = useColorMode()
 const colourMode = ref(mode.value === "dark")
 watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
-
-const navigation = router.getRoutes().filter((route) => route.children.length > 0)
 
 const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <TwoColumnLayout>
+  <TwoColumnLayout class="absolute inset-0 z-50">
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
           <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-          <div class="text-xl">GOOEY</div>
+          <div class="text-xl">Brand</div>
         </div>
       </RouterLink>
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
-      <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        <form class="relative flex flex-1" action="#" method="GET">
-          <label for="search-field" class="sr-only">Search</label>
-
-          <MagnifyingGlassIcon
-            class="pointer-events-none absolute inset-y-0 left-4 h-full w-5 text-foreground"
-            aria-hidden="true"
-          />
-
-          <input
-            id="search-field"
-            class="block h-full w-full border-0 bg-accent py-0 pl-12 pr-0 placeholder:text-foreground focus:ring-0 sm:text-sm"
-            placeholder="Search..."
-            type="search"
-            name="search"
-          />
-        </form>
-      </div>
-
-      <div class="flex w-full justify-between">
+      <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
           <SunIcon class="size-5 text-primary" @click="colourMode = false" />
 
@@ -80,7 +55,7 @@ const sidebarOpen = ref(false)
               <SheetTitle class="flex items-center space-x-2">
                 <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-                <div class="text-xl">GOOEY</div>
+                <div class="text-xl">Brand</div>
               </SheetTitle>
             </SheetHeader>
 
@@ -88,20 +63,68 @@ const sidebarOpen = ref(false)
               <SheetDescription> Sidebar navigation</SheetDescription>
             </VisuallyHidden>
 
-            <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
+            mobile navigation
           </SheetContent>
         </Sheet>
       </TwoColumnLayoutSidebarMobile>
 
-      <TwoColumnLayoutSidebarDesktop>
-        <SidebarNavigation :items="navigation" />
-      </TwoColumnLayoutSidebarDesktop>
+      <TwoColumnLayoutSidebarDesktop> desktop navigation </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
     <Main>
-      <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
-        <RouterView />
-      </component>
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
+
+      main<br />
     </Main>
   </TwoColumnLayout>
 </template>

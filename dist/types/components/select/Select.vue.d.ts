@@ -1,4 +1,4 @@
-import type { SelectRootProps } from 'radix-vue';
+import type { SelectRootProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SelectRootProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:open": (value: boolean) => void;
     "update:modelValue": (value: string) => void;

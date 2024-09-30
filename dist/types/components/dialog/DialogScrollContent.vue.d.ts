@@ -1,4 +1,4 @@
-import { type DialogContentProps } from 'radix-vue';
+import { type DialogContentProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DialogContentProps & {
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {

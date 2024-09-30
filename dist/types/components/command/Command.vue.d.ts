@@ -1,4 +1,4 @@
-import type { ComboboxRootProps } from 'radix-vue';
+import type { ComboboxRootProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ComboboxRootProps<import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue> & {
     class?: any;
 }>, {

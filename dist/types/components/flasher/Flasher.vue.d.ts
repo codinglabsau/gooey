@@ -1,4 +1,4 @@
-import { type ErrorBag, type ObjectFormat } from "./use-notification";
+import { type ErrorBag, type ObjectFormat } from "./use-flasher";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     info?: string | undefined;
     success?: string | undefined;

@@ -1,9 +1,9 @@
-import { type HTMLAttributes } from 'vue';
-import { type SelectSeparatorProps } from 'radix-vue';
+import { type HTMLAttributes } from "vue";
+import { type SelectSeparatorProps } from "radix-vue";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SelectSeparatorProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SelectSeparatorProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

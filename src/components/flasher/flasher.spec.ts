@@ -1,10 +1,10 @@
 describe("template spec", () => {
   it("passes", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
   })
 
   it("shows info via props", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-info"]')
       .click()
@@ -15,7 +15,7 @@ describe("template spec", () => {
   })
 
   it("shows success via props", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-success"]')
       .click()
@@ -26,7 +26,7 @@ describe("template spec", () => {
   })
 
   it("shows warning via props", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-warning"]')
       .click()
@@ -37,7 +37,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via props", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-errors"]')
       .click()
@@ -48,7 +48,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via props with key", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-errors-key"]')
       .click()
@@ -61,7 +61,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via props with both", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="prop-errors-both"]')
       .click()
@@ -74,7 +74,7 @@ describe("template spec", () => {
   })
 
   it("shows success via helper", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="success"]')
       .click()
@@ -85,7 +85,7 @@ describe("template spec", () => {
   })
 
   it("shows warning via helper", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="warning"]')
       .click()
@@ -96,7 +96,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via helper", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="errors"]')
       .click()
@@ -107,7 +107,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via helper with key", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="errors-key"]')
       .click()
@@ -120,7 +120,7 @@ describe("template spec", () => {
   })
 
   it("shows errors via helper with both", () => {
-    cy.visit("/components/notification")
+    cy.visit("/components/flasher")
 
     cy.get('[data-cy="errors-both"]')
       .click()

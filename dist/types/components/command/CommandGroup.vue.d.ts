@@ -1,4 +1,4 @@
-import type { ComboboxGroupProps } from 'radix-vue';
+import type { ComboboxGroupProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<ComboboxGroupProps & {
     class?: any;
     heading?: string | undefined;

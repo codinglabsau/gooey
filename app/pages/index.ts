@@ -4,6 +4,9 @@ export { default as ContributionGuide } from "./contribution-guide.md"
 export { default as Installation } from "./installation.md"
 export { default as Theme } from "./theme.md"
 
+// demos
+export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
+
 // components
 export { default as AlertDialog } from "./components/AlertDialog.vue"
 export { default as Avatar } from "./components/Avatar.vue"
@@ -12,9 +15,9 @@ export { default as Button } from "./components/Button.vue"
 export { default as Command } from "./components/Command.vue"
 export { default as Dialog } from "./components/Dialog.vue"
 export { default as DropdownMenu } from "./components/DropdownMenu.vue"
+export { default as Flasher } from "./components/Flasher.vue"
 export { default as Input } from "./components/Input.vue"
 export { default as Label } from "./components/Label.vue"
-export { default as Notification } from "./components/Notification.vue"
 export { default as Popover } from "./components/Popover.vue"
 export { default as Progress } from "./components/Progress.vue"
 export { default as Select } from "./components/Select.vue"
