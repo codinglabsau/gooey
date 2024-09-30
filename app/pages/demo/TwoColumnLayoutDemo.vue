@@ -6,14 +6,10 @@ import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
 import {
   TwoColumnLayout,
-  TwoColumnLayoutLeft,
-  TwoColumnLayoutLeftDesktop,
-  // TwoColumnLayoutLeftDesktopHeader,
-  TwoColumnLayoutLeftMobile,
-  TwoColumnLayoutLeftTrigger,
-  // TwoColumnLayoutRight,
-  // TwoColumnLayoutRightHeader,
-  // TwoColumnLayoutContent,
+  TwoColumnLayoutSidebar,
+  TwoColumnLayoutSidebarDesktop,
+  TwoColumnLayoutSidebarMobile,
+  TwoColumnLayoutSidebarTrigger,
   Header,
   Main,
 } from "@/components/layout"
@@ -38,7 +34,7 @@ const sidebarOpen = ref(false)
         </div>
       </RouterLink>
 
-      <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
+      <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
@@ -51,8 +47,8 @@ const sidebarOpen = ref(false)
       </div>
     </Header>
 
-    <TwoColumnLayoutLeft>
-      <TwoColumnLayoutLeftMobile>
+    <TwoColumnLayoutSidebar>
+      <TwoColumnLayoutSidebarMobile>
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
           <SheetContent side="left">
             <SheetHeader>
@@ -70,10 +66,10 @@ const sidebarOpen = ref(false)
             mobile navigation
           </SheetContent>
         </Sheet>
-      </TwoColumnLayoutLeftMobile>
+      </TwoColumnLayoutSidebarMobile>
 
-      <TwoColumnLayoutLeftDesktop> desktop navigation </TwoColumnLayoutLeftDesktop>
-    </TwoColumnLayoutLeft>
+      <TwoColumnLayoutSidebarDesktop> desktop navigation </TwoColumnLayoutSidebarDesktop>
+    </TwoColumnLayoutSidebar>
 
     <Main>
       main<br />

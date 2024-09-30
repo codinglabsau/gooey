@@ -7,10 +7,10 @@ import { MoonIcon, SunIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outlin
 
 import {
   TwoColumnLayout,
-  TwoColumnLayoutLeft,
-  TwoColumnLayoutLeftDesktop,
-  TwoColumnLayoutLeftMobile,
-  TwoColumnLayoutLeftTrigger,
+  TwoColumnLayoutSidebar,
+  TwoColumnLayoutSidebarDesktop,
+  TwoColumnLayoutSidebarMobile,
+  TwoColumnLayoutSidebarTrigger,
   Header,
   Main,
 } from "@/components/layout"
@@ -40,7 +40,7 @@ const sidebarOpen = ref(false)
         </div>
       </RouterLink>
 
-      <TwoColumnLayoutLeftTrigger @click="sidebarOpen = true" />
+      <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
       <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
         <form class="relative flex flex-1" action="#" method="GET">
@@ -72,8 +72,8 @@ const sidebarOpen = ref(false)
       </div>
     </Header>
 
-    <TwoColumnLayoutLeft>
-      <TwoColumnLayoutLeftMobile>
+    <TwoColumnLayoutSidebar>
+      <TwoColumnLayoutSidebarMobile>
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
           <SheetContent side="left">
             <SheetHeader>
@@ -91,12 +91,12 @@ const sidebarOpen = ref(false)
             <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
           </SheetContent>
         </Sheet>
-      </TwoColumnLayoutLeftMobile>
+      </TwoColumnLayoutSidebarMobile>
 
-      <TwoColumnLayoutLeftDesktop>
+      <TwoColumnLayoutSidebarDesktop>
         <SidebarNavigation :items="navigation" />
-      </TwoColumnLayoutLeftDesktop>
-    </TwoColumnLayoutLeft>
+      </TwoColumnLayoutSidebarDesktop>
+    </TwoColumnLayoutSidebar>
 
     <Main>
       <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
