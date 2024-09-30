@@ -21,7 +21,6 @@ import {
   DropdownMenu,
   Input,
   Label,
-  Notification,
   Popover,
   Progress,
   Select,
@@ -32,6 +31,7 @@ import {
   Table,
   Textarea,
   Toast,
+  Toaster,
   TwoColumnLayout,
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
@@ -121,12 +121,6 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
-        name: "Notification",
-        path: "/components/notification",
-        component: Notification,
-        meta: { layout: ComponentLayout },
-      },
-      {
         name: "Popover",
         path: "/components/popover",
         component: Popover,
@@ -185,6 +179,12 @@ const routes = [
         path: "/components/toast",
         component: Toast,
         meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Toaster",
+        path: "/components/notification",
+        component: Toaster,
+        meta: { layout: ComponentLayout },
       },
     ],
   },

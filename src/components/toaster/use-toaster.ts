@@ -11,7 +11,7 @@ const { toast } = useToast()
 export type ErrorBag = Record<string, string>
 export type ObjectFormat = "key" | "value" | "both"
 
-function useNotification() {
+function useToaster() {
   return {
     info: (message: string) => {
       toast({
@@ -52,4 +52,4 @@ function useNotification() {
   }
 }
 
-export { useNotification }
+export { useToaster }

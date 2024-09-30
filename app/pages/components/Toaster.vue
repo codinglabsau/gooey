@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue"
-import { Notification, useNotification } from "@/components/notification"
+import { Toaster, useToaster } from "@/components/toaster"
 import { Button } from "@/components/button"
 
-const { info, success, warning, error } = useNotification()
+const { info, success, warning, error } = useToaster()
 
 const props = ref<any>({})
 </script>
 
 <template>
-  <Notification v-bind="props" />
+  <Toaster v-bind="props" />
 
   <div class="space-y-12">
     <section>
-      <h2 class="text-2xl">Notification via props</h2>
+      <h2 class="text-2xl">Toaster via props</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
         <Button data-cy="prop-info" @click="props.info = 'This is an info notification'">
@@ -76,7 +76,7 @@ const props = ref<any>({})
     </section>
 
     <section>
-      <h2 class="text-2xl">Notification via helper</h2>
+      <h2 class="text-2xl">Toaster via helper</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
         <Button data-cy="info" @click="info('This is an info notification')">Info toast</Button>
