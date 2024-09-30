@@ -8,7 +8,7 @@ const { toasts } = useToast()
 
 <template>
   <ToastProvider>
-    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast">
+    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="mt-1.5">
       <div class="flex items-start space-x-3">
         <component :is="toast.icon" v-if="toast.icon" :class="['h-6 w-6', toast.iconClasses]" />
 

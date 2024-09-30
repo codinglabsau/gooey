@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue"
 import { Toaster } from "@/components/toast"
-import { useNotification, type ErrorBag, type ObjectFormat } from "./use-notification"
+import { useToaster, type ErrorBag, type ObjectFormat } from "./use-toaster"
 
 const props = withDefaults(
   defineProps<{
@@ -21,7 +21,7 @@ const {
   success: successNotification,
   warning: warningNotification,
   error: errorNotification,
-} = useNotification()
+} = useToaster()
 
 watch(
   () => props.info,
