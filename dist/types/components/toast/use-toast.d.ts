@@ -1,6 +1,6 @@
 import type { Component, VNode } from "vue";
 import type { ToastProps } from ".";
-import type { ObjectFormat } from "@/components/notification/use-notification";
+import type { ObjectFormat } from "@/components/flasher/use-flasher";
 export type StringOrObjectOrVNode = string | object | VNode | (() => VNode);
 type ToasterToast = ToastProps & {
     id: string;

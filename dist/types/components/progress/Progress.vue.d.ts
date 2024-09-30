@@ -1,11 +1,11 @@
-import { type HTMLAttributes } from 'vue';
-import { type ProgressRootProps } from 'radix-vue';
+import { type HTMLAttributes } from "vue";
+import { type ProgressRootProps } from "radix-vue";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ProgressRootProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>, {
     modelValue: number;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ProgressRootProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>, {
     modelValue: number;
 }>>> & Readonly<{}>, {

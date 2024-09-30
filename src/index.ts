@@ -6,7 +6,7 @@ import { DropdownMenuPortal } from "radix-vue"
 
 // custom components
 export * from "@/components/layout"
-export * from "@/components/notification"
+export * from "@/components/flasher"
 
 // shadcn components
 export * from "@/components/alert-dialog"
@@ -18,7 +18,6 @@ export * from "@/components/dialog"
 export * from "@/components/dropdown-menu"
 export * from "@/components/input"
 export * from "@/components/label"
-export * from "@/components/notification"
 export * from "@/components/popover"
 export * from "@/components/progress"
 export * from "@/components/select"

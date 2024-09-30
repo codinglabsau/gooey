@@ -1,7 +1,7 @@
 import { computed, ref } from "vue"
 import type { Component, VNode } from "vue"
 import type { ToastProps } from "."
-import type { ObjectFormat } from "@/components/notification/use-notification"
+import type { ObjectFormat } from "@/components/flasher/use-flasher"
 
 // const TOAST_LIMIT = 1
 const TOAST_LIMIT = 3

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from "vue"
 import { Toaster } from "@/components/toast"
-import { useToaster, type ErrorBag, type ObjectFormat } from "./use-toaster"
+import { useFlasher, type ErrorBag, type ObjectFormat } from "./use-flasher"
 
 const props = withDefaults(
   defineProps<{
@@ -21,7 +21,7 @@ const {
   success: successNotification,
   warning: warningNotification,
   error: errorNotification,
-} = useToaster()
+} = useFlasher()
 
 watch(
   () => props.info,

@@ -1,12 +1,12 @@
-import { type HTMLAttributes } from 'vue';
-import type { SliderRootProps } from 'radix-vue';
+import { type HTMLAttributes } from "vue";
+import type { SliderRootProps } from "radix-vue";
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SliderRootProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:modelValue": (payload: number[] | undefined) => void;
     valueCommit: (payload: number[]) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SliderRootProps & {
-    class?: HTMLAttributes['class'];
+    class?: HTMLAttributes["class"];
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((payload: number[] | undefined) => any) | undefined;
     onValueCommit?: ((payload: number[]) => any) | undefined;

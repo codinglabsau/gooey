@@ -19,6 +19,7 @@ import {
   Command,
   Dialog,
   DropdownMenu,
+  Flasher,
   Input,
   Label,
   Popover,
@@ -31,7 +32,6 @@ import {
   Table,
   Textarea,
   Toast,
-  Toaster,
   TwoColumnLayout,
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
@@ -109,6 +109,12 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
+        name: "Flasher",
+        path: "/components/flasher",
+        component: Flasher,
+        meta: { layout: ComponentLayout },
+      },
+      {
         name: "Input",
         path: "/components/input",
         component: Input,
@@ -179,12 +185,6 @@ const routes = [
         path: "/components/toast",
         component: Toast,
         meta: { layout: ComponentLayout, shadcn: true },
-      },
-      {
-        name: "Toaster",
-        path: "/components/notification",
-        component: Toaster,
-        meta: { layout: ComponentLayout },
       },
     ],
   },
