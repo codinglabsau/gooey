@@ -9775,7 +9775,7 @@ function Bc(e, t) {
     x(e.$slots, "default")
   ]);
 }
-const Of = /* @__PURE__ */ kt(_c, [["render", Bc]]), kc = {}, Oc = { class: "sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-accent px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8" };
+const Of = /* @__PURE__ */ kt(_c, [["render", Bc]]), kc = {}, Oc = { class: "sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-accent bg-background/80 px-4 shadow-sm backdrop-blur sm:gap-x-6 sm:px-6 lg:px-8" };
 function Dc(e, t) {
   return m(), K("header", Oc, [
     x(e.$slots, "default")
