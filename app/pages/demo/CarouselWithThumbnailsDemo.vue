@@ -28,12 +28,17 @@ const onSelect = () => {
 }
 
 const onThumbClick = (index: number) => {
-  if (!emblaMainApi.value || !emblaThumbnailApi.value) return
+  if (!emblaMainApi.value || !emblaThumbnailApi.value) {
+    return
+  }
+
   emblaMainApi.value.scrollTo(index)
 }
 
 watchOnce(emblaMainApi, (emblaMainApi) => {
-  if (!emblaMainApi) return
+  if (!emblaMainApi) {
+    return
+  }
 
   onSelect()
   emblaMainApi.on("select", onSelect)

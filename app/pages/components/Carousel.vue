@@ -57,7 +57,7 @@ const images = [
 
     <Carousel
       orientation="vertical"
-      class="max-w-xsw-full relative w-full max-w-xs"
+      class="relative w-full max-w-xs"
       :opts="{
         align: 'start',
       }"
