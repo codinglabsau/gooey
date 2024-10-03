@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/carousel"
+import CarouselWithThumbnailsDemo from "../demo/CarouselWithThumbnailsDemo.vue"
 
 const images = [
   "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -19,12 +20,12 @@ const images = [
 
 <template>
   <div class="space-y-12 p-4">
+    <CarouselWithThumbnailsDemo :images="images" />
+
     <Carousel v-slot="{ canScrollNext, canScrollPrev }" class="relative w-full max-w-xs">
       <CarouselContent>
         <CarouselItem v-for="(src, index) in images" :key="index">
-          <div class="flex size-full h-[300px] items-center justify-center p-1">
-            <img :src="src" alt="alt" class="size-full" />
-          </div>
+          <img :src="src" alt="alt" class="h-[300px] w-full object-cover p-1" />
         </CarouselItem>
       </CarouselContent>
 
@@ -45,9 +46,7 @@ const images = [
           :key="index"
           class="pl-1 md:basis-1/2 lg:basis-1/3"
         >
-          <div class="flex size-full h-[100px] items-center justify-center p-1">
-            <img :src="src" alt="alt" class="size-full object-cover" />
-          </div>
+          <img :src="src" alt="alt" class="size-full object-cover" />
         </CarouselItem>
       </CarouselContent>
 
@@ -65,9 +64,7 @@ const images = [
     >
       <CarouselContent class="-mt-1 h-[400px]">
         <CarouselItem v-for="(src, index) in images" :key="index" class="p-1 md:basis-1/2">
-          <div class="flex size-full h-[200px] items-center justify-center p-1">
-            <img :src="src" alt="alt" class="size-full object-cover" />
-          </div>
+          <img :src="src" alt="alt" class="size-full object-cover p-1" />
         </CarouselItem>
       </CarouselContent>
 
