@@ -18,7 +18,7 @@ const images = [
 </script>
 
 <template>
-  <div class="p-4">
+  <div class="space-y-12 p-4">
     <Carousel v-slot="{ canScrollNext, canScrollPrev }" class="relative w-full max-w-xs">
       <CarouselContent>
         <CarouselItem v-for="(src, index) in images" :key="index">
@@ -31,6 +31,49 @@ const images = [
       <CarouselPrevious v-if="canScrollPrev" />
 
       <CarouselNext v-if="canScrollNext" />
+    </Carousel>
+
+    <Carousel
+      class="relative w-full max-w-sm"
+      :opts="{
+        align: 'start',
+      }"
+    >
+      <CarouselContent class="-ml-1">
+        <CarouselItem
+          v-for="(src, index) in images"
+          :key="index"
+          class="pl-1 md:basis-1/2 lg:basis-1/3"
+        >
+          <div class="flex size-full h-[100px] items-center justify-center p-1">
+            <img :src="src" alt="alt" class="size-full object-cover" />
+          </div>
+        </CarouselItem>
+      </CarouselContent>
+
+      <CarouselPrevious />
+
+      <CarouselNext />
+    </Carousel>
+
+    <Carousel
+      orientation="vertical"
+      class="max-w-xsw-full relative w-full max-w-xs"
+      :opts="{
+        align: 'start',
+      }"
+    >
+      <CarouselContent class="-mt-1 h-[400px]">
+        <CarouselItem v-for="(src, index) in images" :key="index" class="p-1 md:basis-1/2">
+          <div class="flex size-full h-[200px] items-center justify-center p-1">
+            <img :src="src" alt="alt" class="size-full object-cover" />
+          </div>
+        </CarouselItem>
+      </CarouselContent>
+
+      <CarouselPrevious />
+
+      <CarouselNext />
     </Carousel>
   </div>
 </template>
