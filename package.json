@@ -1,6 +1,6 @@
 {
   "name": "@codinglabsau/gooey",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "type": "module",
   "files": [
     "dist",
@@ -33,7 +33,6 @@
     "@codinglabsau:registry": "https://npm.pkg.github.com"
   },
   "peerDependencies": {
-    "@inertiajs/vue3": "^1.0.0 || ^2.0.0-beta.1",
     "vue": "^3.2.0"
   },
   "dependencies": {
