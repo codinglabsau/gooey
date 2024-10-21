@@ -5,13 +5,9 @@ import { Heading } from "@/components/heading"
 
 <template>
   <div class="space-y-12">
-    <Heading data-cy="default">
-      Default
-    </Heading>
+    <Heading data-cy="default"> Default </Heading>
 
-    <Heading data-cy="h1" as="h1">
-      Heading 1
-    </Heading>
+    <Heading data-cy="h1" as="h1"> Heading 1 </Heading>
 
     <Heading data-cy="actions">
       Actions
