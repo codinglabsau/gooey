@@ -72,7 +72,7 @@ const routes = [
         name: "Accordion",
         path: "/components/accordion",
         component: Accordion,
-        meta: { layout: ComponentLayout, shadcn: true },
+        meta: { layout: ComponentLayout },
       },
       {
         name: "Alert Dialog",
