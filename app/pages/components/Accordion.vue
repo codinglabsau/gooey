@@ -12,11 +12,11 @@ const content = {
   <div class="space-y-12">
     <section>
       <h2 class="text-2xl">Basic Accordion</h2>
-      <Accordion :content="content" />
+      <Accordion data-cy="contentBasic" :content="content" />
     </section>
     <section>
       <h2 class="text-2xl">Accordion with Custom Content and Title</h2>
-      <Accordion :content="content">
+      <Accordion data-cy="contentCustom" :content="content">
         <template #second.title="{ item }">
           <h3 class="text-2xl"> Custom title for {{ item.title }} </h3>
         </template>
