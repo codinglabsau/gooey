@@ -14,6 +14,7 @@ const content = {
       <h2 class="text-2xl">Basic Accordion</h2>
       <Accordion data-cy="contentBasic" :content="content" />
     </section>
+
     <section>
       <h2 class="text-2xl">Accordion with Custom Content and Title</h2>
       <Accordion data-cy="contentCustom" :content="content">
@@ -22,10 +23,8 @@ const content = {
         </template>
         <template #second.content="{ item }">
           <img src="/logo.svg" alt="Coding Labs UI" class="w-52 mx-auto" />
-
         </template>
       </Accordion>
     </section>
   </div>
-
 </template>

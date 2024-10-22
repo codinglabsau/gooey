@@ -7,13 +7,13 @@ import {
 } from 'radix-vue'
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/accordion'
 
-interface AccordionItem {
+interface Item {
   title: string
   content: string
 }
 
 interface ExtendedAccordionRootProps extends AccordionRootProps  {
-  content?: AccordionItem[];
+  content?: Item[];
 }
 
 const props = withDefaults(defineProps<ExtendedAccordionRootProps>(), {
@@ -29,11 +29,12 @@ const forwarded = useForwardPropsEmits(props, emits)
 <template>
       <AccordionRoot v-bind="forwarded">
         <AccordionItem v-for="(item, key) in content" :value="'item-' + key" :key="key">
-          <AccordionTrigger  >
+          <AccordionTrigger>
             <slot :name="key + '.title'" :item="item">
               {{ item.title }}
             </slot>
           </AccordionTrigger>
+
           <AccordionContent>
             <slot :name="key + '.content'" :item="item">
               {{ item.content }}
