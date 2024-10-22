@@ -12,6 +12,7 @@ import {
   TwoColumnLayoutDemo,
 
   // components
+  Accordion,
   Avatar,
   AlertDialog,
   Badge,
@@ -67,6 +68,12 @@ const routes = [
   {
     name: "Components",
     children: [
+      {
+        name: "Accordion",
+        path: "/components/accordion",
+        component: Accordion,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
       {
         name: "Alert Dialog",
         path: "/components/alert-dialog",
