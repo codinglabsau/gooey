@@ -11,7 +11,7 @@ import {
   TwoColumnLayoutSidebarMobile,
   TwoColumnLayoutSidebarTrigger,
   Header,
-  Main,
+  TwoColumnLayoutMain,
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
@@ -71,7 +71,7 @@ const sidebarOpen = ref(false)
       <TwoColumnLayoutSidebarDesktop> desktop navigation </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
-    <Main>
+    <TwoColumnLayoutMain>
       main<br />
 
       main<br />
@@ -125,6 +125,6 @@ const sidebarOpen = ref(false)
       main<br />
 
       main<br />
-    </Main>
+    </TwoColumnLayoutMain>
   </TwoColumnLayout>
 </template>

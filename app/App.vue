@@ -12,7 +12,7 @@ import {
   TwoColumnLayoutSidebarMobile,
   TwoColumnLayoutSidebarTrigger,
   Header,
-  Main,
+  TwoColumnLayoutMain,
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
@@ -79,10 +79,10 @@ const sidebarOpen = ref(false)
       </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
-    <Main>
+    <TwoColumnLayoutMain>
       <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
         <RouterView />
       </component>
-    </Main>
+    </TwoColumnLayoutMain>
   </TwoColumnLayout>
 </template>
