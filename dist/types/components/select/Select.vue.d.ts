@@ -1,10 +1,10 @@
 import type { SelectRootProps } from "radix-vue";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SelectRootProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "update:open": (value: boolean) => void;
     "update:modelValue": (value: string) => void;
+    "update:open": (value: boolean) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<SelectRootProps>>> & Readonly<{
-    "onUpdate:open"?: ((value: boolean) => any) | undefined;
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
+    "onUpdate:open"?: ((value: boolean) => any) | undefined;
 }>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
