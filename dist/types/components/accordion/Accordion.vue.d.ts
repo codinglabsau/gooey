@@ -1,4 +1,4 @@
-import { type AccordionRootProps } from 'radix-vue';
+import { type AccordionRootProps } from "radix-vue";
 interface Item {
     title: string;
     content: string;

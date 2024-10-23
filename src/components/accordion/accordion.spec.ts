@@ -26,7 +26,7 @@ describe("template spec", () => {
 
     cy.get('[data-cy="contentCustom"] .accordion-trigger').each((titleElement, index) => {
       if (index === 1) {
-        cy.wrap(titleElement).should("have.text", ` Custom title for ${content.second.title}`)
+        cy.wrap(titleElement).should("have.text", `Custom title for ${content.second.title}`)
       } else {
         cy.wrap(titleElement).should("have.text", content[Object.keys(content)[index]].title)
       }
