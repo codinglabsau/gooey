@@ -3,7 +3,7 @@ import { Accordion } from '@/components/accordion'
 
 const content = {
   first: { title: 'First', content: 'First content' },
-  second: { title: 'Second', content: 'Second content' },
+  second: { title: 'Second', content: '/logo.svg' },
   third: { title: 'Third', content: 'Third content' },
 }
 </script>
@@ -22,7 +22,7 @@ const content = {
           <h3 class="text-2xl"> Custom title for {{ item.title }} </h3>
         </template>
         <template #second.content="{ item }">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-52 mx-auto" />
+          <img :src="item.content" alt="Coding Labs UI" class="w-52 mx-auto" />
         </template>
       </Accordion>
     </section>
