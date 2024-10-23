@@ -18,10 +18,11 @@ const { toast } = useToast()
 
 const handleClose = () => {
   toast({
-    title: 'Attention!',
+    title: "Attention!",
     icon: CircleAlertIcon,
-    iconClasses: 'text-orange-400 !size-10',
-    description: 'When defining the state of a Dialog (via the open prop), you will need to listen to the @close emit on the DialogContent to manually handle the state change.'
+    iconClasses: "text-orange-400 !size-10",
+    description:
+      "When defining the state of a Dialog (via the open prop), you will need to listen to the @close emit on the DialogContent to manually handle the state change.",
   })
 }
 </script>
