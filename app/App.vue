@@ -42,25 +42,6 @@ const sidebarOpen = ref(false)
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
-      <div class="ml-6 flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        <form class="relative flex flex-1" action="#" method="GET">
-          <label for="search-field" class="sr-only">Search</label>
-
-          <MagnifyingGlassIcon
-            class="pointer-events-none absolute inset-y-0 left-4 h-full w-5 text-foreground"
-            aria-hidden="true"
-          />
-
-          <input
-            id="search-field"
-            class="block h-full w-64 border-0 bg-accent py-0 pl-12 pr-0 placeholder:text-foreground focus:ring-0 sm:text-sm"
-            placeholder="Search..."
-            type="search"
-            name="search"
-          />
-        </form>
-      </div>
-
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
           <SunIcon class="size-5 text-primary" @click="colourMode = false" />

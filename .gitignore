@@ -9,9 +9,6 @@ lerna-debug.log*
 
 node_modules
 
-docs/.vitepress/dist
-docs/.vitepress/cache
-
 *.tgz
 
 cypress/support/style.css
