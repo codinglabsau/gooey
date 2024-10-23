@@ -12,6 +12,7 @@ import {
   TwoColumnLayoutDemo,
 
   // components
+  Accordion,
   Avatar,
   AlertDialog,
   Badge,
@@ -21,6 +22,7 @@ import {
   Dialog,
   DropdownMenu,
   Flasher,
+  Heading,
   Input,
   Label,
   Popover,
@@ -67,6 +69,12 @@ const routes = [
   {
     name: "Components",
     children: [
+      {
+        name: "Accordion",
+        path: "/components/accordion",
+        component: Accordion,
+        meta: { layout: ComponentLayout },
+      },
       {
         name: "Alert Dialog",
         path: "/components/alert-dialog",
@@ -119,6 +127,12 @@ const routes = [
         name: "Flasher",
         path: "/components/flasher",
         component: Flasher,
+        meta: { layout: ComponentLayout },
+      },
+      {
+        name: "Heading",
+        path: "/components/heading",
+        component: Heading,
         meta: { layout: ComponentLayout },
       },
       {

@@ -1,22 +1,16 @@
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    class?: any;
-    size?: "base" | "sm" | "lg" | null | undefined;
-    shape?: "circle" | "square" | null | undefined;
+    as?: string | undefined;
 }>, {
-    size: string;
-    shape: string;
+    as: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    class?: any;
-    size?: "base" | "sm" | "lg" | null | undefined;
-    shape?: "circle" | "square" | null | undefined;
+    as?: string | undefined;
 }>, {
-    size: string;
-    shape: string;
+    as: string;
 }>>> & Readonly<{}>, {
-    size: "base" | "sm" | "lg" | null;
-    shape: "circle" | "square" | null;
+    as: string;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
+    actions?(_: {}): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

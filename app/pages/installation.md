@@ -28,7 +28,7 @@ Include the path to the library in your project's `tailwind.config.js` purge con
 
 ```js
 content: [
-  './node_modules/@codinglabsau/gooey/src/**/*.{js,vue}',
+  './node_modules/@codinglabsau/gooey/dist/*.js',
   // ...
 ]
 ```
