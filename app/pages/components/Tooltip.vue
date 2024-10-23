@@ -16,6 +16,7 @@ const openTooltip = ref(false)
         </h2>
       </Tooltip>
     </section>
+
     <section>
       <Tooltip
         indicator
@@ -26,6 +27,7 @@ const openTooltip = ref(false)
         </h2>
       </Tooltip>
     </section>
+
     <section>
       <Tooltip
         class="bg-green-500 text-2xl text-white"
@@ -36,11 +38,13 @@ const openTooltip = ref(false)
         </h2>
       </Tooltip>
     </section>
+
     <section>
       <Tooltip>
         <h2 class="text-2xl">
           Tooltip with custom tooltip slot
         </h2>
+
         <template #tooltip>
             <img src="/logo.svg" alt="Coding Labs UI" class="w-32" />
         </template>
@@ -53,10 +57,12 @@ const openTooltip = ref(false)
           Activate from button or on click
         </h2>
       </Tooltip>
+
       <div class="mt-4">
         <Button @click="openTooltip = !openTooltip">Toggle Tooltip</Button>
       </div>
     </section>
+
     <section>
       <Tooltip :delay-duration="0" side="right" tooltip="Hello World">
         <h2 class="text-2xl">
@@ -65,6 +71,7 @@ const openTooltip = ref(false)
       </Tooltip>
 
       <p class="mt-4"> You can pass props used in the API Reference section for Provider, Root, Trigger, and Content. </p>
+
       <a class="text-blue-600 underline" href="https://www.radix-vue.com/components/tooltip#api-reference"> Click here to view. </a>
     </section>
   </div>

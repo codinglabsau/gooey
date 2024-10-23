@@ -26,6 +26,7 @@ const forwarded = useForwardPropsEmits(props, emits)
       <TooltipTrigger :class=" indicator ? 'underline decoration-dotted underline-offset-4' : ''" >
           <slot />
       </TooltipTrigger>
+
       <TooltipContent v-bind="$attrs" >
         <slot name="tooltip" > {{ tooltip }} </slot>
       </TooltipContent>
