@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { CircleAlertIcon } from "lucide-vue-next"
 import { Button } from "@/components/button"
 import {
   Dialog,
@@ -11,6 +12,18 @@ import {
 } from "@/components/dialog"
 import { Input } from "@/components/input"
 import { Label } from "@/components/label"
+import { Toaster, useToast } from "@/components/toast"
+
+const { toast } = useToast()
+
+const handleClose = () => {
+  toast({
+    title: 'Attention!',
+    icon: CircleAlertIcon,
+    iconClasses: 'text-orange-400 !size-10',
+    description: 'When defining the state of a Dialog (via the open prop), you will need to listen to the @close emit on the DialogContent to manually handle the state change.'
+  })
+}
 </script>
 
 <template>
@@ -19,7 +32,7 @@ import { Label } from "@/components/label"
       <Button variant="outline"> Edit Profile </Button>
     </DialogTrigger>
 
-    <DialogContent class="sm:max-w-[425px]">
+    <DialogContent class="sm:max-w-[425px]" @close="handleClose">
       <DialogHeader>
         <DialogTitle>Edit profile</DialogTitle>
 
@@ -47,4 +60,6 @@ import { Label } from "@/components/label"
       </DialogFooter>
     </DialogContent>
   </Dialog>
+
+  <Toaster />
 </template>
