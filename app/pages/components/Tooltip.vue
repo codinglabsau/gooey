@@ -42,9 +42,7 @@ const openTooltip = ref(false)
           Tooltip with custom tooltip slot
         </h2>
         <template #tooltip>
-          <div class="aspect-square">
             <img src="/logo.svg" alt="Coding Labs UI" class="w-32" />
-          </div>
         </template>
       </Tooltip>
     </section>
