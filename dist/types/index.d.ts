@@ -3,6 +3,7 @@ import { DropdownMenuPortal } from "radix-vue";
 export * from "@/components/layout";
 export * from "@/components/flasher";
 export * from "@/components/heading";
+export * from "@/components/accordion";
 export * from "@/components/alert-dialog";
 export * from "@/components/avatar";
 export * from "@/components/badge";

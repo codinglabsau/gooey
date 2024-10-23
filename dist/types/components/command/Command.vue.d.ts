@@ -5,8 +5,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     open: boolean;
     modelValue: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "update:open": (value: boolean) => void;
     "update:modelValue": (value: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue) => void;
+    "update:open": (value: boolean) => void;
     "update:searchTerm": (value: string) => void;
     "update:selectedValue": (value: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue | undefined) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ComboboxRootProps<import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue> & {
@@ -15,8 +15,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     open: boolean;
     modelValue: string;
 }>>> & Readonly<{
-    "onUpdate:open"?: ((value: boolean) => any) | undefined;
     "onUpdate:modelValue"?: ((value: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue) => any) | undefined;
+    "onUpdate:open"?: ((value: boolean) => any) | undefined;
     "onUpdate:searchTerm"?: ((value: string) => any) | undefined;
     "onUpdate:selectedValue"?: ((value: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue | undefined) => any) | undefined;
 }>, {

@@ -1,19 +1,19 @@
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     class?: any;
-    size?: "sm" | "lg" | "base" | null | undefined;
+    size?: "base" | "sm" | "lg" | null | undefined;
     shape?: "circle" | "square" | null | undefined;
 }>, {
     size: string;
     shape: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     class?: any;
-    size?: "sm" | "lg" | "base" | null | undefined;
+    size?: "base" | "sm" | "lg" | null | undefined;
     shape?: "circle" | "square" | null | undefined;
 }>, {
     size: string;
     shape: string;
 }>>> & Readonly<{}>, {
-    size: "sm" | "lg" | "base" | null;
+    size: "base" | "sm" | "lg" | null;
     shape: "circle" | "square" | null;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
