@@ -18,29 +18,26 @@ watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 <template>
   <SingleColumnLayout class="absolute inset-0 z-50">
     <Header>
-      <div class="mx-auto flex w-full max-w-screen-2xl items-center">
-        <RouterLink to="/" class="block">
-          <div class="flex items-center space-x-2">
-            <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+      <RouterLink to="/" class="block">
+        <div class="flex items-center space-x-2">
+          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-            <div class="text-xl">Brand</div>
-          </div>
-        </RouterLink>
+          <div class="text-xl">Brand</div>
+        </div>
+      </RouterLink>
 
-        <div class="flex w-full justify-end">
-          <div class="group flex cursor-pointer items-center space-x-2">
-            <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+      <div class="flex w-full justify-end">
+        <div class="group flex cursor-pointer items-center space-x-2">
+          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
 
-            <Switch v-model:checked="colourMode" />
+          <Switch v-model:checked="colourMode" />
 
-            <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
-          </div>
+          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
         </div>
       </div>
     </Header>
 
     <SingleColumnLayoutMain>
-      <div class="mx-auto w-full max-w-screen-2xl">
         main<br />
 
         main<br />
@@ -94,7 +91,6 @@ watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
         main<br />
 
         main<br />
-      </div>
     </SingleColumnLayoutMain>
   </SingleColumnLayout>
 </template>
