@@ -11,9 +11,9 @@ import {
   TwoColumnLayoutSidebarDesktop,
   TwoColumnLayoutSidebarMobile,
   TwoColumnLayoutSidebarTrigger,
-  Header,
   TwoColumnLayoutMain,
 } from "@/components/layout"
+import { Header } from "@/components/header"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 

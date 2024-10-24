@@ -22,6 +22,7 @@ import {
   DropdownMenu,
   Flasher,
   Heading,
+  Header,
   Input,
   Label,
   Popover,
@@ -120,6 +121,12 @@ const routes = [
         name: "Flasher",
         path: "/components/flasher",
         component: Flasher,
+        meta: { layout: ComponentLayout },
+      },
+      {
+        name: "Header",
+        path: "/components/header",
+        component: Header,
         meta: { layout: ComponentLayout },
       },
       {
