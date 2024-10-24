@@ -9,6 +9,7 @@ export * from "@/components/layout"
 export * from "@/components/flasher"
 export * from "@/components/heading"
 export * from "@/components/accordion"
+export * from "@/components/tooltip"
 
 // shadcn components
 export * from "@/components/alert-dialog"
