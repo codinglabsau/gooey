@@ -5,6 +5,7 @@ export { default as Installation } from "./installation.md"
 export { default as Theme } from "./theme.md"
 
 // demos
+export { default as SingleColumnLayoutDemo } from "./demo/SingleColumnLayoutDemo.vue"
 export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
 
 // components
@@ -25,6 +26,7 @@ export { default as Popover } from "./components/Popover.vue"
 export { default as Progress } from "./components/Progress.vue"
 export { default as Select } from "./components/Select.vue"
 export { default as Sheet } from "./components/Sheet.vue"
+export { default as SingleColumnLayout } from "./components/SingleColumnLayout.vue"
 export { default as Skeleton } from "./components/Skeleton.vue"
 export { default as Slider } from "./components/Slider.vue"
 export { default as Switch } from "./components/Switch.vue"

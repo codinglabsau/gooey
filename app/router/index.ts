@@ -9,6 +9,7 @@ import {
   Theme,
 
   // demos
+  SingleColumnLayoutDemo,
   TwoColumnLayoutDemo,
 
   // components
@@ -30,6 +31,7 @@ import {
   Select,
   Sheet,
   Skeleton,
+  SingleColumnLayout,
   Slider,
   Switch,
   Table,
@@ -42,6 +44,7 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
   { path: "", component: Index },
+  { path: "/demo/single-column-layout", component: SingleColumnLayoutDemo },
   { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo },
   {
     name: "Getting Started",
@@ -213,6 +216,12 @@ const routes = [
     path: "/layouts",
     name: "Layouts",
     children: [
+      {
+        name: "Single Column",
+        path: "/components/single-column-layout",
+        component: SingleColumnLayout,
+        meta: { layout: ComponentLayout },
+      },
       {
         name: "Two Column",
         path: "/components/two-column-layout",
