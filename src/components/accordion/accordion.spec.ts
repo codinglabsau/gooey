@@ -22,7 +22,7 @@ describe("template spec", () => {
   })
 
   it("renders custom content ", () => {
-    cy.visit("/components/accordion")
+    cy.visit("/components/accord")
 
     cy.get('[data-cy="contentCustom"] .accordion-trigger').each((titleElement, index) => {
       if (index === 1) {
