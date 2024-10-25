@@ -35,7 +35,7 @@ import {
   Table,
   Textarea,
   Toast,
-  Tooltip,
+  Tip,
   TwoColumnLayout,
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
@@ -209,9 +209,9 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
-        name: "Tooltip",
-        path: "/components/tooltip",
-        component: Tooltip,
+        name: "Tip",
+        path: "/components/tip",
+        component: Tip,
         meta: { layout: ComponentLayout },
       },
     ],

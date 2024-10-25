@@ -1,5 +1,5 @@
 describe("template spec", () => {
   it("passes", () => {
-    cy.visit("/components/tooltip")
+    cy.visit("/components/tip")
   })
 })
