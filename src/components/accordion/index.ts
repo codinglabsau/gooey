@@ -1,3 +1,4 @@
+export { default as Accord } from "./Accord.vue"
 export { default as Accordion } from "./Accordion.vue"
 export { default as AccordionContent } from "./AccordionContent.vue"
 export { default as AccordionItem } from "./AccordionItem.vue"

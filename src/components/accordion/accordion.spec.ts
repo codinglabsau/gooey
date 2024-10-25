@@ -6,7 +6,7 @@ describe("template spec", () => {
   }
 
   it("renders basic content from array", () => {
-    cy.visit("/components/accordion")
+    cy.visit("/components/accord")
 
     cy.get('[data-cy="contentBasic"] .accordion-trigger').each((titleElement, index) => {
       cy.wrap(titleElement).should("have.text", content[Object.keys(content)[index]].title)
