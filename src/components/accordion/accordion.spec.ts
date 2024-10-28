@@ -3,4 +3,3 @@ describe("template spec", () => {
     cy.visit("/components/accord")
   })
 })
-
