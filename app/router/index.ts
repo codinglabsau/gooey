@@ -12,7 +12,7 @@ import {
   TwoColumnLayoutDemo,
 
   // components
-  Accordion,
+  Accord,
   Avatar,
   AlertDialog,
   Badge,
@@ -71,9 +71,9 @@ const routes = [
     name: "Components",
     children: [
       {
-        name: "Accordion",
+        name: "Accord",
         path: "/components/accordion",
-        component: Accordion,
+        component: Accord,
         meta: { layout: ComponentLayout },
       },
       {
