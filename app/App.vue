@@ -3,7 +3,7 @@ import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
 import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline"
+import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
 import {
   TwoColumnLayout,
