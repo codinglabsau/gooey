@@ -33,6 +33,7 @@ import {
   Slider,
   Switch,
   Table,
+  Tabs,
   Textarea,
   Toast,
   Tip,
@@ -194,6 +195,12 @@ const routes = [
         name: "Table",
         path: "/components/table",
         component: Table,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Tabs",
+        path: "/components/tabs",
+        component: Tabs,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
