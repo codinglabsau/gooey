@@ -1,22 +1,21 @@
-import { type TooltipContentProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<TooltipContentProps & {
-    class?: any;
-}>, {
-    sideOffset: number;
+import { type TooltipRootProps } from "radix-vue";
+interface ExtendedTooltipRootProps extends TooltipRootProps {
+    tooltip?: string;
+    indicator?: boolean;
+}
+declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ExtendedTooltipRootProps>, {
+    delayDuration: number;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    escapeKeyDown: (event: KeyboardEvent) => void;
-    pointerDownOutside: (event: Event) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<TooltipContentProps & {
-    class?: any;
-}>, {
-    sideOffset: number;
+    "update:open": (value: boolean) => void;
+}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ExtendedTooltipRootProps>, {
+    delayDuration: number;
 }>>> & Readonly<{
-    onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
-    onPointerDownOutside?: ((event: Event) => any) | undefined;
+    "onUpdate:open"?: ((value: boolean) => any) | undefined;
 }>, {
-    sideOffset: number;
+    delayDuration: number;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
+    tooltip?(_: {}): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

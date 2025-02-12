@@ -20,8 +20,8 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     "onUpdate:searchTerm"?: ((value: string) => any) | undefined;
     "onUpdate:selectedValue"?: ((value: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue | undefined) => any) | undefined;
 }>, {
-    open: boolean;
     modelValue: import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue | import("radix-vue/dist/Combobox/ComboboxRoot").AcceptableValue[];
+    open: boolean;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;
