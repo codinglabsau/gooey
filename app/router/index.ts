@@ -17,6 +17,7 @@ import {
   AlertDialog,
   Badge,
   Button,
+  Card,
   Carousel,
   Command,
   Dialog,
@@ -99,6 +100,12 @@ const routes = [
         name: "Button",
         path: "/components/button",
         component: Button,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Card",
+        path: "/components/card",
+        component: Card,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
