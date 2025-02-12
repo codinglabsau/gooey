@@ -1,15 +1,6 @@
 <script setup lang="ts">
-import {
-  type TooltipRootEmits,
-  type TooltipRootProps,
-  useForwardPropsEmits,
-} from "radix-vue"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from "@/components/tooltip"
+import { type TooltipRootEmits, type TooltipRootProps, useForwardPropsEmits } from "radix-vue"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/tooltip"
 
 interface ExtendedTooltipRootProps extends TooltipRootProps {
   tooltip?: string

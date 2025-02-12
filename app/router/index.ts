@@ -17,6 +17,7 @@ import {
   AlertDialog,
   Badge,
   Button,
+  Card,
   Carousel,
   Command,
   Dialog,
@@ -33,6 +34,7 @@ import {
   Slider,
   Switch,
   Table,
+  Tabs,
   Textarea,
   Toast,
   Tip,
@@ -98,6 +100,12 @@ const routes = [
         name: "Button",
         path: "/components/button",
         component: Button,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Card",
+        path: "/components/card",
+        component: Card,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
@@ -194,6 +202,12 @@ const routes = [
         name: "Table",
         path: "/components/table",
         component: Table,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Tabs",
+        path: "/components/tabs",
+        component: Tabs,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
