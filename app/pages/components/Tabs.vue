@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { Input } from "@/components/input"
+import { Label } from "@/components/label"
 import { Button } from "@/components/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs"
 import {
   Card,
   CardContent,
@@ -8,9 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/card"
-import { Input } from "@/components/input"
-import { Label } from "@/components/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/tabs"
 </script>
 
 <template>
