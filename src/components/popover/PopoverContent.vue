@@ -7,7 +7,7 @@ import {
   PopoverPortal,
   useForwardPropsEmits,
 } from "radix-vue"
-import { cn } from "@/utils/shadcdn"
+import { cn } from "@/lib/utils"
 
 const props = withDefaults(
   defineProps<PopoverContentProps & { class?: HTMLAttributes["class"] }>(),

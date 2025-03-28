@@ -11,7 +11,7 @@ import {
 } from "radix-vue"
 import { Cross2Icon } from "@radix-icons/vue"
 import { type SheetVariants, sheetVariants } from "."
-import { cn } from "@/utils/shadcdn"
+import { cn } from "@/lib/utils"
 
 interface SheetContentProps extends DialogContentProps {
   class?: HTMLAttributes["class"]

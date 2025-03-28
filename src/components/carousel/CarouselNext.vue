@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRightIcon } from "@radix-icons/vue"
-import { cn } from "@/utils/shadcdn"
+import { cn } from "@/lib/utils"
 import { useCarousel } from "./useCarousel"
 import { Button } from "@/components/button"
 import type { WithClassAsProps } from "./interface"

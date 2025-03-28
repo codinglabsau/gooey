@@ -9,7 +9,7 @@ import {
   useForwardPropsEmits,
 } from "radix-vue"
 import { SelectScrollDownButton, SelectScrollUpButton } from "."
-import { cn } from "@/utils/shadcdn"
+import { cn } from "@/lib/utils"
 
 const props = withDefaults(
   defineProps<SelectContentProps & { class?: HTMLAttributes["class"] }>(),
