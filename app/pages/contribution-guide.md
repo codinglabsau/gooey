@@ -1,11 +1,18 @@
 # Contribution Guide
 
-## Which Branch?
-All bug fixes should be sent to the latest version that supports bug fixes (currently `1.x`). Bug fixes should never be sent to the `main` branch unless they fix features that exist only in the upcoming release.
+## Adding Components
+Gooey is built primarily with [Shadcdn-vue](https://www.shadcn-vue.com/) components.
 
-Minor features that are fully backward compatible with the current release may be sent to the latest stable branch (currently `1.x`).
+Components can be installed into the project following the standard installation method, eg. `npx shadcn-vue@latest add sidebar`.
 
-Major new features or features with breaking changes should always be sent to the `2.x` branch, which contains the upcoming release.
+Some components are customised wrappers around shadcn-vue to alter the API slightly.
+
+When adding a component, ensure you do these things:
+
+1. Install from shadcn-vue, eg. `npx shadcn-vue@latest add sidebar`
+2. Register the component in `src/index.ts`
+3. Create a vue file matching the component name in app/components, and register it in `app/pages/index.ts`
+4. Register the documentation route in `app/router/index.ts`
 
 ## Local Development
 Spin up the vite dev server with:
@@ -15,7 +22,7 @@ vite
 The local server contains a demo and documentation for all the components.
 
 ## Publishing Releases
-1. Increment the version in `package.json`
+1. Increment the version in `package.json` following semver rules
 2. Run `npm update` to update the lock file
 3. Ensure all components are registered in `src/index.ts`
 4. Run `npm run build`; this will format, lint, type check and do a vite build

@@ -19,6 +19,7 @@ import {
   Button,
   Card,
   Carousel,
+  Checkbox,
   Command,
   Dialog,
   DropdownMenu,
@@ -112,6 +113,12 @@ const routes = [
         name: "Carousel",
         path: "/components/carousel",
         component: Carousel,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Checkbox",
+        path: "/components/checkbox",
+        component: Checkbox,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
