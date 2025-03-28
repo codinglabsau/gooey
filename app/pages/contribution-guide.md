@@ -13,6 +13,7 @@ When adding a component, ensure you do these things:
 2. Register the component in `src/index.ts`
 3. Create a vue file matching the component name in app/components, and register it in `app/pages/index.ts`
 4. Register the documentation route in `app/router/index.ts`
+5. Add at least one cypress smoke test next to the component in src/components
 
 ## Local Development
 Spin up the vite dev server with:
@@ -34,12 +35,17 @@ The test suite uses [Cypress](https://docs.cypress.io/guides/component-testing/v
 
 Test files are colocated next to components, for example `badge/Badge.vue` has a corresponding test case in `badge/badge.spec.ts`.
 
-The best DX when testing is by using the Cypress test runner. To do so, run:
+First, ensure a vite server is running:
+```bash
+vite
+```
+
+The Cypress test runner provides a handy GUI for running tests. To use it, run:
 ```bash
 npx cypress open
 ```
 
-Tests can also be run on the CLI using:
+Tests can also be run on the CLI:
 ```bash
 npm run test
 ```
