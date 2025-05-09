@@ -24,7 +24,7 @@ Now that the prerequisites are out of the way, you are ready to install:
 ```bash
 $ npm install @codinglabsau/gooey
 ```
-Include the path to the library in your project's `tailwind.config.js` purge configuration:
+Include the path to the library in your project's `tailwind.config.js` content configuration:
 
 ```js
 content: [
@@ -32,3 +32,6 @@ content: [
   // ...
 ]
 ```
+
+## Setup the preset and theme
+Next, [follow the steps](theme) to install the preset and theme to your requirements.
