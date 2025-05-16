@@ -1,6 +1,6 @@
 # Changelog
 ## v1.1.0
-* add image slot support
+* add string (URL of an image) support for icon prop
 
 ## v1.0.0
 ### use-toast.ts

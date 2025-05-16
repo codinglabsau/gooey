@@ -66,9 +66,7 @@ function calculateDaysUntilHalloween() {
           title: 'Think fast!',
           description:
             'Disco skeleton has challenged you to a dance-off, and you better bring your A-game.',
-          image:
-            'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
-          imageClasses: 'text-red-400',
+          icon: 'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
         })
       "
     >

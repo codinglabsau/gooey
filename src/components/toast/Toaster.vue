@@ -10,14 +10,16 @@ const { toasts } = useToast()
   <ToastProvider>
     <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="mt-1.5">
       <div class="flex items-start space-x-3">
-        <component :is="toast.icon" v-if="toast.icon" :class="['size-6', toast.iconClasses]" />
+        <template v-if="toast.icon">
+          <img
+            v-if="typeof toast.icon === 'string'"
+            :src="toast.icon"
+            :class="['size-16 rounded-sm object-cover', toast.iconClasses]"
+            :alt="toast.title"
+          />
 
-        <img
-          v-if="toast.image"
-          :src="toast.image"
-          :class="['size-16 rounded-sm object-cover', toast.imageClasses]"
-          :alt="toast.title"
-        />
+          <component :is="toast.icon" v-else :class="['size-6', toast.iconClasses]" />
+        </template>
 
         <div class="grid gap-1">
           <ToastTitle v-if="toast.title">

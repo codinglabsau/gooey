@@ -7,6 +7,7 @@ import type { ObjectFormat } from "@/components/flasher/use-flasher"
 const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
 
+export type StringOrComponent = string | Component
 export type StringOrObjectOrVNode = string | object | VNode | (() => VNode)
 
 // type ToasterToast = ToastProps & {
@@ -18,10 +19,8 @@ export type StringOrObjectOrVNode = string | object | VNode | (() => VNode)
 
 type ToasterToast = ToastProps & {
   id: string
-  icon?: Component
+  icon?: StringOrComponent
   iconClasses?: string
-  image?: string
-  imageClasses?: string
   title?: string
   description?: StringOrObjectOrVNode
   action?: Component

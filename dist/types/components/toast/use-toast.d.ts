@@ -1,13 +1,12 @@
 import type { Component, VNode } from "vue";
 import type { ToastProps } from ".";
 import type { ObjectFormat } from "@/components/flasher/use-flasher";
+export type StringOrComponent = string | Component;
 export type StringOrObjectOrVNode = string | object | VNode | (() => VNode);
 type ToasterToast = ToastProps & {
     id: string;
-    icon?: Component;
+    icon?: StringOrComponent;
     iconClasses?: string;
-    image?: string;
-    imageClasses?: string;
     title?: string;
     description?: StringOrObjectOrVNode;
     action?: Component;
@@ -144,7 +143,7 @@ declare function useToast(): {
             __name?: string | undefined;
         } | undefined;
         id: string;
-        icon?: import("vue").FunctionalComponent<any, {}, any, {}> | {
+        icon?: string | import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
             __isFragment?: undefined;
             __isTeleport?: undefined;
@@ -264,8 +263,6 @@ declare function useToast(): {
             __name?: string | undefined;
         } | undefined;
         iconClasses?: string | undefined;
-        image?: string | undefined;
-        imageClasses?: string | undefined;
         title?: string | undefined;
         description?: StringOrObjectOrVNode | undefined;
         action?: import("vue").FunctionalComponent<any, {}, any, {}> | {
