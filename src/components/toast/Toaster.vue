@@ -12,7 +12,12 @@ const { toasts } = useToast()
       <div class="flex items-start space-x-3">
         <component :is="toast.icon" v-if="toast.icon" :class="['size-6', toast.iconClasses]" />
 
-        <img v-if="toast.image" :src="toast.image" :class="['size-16 rounded-sm object-cover', toast.iconClasses]" :alt="toast.title ?? toast.description" />
+        <img
+          v-if="toast.image"
+          :src="toast.image"
+          :class="['size-16 rounded-sm object-cover', toast.imageClasses]"
+          :alt="toast.title"
+        />
 
         <div class="grid gap-1">
           <ToastTitle v-if="toast.title">

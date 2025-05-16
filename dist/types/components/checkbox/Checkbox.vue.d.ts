@@ -1,4 +1,4 @@
-import type { CheckboxRootProps } from 'reka-ui';
+import type { CheckboxRootProps } from "reka-ui";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<CheckboxRootProps & {
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
