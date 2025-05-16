@@ -20,6 +20,8 @@ type ToasterToast = ToastProps & {
   id: string
   icon?: Component
   iconClasses?: string
+  image?: string
+  imageClasses?: string
   title?: string
   description?: StringOrObjectOrVNode
   action?: Component

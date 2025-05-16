@@ -25,8 +25,9 @@ function calculateDaysUntilHalloween() {
 <template>
   <Toaster />
 
-  <div class="mx-4 flex flex-col gap-x-2 md:flex-row">
+  <div class="flex flex-col flex-wrap gap-x-2 gap-y-2 md:flex-row">
     <Button
+      variant="outline"
       data-cy="toast"
       @click="
         toast({
@@ -39,6 +40,7 @@ function calculateDaysUntilHalloween() {
     </Button>
 
     <Button
+      variant="outline"
       data-cy="toast-icon"
       @click="
         toast({
@@ -57,6 +59,22 @@ function calculateDaysUntilHalloween() {
     </Button>
 
     <Button
+      variant="outline"
+      data-cy="toast-icon"
+      @click="
+        toast({
+          title: 'Think fast!',
+          description: 'Disco skeleton has challenged you to a dance-off, and you better bring your A-game.',
+          image: 'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
+          imageClasses: 'text-red-400',
+        })
+      "
+    >
+      Toast with image
+    </Button>
+
+    <Button
+      variant="outline"
       data-cy="toast-object"
       @click="
         toast({
@@ -73,6 +91,7 @@ function calculateDaysUntilHalloween() {
     </Button>
 
     <Button
+      variant="outline"
       data-cy="toast-object-key"
       @click="
         toast({
@@ -90,6 +109,7 @@ function calculateDaysUntilHalloween() {
     </Button>
 
     <Button
+      variant="outline"
       data-cy="toast-object-both"
       @click="
         toast({

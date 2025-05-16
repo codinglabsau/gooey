@@ -26,6 +26,18 @@ describe("template spec", () => {
       .should("have.class", "lucide-ghost-icon")
   })
 
+  it("toasts with image", () => {
+    cy.visit("/components/toast")
+
+    cy.get('[data-cy="toast-image"]')
+      .click()
+      .get("[data-radix-vue-collection-item]")
+      .then(($el) => Cypress.dom.isVisible($el))
+      .get("[data-radix-vue-collection-item]")
+      .get("svg")
+      .should("have.class", "lucide-ghost-icon")
+  })
+
   it("toasts with object", () => {
     cy.visit("/components/toast")
 
