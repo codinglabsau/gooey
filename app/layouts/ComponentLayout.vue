@@ -12,9 +12,11 @@ const currentRoute = computed(() => router.currentRoute)
   <article>
     <Heading as="h1">{{ currentRoute.value.name }}</Heading>
 
-    <ShadcnComponent v-if="$route.meta.shadcn" :modified="$route.meta.modified" class="mt-8" />
+    <ShadcnComponent v-if="$route.meta.shadcn" :modified="$route.meta.modified" />
 
-    <h2 class="mb-2 mt-8 text-2xl">Examples</h2>
+    <hr class="my-8" />
+
+    <h2 class="mb-4 text-2xl">Examples</h2>
 
     <slot />
   </article>
