@@ -227,7 +227,7 @@ const routes = [
         name: "Toast",
         path: "/components/toast",
         component: Toast,
-        meta: { layout: ComponentLayout, shadcn: true },
+        meta: { layout: ComponentLayout, shadcn: true, modified: true },
       },
       {
         name: "Tip",

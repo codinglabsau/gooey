@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ghost } from "lucide-vue-next"
 import { Toaster, useToast } from "@/components/toast"
+import { Button } from "@/components/button"
 
 const { toast } = useToast()
 
@@ -24,8 +25,8 @@ function calculateDaysUntilHalloween() {
 <template>
   <Toaster />
 
-  <div class="mx-4 flex flex-col gap-x-2 pt-8 md:flex-row">
-    <button
+  <div class="mx-4 flex flex-col gap-x-2 md:flex-row">
+    <Button
       data-cy="toast"
       @click="
         toast({
@@ -35,9 +36,9 @@ function calculateDaysUntilHalloween() {
       "
     >
       Vanilla toast
-    </button>
+    </Button>
 
-    <button
+    <Button
       data-cy="toast-icon"
       @click="
         toast({
@@ -53,9 +54,9 @@ function calculateDaysUntilHalloween() {
       "
     >
       Toast with icon
-    </button>
+    </Button>
 
-    <button
+    <Button
       data-cy="toast-object"
       @click="
         toast({
@@ -69,9 +70,9 @@ function calculateDaysUntilHalloween() {
       "
     >
       Toast with object description (default)
-    </button>
+    </Button>
 
-    <button
+    <Button
       data-cy="toast-object-key"
       @click="
         toast({
@@ -86,9 +87,9 @@ function calculateDaysUntilHalloween() {
       "
     >
       Toast with object description (key)
-    </button>
+    </Button>
 
-    <button
+    <Button
       data-cy="toast-object-both"
       @click="
         toast({
@@ -103,6 +104,14 @@ function calculateDaysUntilHalloween() {
       "
     >
       Toast with object description (both)
-    </button>
+    </Button>
   </div>
+
+  <h2 class="mb-2 mt-8 text-2xl">Modifications</h2>
+
+  <ul class="list-disc pl-4">
+    <li>Support for icon and iconClasses prop</li>
+
+    <li>Support for object descriptions (value only (default), key only, and key + value)</li>
+  </ul>
 </template>
