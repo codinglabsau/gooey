@@ -60,7 +60,7 @@ function calculateDaysUntilHalloween() {
 
     <Button
       variant="outline"
-      data-cy="toast-icon"
+      data-cy="toast-image"
       @click="
         toast({
           title: 'Think fast!',

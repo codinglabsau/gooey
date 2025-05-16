@@ -34,8 +34,8 @@ describe("template spec", () => {
       .get("[data-radix-vue-collection-item]")
       .then(($el) => Cypress.dom.isVisible($el))
       .get("[data-radix-vue-collection-item]")
-      .get("svg")
-      .should("have.class", "lucide-ghost-icon")
+      .get("img")
+      .should("have.class", "object-cover")
   })
 
   it("toasts with object", () => {
