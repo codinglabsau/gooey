@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/table"
 import { type ComponentProp, type Meta } from "@app/types/globals"
+import { ComponentHeading } from "@app/components"
 
 defineProps<{
   props: ComponentProp[]
@@ -9,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <h2 class="mb-2 mt-8 text-2xl">Props</h2>
+  <ComponentHeading>Props</ComponentHeading>
 
   <Table>
     <TableHeader>

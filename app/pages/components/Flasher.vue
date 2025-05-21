@@ -2,6 +2,7 @@
 import { ref } from "vue"
 import { Flasher, useFlasher } from "@/components/flasher"
 import { Button } from "@/components/button"
+import { ComponentHeading } from "@app/components"
 
 const { info, success, warning, error } = useFlasher()
 
@@ -13,7 +14,7 @@ const props = ref<any>({})
 
   <div class="space-y-12">
     <section>
-      <h2 class="text-2xl">Flasher via props</h2>
+      <ComponentHeading>Flasher via props</ComponentHeading>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
         <Button
@@ -91,7 +92,7 @@ const props = ref<any>({})
     </section>
 
     <section>
-      <h2 class="text-2xl">Flasher via helper</h2>
+      <ComponentHeading>Flasher via helper</ComponentHeading>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
         <Button variant="outline" data-cy="info" @click="info('This is an info notification')"

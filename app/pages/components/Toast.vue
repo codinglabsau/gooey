@@ -186,7 +186,7 @@ const onClickEvent = (data: any) => {
     </li>
   </ul>
 
-  <h2 class="mb-3 mt-12 text-2xl">Description</h2>
+  <ComponentHeading>Description</ComponentHeading>
 
   <p>This component modifies the underlying Toaster component, adding support for:</p>
 

@@ -7,28 +7,28 @@ const openTooltip = ref(false)
 </script>
 
 <template>
-  <div class="space-y-12">
+  <div class="space-y-8">
     <section>
       <Tip tooltip="Basic Tooltip">
-        <h2 class="text-2xl">Hover over text to see tooltip</h2>
+        <span class="border-b border-dotted border-primary">Hover over text to see tooltip</span>
       </Tip>
     </section>
 
     <section>
       <Tip indicator tooltip="Hello World">
-        <h2 class="text-2xl">Tooltip with indicator</h2>
+        <span class="border-b border-dotted border-primary">Tooltip with indicator</span>
       </Tip>
     </section>
 
     <section>
       <Tip class="bg-green-500 text-2xl text-white" tooltip="Hello World">
-        <h2 class="text-2xl">Tooltip with custom tooltip class</h2>
+        <span class="border-b border-dotted border-primary">Tooltip with custom tooltip class</span>
       </Tip>
     </section>
 
     <section>
       <Tip>
-        <h2 class="text-2xl">Tooltip with custom tooltip slot</h2>
+        <span class="border-b border-dotted border-primary">Tooltip with custom tooltip slot</span>
 
         <template #tooltip>
           <img src="/logo.svg" alt="Coding Labs UI" class="w-32" />
@@ -38,9 +38,9 @@ const openTooltip = ref(false)
 
     <section>
       <Tip :open="openTooltip" tooltip="fancy seeing you here">
-        <h2 class="text-2xl" @click="openTooltip = !openTooltip">
+        <span class="text-2xl" @click="openTooltip = !openTooltip">
           Activate from button or on click
-        </h2>
+        </span>
       </Tip>
 
       <div class="mt-4">
@@ -50,7 +50,7 @@ const openTooltip = ref(false)
 
     <section>
       <Tip :delay-duration="0" side="right" tooltip="Hello World">
-        <h2 class="text-2xl">API References</h2>
+        <span class="border-b border-dotted border-primary">API References</span>
       </Tip>
 
       <p class="mt-4">

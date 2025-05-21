@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Heading } from "@"
+</script>
+
 <template>
-  <h2 class="mb-3 mt-12 text-2xl"><slot /></h2>
+  <Heading as="h2" class="mb-3 mt-8 text-2xl"><slot /></Heading>
 </template>

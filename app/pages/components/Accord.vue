@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Accord } from "@/components/accordion"
+import { ComponentHeading } from "@app/components"
 
 const content = {
   first: { title: "First", content: "First content" },
@@ -11,17 +12,17 @@ const content = {
 <template>
   <div class="space-y-12">
     <section>
-      <h2 class="text-2xl">Basic Accordion</h2>
+      <ComponentHeading class="mt-2 text-lg">Basic Accordion</ComponentHeading>
 
       <Accord data-cy="contentBasic" :content="content" />
     </section>
 
     <section>
-      <h2 class="text-2xl">Accordion with Custom Content and Title</h2>
+      <ComponentHeading class="mt-2 text-lg">Accordion with Custom Content and Title</ComponentHeading>
 
       <Accord data-cy="contentCustom" :content="content">
         <template #second.title="{ item }">
-          <h3 class="text-2xl">Custom title for {{ item.title }}</h3>
+          <div class="bg-destructive-foreground text-destructive">Custom title for {{ item.title }}</div>
         </template>
 
         <template #second.content="{ item }">

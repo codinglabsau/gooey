@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/table"
 import { type ComponentEvent } from "@app/types/globals"
+import { ComponentHeading } from "@app/components"
 
 defineProps<{
   events: ComponentEvent[]
@@ -8,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <h2 class="mb-2 mt-8 text-2xl">Events</h2>
+  <ComponentHeading>Events</ComponentHeading>
 
   <Table>
     <TableHeader>
