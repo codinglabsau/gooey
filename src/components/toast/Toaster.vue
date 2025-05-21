@@ -3,12 +3,16 @@ import { isVNode } from "vue"
 import { useToast } from "./use-toast"
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "."
 
+defineEmits<{
+  'click': [value: object];
+}>()
+
 const { toasts } = useToast()
 </script>
 
 <template>
   <ToastProvider>
-    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="mt-1.5">
+    <Toast v-for="toast in toasts" :key="toast.id" v-bind="toast" class="mt-1.5" @click="$emit('click', toast)">
       <div class="flex items-start space-x-3">
         <template v-if="toast.icon">
           <img

@@ -2,8 +2,8 @@
 import { Ghost } from "lucide-vue-next"
 import { Toaster, useToast } from "@/components/toast"
 import { Button } from "@/components/button"
-import ComponentProps from "@app/components/ComponentProps.vue"
-import { type ComponentProp } from "@app/types/globals"
+import { ComponentProps, ComponentEvents, ComponentHeading } from "@app/components"
+import { type ComponentProp, type ComponentEvent } from "@app/types/globals"
 
 const { toast } = useToast()
 
@@ -51,29 +51,47 @@ const componentProps: ComponentProp[] = [
     description: "Format for object descriptions: \"value\", \"key\", or \"both\""
   }
 ]
+
+const componentEvents: ComponentEvent[] = [
+  {
+    name: "click",
+    description: "Forwarded click events on individual toasts, with the toast object as the payload",
+    payload: "ToasterToast"
+  }
+]
+
+const onClickEvent = (data: any) => {
+  toast({
+    title: "You clicked on a toast",
+    description: `Toast ID: ${data.id}`
+  })
+}
 </script>
 
 <template>
-  <Toaster />
+  <Toaster @click="onClickEvent" />
 
-  <div class="flex flex-col flex-wrap gap-x-2 gap-y-2 md:flex-row">
-    <Button
-      variant="outline"
-      data-cy="toast"
-      @click="
+  <ul class="space-y-4">
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast"
+        @click="
         toast({
           title: 'FYI',
-          description: 'You have been toasted',
+          description: 'You have been toasted (click me)',
         })
       "
-    >
-      Vanilla toast
-    </Button>
+      >
+        Vanilla toast
+      </Button>
+    </li>
 
-    <Button
-      variant="outline"
-      data-cy="toast-icon"
-      @click="
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-icon"
+        @click="
         toast({
           title: 'Boo!',
           description:
@@ -85,14 +103,16 @@ const componentProps: ComponentProp[] = [
           iconClasses: 'text-red-400',
         })
       "
-    >
-      Toast with icon
-    </Button>
+      >
+        Toast with icon
+      </Button>
+    </li>
 
-    <Button
-      variant="outline"
-      data-cy="toast-image"
-      @click="
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-image"
+        @click="
         toast({
           title: 'Think fast!',
           description:
@@ -100,14 +120,16 @@ const componentProps: ComponentProp[] = [
           icon: 'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
         })
       "
-    >
-      Toast with image
-    </Button>
+      >
+        Toast with image
+      </Button>
+    </li>
 
-    <Button
-      variant="outline"
-      data-cy="toast-object"
-      @click="
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-object"
+        @click="
         toast({
           title: 'Objects',
           description: {
@@ -117,14 +139,16 @@ const componentProps: ComponentProp[] = [
           },
         })
       "
-    >
-      Toast with object description (default)
-    </Button>
+      >
+        Toast with object description (default)
+      </Button>
+    </li>
 
-    <Button
-      variant="outline"
-      data-cy="toast-object-key"
-      @click="
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-object-key"
+        @click="
         toast({
           title: 'Objects',
           description: {
@@ -135,14 +159,16 @@ const componentProps: ComponentProp[] = [
           objectFormat: 'key',
         })
       "
-    >
-      Toast with object description (key)
-    </Button>
+      >
+        Toast with object description (key)
+      </Button>
+    </li>
 
-    <Button
-      variant="outline"
-      data-cy="toast-object-both"
-      @click="
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-object-both"
+        @click="
         toast({
           title: 'Objects',
           description: {
@@ -153,20 +179,25 @@ const componentProps: ComponentProp[] = [
           objectFormat: 'both',
         })
       "
-    >
-      Toast with object description (both)
-    </Button>
-  </div>
+      >
+        Toast with object description (both)
+      </Button>
+    </li>
+  </ul>
 
-  <h2 class="mb-2 mt-8 text-2xl">Modifications</h2>
+  <h2 class="mb-3 mt-12 text-2xl">Description</h2>
+
+  <p>This component modifies the underlying Toaster component, adding support for:</p>
 
   <ul class="list-disc pl-4">
-    <li>Support for icon and iconClasses prop</li>
+    <li>Icon and iconClasses prop</li>
 
-    <li>Support for object descriptions (value only (default), key only, and key + value)</li>
+    <li>Object descriptions (value only (default), key only, and key + value)</li>
 
-    <li>Emit a click event</li>
+    <li>Click event with a toast is clicked</li>
   </ul>
 
   <ComponentProps :props="componentProps" :meta="$route.meta" />
+
+  <ComponentEvents :events="componentEvents" />
 </template>
