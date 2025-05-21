@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from "@/components/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/table"
 import { type ComponentProp, type Meta } from "@app/types/globals"
 
 defineProps<{
@@ -19,7 +12,6 @@ defineProps<{
   <h2 class="mb-2 mt-8 text-2xl">Props</h2>
 
   <Table>
-
     <TableHeader>
       <TableRow>
         <TableHead class="w-[100px]"> Prop</TableHead>
@@ -46,17 +38,16 @@ defineProps<{
           <div class="mb-4">
             <span class="bg-muted px-2 py-1 font-mono">
               <template v-if="typeof prop.type === 'string'">
-              {{ prop.type }}
+                {{ prop.type }}
               </template>
 
               <template v-else>
-              {{ prop.type.join(" | ") }}
+                {{ prop.type.join(" | ") }}
               </template>
             </span>
           </div>
 
           {{ prop.description }}
-
         </TableCell>
       </TableRow>
     </TableBody>

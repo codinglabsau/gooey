@@ -37,17 +37,15 @@ const shadcnRoute = computed(() => {
         <span v-if="meta.modified" class="italic">modified</span> Shadcn-vue component.
       </template>
 
-      <template v-else>
-        custom component.
-      </template>
+      <template v-else> custom component. </template>
     </h2>
 
     <template v-if="meta.shadcn">
       <p class="mt-6 text-lg leading-8 text-card-foreground">
-      <span v-if="meta.modified">
-        This component is imported from Shadcn Vue
-        <span class="italic">with</span> modifications.
-      </span>
+        <span v-if="meta.modified">
+          This component is imported from Shadcn Vue
+          <span class="italic">with</span> modifications.
+        </span>
 
         <span v-else> This component is imported from Shadcn Vue without modification. </span>
       </p>

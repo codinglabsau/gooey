@@ -27,43 +27,44 @@ const componentProps: ComponentProp[] = [
   {
     name: "icon",
     type: ["string", "component"],
-    description: "Icon component or URL to display in the toast"
+    description: "Icon component or URL to display in the toast",
   },
   {
     name: "iconClasses",
     type: "string",
-    description: "CSS classes to apply to the icon"
+    description: "CSS classes to apply to the icon",
   },
   {
     name: "title",
     type: "string",
-    description: "Title text of the toast"
+    description: "Title text of the toast",
   },
   {
     name: "description",
     type: ["string", "object"],
-    description: "Description text or object to display in the toast"
+    description: "Description text or object to display in the toast",
   },
   {
     name: "objectFormat",
     default: "value",
     type: "string",
-    description: "Format for object descriptions: \"value\", \"key\", or \"both\""
-  }
+    description: 'Format for object descriptions: "value", "key", or "both"',
+  },
 ]
 
 const componentEvents: ComponentEvent[] = [
   {
     name: "click",
-    description: "Forwarded click events on individual toasts, with the toast object as the payload",
-    payload: "ToasterToast"
-  }
+    description:
+      "Forwarded click events on individual toasts, with the toast object as the payload",
+    payload: "ToasterToast",
+  },
 ]
 
 const onClickEvent = (data: any) => {
   toast({
     title: "You clicked on a toast",
-    description: `Toast ID: ${data.id}`
+    description: `Toast ID: ${data.id}`,
   })
 }
 </script>
@@ -77,11 +78,11 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast"
         @click="
-        toast({
-          title: 'FYI',
-          description: 'You have been toasted (click me)',
-        })
-      "
+          toast({
+            title: 'FYI',
+            description: 'You have been toasted (click me)',
+          })
+        "
       >
         Vanilla toast
       </Button>
@@ -92,17 +93,17 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast-icon"
         @click="
-        toast({
-          title: 'Boo!',
-          description:
-            calculateDaysUntilHalloween() +
-            ' days until halloween ' +
-            new Date().getFullYear() +
-            ' 🎃',
-          icon: Ghost,
-          iconClasses: 'text-red-400',
-        })
-      "
+          toast({
+            title: 'Boo!',
+            description:
+              calculateDaysUntilHalloween() +
+              ' days until halloween ' +
+              new Date().getFullYear() +
+              ' 🎃',
+            icon: Ghost,
+            iconClasses: 'text-red-400',
+          })
+        "
       >
         Toast with icon
       </Button>
@@ -113,13 +114,13 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast-image"
         @click="
-        toast({
-          title: 'Think fast!',
-          description:
-            'Disco skeleton has challenged you to a dance-off, and you better bring your A-game.',
-          icon: 'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
-        })
-      "
+          toast({
+            title: 'Think fast!',
+            description:
+              'Disco skeleton has challenged you to a dance-off, and you better bring your A-game.',
+            icon: 'https://images.pexels.com/photos/3756616/pexels-photo-3756616.jpeg?auto=compress&cs=tinysrgb&w=120&h=750&dpr=2',
+          })
+        "
       >
         Toast with image
       </Button>
@@ -130,15 +131,15 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast-object"
         @click="
-        toast({
-          title: 'Objects',
-          description: {
-            Michael: 'That\'s what she said.',
-            Dwight: 'Identity theft is not a joke, Jim!',
-            Kelly: 'I have a lot of questions. Number one, how dare you?',
-          },
-        })
-      "
+          toast({
+            title: 'Objects',
+            description: {
+              Michael: 'That\'s what she said.',
+              Dwight: 'Identity theft is not a joke, Jim!',
+              Kelly: 'I have a lot of questions. Number one, how dare you?',
+            },
+          })
+        "
       >
         Toast with object description (default)
       </Button>
@@ -149,16 +150,16 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast-object-key"
         @click="
-        toast({
-          title: 'Objects',
-          description: {
-            Michael: 'That\'s what she said.',
-            Dwight: 'Identity theft is not a joke, Jim!',
-            Kelly: 'I have a lot of questions. Number one, how dare you?',
-          },
-          objectFormat: 'key',
-        })
-      "
+          toast({
+            title: 'Objects',
+            description: {
+              Michael: 'That\'s what she said.',
+              Dwight: 'Identity theft is not a joke, Jim!',
+              Kelly: 'I have a lot of questions. Number one, how dare you?',
+            },
+            objectFormat: 'key',
+          })
+        "
       >
         Toast with object description (key)
       </Button>
@@ -169,16 +170,16 @@ const onClickEvent = (data: any) => {
         variant="outline"
         data-cy="toast-object-both"
         @click="
-        toast({
-          title: 'Objects',
-          description: {
-            Michael: 'That\'s what she said.',
-            Dwight: 'Identity theft is not a joke, Jim!',
-            Kelly: 'I have a lot of questions. Number one, how dare you?',
-          },
-          objectFormat: 'both',
-        })
-      "
+          toast({
+            title: 'Objects',
+            description: {
+              Michael: 'That\'s what she said.',
+              Dwight: 'Identity theft is not a joke, Jim!',
+              Kelly: 'I have a lot of questions. Number one, how dare you?',
+            },
+            objectFormat: 'both',
+          })
+        "
       >
         Toast with object description (both)
       </Button>
