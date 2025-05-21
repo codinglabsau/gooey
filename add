@@ -28,11 +28,11 @@ mkdir -p src/components/$COMPONENT
 
 # Move files from ui directory to components directory
 if [ -d "src/components/ui/$COMPONENT" ]; then
-  echo "Moving files from src/components/ui/$COMPONENT to src/components/$COMPONENT"
-  mv -f src/components/ui/$COMPONENT/* src/components/$COMPONENT/
-
-  # Remove the now empty ui directory for this component
-  rmdir src/components/ui/$COMPONENT 2>/dev/null
+  # this is a necessary workaround because shadcn-vue won't write
+  # to src/components due to a bug (refer to components.json)
+  echo "Moving files from src/components/ui to src/components"
+  rsync -a src/components/ui/ src/components/
+  rm -r src/components/ui
 
   echo "Component $COMPONENT successfully installed and moved to the correct location"
 else

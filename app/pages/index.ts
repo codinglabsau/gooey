@@ -1,38 +1,46 @@
-// getting started
 export { default as Index } from "./Index.vue"
+
+// getting started
 export { default as ContributionGuide } from "./contribution-guide.md"
 export { default as Installation } from "./installation.md"
 export { default as Theme } from "./theme.md"
 
-// demos
-export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
-
 // components
-export { default as AlertDialog } from "./components/AlertDialog.vue"
 export { default as Accord } from "./components/Accord.vue"
 export { default as Avatar } from "./components/Avatar.vue"
 export { default as Badge } from "./components/Badge.vue"
 export { default as Button } from "./components/Button.vue"
-export { default as Card } from "./components/Card.vue"
 export { default as Carousel } from "./components/Carousel.vue"
-export { default as Checkbox } from "./components/Checkbox.vue"
 export { default as Command } from "./components/Command.vue"
-export { default as Dialog } from "./components/Dialog.vue"
 export { default as DropdownMenu } from "./components/DropdownMenu.vue"
 export { default as Flasher } from "./components/Flasher.vue"
-export { default as Heading } from "./components/Heading.vue"
-export { default as Input } from "./components/Input.vue"
-export { default as Label } from "./components/Label.vue"
+export { default as Pagination } from "./components/Pagination.vue"
 export { default as Popover } from "./components/Popover.vue"
 export { default as Progress } from "./components/Progress.vue"
-export { default as Select } from "./components/Select.vue"
-export { default as Sheet } from "./components/Sheet.vue"
 export { default as Skeleton } from "./components/Skeleton.vue"
-export { default as Slider } from "./components/Slider.vue"
-export { default as Switch } from "./components/Switch.vue"
-export { default as Table } from "./components/Table.vue"
-export { default as Tabs } from "./components/Tabs.vue"
-export { default as Textarea } from "./components/Textarea.vue"
 export { default as Toast } from "./components/Toast.vue"
 export { default as Tip } from "./components/Tip.vue"
+
+// forms
+export { default as Checkbox } from "./components/Checkbox.vue"
+export { default as Input } from "./components/Input.vue"
+export { default as Label } from "./components/Label.vue"
+export { default as Select } from "./components/Select.vue"
+export { default as Slider } from "./components/Slider.vue"
+export { default as Switch } from "./components/Switch.vue"
+export { default as Textarea } from "./components/Textarea.vue"
+
+// page layout
+export { default as AlertDialog } from "./components/AlertDialog.vue"
+export { default as Card } from "./components/Card.vue"
+export { default as Dialog } from "./components/Dialog.vue"
+export { default as Heading } from "./components/Heading.vue"
+export { default as Sheet } from "./components/Sheet.vue"
+export { default as Table } from "./components/Table.vue"
+export { default as Tabs } from "./components/Tabs.vue"
+
+// layouts
 export { default as TwoColumnLayout } from "./components/TwoColumnLayout.vue"
+
+// demos
+export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"

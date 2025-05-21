@@ -8,38 +8,45 @@ import {
   ContributionGuide,
   Theme,
 
-  // demos
-  TwoColumnLayoutDemo,
-
   // components
   Accord,
   Avatar,
-  AlertDialog,
   Badge,
   Button,
-  Card,
   Carousel,
-  Checkbox,
   Command,
-  Dialog,
   DropdownMenu,
   Flasher,
-  Heading,
-  Input,
-  Label,
+  Pagination,
   Popover,
   Progress,
-  Select,
-  Sheet,
   Skeleton,
-  Slider,
-  Switch,
-  Table,
-  Tabs,
-  Textarea,
   Toast,
   Tip,
+
+  // forms
+  Checkbox,
+  Input,
+  Label,
+  Select,
+  Slider,
+  Switch,
+  Textarea,
+
+  // page layout
+  AlertDialog,
+  Card,
+  Dialog,
+  Heading,
+  Sheet,
+  Table,
+  Tabs,
+
+  // layouts
   TwoColumnLayout,
+
+  // demos
+  TwoColumnLayoutDemo,
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
@@ -120,6 +127,12 @@ const routes = [
         path: "/components/flasher",
         component: Flasher,
         meta: { layout: ComponentLayout },
+      },
+      {
+        name: "Pagination",
+        path: "/components/pagination",
+        component: Pagination,
+        meta: { layout: ComponentLayout, shadcn: true },
       },
       {
         name: "Popover",
