@@ -11124,7 +11124,7 @@ function bl() {
   };
 }
 function Am(e) {
-  const t = Em(), n = (a) => ln({
+  const t = e.id ?? Em(), n = (a) => ln({
     type: at.UPDATE_TOAST,
     toast: { ...a, id: t }
   }), o = () => ln({ type: at.DISMISS_TOAST, toastId: t });
@@ -13934,18 +13934,22 @@ const G0 = /* @__PURE__ */ x({
 }), Ov = { class: "flex items-center justify-between space-y-2" }, Ev = { class: "flex items-center space-x-2" }, q0 = /* @__PURE__ */ x({
   __name: "Heading",
   props: {
-    as: { default: "h2" }
+    as: { default: "h2" },
+    class: {}
   },
   setup(e) {
-    return (t, n) => (h(), N("div", Ov, [
-      (h(), C(Ve(t.as), { class: "text-3xl font-bold tracking-tight" }, {
+    const t = e;
+    return (n, o) => (h(), N("div", Ov, [
+      (h(), C(Ve(n.as), {
+        class: ne(s(z)("text-3xl font-bold tracking-tight", t.class))
+      }, {
         default: y(() => [
-          _(t.$slots, "default")
+          _(n.$slots, "default")
         ]),
         _: 3
-      })),
+      }, 8, ["class"])),
       re("div", Ev, [
-        _(t.$slots, "actions")
+        _(n.$slots, "actions")
       ])
     ]));
   }
