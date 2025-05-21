@@ -9,7 +9,7 @@ interface Item {
 }
 
 interface ExtendedAccordionRootProps extends AccordionRootProps {
-  content?: Item[]
+  content?: Item[] | Record<string, Item>
 }
 
 const props = withDefaults(defineProps<ExtendedAccordionRootProps>(), {
