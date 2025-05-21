@@ -14,21 +14,21 @@ type ToasterToast = ToastProps & {
 };
 declare function useToast(): {
     toasts: import("vue").ComputedRef<{
-        class?: any;
+        class?: import("vue").HTMLAttributes["class"];
         variant?: "default" | "destructive" | null | undefined;
-        onOpenChange?: ((value: boolean) => void) | undefined;
+        onOpenChange?: ((value: boolean) => void) | undefined | undefined;
         defaultOpen?: boolean | undefined;
         forceMount?: boolean | undefined;
         type?: "foreground" | "background" | undefined;
         open?: boolean | undefined;
         duration?: number | undefined;
         asChild?: boolean | undefined;
-        as?: string | import("vue").FunctionalComponent<any, {}, any, {}> | {
+        as?: import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
-        } | {
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
+        } | import("radix-vue").AsTag | {
             [x: string]: any;
             setup?: ((this: void, props: import("@vue/shared").LooseRequired<any>, ctx: {
                 attrs: {
@@ -38,7 +38,7 @@ declare function useToast(): {
                     [name: string]: import("vue").Slot<any> | undefined;
                 }>;
                 emit: ((event: unknown, ...args: any[]) => void) | ((event: string, ...args: any[]) => void);
-                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed | undefined) => void;
+                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed) => void;
             }) => any) | undefined;
             name?: string | undefined;
             template?: string | object | undefined;
@@ -57,9 +57,9 @@ declare function useToast(): {
                 delimiters?: [string, string] | undefined;
             } | undefined;
             call?: ((this: unknown, ...args: unknown[]) => never) | undefined;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never | undefined;
+            __isTeleport?: never | undefined;
+            __isSuspense?: never | undefined;
             __defaults?: {} | undefined;
             compatConfig?: {
                 GLOBAL_MOUNT?: boolean | "suppress-warning" | undefined;
@@ -104,16 +104,16 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
+                MODE?: 2 | 3 | ((comp: Component | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;
             methods?: import("vue").MethodOptions | undefined;
             watch?: {
-                [x: string]: (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
-                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
+                [x: string]: (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
+                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
                 } & import("vue").WatchOptions<boolean>))[];
             } | undefined;
             provide?: import("vue").ComponentProvideOptions | undefined;
@@ -135,7 +135,7 @@ declare function useToast(): {
             unmounted?: (() => any) | undefined;
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | undefined;
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | undefined;
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}, {}, {}, string, import("vue").ComponentProvideOptions>, {}, {}, "", {}, any> | null, info: string) => boolean | void) | undefined;
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance | null, info: string) => boolean | void) | undefined;
             delimiters?: [string, string] | undefined;
             __differentiator?: string | number | symbol | undefined;
             __isBuiltIn?: boolean | undefined;
@@ -145,9 +145,9 @@ declare function useToast(): {
         id: string;
         icon?: string | import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
         } | {
             [x: string]: any;
             setup?: ((this: void, props: import("@vue/shared").LooseRequired<any>, ctx: {
@@ -158,7 +158,7 @@ declare function useToast(): {
                     [name: string]: import("vue").Slot<any> | undefined;
                 }>;
                 emit: ((event: unknown, ...args: any[]) => void) | ((event: string, ...args: any[]) => void);
-                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed | undefined) => void;
+                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed) => void;
             }) => any) | undefined;
             name?: string | undefined;
             template?: string | object | undefined;
@@ -177,9 +177,9 @@ declare function useToast(): {
                 delimiters?: [string, string] | undefined;
             } | undefined;
             call?: ((this: unknown, ...args: unknown[]) => never) | undefined;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never | undefined;
+            __isTeleport?: never | undefined;
+            __isSuspense?: never | undefined;
             __defaults?: {} | undefined;
             compatConfig?: {
                 GLOBAL_MOUNT?: boolean | "suppress-warning" | undefined;
@@ -224,16 +224,16 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
+                MODE?: 2 | 3 | ((comp: Component | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;
             methods?: import("vue").MethodOptions | undefined;
             watch?: {
-                [x: string]: (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
-                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
+                [x: string]: (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
+                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
                 } & import("vue").WatchOptions<boolean>))[];
             } | undefined;
             provide?: import("vue").ComponentProvideOptions | undefined;
@@ -255,7 +255,7 @@ declare function useToast(): {
             unmounted?: (() => any) | undefined;
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | undefined;
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | undefined;
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}, {}, {}, string, import("vue").ComponentProvideOptions>, {}, {}, "", {}, any> | null, info: string) => boolean | void) | undefined;
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance | null, info: string) => boolean | void) | undefined;
             delimiters?: [string, string] | undefined;
             __differentiator?: string | number | symbol | undefined;
             __isBuiltIn?: boolean | undefined;
@@ -267,9 +267,9 @@ declare function useToast(): {
         description?: StringOrObjectOrVNode | undefined;
         action?: import("vue").FunctionalComponent<any, {}, any, {}> | {
             new (...args: any[]): any;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never;
+            __isTeleport?: never;
+            __isSuspense?: never;
         } | {
             [x: string]: any;
             setup?: ((this: void, props: import("@vue/shared").LooseRequired<any>, ctx: {
@@ -280,7 +280,7 @@ declare function useToast(): {
                     [name: string]: import("vue").Slot<any> | undefined;
                 }>;
                 emit: ((event: unknown, ...args: any[]) => void) | ((event: string, ...args: any[]) => void);
-                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed | undefined) => void;
+                expose: <Exposed extends Record<string, any> = Record<string, any>>(exposed?: Exposed) => void;
             }) => any) | undefined;
             name?: string | undefined;
             template?: string | object | undefined;
@@ -299,9 +299,9 @@ declare function useToast(): {
                 delimiters?: [string, string] | undefined;
             } | undefined;
             call?: ((this: unknown, ...args: unknown[]) => never) | undefined;
-            __isFragment?: undefined;
-            __isTeleport?: undefined;
-            __isSuspense?: undefined;
+            __isFragment?: never | undefined;
+            __isTeleport?: never | undefined;
+            __isSuspense?: never | undefined;
             __defaults?: {} | undefined;
             compatConfig?: {
                 GLOBAL_MOUNT?: boolean | "suppress-warning" | undefined;
@@ -346,16 +346,16 @@ declare function useToast(): {
                 RENDER_FUNCTION?: boolean | "suppress-warning" | undefined;
                 FILTERS?: boolean | "suppress-warning" | undefined;
                 PRIVATE_APIS?: boolean | "suppress-warning" | undefined;
-                MODE?: 2 | 3 | ((comp: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | null) => 2 | 3) | undefined;
+                MODE?: 2 | 3 | ((comp: Component | null) => 2 | 3) | undefined;
             } | undefined;
             data?: ((this: any, vm: any) => any) | undefined;
             computed?: import("vue").ComputedOptions | undefined;
             methods?: import("vue").MethodOptions | undefined;
             watch?: {
-                [x: string]: (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
-                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback<any, any> | ({
-                    handler: string | import("vue").WatchCallback<any, any>;
+                [x: string]: (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
+                } & import("vue").WatchOptions<boolean>)) | (string | import("vue").WatchCallback | ({
+                    handler: import("vue").WatchCallback | string;
                 } & import("vue").WatchOptions<boolean>))[];
             } | undefined;
             provide?: import("vue").ComponentProvideOptions | undefined;
@@ -377,7 +377,7 @@ declare function useToast(): {
             unmounted?: (() => any) | undefined;
             renderTracked?: ((e: import("vue").DebuggerEvent) => void) | undefined;
             renderTriggered?: ((e: import("vue").DebuggerEvent) => void) | undefined;
-            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}, {}, string, {}, {}, {}, string, import("vue").ComponentProvideOptions>, {}, {}, "", {}, any> | null, info: string) => boolean | void) | undefined;
+            errorCaptured?: ((err: unknown, instance: import("vue").ComponentPublicInstance | null, info: string) => boolean | void) | undefined;
             delimiters?: [string, string] | undefined;
             __differentiator?: string | number | symbol | undefined;
             __isBuiltIn?: boolean | undefined;

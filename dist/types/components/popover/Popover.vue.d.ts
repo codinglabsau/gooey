@@ -1,22 +1,16 @@
 import type { PopoverRootProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<PopoverRootProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "update:open": (value: boolean) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<PopoverRootProps>>> & Readonly<{
-    "onUpdate:open"?: ((value: boolean) => any) | undefined;
-}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
-    default?(_: {}): any;
-}>;
-export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
+declare var __VLS_6: {};
+type __VLS_Slots = {} & {
+    default?: (props: typeof __VLS_6) => any;
 };
-type __VLS_WithTemplateSlots<T, S> = T & {
+declare const __VLS_component: import("vue").DefineComponent<PopoverRootProps, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    "update:open": (value: boolean) => any;
+}, string, import("vue").PublicProps, Readonly<PopoverRootProps> & Readonly<{
+    "onUpdate:open"?: ((value: boolean) => any) | undefined;
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithSlots<typeof __VLS_component, __VLS_Slots>;
+export default _default;
+type __VLS_WithSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

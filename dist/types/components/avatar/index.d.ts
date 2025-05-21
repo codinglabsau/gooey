@@ -4,6 +4,6 @@ export { default as AvatarImage } from "./AvatarImage.vue";
 export { default as AvatarFallback } from "./AvatarFallback.vue";
 export declare const avatarVariant: (props?: ({
     size?: "base" | "sm" | "lg" | null | undefined;
-    shape?: "circle" | "square" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+    shape?: "square" | "circle" | null | undefined;
+} & import("class-variance-authority/dist/types.js").ClassProp) | undefined) => string;
 export type AvatarVariants = VariantProps<typeof avatarVariant>;
