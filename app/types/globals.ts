@@ -12,3 +12,9 @@ export type ComponentProp = {
   type: string | Array<string>
   description: string
 }
+
+export type ComponentEvent = {
+  name: string
+  description: string
+  payload?: string
+}

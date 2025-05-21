@@ -16,8 +16,7 @@ import {
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
-
-import SidebarNavigation from "@app/components/SidebarNavigation.vue"
+import { SidebarNavigation } from "@app/components"
 
 const router = useRouter()
 const mode = useColorMode()

@@ -4,8 +4,7 @@ import { type Component, computed } from "vue"
 import { ArrowRight } from "lucide-vue-next"
 import { Button } from "@/components/button"
 import { Heading } from "@"
-import ShadcnLogo from "@app/components/ShadcnLogo.vue"
-import CodingLabsLogo from "@app/components/CodingLabsLogo.vue"
+import { ShadcnLogo, CodingLabsLogo } from "@app/components"
 import { type Meta } from "@app/types/globals"
 
 const props = defineProps<{

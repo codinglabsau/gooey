@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { useRouter } from "vue-router"
-import ComponentSummary from "@app/components/ComponentSummary.vue"
+import { ComponentSummary } from "@app/components"
 import { Heading } from "@/components/heading"
 
 const router = useRouter()
@@ -9,7 +9,7 @@ const currentRoute = computed(() => router.currentRoute)
 </script>
 
 <template>
-  <article class="space-y-6">
+  <article>
     <ComponentSummary :meta="$route.meta" />
 
     <hr class="my-8" />
