@@ -14,7 +14,7 @@ defineEmits<{
 </script>
 
 <template>
-  <nav class="space-y-4 p-4 px-6">
+  <nav class="space-y-4 px-6">
     <div v-for="group in items" :key="group.name">
       <h3 class="text-md font-bold leading-6">{{ group.name }}</h3>
 
@@ -29,10 +29,6 @@ defineEmits<{
               >
                 {{ route.name }}
               </RouterLink>
-
-              <Badge v-if="!route.meta.shadcn" variant="secondary"> custom </Badge>
-
-              <Badge v-if="route.meta.modified"> modified </Badge>
             </li>
           </ul>
         </li>

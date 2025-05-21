@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue"
 import { useRouter } from "vue-router"
-import ShadcnComponent from "@app/components/ShadcnComponent.vue"
+import ComponentSummary from "@app/components/ComponentSummary.vue"
 import { Heading } from "@/components/heading"
 
 const router = useRouter()
@@ -9,10 +9,8 @@ const currentRoute = computed(() => router.currentRoute)
 </script>
 
 <template>
-  <article>
-    <Heading as="h1">{{ currentRoute.value.name }}</Heading>
-
-    <ShadcnComponent v-if="$route.meta.shadcn" :modified="$route.meta.modified" />
+  <article class="space-y-6">
+    <ComponentSummary :meta="$route.meta" />
 
     <hr class="my-8" />
 
