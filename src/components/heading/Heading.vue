@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from "vue"
+import { cn } from "@/lib/utils"
+
 const props = withDefaults(
   defineProps<{
     as?: string
+    class?: HTMLAttributes["class"]
   }>(),
   {
-    as: "h2",
+    as: "h2"
   }
 )
 </script>
 
 <template>
   <div class="flex items-center justify-between space-y-2">
-    <component :is="as" class="text-3xl font-bold tracking-tight">
+    <component :is="as" :class="cn('text-3xl font-bold tracking-tight', props.class)">
       <slot />
     </component>
 
