@@ -31,6 +31,9 @@ if [ -d "src/components/ui/$COMPONENT" ]; then
   # this is a necessary workaround because shadcn-vue won't write
   # to src/components due to a bug (refer to components.json)
   echo "Moving files from src/components/ui to src/components"
+  # find and replace "components/ui" with "components" in UI directory
+  find src/components/ui -type f -exec sed -i '' 's|components/ui|components|g' {} +
+
   rsync -a src/components/ui/ src/components/
   rm -r src/components/ui
 
