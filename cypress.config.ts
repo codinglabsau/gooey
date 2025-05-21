@@ -31,7 +31,7 @@ export default defineConfig({
 
   e2e: {
     baseUrl: "http://localhost:5173",
-    specPattern: 'src/components/**/*.spec.ts',
+    specPattern: "src/components/**/*.spec.ts",
     experimentalRunAllSpecs: true,
 
     setupNodeEvents(on, config) {

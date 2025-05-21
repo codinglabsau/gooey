@@ -14,6 +14,19 @@ describe("template spec", () => {
       .contains("FYI")
   })
 
+  it("toasts with click event", () => {
+    cy.visit("/components/toast")
+
+    cy.get('[data-cy="toast"]')
+      .click()
+      .get("[data-radix-vue-collection-item]")
+      .click()
+      .then(($el) => Cypress.dom.isVisible($el))
+      .get("[data-radix-vue-collection-item]")
+      .eq(1)
+      .contains("You clicked on a toast")
+  })
+
   it("toasts with icon", () => {
     cy.visit("/components/toast")
 
