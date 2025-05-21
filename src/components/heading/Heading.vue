@@ -8,7 +8,7 @@ const props = withDefaults(
     class?: HTMLAttributes["class"]
   }>(),
   {
-    as: "h2"
+    as: "h2",
   }
 )
 </script>

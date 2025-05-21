@@ -18,11 +18,15 @@ const content = {
     </section>
 
     <section>
-      <ComponentHeading class="mt-2 text-lg">Accordion with Custom Content and Title</ComponentHeading>
+      <ComponentHeading class="mt-2 text-lg">
+        Accordion with Custom Content and Title
+      </ComponentHeading>
 
       <Accord data-cy="contentCustom" :content="content">
         <template #second.title="{ item }">
-          <div class="bg-destructive-foreground text-destructive">Custom title for {{ item.title }}</div>
+          <div class="bg-destructive-foreground text-destructive">
+            Custom title for {{ item.title }}
+          </div>
         </template>
 
         <template #second.content="{ item }">
