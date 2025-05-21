@@ -20,6 +20,7 @@ import {
   Pagination,
   Popover,
   Progress,
+  Separator,
   Skeleton,
   Toast,
   Tip,
@@ -144,6 +145,12 @@ const routes = [
         name: "Progress",
         path: "/components/progress",
         component: Progress,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Separator",
+        path: "/components/separator",
+        component: Separator,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
