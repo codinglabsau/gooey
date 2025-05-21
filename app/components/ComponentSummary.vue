@@ -6,12 +6,7 @@ import { Button } from "@/components/button"
 import { Heading } from "@"
 import ShadcnLogo from "@app/components/ShadcnLogo.vue"
 import CodingLabsLogo from "@app/components/CodingLabsLogo.vue"
-
-type Meta = {
-  layout: Component
-  shadcn?: boolean | string
-  modified?: boolean
-}
+import { type Meta } from "@app/types/globals"
 
 const props = defineProps<{
   meta: Meta

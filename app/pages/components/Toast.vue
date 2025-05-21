@@ -2,6 +2,8 @@
 import { Ghost } from "lucide-vue-next"
 import { Toaster, useToast } from "@/components/toast"
 import { Button } from "@/components/button"
+import ComponentProps from "@app/components/ComponentProps.vue"
+import { type ComponentProp } from "@app/types/globals"
 
 const { toast } = useToast()
 
@@ -20,6 +22,35 @@ function calculateDaysUntilHalloween() {
 
   return Math.ceil(timeDiff / (1000 * 60 * 60 * 24))
 }
+
+const componentProps: ComponentProp[] = [
+  {
+    name: "icon",
+    type: ["string", "component"],
+    description: "Icon component or URL to display in the toast"
+  },
+  {
+    name: "iconClasses",
+    type: "string",
+    description: "CSS classes to apply to the icon"
+  },
+  {
+    name: "title",
+    type: "string",
+    description: "Title text of the toast"
+  },
+  {
+    name: "description",
+    type: ["string", "object"],
+    description: "Description text or object to display in the toast"
+  },
+  {
+    name: "objectFormat",
+    default: "value",
+    type: "string",
+    description: "Format for object descriptions: \"value\", \"key\", or \"both\""
+  }
+]
 </script>
 
 <template>
@@ -133,5 +164,9 @@ function calculateDaysUntilHalloween() {
     <li>Support for icon and iconClasses prop</li>
 
     <li>Support for object descriptions (value only (default), key only, and key + value)</li>
+
+    <li>Emit a click event</li>
   </ul>
+
+  <ComponentProps :props="componentProps" :meta="$route.meta" />
 </template>
