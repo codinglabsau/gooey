@@ -11146,6 +11146,7 @@ function Am(e) {
 }
 const Tm = { class: "flex items-start space-x-3" }, Dm = ["src", "alt"], Pm = { class: "grid gap-1" }, Im = { class: "font-bold" }, Mm = /* @__PURE__ */ x({
   __name: "Toaster",
+  emits: ["click"],
   setup(e) {
     const { toasts: t } = bl();
     return (n, o) => (h(), C(s($v), null, {
@@ -11153,7 +11154,10 @@ const Tm = { class: "flex items-start space-x-3" }, Dm = ["src", "alt"], Pm = { 
         (h(!0), N(be, null, vt(s(t), (a) => (h(), C(s(mv), D({
           key: a.id,
           ref_for: !0
-        }, a, { class: "mt-1.5" }), {
+        }, a, {
+          class: "mt-1.5",
+          onClick: (r) => n.$emit("click", a)
+        }), {
           default: y(() => [
             re("div", Tm, [
               a.icon ? (h(), N(be, { key: 0 }, [
@@ -11205,7 +11209,7 @@ const Tm = { class: "flex items-start space-x-3" }, Dm = ["src", "alt"], Pm = { 
             (h(), C(Ve(a.action)))
           ]),
           _: 2
-        }, 1040))), 128)),
+        }, 1040, ["onClick"]))), 128)),
         R(s(vv))
       ]),
       _: 1
