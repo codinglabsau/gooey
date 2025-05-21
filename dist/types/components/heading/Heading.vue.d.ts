@@ -1,9 +1,11 @@
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     as?: string | undefined;
+    class?: any;
 }>, {
     as: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     as?: string | undefined;
+    class?: any;
 }>, {
     as: string;
 }>>> & Readonly<{}>, {
