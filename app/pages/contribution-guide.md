@@ -5,7 +5,7 @@ Gooey is built primarily with [Shadcdn-vue](https://www.shadcn-vue.com/) compone
 
 Components can be installed into the project following the standard installation method, eg. `npx shadcn-vue@latest add sidebar`.
 
-Some components are customised wrappers around shadcn-vue to alter the API slightly.
+Note that due to an ongoing bug in shadcn-vue and the `components.json` `aliases.ui` value, components will not install directly to `./src/components`. After installing, you should copy the component up one level, eg. `
 
 When adding a component, ensure you do these things:
 

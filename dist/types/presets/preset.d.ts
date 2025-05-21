@@ -86,8 +86,6 @@ declare const _default: {
             };
         };
     };
-    plugins: {
-        handler: () => void;
-    }[];
+    plugins: any[];
 };
 export default _default;

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Script to install shadcn-vue components and move them to the correct location
+# Usage: ./add <component-name>
+
+# Check if component name is provided
+if [ -z "$1" ]; then
+  echo "Error: Component name is required"
+  echo "Usage: ./add <component-name>"
+  exit 1
+fi
+
+COMPONENT=$1
+
+echo "Installing component: $COMPONENT"
+
+# Run shadcn-vue installation command
+npx shadcn-vue@latest add $COMPONENT
+
+# Check if installation was successful
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to install component $COMPONENT"
+  exit 1
+fi
+
+# Create target directory if it doesn't exist
+mkdir -p src/components/$COMPONENT
+
+# Move files from ui directory to components directory
+if [ -d "src/components/ui/$COMPONENT" ]; then
+  # this is a necessary workaround because shadcn-vue won't write
+  # to src/components due to a bug (refer to components.json)
+  echo "Moving files from src/components/ui to src/components"
+  # find and replace "components/ui" with "components" in UI directory
+  find src/components/ui -type f -exec sed -i '' 's|components/ui|components|g' {} +
+
+  rsync -a src/components/ui/ src/components/
+  rm -r src/components/ui
+
+  echo "Component $COMPONENT successfully installed and moved to the correct location"
+else
+  echo "Warning: Directory src/components/ui/$COMPONENT not found"
+  echo "Check if the component was installed correctly"
+  exit 1
+fi

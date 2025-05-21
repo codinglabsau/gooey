@@ -8,38 +8,46 @@ import {
   ContributionGuide,
   Theme,
 
-  // demos
-  TwoColumnLayoutDemo,
-
   // components
   Accord,
   Avatar,
-  AlertDialog,
   Badge,
   Button,
-  Card,
   Carousel,
-  Checkbox,
   Command,
-  Dialog,
   DropdownMenu,
   Flasher,
-  Heading,
-  Input,
-  Label,
+  Pagination,
   Popover,
   Progress,
-  Select,
-  Sheet,
+  Separator,
   Skeleton,
-  Slider,
-  Switch,
-  Table,
-  Tabs,
-  Textarea,
   Toast,
   Tip,
+
+  // forms
+  Checkbox,
+  Input,
+  Label,
+  Select,
+  Slider,
+  Switch,
+  Textarea,
+
+  // page layout
+  AlertDialog,
+  Card,
+  Dialog,
+  Heading,
+  Sheet,
+  Table,
+  Tabs,
+
+  // layouts
   TwoColumnLayout,
+
+  // demos
+  TwoColumnLayoutDemo,
 } from "@app/pages"
 import ArticleLayout from "@app/layouts/ArticleLayout.vue"
 import ComponentLayout from "@app/layouts/ComponentLayout.vue"
@@ -122,6 +130,12 @@ const routes = [
         meta: { layout: ComponentLayout },
       },
       {
+        name: "Pagination",
+        path: "/components/pagination",
+        component: Pagination,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
         name: "Popover",
         path: "/components/popover",
         component: Popover,
@@ -131,6 +145,12 @@ const routes = [
         name: "Progress",
         path: "/components/progress",
         component: Progress,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Separator",
+        path: "/components/separator",
+        component: Separator,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
