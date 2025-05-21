@@ -16,19 +16,20 @@ const props = ref<any>({})
       <h2 class="text-2xl">Flasher via props</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button data-cy="prop-info" @click="props.info = 'This is an info notification'">
+        <Button variant="outline" data-cy="prop-info" @click="props.info = 'This is an info notification'">
           Info
         </Button>
 
-        <Button data-cy="prop-success" @click="props.success = 'This is a success notification'">
+        <Button variant="outline" data-cy="prop-success" @click="props.success = 'This is a success notification'">
           Success
         </Button>
 
-        <Button data-cy="prop-warning" @click="props.warning = 'This is a warning notification'">
+        <Button variant="outline" data-cy="prop-warning" @click="props.warning = 'This is a warning notification'">
           Warning
         </Button>
 
         <Button
+          variant="outline"
           data-cy="prop-errors"
           @click="
             () => {
@@ -44,6 +45,7 @@ const props = ref<any>({})
         </Button>
 
         <Button
+          variant="outline"
           data-cy="prop-errors-key"
           @click="
             () => {
@@ -59,6 +61,7 @@ const props = ref<any>({})
         </Button>
 
         <Button
+          variant="outline"
           data-cy="prop-errors-both"
           @click="
             () => {
@@ -79,17 +82,20 @@ const props = ref<any>({})
       <h2 class="text-2xl">Flasher via helper</h2>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button data-cy="info" @click="info('This is an info notification')">Info toast</Button>
+        <Button variant="outline" data-cy="info" @click="info('This is an info notification')">Info toast</Button>
 
-        <Button data-cy="success" @click="success('This is a success notification')"
-          >Success</Button
+        <Button variant="outline" data-cy="success" @click="success('This is a success notification')"
+        >Success
+        </Button
         >
 
-        <Button data-cy="warning" @click="warning('This is a warning notification')"
-          >Warning</Button
+        <Button variant="outline" data-cy="warning" @click="warning('This is a warning notification')"
+        >Warning
+        </Button
         >
 
         <Button
+          variant="outline"
           data-cy="errors"
           @click="
             () => {
@@ -104,6 +110,7 @@ const props = ref<any>({})
         </Button>
 
         <Button
+          variant="outline"
           data-cy="errors-key"
           @click="
             () => {
@@ -121,6 +128,7 @@ const props = ref<any>({})
         </Button>
 
         <Button
+          variant="outline"
           data-cy="errors-both"
           @click="
             () => {
