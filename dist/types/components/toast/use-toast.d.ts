@@ -389,7 +389,9 @@ declare function useToast(): {
     toast: typeof toast;
     dismiss: (toastId?: string) => void;
 };
-type Toast = Omit<ToasterToast, "id">;
+type Toast = Omit<ToasterToast, "id"> & {
+    id?: string;
+};
 declare function toast(props: Toast): {
     id: string;
     dismiss: () => void;

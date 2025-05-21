@@ -79,6 +79,7 @@ const onClickEvent = (data: any) => {
         data-cy="toast"
         @click="
           toast({
+            id: 'monkeys',
             title: 'FYI',
             description: 'You have been toasted (click me)',
           })
@@ -192,6 +193,8 @@ const onClickEvent = (data: any) => {
 
   <ul class="list-disc pl-4">
     <li>Icon and iconClasses prop</li>
+
+    <li>Preservation of the ID prop when provided</li>
 
     <li>Object descriptions (value only (default), key only, and key + value)</li>
 

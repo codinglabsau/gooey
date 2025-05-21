@@ -135,10 +135,13 @@ function useToast() {
   }
 }
 
-type Toast = Omit<ToasterToast, "id">
+// type Toast = Omit<ToasterToast, "id">
+type Toast = Omit<ToasterToast, "id"> & {
+  id?: string; // id is optional to allow for server-side ID tracking
+};
 
 function toast(props: Toast) {
-  const id = genId()
+  const id = props.id ?? genId()
 
   const update = (props: ToasterToast) =>
     dispatch({
