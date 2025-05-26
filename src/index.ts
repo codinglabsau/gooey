@@ -4,6 +4,9 @@ import preset from "@/presets/preset"
 // radix components
 import { DropdownMenuPortal } from "radix-vue"
 
+// utils
+export * from "@/lib/utils"
+
 // custom components
 export * from "@/components/layout"
 export * from "@/components/flasher"
