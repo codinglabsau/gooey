@@ -28,4 +28,5 @@ export * from "@/components/table";
 export * from "@/components/tabs";
 export * from "@/components/textarea";
 export * from "@/components/toast";
+export * from "@/lib/utils";
 export { preset, DropdownMenuPortal };
