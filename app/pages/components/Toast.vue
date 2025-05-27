@@ -79,7 +79,6 @@ const onClickEvent = (data: any) => {
         data-cy="toast"
         @click="
           toast({
-            id: 'monkeys',
             title: 'FYI',
             description: 'You have been toasted (click me)',
           })
@@ -124,6 +123,24 @@ const onClickEvent = (data: any) => {
         "
       >
         Toast with image
+      </Button>
+    </li>
+
+    <li>
+      <Button
+        variant="outline"
+        data-cy="toast-meta"
+        @click="
+          toast({
+            title: 'Think fast!',
+            description: 'This toast includes meta data at toast.meta.',
+            meta: {
+              key: 'value',
+            }
+          })
+        "
+      >
+        Toast with meta
       </Button>
     </li>
 
@@ -194,7 +211,7 @@ const onClickEvent = (data: any) => {
   <ul class="list-disc pl-4">
     <li>Icon and iconClasses prop</li>
 
-    <li>Preservation of the ID prop when provided</li>
+    <li>Meta object that can be attached to a toast</li>
 
     <li>Object descriptions (value only (default), key only, and key + value)</li>
 
