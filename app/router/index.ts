@@ -22,6 +22,7 @@ import {
   Checkbox,
   Command,
   Dialog,
+  Drawer,
   DropdownMenu,
   Flasher,
   Heading,
@@ -231,6 +232,12 @@ const routes = [
         name: "Sheet / Slideover",
         path: "/components/sheet",
         component: Sheet,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Drawer",
+        path: "/components/drawer",
+        component: Drawer,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
