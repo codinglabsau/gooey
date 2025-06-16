@@ -11,6 +11,7 @@ type ToasterToast = ToastProps & {
     description?: StringOrObjectOrVNode;
     action?: Component;
     objectFormat?: ObjectFormat;
+    meta?: object;
 };
 declare function useToast(): {
     toasts: import("vue").ComputedRef<{
@@ -385,13 +386,12 @@ declare function useToast(): {
             __name?: string | undefined;
         } | undefined;
         objectFormat?: ObjectFormat | undefined;
+        meta?: object | undefined;
     }[]>;
     toast: typeof toast;
     dismiss: (toastId?: string) => void;
 };
-type Toast = Omit<ToasterToast, "id"> & {
-    id?: string;
-};
+type Toast = Omit<ToasterToast, "id">;
 declare function toast(props: Toast): {
     id: string;
     dismiss: () => void;

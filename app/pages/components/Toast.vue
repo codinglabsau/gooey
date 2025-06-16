@@ -136,7 +136,7 @@ const onClickEvent = (data: any) => {
             description: 'This toast includes meta data at toast.meta.',
             meta: {
               key: 'value',
-            }
+            },
           })
         "
       >
