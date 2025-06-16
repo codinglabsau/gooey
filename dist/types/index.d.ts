@@ -1,5 +1,6 @@
 import preset from "@/presets/preset";
 import { DropdownMenuPortal } from "radix-vue";
+export * from "@/lib/utils";
 export * from "@/components/layout";
 export * from "@/components/flasher";
 export * from "@/components/heading";
@@ -28,5 +29,4 @@ export * from "@/components/table";
 export * from "@/components/tabs";
 export * from "@/components/textarea";
 export * from "@/components/toast";
-export * from "@/lib/utils";
 export { preset, DropdownMenuPortal };
