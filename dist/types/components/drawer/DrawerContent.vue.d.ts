@@ -3,34 +3,18 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     escapeKeyDown: (event: KeyboardEvent) => void;
-    pointerDownOutside: (event: CustomEvent<{
-        originalEvent: PointerEvent;
-    }>) => void;
-    focusOutside: (event: CustomEvent<{
-        originalEvent: FocusEvent;
-    }>) => void;
-    interactOutside: (event: CustomEvent<{
-        originalEvent: PointerEvent;
-    }> | CustomEvent<{
-        originalEvent: FocusEvent;
-    }>) => void;
+    pointerDownOutside: (event: import("reka-ui").PointerDownOutsideEvent) => void;
+    focusOutside: (event: import("reka-ui").FocusOutsideEvent) => void;
+    interactOutside: (event: import("reka-ui").PointerDownOutsideEvent | import("reka-ui").FocusOutsideEvent) => void;
     openAutoFocus: (event: Event) => void;
     closeAutoFocus: (event: Event) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DialogContentProps & {
     class?: any;
 }>>> & Readonly<{
     onEscapeKeyDown?: ((event: KeyboardEvent) => any) | undefined;
-    onPointerDownOutside?: ((event: CustomEvent<{
-        originalEvent: PointerEvent;
-    }>) => any) | undefined;
-    onFocusOutside?: ((event: CustomEvent<{
-        originalEvent: FocusEvent;
-    }>) => any) | undefined;
-    onInteractOutside?: ((event: CustomEvent<{
-        originalEvent: PointerEvent;
-    }> | CustomEvent<{
-        originalEvent: FocusEvent;
-    }>) => any) | undefined;
+    onPointerDownOutside?: ((event: import("reka-ui").PointerDownOutsideEvent) => any) | undefined;
+    onFocusOutside?: ((event: import("reka-ui").FocusOutsideEvent) => any) | undefined;
+    onInteractOutside?: ((event: import("reka-ui").PointerDownOutsideEvent | import("reka-ui").FocusOutsideEvent) => any) | undefined;
     onOpenAutoFocus?: ((event: Event) => any) | undefined;
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
 }>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
