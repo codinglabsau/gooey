@@ -20,6 +20,7 @@ import {
   Card,
   Carousel,
   Checkbox,
+  Collapsible,
   Command,
   Dialog,
   Drawer,
@@ -102,6 +103,12 @@ const routes = [
         name: "Carousel",
         path: "/components/carousel",
         component: Carousel,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Collapsible",
+        path: "/components/collapsible",
+        component: Collapsible,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
