@@ -40,6 +40,12 @@ const componentProps: ComponentProp[] = [
     description: "Title text of the toast",
   },
   {
+    name: "position",
+    type: "string",
+    default: "bottom-right",
+    description: "Position of the toast viewport",
+  },
+  {
     name: "description",
     type: ["string", "object"],
     description: "Description text or object to display in the toast",

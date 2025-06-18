@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { isVNode } from "vue"
 import { useToast } from "./use-toast"
+import type { ToastViewportPosition } from "."
 import { Toast, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from "."
+
+defineProps<{
+  position?: ToastViewportPosition
+}>()
 
 defineEmits<{
   click: [value: object]
@@ -73,6 +78,6 @@ const { toasts } = useToast()
       <component :is="toast.action" />
     </Toast>
 
-    <ToastViewport />
+    <ToastViewport :position="position"/>
   </ToastProvider>
 </template>
