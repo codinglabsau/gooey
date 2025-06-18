@@ -13422,6 +13422,9 @@ function ng(e) {
 }
 const og = { class: "flex items-start space-x-3" }, ag = ["src", "alt"], rg = { class: "grid gap-1" }, sg = { class: "font-bold" }, lg = /* @__PURE__ */ w({
   __name: "Toaster",
+  props: {
+    position: {}
+  },
   emits: ["click"],
   setup(e) {
     const { toasts: t } = mi();
@@ -13485,7 +13488,7 @@ const og = { class: "flex items-start space-x-3" }, ag = ["src", "alt"], rg = { 
           ]),
           _: 2
         }, 1040, ["onClick"]))), 128)),
-        F(s(ug))
+        F(s(ug), { position: n.position }, null, 8, ["position"])
       ]),
       _: 1
     }));
@@ -13523,22 +13526,37 @@ const og = { class: "flex items-start space-x-3" }, ag = ["src", "alt"], rg = { 
 }), ug = /* @__PURE__ */ w({
   __name: "ToastViewport",
   props: {
+    position: { default: "bottom-right" },
     hotkey: {},
-    label: { type: [String, Function] },
+    label: {},
     asChild: { type: Boolean },
-    as: { type: [String, Object, Function] },
+    as: {},
     class: {}
   },
   setup(e) {
     const t = e, n = B(() => {
-      const { class: o, ...a } = t;
-      return a;
+      const { class: a, ...r } = t;
+      return r;
+    }), o = B(() => {
+      switch (t.position) {
+        case "top-left":
+          return "top-0 left-0 bottom-auto";
+        case "top-right":
+          return "top-0 right-0 bottom-auto";
+        case "bottom-left":
+          return "bottom-0 left-0 top-auto";
+        case "bottom-right":
+          return "bottom-0 right-0 top-auto";
+        default:
+          return "bottom-0 right-0 top-auto";
+      }
     });
-    return (o, a) => (h(), C(s(Km), k(n.value, {
+    return (a, r) => (h(), C(s(Km), k(n.value, {
       class: s(N)(
         // overriding the defaults to position at the bottom on mobile viewport
         // 'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
-        "fixed bottom-0 right-0 top-auto flex-col z-[100] flex max-h-screen w-full p-4 md:max-w-[420px]",
+        "fixed flex-col z-[100] flex max-h-screen w-full p-4 md:max-w-[420px]",
+        o.value,
         t.class
       )
     }), null, 16, ["class"]));

@@ -1,4 +1,4 @@
-import type { ToastRootProps } from "radix-vue";
+import type { ToastRootProps, ToastViewportProps as ToastViewportRootProps } from "radix-vue";
 import type { HTMLAttributes } from "vue";
 export { default as Toaster } from "./Toaster.vue";
 export { default as Toast } from "./Toast.vue";
@@ -14,8 +14,12 @@ export declare const toastVariants: (props?: ({
     variant?: "default" | "destructive" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
 type ToastVariants = VariantProps<typeof toastVariants>;
+export type ToastViewportPosition = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 export interface ToastProps extends ToastRootProps {
     class?: HTMLAttributes["class"];
     variant?: ToastVariants["variant"];
     onOpenChange?: ((value: boolean) => void) | undefined;
+}
+export interface ToastViewportProps extends ToastViewportRootProps {
+    position?: ToastViewportPosition;
 }

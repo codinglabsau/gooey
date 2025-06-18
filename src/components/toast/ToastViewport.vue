@@ -7,8 +7,9 @@ import { cn } from "@/lib/utils"
 const props = withDefaults(
   defineProps<ToastViewportProps & { class?: HTMLAttributes["class"] }>(),
   {
-  position: 'bottom-right'
-})
+    position: "bottom-right",
+  }
+)
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
@@ -18,16 +19,16 @@ const delegatedProps = computed(() => {
 
 const positionClass = computed(() => {
   switch (props.position) {
-    case 'top-left':
-      return 'top-0 left-0 bottom-auto'
-    case 'top-right':
-      return 'top-0 right-0 bottom-auto'
-    case 'bottom-left':
-      return 'bottom-0 left-0 top-auto'
-    case 'bottom-right':
-      return 'bottom-0 right-0 top-auto'
+    case "top-left":
+      return "top-0 left-0 bottom-auto"
+    case "top-right":
+      return "top-0 right-0 bottom-auto"
+    case "bottom-left":
+      return "bottom-0 left-0 top-auto"
+    case "bottom-right":
+      return "bottom-0 right-0 top-auto"
     default:
-      return 'bottom-0 right-0 top-auto' // default position
+      return "bottom-0 right-0 top-auto" // default position
   }
 })
 </script>

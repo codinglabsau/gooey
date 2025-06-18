@@ -78,6 +78,6 @@ const { toasts } = useToast()
       <component :is="toast.action" />
     </Toast>
 
-    <ToastViewport :position="position"/>
+    <ToastViewport :position="position" />
   </ToastProvider>
 </template>

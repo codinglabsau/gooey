@@ -1,4 +1,4 @@
-import type { CollapsibleRootProps } from 'reka-ui';
+import type { CollapsibleRootProps } from "reka-ui";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<CollapsibleRootProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     "update:open": (value: boolean) => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<CollapsibleRootProps>>> & Readonly<{
