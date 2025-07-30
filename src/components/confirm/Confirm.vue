@@ -33,7 +33,7 @@ const { isOpen, close, cancel, finish, confirmContext} = useConfirm()
 
       <AlertDialogFooter>
         <AlertDialogCancel @click="cancel">
-          {{ confirmContext.actionText?.cancel ?? 'Cancel') }}
+          {{ confirmContext.actionText?.cancel ?? 'Cancel' }}
         </AlertDialogCancel>
 
         <AlertDialogAction @click="finish">
