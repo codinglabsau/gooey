@@ -13,7 +13,6 @@ import {
 
   // components
   Accord,
-  Alert,
   Avatar,
   AlertDialog,
   Badge,
@@ -23,6 +22,7 @@ import {
   Checkbox,
   Collapsible,
   Command,
+  ConfirmDialog,
   Dialog,
   Drawer,
   DropdownMenu,
@@ -83,12 +83,6 @@ const routes = [
         meta: { layout: ComponentLayout },
       },
       {
-        name: "Alert",
-        path: "/components/alert",
-        component: Alert,
-        meta: { layout: ComponentLayout, shadcn: false },
-      },
-      {
         name: "Avatar",
         path: "/components/avatar",
         component: Avatar,
@@ -123,6 +117,12 @@ const routes = [
         path: "/components/command",
         component: Command,
         meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Confirm Dialog",
+        path: "/components/confirm-dialog",
+        component: ConfirmDialog,
+        meta: { layout: ComponentLayout, shadcn: false },
       },
       {
         name: "Dropdown Menu",

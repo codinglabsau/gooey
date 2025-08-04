@@ -8,7 +8,7 @@ export { default as Theme } from "./theme.md"
 export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
 
 // components
-export { default as Alert } from "./components/Alert.vue"
+export { default as ConfirmDialog } from "./components/ConfirmDialog.vue"
 export { default as AlertDialog } from "./components/AlertDialog.vue"
 export { default as Accord } from "./components/Accord.vue"
 export { default as Avatar } from "./components/Avatar.vue"
