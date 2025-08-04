@@ -6,7 +6,7 @@ type ContentType = {
 }
 
 type ActionButtonType = {
-  label: string,
+  label?: string,
   action?: () => void,
 }
 
