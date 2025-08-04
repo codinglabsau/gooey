@@ -11,10 +11,10 @@ import {
   useAlert
 } from "@"
 
-const { isOpen, confirm, close, secondaryButton, primaryButton, content } = useAlert()
+const { isOpen, showAlert, close, secondaryButton, primaryButton, content } = useAlert()
 
-const confirmAction = () => {
-  confirm({
+const alertAcion = () => {
+  showAlert({
     content: {
       title: "Close Environment [Production]",
       description: "Are you sure you want to close this environment? This action is... irreversible!",
@@ -35,7 +35,7 @@ const confirmAction = () => {
 
 <template>
   <div>
-    <Button @click="confirmAction"> Close Environment </Button>
+    <Button @click="alertAcion"> Close Environment </Button>
 
     <AlertDialog :open="isOpen">
       <AlertDialogContent
