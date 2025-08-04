@@ -13,7 +13,7 @@ type AlertType = {
   title: string,
   description: string
   action: ActionType,
-  cancelAction: ActionType,
+  cancelAction?: ActionType,
 }
 
 const isOpen = ref(false)
