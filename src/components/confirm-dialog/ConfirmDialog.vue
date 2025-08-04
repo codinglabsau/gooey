@@ -11,7 +11,7 @@ import {
   useConfirmDialog
 } from "@"
 
-const { isOpen, close, cancelAction, actionButton, title, description } = useConfirmDialog()
+const { isOpen, close, cancelButton, actionButton, title, description } = useConfirmDialog()
 </script>
 
 <template>
@@ -32,8 +32,8 @@ const { isOpen, close, cancelAction, actionButton, title, description } = useCon
       </AlertDialogHeader>
 
       <AlertDialogFooter>
-        <AlertDialogCancel @click="cancelAction.handler">
-          {{ cancelAction.label ?? 'Cancel' }}
+        <AlertDialogCancel @click="cancelButton.handler">
+          {{ cancelButton.label ?? 'Cancel' }}
         </AlertDialogCancel>
 
         <AlertDialogAction @click="actionButton.handler">

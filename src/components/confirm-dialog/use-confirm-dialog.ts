@@ -19,14 +19,14 @@ type AlertType = {
 const isOpen = ref(false)
 const title = ref('')
 const description = ref('')
-const cancelAction = ref<ActionObject | null>(null)
+const cancelButton = ref<ActionObject | null>(null)
 const actionButton = ref<ActionObject | null>(null)
 
 const confirmDialog = (alertConfig: AlertType) => {
   title.value = alertConfig.title
   description.value = alertConfig.description
 
-  cancelAction.value = setAction(alertConfig.cancelAction)
+  cancelButton.value = setAction(alertConfig.cancelAction)
   actionButton.value = setAction(alertConfig.action)
 
   open()
@@ -75,7 +75,7 @@ function useConfirmDialog() {
     description,
     isOpen,
     close,
-    cancelAction,
+    cancelButton,
     actionButton,
   }
 }
