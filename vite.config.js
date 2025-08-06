@@ -30,7 +30,6 @@ export default defineConfig(({ command }) => {
         include: [/\.vue$/, /\.md$/],
       }),
       isBuild && removeAttr({
-        //extensions: ['vue' ],
         attributes: ['data-cy']
       }),
       Markdown({ /* options */ }),
