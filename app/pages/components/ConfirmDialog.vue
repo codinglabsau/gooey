@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-  Button,
-  ConfirmDialog,
-  useConfirmDialog
-} from "@"
+import { Button, ConfirmDialog, useConfirmDialog } from "@"
 
 const { confirmDialog, close } = useConfirmDialog()
 
@@ -21,14 +17,15 @@ const baseDialog = () => {
 const customLabels = () => {
   confirmDialog({
     title: "Custom Labels",
-    description: "As well as a handler for the action, you can provide a string to replace the action.",
-    cancelAction: 'Custom Cancel Action Label',
+    description:
+      "As well as a handler for the action, you can provide a string to replace the action.",
+    cancelAction: "Custom Cancel Action Label",
     action: {
-      label: 'Custom Action Label',
+      label: "Custom Action Label",
       handler: () => {
         alert("You have confirmed!")
         close()
-      }
+      },
     },
   })
 }
@@ -36,20 +33,21 @@ const customLabels = () => {
 const customDialog = () => {
   confirmDialog({
     title: "Custom Dialog",
-    description: "You can also provide a full object with label and handler to fully customise the confirm dialog.",
+    description:
+      "You can also provide a full object with label and handler to fully customise the confirm dialog.",
     cancelAction: {
       label: "Cancel Me!",
       handler: () => {
-        alert('Wow a custom cancel!')
+        alert("Wow a custom cancel!")
         close()
-      }
+      },
     },
     action: {
-      label: 'Confirm Me!',
+      label: "Confirm Me!",
       handler: () => {
         alert("Wow a custom action!")
         close()
-      }
+      },
     },
   })
 }

@@ -1,8 +1,8 @@
-import { ref } from 'vue'
+import { ref } from "vue"
 
 type ActionObject = {
-  label: string | undefined,
-  handler: () => void,
+  label: string | undefined
+  handler: () => void
 }
 
 type ActionHandler = () => void
@@ -10,17 +10,23 @@ type ActionHandler = () => void
 type ActionType = ActionObject | ActionHandler | string | undefined
 
 type AlertType = {
-  title: string,
+  title: string
   description: string
-  action: ActionType,
-  cancelAction?: ActionType,
+  action: ActionType
+  cancelAction?: ActionType
 }
 
 const isOpen = ref(false)
-const title = ref('')
-const description = ref('')
-const cancelButton = ref<ActionObject | null>(null)
-const actionButton = ref<ActionObject | null>(null)
+const title = ref("")
+const description = ref("")
+const cancelButton = ref<ActionObject>({
+  label: undefined,
+  handler: () => {},
+})
+const actionButton = ref<ActionObject>({
+  label: undefined,
+  handler: () => {},
+})
 
 const confirmDialog = (alertConfig: AlertType) => {
   title.value = alertConfig.title
@@ -33,21 +39,21 @@ const confirmDialog = (alertConfig: AlertType) => {
 }
 
 const setAction = (config: ActionType): ActionObject => {
-  if (typeof config === 'string') {
+  if (typeof config === "string") {
     return {
       label: config,
       handler: close,
     }
   }
 
-  if (typeof config === 'function') {
+  if (typeof config === "function") {
     return {
       label: undefined,
       handler: config,
     }
   }
 
-  if (typeof config === 'object' && config !== undefined) {
+  if (typeof config === "object" && config !== undefined) {
     return {
       label: config.label ?? undefined,
       handler: config.handler ?? close,
@@ -80,6 +86,4 @@ function useConfirmDialog() {
   }
 }
 
-export {
-  useConfirmDialog
-}
+export { useConfirmDialog }
