@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router"
-import { type Component, computed } from "vue"
+import { computed } from "vue"
 import { ArrowRight } from "lucide-vue-next"
 import { Button } from "@/components/button"
 import { Heading } from "@"
