@@ -24,15 +24,25 @@ const forwarded = useForwardPropsEmits(props, emits)
 
 <template>
   <Accordion v-bind="forwarded">
-    <AccordionItem v-for="(item, key) in (content as Item[])" :key="key" :value="'item-' + key">
+    <AccordionItem
+      v-for="(item, key) in (content as Item[])"
+      :key="key"
+      :value="'item-' + key"
+    >
       <AccordionTrigger>
-        <slot :name="key + '.title'" :item="item">
+        <slot
+          :name="key + '.title'"
+          :item="item"
+        >
           {{ item.title }}
         </slot>
       </AccordionTrigger>
 
       <AccordionContent>
-        <slot :name="key + '.content'" :item="item">
+        <slot
+          :name="key + '.content'"
+          :item="item"
+        >
           {{ item.content }}
         </slot>
       </AccordionContent>

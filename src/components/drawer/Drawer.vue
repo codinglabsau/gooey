@@ -12,7 +12,10 @@ const forwarded = useForwardPropsEmits(props, emits) as Partial<DrawerRootProps>
 </script>
 
 <template>
-  <DrawerRoot data-slot="drawer" v-bind="forwarded">
+  <DrawerRoot
+    data-slot="drawer"
+    v-bind="forwarded"
+  >
     <slot />
   </DrawerRoot>
 </template>

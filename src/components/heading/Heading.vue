@@ -15,7 +15,10 @@ const props = withDefaults(
 
 <template>
   <div class="flex items-center justify-between space-y-2">
-    <component :is="as" :class="cn('text-3xl font-bold tracking-tight', props.class)">
+    <component
+      :is="as"
+      :class="cn('text-3xl font-bold tracking-tight', props.class)"
+    >
       <slot />
     </component>
 

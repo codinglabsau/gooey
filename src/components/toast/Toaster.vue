@@ -31,9 +31,13 @@ const { toasts } = useToast()
             :src="toast.icon"
             :class="['size-16 rounded-sm object-cover', toast.iconClasses]"
             :alt="toast.title"
-          />
+          >
 
-          <component :is="toast.icon" v-else :class="['size-6', toast.iconClasses]" />
+          <component
+            :is="toast.icon"
+            v-else
+            :class="['size-6', toast.iconClasses]"
+          />
         </template>
 
         <div class="grid gap-1">
@@ -57,8 +61,7 @@ const { toasts } = useToast()
               </template>
 
               <template v-else-if="toast.objectFormat === 'both'">
-                <span class="font-bold">{{ key }}</span
-                >: {{ value }}
+                <span class="font-bold">{{ key }}</span>: {{ value }}
               </template>
 
               <template v-else>

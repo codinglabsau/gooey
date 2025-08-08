@@ -15,7 +15,9 @@ defineProps<{
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHead class="w-[100px]"> Prop</TableHead>
+        <TableHead class="w-[100px]">
+          Prop
+        </TableHead>
 
         <TableHead>Default</TableHead>
 
@@ -24,13 +26,19 @@ defineProps<{
     </TableHeader>
 
     <TableBody>
-      <TableRow v-for="(prop, index) in props" :key="index">
+      <TableRow
+        v-for="(prop, index) in props"
+        :key="index"
+      >
         <TableCell class="font-medium">
           {{ prop.name }}
         </TableCell>
 
         <TableCell>
-          <span v-if="prop.default" class="bg-muted px-2 py-1 font-mono">{{ prop.default }}</span>
+          <span
+            v-if="prop.default"
+            class="bg-muted px-2 py-1 font-mono"
+          >{{ prop.default }}</span>
 
           <span v-else>-</span>
         </TableCell>

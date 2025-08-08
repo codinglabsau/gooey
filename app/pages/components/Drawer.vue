@@ -19,7 +19,9 @@ const goal = ref(5)
 <template>
   <Drawer>
     <DrawerTrigger as-child>
-      <Button variant="outline"> Open Drawer </Button>
+      <Button variant="outline">
+        Open Drawer
+      </Button>
     </DrawerTrigger>
 
     <DrawerContent>
@@ -49,7 +51,9 @@ const goal = ref(5)
                 {{ goal }}
               </div>
 
-              <div class="text-[0.70rem] uppercase text-muted-foreground">Issues per day</div>
+              <div class="text-[0.70rem] uppercase text-muted-foreground">
+                Issues per day
+              </div>
             </div>
 
             <Button
@@ -70,7 +74,9 @@ const goal = ref(5)
           <Button>Submit</Button>
 
           <DrawerClose as-child>
-            <Button variant="outline"> Cancel </Button>
+            <Button variant="outline">
+              Cancel
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </div>

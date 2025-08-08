@@ -5,7 +5,11 @@ import { Button } from "@/components/button"
 </script>
 
 <template>
-  <Button variant="outline" data-cy="button" as-child>
+  <Button
+    variant="outline"
+    data-cy="button"
+    as-child
+  >
     <RouterLink to="/demo/two-column-layout">
       <Expand class="mr-2 h-4 w-4" />
       Fullscreen

@@ -31,11 +31,20 @@ const sidebarOpen = ref(false)
 <template>
   <TwoColumnLayout>
     <Header>
-      <RouterLink to="/" class="hidden lg:block">
+      <RouterLink
+        to="/"
+        class="hidden lg:block"
+      >
         <div class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <img
+            src="/logo.svg"
+            alt="Coding Labs UI"
+            class="w-6"
+          >
 
-          <div class="text-xl">GOOEY</div>
+          <div class="text-xl">
+            GOOEY
+          </div>
         </div>
       </RouterLink>
 
@@ -43,24 +52,39 @@ const sidebarOpen = ref(false)
 
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
-          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+          <SunIcon
+            class="size-5 text-primary"
+            @click="colourMode = false"
+          />
 
           <Switch v-model:checked="colourMode" />
 
-          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
+          <MoonIcon
+            class="size-5 text-primary"
+            @click="colourMode = true"
+          />
         </div>
       </div>
     </Header>
 
     <TwoColumnLayoutSidebar>
       <TwoColumnLayoutSidebarMobile>
-        <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
+        <Sheet
+          :open="sidebarOpen"
+          @update:open="sidebarOpen = !sidebarOpen"
+        >
           <SheetContent side="left">
             <SheetHeader>
               <SheetTitle class="flex items-center space-x-2">
-                <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+                <img
+                  src="/logo.svg"
+                  alt="Coding Labs UI"
+                  class="w-6"
+                >
 
-                <div class="text-xl">GOOEY</div>
+                <div class="text-xl">
+                  GOOEY
+                </div>
               </SheetTitle>
             </SheetHeader>
 
@@ -68,7 +92,10 @@ const sidebarOpen = ref(false)
               <SheetDescription> Sidebar navigation</SheetDescription>
             </VisuallyHidden>
 
-            <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
+            <SidebarNavigation
+              :items="navigation"
+              @navigated="sidebarOpen = false"
+            />
           </SheetContent>
         </Sheet>
       </TwoColumnLayoutSidebarMobile>
@@ -79,7 +106,10 @@ const sidebarOpen = ref(false)
     </TwoColumnLayoutSidebar>
 
     <Main>
-      <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
+      <component
+        :is="$route.meta.layout || 'div'"
+        class="sm:px-6 lg:px-8"
+      >
         <RouterView />
       </component>
     </Main>

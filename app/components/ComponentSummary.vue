@@ -24,9 +24,15 @@ const shadcnRoute = computed(() => {
   <div>
     <Heading as="h1">
       <div class="flex items-center gap-x-2">
-        <CodingLabsLogo v-if="!meta.shadcn" class="size-8" />
+        <CodingLabsLogo
+          v-if="!meta.shadcn"
+          class="size-8"
+        />
 
-        <ShadcnLogo v-if="meta.shadcn" class="size-8" />
+        <ShadcnLogo
+          v-if="meta.shadcn"
+          class="size-8"
+        />
         {{ currentRoute.value.name }}
       </div>
     </Heading>
@@ -34,10 +40,15 @@ const shadcnRoute = computed(() => {
     <h2 class="mt-4 text-2xl font-bold tracking-tight">
       {{ currentRoute.value.name }} is a
       <template v-if="meta.shadcn">
-        <span v-if="meta.modified" class="italic">modified</span> Shadcn-vue component.
+        <span
+          v-if="meta.modified"
+          class="italic"
+        >modified</span> Shadcn-vue component.
       </template>
 
-      <template v-else> custom component. </template>
+      <template v-else>
+        custom component.
+      </template>
     </h2>
 
     <template v-if="meta.shadcn">
@@ -52,7 +63,10 @@ const shadcnRoute = computed(() => {
 
       <div class="mt-10 flex items-center gap-x-6">
         <Button as-child>
-          <a :href="`https://www.shadcn-vue.com/docs${shadcnRoute}`" target="__blank">
+          <a
+            :href="`https://www.shadcn-vue.com/docs${shadcnRoute}`"
+            target="__blank"
+          >
             See Shadcn Vue Docs
           </a>
 

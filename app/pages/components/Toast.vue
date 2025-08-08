@@ -224,7 +224,10 @@ const onClickEvent = (data: any) => {
     <li>Click event with a toast is clicked</li>
   </ul>
 
-  <ComponentProps :props="componentProps" :meta="$route.meta" />
+  <ComponentProps
+    :props="componentProps"
+    :meta="$route.meta"
+  />
 
   <ComponentEvents :events="componentEvents" />
 </template>

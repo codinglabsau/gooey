@@ -17,7 +17,9 @@ import { Button } from "@/components/button"
 <template>
   <AlertDialog>
     <AlertDialogTrigger as-child>
-      <Button variant="outline"> Show Dialog </Button>
+      <Button variant="outline">
+        Show Dialog
+      </Button>
     </AlertDialogTrigger>
 
     <AlertDialogContent>

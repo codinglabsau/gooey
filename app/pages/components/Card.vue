@@ -27,7 +27,10 @@ import {
           <div class="flex flex-col space-y-1.5">
             <Label for="name">Name</Label>
 
-            <Input id="name" placeholder="Name of your project" />
+            <Input
+              id="name"
+              placeholder="Name of your project"
+            />
           </div>
 
           <div class="flex flex-col space-y-1.5">
@@ -39,13 +42,21 @@ import {
               </SelectTrigger>
 
               <SelectContent position="popper">
-                <SelectItem value="nuxt"> Nuxt </SelectItem>
+                <SelectItem value="nuxt">
+                  Nuxt
+                </SelectItem>
 
-                <SelectItem value="next"> Next.js </SelectItem>
+                <SelectItem value="next">
+                  Next.js
+                </SelectItem>
 
-                <SelectItem value="sveltekit"> SvelteKit </SelectItem>
+                <SelectItem value="sveltekit">
+                  SvelteKit
+                </SelectItem>
 
-                <SelectItem value="astro"> Astro </SelectItem>
+                <SelectItem value="astro">
+                  Astro
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -54,7 +65,9 @@ import {
     </CardContent>
 
     <CardFooter class="flex justify-between px-6 pb-6">
-      <Button variant="outline"> Cancel </Button>
+      <Button variant="outline">
+        Cancel
+      </Button>
 
       <Button>Deploy</Button>
     </CardFooter>

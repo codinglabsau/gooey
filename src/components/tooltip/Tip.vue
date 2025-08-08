@@ -24,7 +24,9 @@ const forwarded = useForwardPropsEmits(props, emits)
       </TooltipTrigger>
 
       <TooltipContent v-bind="$attrs">
-        <slot name="tooltip"> {{ tooltip }} </slot>
+        <slot name="tooltip">
+          {{ tooltip }}
+        </slot>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

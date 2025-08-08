@@ -14,14 +14,19 @@ defineProps<{
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHead class="w-[100px]"> Event</TableHead>
+        <TableHead class="w-[100px]">
+          Event
+        </TableHead>
 
         <TableHead>Description</TableHead>
       </TableRow>
     </TableHeader>
 
     <TableBody>
-      <TableRow v-for="(event, index) in events" :key="index">
+      <TableRow
+        v-for="(event, index) in events"
+        :key="index"
+      >
         <TableCell class="font-medium">
           {{ event.name }}
         </TableCell>

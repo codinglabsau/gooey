@@ -37,7 +37,12 @@ import {
   <section>
     <DropdownMenu>
       <DropdownMenuTrigger as-child>
-        <Button variant="outline" data-cy="button"> Open </Button>
+        <Button
+          variant="outline"
+          data-cy="button"
+        >
+          Open
+        </Button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent class="w-56">

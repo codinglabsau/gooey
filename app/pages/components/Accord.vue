@@ -12,9 +12,14 @@ const content = {
 <template>
   <div class="space-y-12">
     <section>
-      <ComponentHeading class="mt-2 text-lg">Basic Accordion</ComponentHeading>
+      <ComponentHeading class="mt-2 text-lg">
+        Basic Accordion
+      </ComponentHeading>
 
-      <Accord data-cy="contentBasic" :content="content" />
+      <Accord
+        data-cy="contentBasic"
+        :content="content"
+      />
     </section>
 
     <section>
@@ -22,7 +27,10 @@ const content = {
         Accordion with Custom Content and Title
       </ComponentHeading>
 
-      <Accord data-cy="contentCustom" :content="content">
+      <Accord
+        data-cy="contentCustom"
+        :content="content"
+      >
         <template #second.title="{ item }">
           <div class="bg-destructive-foreground text-destructive">
             Custom title for {{ item.title }}
@@ -30,7 +38,11 @@ const content = {
         </template>
 
         <template #second.content="{ item }">
-          <img :src="item.content" alt="Coding Labs UI" class="mx-auto w-52" />
+          <img
+            :src="item.content"
+            alt="Coding Labs UI"
+            class="mx-auto w-52"
+          >
         </template>
       </Accord>
     </section>

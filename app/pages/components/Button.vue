@@ -3,5 +3,7 @@ import { Button } from "@/components/button"
 </script>
 
 <template>
-  <Button data-cy="button"> Button </Button>
+  <Button data-cy="button">
+    Button
+  </Button>
 </template>

@@ -15,11 +15,18 @@ import {
 
 <template>
   <section>
-    <Tabs default-value="account" class="w-[400px]">
+    <Tabs
+      default-value="account"
+      class="w-[400px]"
+    >
       <TabsList class="grid w-full grid-cols-2">
-        <TabsTrigger value="account"> Account </TabsTrigger>
+        <TabsTrigger value="account">
+          Account
+        </TabsTrigger>
 
-        <TabsTrigger value="password"> Password </TabsTrigger>
+        <TabsTrigger value="password">
+          Password
+        </TabsTrigger>
       </TabsList>
 
       <TabsContent value="account">
@@ -36,13 +43,19 @@ import {
             <div class="space-y-1">
               <Label for="name">Name</Label>
 
-              <Input id="name" default-value="Pedro Duarte" />
+              <Input
+                id="name"
+                default-value="Pedro Duarte"
+              />
             </div>
 
             <div class="space-y-1">
               <Label for="username">Username</Label>
 
-              <Input id="username" default-value="@peduarte" />
+              <Input
+                id="username"
+                default-value="@peduarte"
+              />
             </div>
           </CardContent>
 
@@ -66,13 +79,19 @@ import {
             <div class="space-y-1">
               <Label for="current">Current password</Label>
 
-              <Input id="current" type="password" />
+              <Input
+                id="current"
+                type="password"
+              />
             </div>
 
             <div class="space-y-1">
               <Label for="new">New password</Label>
 
-              <Input id="new" type="password" />
+              <Input
+                id="new"
+                type="password"
+              />
             </div>
           </CardContent>
 

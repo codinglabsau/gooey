@@ -6,9 +6,11 @@ import { ComponentSummary, ComponentHeading } from "@app/components"
   <article>
     <ComponentSummary :meta="$route.meta" />
 
-    <hr class="my-8" />
+    <hr class="my-8">
 
-    <ComponentHeading class="mt-0">Examples</ComponentHeading>
+    <ComponentHeading class="mt-0">
+      Examples
+    </ComponentHeading>
 
     <slot />
   </article>

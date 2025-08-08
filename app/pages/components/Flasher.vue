@@ -95,22 +95,28 @@ const props = ref<any>({})
       <ComponentHeading>Flasher via helper</ComponentHeading>
 
       <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button variant="outline" data-cy="info" @click="info('This is an info notification')"
-          >Info toast</Button
+        <Button
+          variant="outline"
+          data-cy="info"
+          @click="info('This is an info notification')"
         >
+          Info toast
+        </Button>
 
         <Button
           variant="outline"
           data-cy="success"
           @click="success('This is a success notification')"
-          >Success
+        >
+          Success
         </Button>
 
         <Button
           variant="outline"
           data-cy="warning"
           @click="warning('This is a warning notification')"
-          >Warning
+        >
+          Warning
         </Button>
 
         <Button

@@ -48,10 +48,20 @@ watchOnce(emblaMainApi, (emblaMainApi) => {
 
 <template>
   <div class="w-full sm:w-auto">
-    <Carousel class="relative w-full max-w-xs" @init-api="(val) => (emblaMainApi = val)">
+    <Carousel
+      class="relative w-full max-w-xs"
+      @init-api="(val) => (emblaMainApi = val)"
+    >
       <CarouselContent>
-        <CarouselItem v-for="(src, index) in images" :key="index">
-          <img :src="src" alt="alt" class="h-[300px] p-1" />
+        <CarouselItem
+          v-for="(src, index) in images"
+          :key="index"
+        >
+          <img
+            :src="src"
+            alt="alt"
+            class="h-[300px] p-1"
+          >
         </CarouselItem>
       </CarouselContent>
 
@@ -76,7 +86,7 @@ watchOnce(emblaMainApi, (emblaMainApi) => {
             :src="src"
             alt="alt"
             class="size-16 p-1"
-          />
+          >
         </CarouselItem>
       </CarouselContent>
     </Carousel>
