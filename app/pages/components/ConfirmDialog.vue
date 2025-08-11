@@ -54,7 +54,7 @@ const customDialog = () => {
 </script>
 
 <template>
-  <div>
+  <div class="flex gap-2">
     <Button data-cy="base" @click="baseDialog"> Base Confirm </Button>
 
     <Button data-cy="custom-labels" @click="customLabels"> Custom Labels </Button>
