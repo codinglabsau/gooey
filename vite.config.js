@@ -2,7 +2,7 @@ import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import Markdown from "unplugin-vue-markdown/vite"
-import stripAttributes from "./composables/strip-attributes.js"
+import stripAttributes from "./composables/strip-attributes.ts"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 
 // https://vitejs.dev/config/
@@ -31,7 +31,6 @@ export default defineConfig(({ command }) => {
         template: {
           compilerOptions: {
             nodeTransforms: isBuild ? [stripAttributes] : [],
-
           },
         },
       }),
