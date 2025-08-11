@@ -1,11 +1,11 @@
 import { ref } from "vue"
 
+type ActionHandler = () => void
+
 type ActionObject = {
   label: string | undefined
-  handler: () => void
+  handler: ActionHandler
 }
-
-type ActionHandler = () => void
 
 type ActionType = ActionObject | ActionHandler | string | undefined
 
