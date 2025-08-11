@@ -1,17 +1,9 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
-import { NodeTypes } from "@vue/compiler-core"
 import Markdown from "unplugin-vue-markdown/vite"
+import stripAttributes from "./composables/strip-attributes.js"
 import { viteStaticCopy } from "vite-plugin-static-copy"
-
-function stripTestingAttributes(node) {
-  if (node.type === NodeTypes.ELEMENT) {
-    node.props = node.props.filter(prop =>
-      prop.type === NodeTypes.ATTRIBUTE ? prop.name !== 'data-cy' : true
-    );
-  }
-}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -38,7 +30,8 @@ export default defineConfig(({ command }) => {
         include: [/\.vue$/, /\.md$/],
         template: {
           compilerOptions: {
-            nodeTransforms: isBuild ? [stripTestingAttributes] : [],
+            nodeTransforms: isBuild ? [stripAttributes] : [],
+
           },
         },
       }),
