@@ -4,6 +4,15 @@ import vue from "@vitejs/plugin-vue"
 import removeAttr from "remove-attr"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 import Markdown from 'unplugin-vue-markdown/vite'
+import { NodeTypes } from '@vue/compiler-core';
+
+function stripTestingAttributes(node) {
+  if (node.type === NodeTypes.ELEMENT) {
+    node.props = node.props.filter(prop =>
+      prop.type === NodeTypes.ATTRIBUTE ? prop.name !== 'data-cy' : true
+    );
+  }
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
@@ -28,9 +37,11 @@ export default defineConfig(({ command }) => {
     plugins: [
       vue({
         include: [/\.vue$/, /\.md$/],
-      }),
-      isBuild && removeAttr({
-        attributes: ['data-cy']
+        template: {
+          compilerOptions: {
+            nodeTransforms: isBuild ? [stripTestingAttributes] : [],
+          },
+        },
       }),
       Markdown({ /* options */ }),
       viteStaticCopy({
