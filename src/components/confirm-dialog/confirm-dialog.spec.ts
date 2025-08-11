@@ -8,9 +8,9 @@ describe("template spec", () => {
 
     cy.get('[data-cy="base"]')
       .click()
-      .get('[data-cy="alert-dialog-title"]')
+      .get('[role="alertdialog"]')
       .contains("Default Confirm")
-      .get('[data-cy="alert-dialog-description"]')
+      .get('[role="alertdialog"]')
       .contains("Only requires; title, description and action callback.")
   })
 
@@ -19,9 +19,11 @@ describe("template spec", () => {
 
     cy.get('[data-cy="base"]')
       .click()
-      .get('[data-cy="alert-dialog-cancel"]')
+      .get('[role="alertdialog"] button')
+      .eq(0)
       .contains("Cancel")
-      .get('[data-cy="alert-dialog-action"]')
+      .get('[role="alertdialog"] button')
+      .eq(1)
       .contains("Confirm")
   })
 
@@ -30,9 +32,11 @@ describe("template spec", () => {
 
     cy.get('[data-cy="custom-labels"]')
       .click()
-      .get('[data-cy="alert-dialog-cancel"]')
+      .get('[role="alertdialog"] button')
+      .eq(0)
       .contains("Custom Cancel Action Label")
-      .get('[data-cy="alert-dialog-action"]')
+      .get('[role="alertdialog"] button')
+      .eq(1)
       .contains("Custom Action Label")
   })
 
@@ -43,7 +47,7 @@ describe("template spec", () => {
       cy.stub(win, "alert").as("alert")
     })
 
-    cy.get('[data-cy="custom-handlers"]').click().get('[data-cy="alert-dialog-cancel"]').click()
+    cy.get('[data-cy="custom-handlers"]').click().get('[role="alertdialog"] button').eq(0).click()
 
     cy.get("@alert").should("have.been.called")
   })
@@ -55,7 +59,7 @@ describe("template spec", () => {
       cy.stub(win, "alert").as("alert")
     })
 
-    cy.get('[data-cy="custom-handlers"]').click().get('[data-cy="alert-dialog-action"]').click()
+    cy.get('[data-cy="custom-handlers"]').click().get('[role="alertdialog"] button').eq(1).click()
 
     cy.get("@alert").should("have.been.called")
   })
