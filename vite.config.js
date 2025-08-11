@@ -1,10 +1,9 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
-import removeAttr from "remove-attr"
+import { NodeTypes } from "@vue/compiler-core"
+import Markdown from "unplugin-vue-markdown/vite"
 import { viteStaticCopy } from "vite-plugin-static-copy"
-import Markdown from 'unplugin-vue-markdown/vite'
-import { NodeTypes } from '@vue/compiler-core';
 
 function stripTestingAttributes(node) {
   if (node.type === NodeTypes.ELEMENT) {
