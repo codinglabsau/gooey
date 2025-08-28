@@ -39,7 +39,7 @@ const charCount = computed(() => {
  <p
    v-if="charLimit"
    class="mt-1 flex w-full justify-end text-sm text-gray-500"
-   :class="{'text-red-500': charCount >charLimit}">
+   :class="{'text-red-500': charCount > charLimit}">
    {{ charCount }} / {{ charLimit }}
  </p>
 </template>
