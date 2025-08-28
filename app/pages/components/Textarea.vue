@@ -3,5 +3,5 @@ import { Textarea } from "@/components/textarea"
 </script>
 
 <template>
-  <Textarea placeholder="Type your message here." />
+  <Textarea placeholder="Type your message here." :char-limit="255"/>
 </template>

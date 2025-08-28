@@ -22,6 +22,7 @@ import {
   Checkbox,
   Collapsible,
   Command,
+  ConfirmDialog,
   Dialog,
   Drawer,
   DropdownMenu,
@@ -116,6 +117,12 @@ const routes = [
         path: "/components/command",
         component: Command,
         meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Confirm Dialog",
+        path: "/components/confirm-dialog",
+        component: ConfirmDialog,
+        meta: { layout: ComponentLayout, shadcn: false },
       },
       {
         name: "Dropdown Menu",
