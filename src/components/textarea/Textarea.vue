@@ -1,12 +1,14 @@
 <script setup lang="ts">
+import { computed } from "vue"
+import { cn } from "@/lib/utils"
 import type { HTMLAttributes } from "vue"
 import { useVModel } from "@vueuse/core"
-import { cn } from "@/lib/utils"
 
 const props = defineProps<{
   class?: HTMLAttributes["class"]
   defaultValue?: string | number
   modelValue?: string | number
+  charLimit?: number
 }>()
 
 const emits = defineEmits<{
@@ -16,6 +18,10 @@ const emits = defineEmits<{
 const modelValue = useVModel(props, "modelValue", emits, {
   passive: true,
   defaultValue: props.defaultValue,
+})
+
+const charCount = computed(() => {
+  return modelValue.value ? modelValue.value.toString().length : 0
 })
 </script>
 
@@ -29,4 +35,11 @@ const modelValue = useVModel(props, "modelValue", emits, {
       )
     "
   />
+
+ <p
+   v-if="charLimit"
+   class="mt-1 flex w-full justify-end text-sm text-gray-500"
+   :class="{'text-red-500': charCount >charLimit}">
+   {{ charCount }} / {{ charLimit }}
+ </p>
 </template>
