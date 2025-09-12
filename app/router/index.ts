@@ -21,6 +21,7 @@ import {
   Carousel,
   Checkbox,
   Collapsible,
+  Combobox,
   Command,
   ConfirmDialog,
   Dialog,
@@ -110,6 +111,12 @@ const routes = [
         name: "Collapsible",
         path: "/components/collapsible",
         component: Collapsible,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Combobox",
+        path: "/components/combobox",
+        component: Combobox,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
