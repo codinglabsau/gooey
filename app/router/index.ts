@@ -31,6 +31,7 @@ import {
   Heading,
   Input,
   Label,
+  Pagination,
   Popover,
   Progress,
   Select,
@@ -259,6 +260,12 @@ const routes = [
         name: "Drawer",
         path: "/components/drawer",
         component: Drawer,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Pagination",
+        path: "/components/pagination",
+        component: Pagination,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
