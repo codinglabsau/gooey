@@ -1,8 +1,8 @@
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    variant?: "default" | "destructive" | "outline" | "secondary" | null | undefined;
+    variant?: "default" | "destructive" | "outline" | "secondary" | "success" | "warning" | null | undefined;
     class?: any;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    variant?: "default" | "destructive" | "outline" | "secondary" | null | undefined;
+    variant?: "default" | "destructive" | "outline" | "secondary" | "success" | "warning" | null | undefined;
     class?: any;
 }>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;

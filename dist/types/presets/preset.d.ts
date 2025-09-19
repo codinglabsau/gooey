@@ -21,6 +21,14 @@ declare const _default: {
                     DEFAULT: string;
                     foreground: string;
                 };
+                success: {
+                    DEFAULT: string;
+                    foreground: string;
+                };
+                warning: {
+                    DEFAULT: string;
+                    foreground: string;
+                };
                 muted: {
                     DEFAULT: string;
                     foreground: string;
