@@ -5,12 +5,13 @@ import { cn } from "@/lib/utils"
 
 const props = defineProps<{
   variant?: BadgeVariants["variant"]
+  type?: BadgeVariants["type"]
   class?: HTMLAttributes["class"]
 }>()
 </script>
 
 <template>
-  <div :class="cn(badgeVariants({ variant }), props.class)">
+  <div :class="cn(badgeVariants({ variant, type }), props.class)">
     <slot />
   </div>
 </template>

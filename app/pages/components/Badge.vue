@@ -10,10 +10,20 @@ import { Badge } from "@/components/badge"
 
     <Badge data-cy="badge-destructive" variant="destructive"> Destructive Badge </Badge>
 
-    <Badge data-cy="badge-outline" variant="outline"> Outline Badge </Badge>
-
     <Badge data-cy="badge-success" variant="success"> Success Badge </Badge>
 
     <Badge data-cy="badge-warning" variant="warning"> Warning Badge </Badge>
+  </div>
+
+  <div class="flex gap-2">
+    <Badge type="outline" data-cy="badge"> Badge </Badge>
+
+    <Badge type="outline" data-cy="badge-secondary" variant="secondary"> Secondary Badge </Badge>
+
+    <Badge type="outline" data-cy="badge-destructive" variant="destructive"> Destructive Badge </Badge>
+
+    <Badge type="outline" data-cy="badge-success" variant="success"> Success Badge </Badge>
+
+    <Badge type="outline" data-cy="badge-warning" variant="warning"> Warning Badge </Badge>
   </div>
 </template>
