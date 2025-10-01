@@ -6,6 +6,7 @@ import { DropdownMenuPortal } from "radix-vue"
 
 // utils
 export * from "@/lib/utils"
+export * from "@/lib/createContext"
 
 // custom components
 export * from "@/components/confirm-dialog"
