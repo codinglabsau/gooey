@@ -1,3 +1,7 @@
+/**
+ * Full credit goes to shadcn: // https://github.com/unovue/reka-ui/blob/v2/packages/core/src/shared/createContext.ts
+ */
+
 import type { InjectionKey } from 'vue'
 import { inject, provide } from 'vue'
 
