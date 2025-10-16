@@ -4,6 +4,7 @@ type ActionHandler = () => void
 
 type ActionObject = {
   label: string | undefined
+  variant?: string
   handler: ActionHandler
 }
 
@@ -56,6 +57,7 @@ const setAction = (config: ActionType): ActionObject => {
   if (typeof config === "object" && config !== undefined) {
     return {
       label: config.label ?? undefined,
+      variant: config.variant ?? undefined,
       handler: config.handler ?? close,
     }
   }

@@ -28,11 +28,11 @@ const { isOpen, close, cancelButton, actionButton, title, description } = useCon
       </AlertDialogHeader>
 
       <AlertDialogFooter>
-        <AlertDialogCancel @click="cancelButton.handler">
+        <AlertDialogCancel :variant="cancelButton?.variant" @click="cancelButton.handler">
           {{ cancelButton.label ?? "Cancel" }}
         </AlertDialogCancel>
 
-        <AlertDialogAction @click="actionButton.handler">
+        <AlertDialogAction :variant="actionButton?.variant" @click="actionButton.handler">
           {{ actionButton.label ?? "Confirm" }}
         </AlertDialogAction>
       </AlertDialogFooter>
