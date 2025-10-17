@@ -6,9 +6,10 @@ import { buttonVariants, type ButtonVariants } from "@/components/button"
 
 const props = defineProps<
   AlertDialogActionProps & {
-  class?: HTMLAttributes["class"]
-  variant?: ButtonVariants["variant"]
-}>()
+    class?: HTMLAttributes["class"]
+    variant?: ButtonVariants["variant"]
+  }
+>()
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props

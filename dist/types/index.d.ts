@@ -1,6 +1,7 @@
 import preset from "@/presets/preset";
 import { DropdownMenuPortal } from "radix-vue";
 export * from "@/lib/utils";
+export * from "@/lib/createContext";
 export * from "@/components/confirm-dialog";
 export * from "@/components/layout";
 export * from "@/components/flasher";

@@ -11,7 +11,8 @@ import {
   AlertDialogTitle,
 } from "@/components/alert-dialog"
 
-const { isOpen, close, cancelButton, actionButton, title, description, variant } = useConfirmDialog()
+const { isOpen, close, cancelButton, actionButton, title, description, variant } =
+  useConfirmDialog()
 </script>
 
 <template>

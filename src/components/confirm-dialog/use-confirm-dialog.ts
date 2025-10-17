@@ -13,7 +13,7 @@ type ActionType = ActionObject | ActionHandler | string | undefined
 type ConfirmDialogType = {
   title: string
   description: string
-  variant?: ButtonVariants["variant"],
+  variant?: ButtonVariants["variant"]
   action: ActionType
   cancelAction?: ActionType
 }
@@ -21,7 +21,7 @@ type ConfirmDialogType = {
 const isOpen = ref(false)
 const title = ref("")
 const description = ref("")
-const variant = ref<ButtonVariants['variant'] | null>(null)
+const variant = ref<ButtonVariants["variant"] | null>(null)
 const cancelButton = ref<ActionObject>({
   label: undefined,
   handler: () => {},
