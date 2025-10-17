@@ -35,6 +35,7 @@ const customDialog = () => {
     title: "Custom Dialog",
     description:
       "You can also provide a full object with label and handler to fully customise the confirm dialog.",
+    variant: "destructive",
     cancelAction: {
       label: "Cancel Me!",
       handler: () => {

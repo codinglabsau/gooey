@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
 } from "@/components/alert-dialog"
 
-const { isOpen, close, cancelButton, actionButton, title, description } = useConfirmDialog()
+const { isOpen, close, cancelButton, actionButton, title, description, variant } = useConfirmDialog()
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const { isOpen, close, cancelButton, actionButton, title, description } = useCon
           {{ cancelButton.label ?? "Cancel" }}
         </AlertDialogCancel>
 
-        <AlertDialogAction @click="actionButton.handler">
+        <AlertDialogAction :variant @click="actionButton.handler">
           {{ actionButton.label ?? "Confirm" }}
         </AlertDialogAction>
       </AlertDialogFooter>
