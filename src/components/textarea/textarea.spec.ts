@@ -3,6 +3,12 @@ describe("Textarea component page", () => {
     cy.visit("/components/textarea")
   })
 
+  it("contains placeholder", () => {
+    cy.get("textarea")
+      .should("exist")
+      .and('have.attr', 'placeholder', 'Type your message here...')
+  })
+
   it("shows a character counter when charLimit is provided", () => {
     cy.contains("p", "/ 255").should("exist").and("contain.text", "0 / 255")
   })
