@@ -1,18 +1,19 @@
 import { ref } from "vue"
+import type { ButtonVariants } from "@/components/button"
 
 type ActionHandler = () => void
 
 type ActionObject = {
   label: string | undefined
-  variant?: string
   handler: ActionHandler
 }
 
 type ActionType = ActionObject | ActionHandler | string | undefined
 
-type AlertType = {
+type ConfirmDialogType = {
   title: string
   description: string
+  variant?: ButtonVariants["variant"],
   action: ActionType
   cancelAction?: ActionType
 }
@@ -20,6 +21,7 @@ type AlertType = {
 const isOpen = ref(false)
 const title = ref("")
 const description = ref("")
+const variant = ref<ButtonVariants['variant'] | null>(null)
 const cancelButton = ref<ActionObject>({
   label: undefined,
   handler: () => {},
@@ -29,12 +31,13 @@ const actionButton = ref<ActionObject>({
   handler: () => {},
 })
 
-const confirmDialog = (alertConfig: AlertType) => {
-  title.value = alertConfig.title
-  description.value = alertConfig.description
+const confirmDialog = (confirmDialogConfig: ConfirmDialogType) => {
+  title.value = confirmDialogConfig.title
+  description.value = confirmDialogConfig.description
+  variant.value = confirmDialogConfig.variant
 
-  cancelButton.value = setAction(alertConfig.cancelAction)
-  actionButton.value = setAction(alertConfig.action)
+  cancelButton.value = setAction(confirmDialogConfig.cancelAction)
+  actionButton.value = setAction(confirmDialogConfig.action)
 
   open()
 }
@@ -57,7 +60,6 @@ const setAction = (config: ActionType): ActionObject => {
   if (typeof config === "object" && config !== undefined) {
     return {
       label: config.label ?? undefined,
-      variant: config.variant ?? undefined,
       handler: config.handler ?? close,
     }
   }
@@ -78,9 +80,10 @@ const open = () => {
 
 function useConfirmDialog() {
   return {
-    confirmDialog: (config: AlertType) => confirmDialog(config),
+    confirmDialog: (confirmDialogConfig: ConfirmDialogType) => confirmDialog(confirmDialogConfig),
     title,
     description,
+    variant,
     isOpen,
     close,
     cancelButton,
