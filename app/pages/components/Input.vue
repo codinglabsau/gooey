@@ -3,5 +3,5 @@ import { Input } from "@/components/input"
 </script>
 
 <template>
-  <Input data-cy="input" />
+  <Input placeholder="Enter your name" data-cy="input" />
 </template>
