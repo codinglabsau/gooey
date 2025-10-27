@@ -17,7 +17,7 @@ const { isOpen, close, cancelButton, actionButton, title, description, variant }
 
 <template>
   <AlertDialog :open="isOpen">
-    <AlertDialogContent @close="close" @escape-key-down="close" @pointer-down-outside="close">
+    <AlertDialogContent @escape-key-down="close" @pointer-down-outside="close">
       <AlertDialogHeader>
         <AlertDialogTitle>
           {{ title }}

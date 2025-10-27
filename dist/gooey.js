@@ -13505,7 +13505,6 @@ const Og = /* @__PURE__ */ b({
     return (u, d) => (h(), x(s(Og), { open: s(t) }, {
       default: y(() => [
         F(s(Sg), {
-          onClose: s(n),
           onEscapeKeyDown: s(n),
           onPointerDownOutside: s(n)
         }, {
@@ -13551,7 +13550,7 @@ const Og = /* @__PURE__ */ b({
             })
           ]),
           _: 1
-        }, 8, ["onClose", "onEscapeKeyDown", "onPointerDownOutside"])
+        }, 8, ["onEscapeKeyDown", "onPointerDownOutside"])
       ]),
       _: 1
     }, 8, ["open"]));
