@@ -33,6 +33,7 @@ jobs:
 
       - name: Notify Slack
         run: |
-          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Gooey $VERSION version was published\"}" ${{secrets.SLACK_WEBHOOK}}
+          curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Gooey $VERSION version was published\"}" $SLACK_WEBHOOK
         env:
           VERSION: ${{ steps.extract-version.outputs.VERSION }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
