@@ -23,7 +23,7 @@ If you discover any security related issues, create an issue on GitHub.
 - [All Contributors](../../contributors)
 
 ## License
-Proprietary. Not for public release.
+MIT
 
 ## About Coding Labs
 Coding Labs is a web app development agency based on the Gold Coast, Australia. See our open source projects [on our website](https://codinglabs.com.au/open-source).
