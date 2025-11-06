@@ -36,4 +36,4 @@ jobs:
           curl -X POST -H 'Content-type: application/json' --data "{\"text\":\"Gooey $VERSION version was published\"}" $SLACK_WEBHOOK
         env:
           VERSION: ${{ steps.extract-version.outputs.VERSION }}
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.CODINGLABS_SLACK_WEBHOOK }}
