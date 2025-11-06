@@ -1,5 +1,5 @@
 # GOOEY
-A private collection of Vue components for use in Coding Labs projects, based on Tailwind Shadcn-vue and others.
+A collection of Vue components based on Tailwind, Shadcn-vue, and others.
 
 ## Documentation
 The documentation is available in the `./app` directory. This serves as documentation, test target, and sandbox for prototyping.
