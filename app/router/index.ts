@@ -25,6 +25,7 @@ import {
   Command,
   ConfirmDialog,
   Dialog,
+  Draggable,
   Drawer,
   DropdownMenu,
   Flasher,
@@ -130,6 +131,12 @@ const routes = [
         name: "Confirm Dialog",
         path: "/components/confirm-dialog",
         component: ConfirmDialog,
+        meta: { layout: ComponentLayout, shadcn: false },
+      },
+      {
+        name: "Draggable",
+        path: "/components/draggable",
+        component: Draggable,
         meta: { layout: ComponentLayout, shadcn: false },
       },
       {
