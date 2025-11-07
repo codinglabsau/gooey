@@ -66,19 +66,19 @@ function detectFramerate(): Promise<number> {
  */
 export function useStickyColumns(tableContainerResolver: () => HTMLElement | null) {
   const handleTableScroll = debounce(() => {
-    const tableContainer = tableContainerResolver()
-
-    if (!tableContainer) {
-      return
-    }
-
-    const scrollLeft = tableContainer.scrollLeft
-
-    if (scrollLeft) {
-      tableContainer.dataset.scrollX = "true"
-    } else {
-      delete tableContainer.dataset.scrollX
-    }
+    // const tableContainer = tableContainerResolver()
+    //
+    // if (!tableContainer) {
+    //   return
+    // }
+    //
+    // const scrollLeft = tableContainer.scrollLeft
+    //
+    // if (scrollLeft) {
+    //   tableContainer.dataset.scrollX = "true"
+    // } else {
+    //   delete tableContainer.dataset.scrollX
+    // }
   })
 
   const setWidthOfStickyColumns = debounce(() => {
