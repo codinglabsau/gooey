@@ -27,6 +27,7 @@ import {
   Dialog,
   Drawer,
   DropdownMenu,
+  Empty,
   Flasher,
   Heading,
   Input,
@@ -136,6 +137,12 @@ const routes = [
         name: "Dropdown Menu",
         path: "/components/dropdown-menu",
         component: DropdownMenu,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Empty",
+        path: "/components/empty",
+        component: Empty,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
