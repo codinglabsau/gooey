@@ -33,13 +33,13 @@ interface Props {
   /**
    * Whether sticky positioning is enabled (desktop only)
    */
-  sticky?: boolean
+  stickyColumns?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   isHeader: false,
   visibleActions: () => [],
-  sticky: true,
+  stickyColumns: true,
 })
 
 const emit = defineEmits<{
@@ -50,8 +50,10 @@ const cellClasses = computed(() => {
   const base = "w-24 px-2 align-middle"
   const textAlign = props.isHeader ? "text-center" : "text-center"
   const hover = "group-hover:bg-gray-100/50 dark:group-hover:bg-zinc-900/50"
-  const sticky = props.sticky ? "md:sticky md:z-30 md:bg-white/90 md:dark:bg-zinc-900/90" : ""
-  const bodySticky = !props.isHeader && props.sticky ? "md:z-10" : ""
+  const sticky = props.stickyColumns
+    ? "md:sticky md:z-30 md:bg-white/90 md:dark:bg-zinc-900/90"
+    : ""
+  const bodySticky = !props.isHeader && props.stickyColumns ? "md:z-10" : ""
 
   return [base, textAlign, hover, sticky, bodySticky].filter(Boolean).join(" ")
 })

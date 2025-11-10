@@ -4,8 +4,9 @@
  * and hydrated/dehydrated from URL params
  */
 
-import { ref, watch } from "vue"
+import { ref, watch, computed } from "vue"
 import type { DatatableState, DatatableStateComposable, DatatableStateOptions } from "./state"
+import { useDatatableInertia } from "@/components/datatable/useDatatableInertia"
 
 /**
  * Create default state
@@ -38,7 +39,44 @@ function createDefaultState(options: DatatableStateOptions = {}): DatatableState
  * Composable for datatable state management
  */
 export function useDatatableState(options: DatatableStateOptions = {}): DatatableStateComposable {
-  const state = ref<DatatableState>(createDefaultState(options))
+  // Get initial state for extracting defaults
+  const initialDefaults = createDefaultState(options)
+
+  // Initialize the query parameter composable (filters, sort, search)
+  const inertiaState = useDatatableInertia({
+    sorting: {
+      defaultSort: initialDefaults.sort.column && initialDefaults.sort.direction
+        ? initialDefaults.sort.direction === "desc"
+          ? `-${initialDefaults.sort.column}`
+          : initialDefaults.sort.column
+        : null,
+    },
+    filtering: {
+      defaultFilters: initialDefaults.filters,
+    },
+    searching: {
+      defaultSearch: initialDefaults.search,
+    },
+  })
+
+  // Manage sticky columns and column visibility locally (not query parameters)
+  const sticky = ref<string[]>(initialDefaults.sticky)
+  const columns = ref<Record<string, boolean>>(initialDefaults.columns)
+
+  // Computed state object that combines all parts
+  const state = computed<DatatableState>(() => ({
+    filters: inertiaState.filters.value,
+    sort: {
+      column: inertiaState.sortColumn.value,
+      direction: inertiaState.sortDirection.value,
+    },
+    search: inertiaState.search.value,
+    page: initialDefaults.page,
+    perPage: initialDefaults.perPage,
+    cursor: initialDefaults.cursor,
+    sticky: sticky.value,
+    columns: columns.value,
+  }))
 
   // Store initial state for reset
   const initialState = createDefaultState(options)
@@ -46,86 +84,32 @@ export function useDatatableState(options: DatatableStateOptions = {}): Datatabl
   /**
    * Add or update a filter
    */
-  function addFilter(key: string, value: any) {
-    state.value.filters[key] = {
-      enabled: true,
-      value,
-    }
-  }
+  const addFilter = inertiaState.addFilter
 
   /**
    * Remove a filter
    */
-  function removeFilter(key: string) {
-    if (state.value.filters[key]) {
-      state.value.filters[key].enabled = false
-      state.value.filters[key].value = null
-    }
-  }
+  const removeFilter = inertiaState.removeFilter
 
   /**
    * Clear all filters
    */
-  function clearFilters() {
-    Object.keys(state.value.filters).forEach((key) => {
-      state.value.filters[key].enabled = false
-      state.value.filters[key].value = null
-    })
-  }
+  const clearFilters = inertiaState.clearFilters
 
   /**
    * Set sort column and direction
    */
-  function setSort(column: string | null, direction: "asc" | "desc" | null) {
-    state.value.sort = {
-      column,
-      direction,
-    }
-  }
+  const setSort = inertiaState.setSort
 
   /**
    * Toggle sort for a column (asc -> desc -> none)
    */
-  function toggleSort(column: string) {
-    if (state.value.sort.column !== column) {
-      // New column, start with ascending
-      setSort(column, "asc")
-    } else if (state.value.sort.direction === "asc") {
-      // Currently ascending, switch to descending
-      setSort(column, "desc")
-    } else {
-      // Currently descending, clear sort
-      setSort(null, null)
-    }
-  }
+  const toggleSort = inertiaState.toggleSort
 
   /**
    * Set search query
    */
-  function setSearch(query: string) {
-    state.value.search = query
-  }
-
-  /**
-   * Set current page
-   */
-  function setPage(page: number) {
-    state.value.page = page
-  }
-
-  /**
-   * Set items per page
-   */
-  function setPerPage(perPage: number) {
-    state.value.perPage = perPage
-  }
-
-  /**
-   * Set cursor for cursor pagination
-   */
-  function setCursor(cursor: string | null) {
-    state.value.cursor = cursor
-  }
+  const setSearch = inertiaState.setSearch
 
   /**
    * Make a column sticky (and all columns before it)
@@ -168,23 +152,43 @@ export function useDatatableState(options: DatatableStateOptions = {}): Datatabl
    * Show a column
    */
   function showColumn(columnKey: string) {
-    state.value.columns[columnKey] = true
+    columns.value[columnKey] = true
   }
 
   /**
    * Hide a column
    */
   function hideColumn(columnKey: string) {
-    state.value.columns[columnKey] = false
+    columns.value[columnKey] = false
   }
 
   /**
    * Replace entire state (for loading saved views)
    */
   function setState(newState: Partial<DatatableState>) {
-    state.value = {
-      ...state.value,
-      ...newState,
+    // Update filters
+    if (newState.filters !== undefined) {
+      inertiaState.filters.value = newState.filters
+    }
+
+    // Update sort
+    if (newState.sort !== undefined) {
+      inertiaState.setSort(newState.sort.column, newState.sort.direction)
+    }
+
+    // Update search
+    if (newState.search !== undefined) {
+      inertiaState.search.value = newState.search
+    }
+
+    // Update sticky columns
+    if (newState.sticky !== undefined) {
+      sticky.value = newState.sticky
+    }
+
+    // Update column visibility
+    if (newState.columns !== undefined) {
+      columns.value = newState.columns
     }
   }
 
@@ -255,63 +259,49 @@ export function useDatatableState(options: DatatableStateOptions = {}): Datatabl
     const prefix = options.urlPrefix || ""
 
     // Parse filters
-    const filters: Record<string, any> = {}
+    const parsedFilters: Record<string, any> = {}
     params.forEach((value, key) => {
       const filterMatch = key.match(new RegExp(`^${prefix}filter\\[(.+)\\]$`))
       if (filterMatch) {
-        filters[filterMatch[1]] = {
+        parsedFilters[filterMatch[1]] = {
           enabled: true,
           value,
         }
       }
     })
-    if (Object.keys(filters).length > 0) {
-      state.value.filters = { ...state.value.filters, ...filters }
+    if (Object.keys(parsedFilters).length > 0) {
+      inertiaState.filters.value = { ...inertiaState.filters.value, ...parsedFilters }
     }
 
     // Parse sort
     const sortColumn = params.get(`${prefix}sort`)
     const sortDirection = params.get(`${prefix}direction`) as "asc" | "desc" | null
     if (sortColumn) {
-      state.value.sort = { column: sortColumn, direction: sortDirection || "asc" }
+      inertiaState.setSort(sortColumn, sortDirection || "asc")
     }
 
     // Parse search
-    const search = params.get(`${prefix}search`)
-    if (search) {
-      state.value.search = search
-    }
-
-    // Parse pagination
-    const page = params.get(`${prefix}page`)
-    if (page) {
-      state.value.page = parseInt(page, 10)
-    }
-    const perPage = params.get(`${prefix}perPage`)
-    if (perPage) {
-      state.value.perPage = parseInt(perPage, 10)
-    }
-    const cursor = params.get(`${prefix}cursor`)
-    if (cursor) {
-      state.value.cursor = cursor
+    const searchValue = params.get(`${prefix}search`)
+    if (searchValue) {
+      inertiaState.search.value = searchValue
     }
 
     // Parse sticky columns
-    const sticky: string[] = []
+    const stickyColumns: string[] = []
     params.forEach((value, key) => {
       if (key === `${prefix}sticky[]`) {
-        sticky.push(value)
+        stickyColumns.push(value)
       }
     })
-    if (sticky.length > 0) {
-      state.value.sticky = sticky
+    if (stickyColumns.length > 0) {
+      sticky.value = stickyColumns
     }
 
     // Parse column visibility
     params.forEach((value, key) => {
       const columnMatch = key.match(new RegExp(`^${prefix}columns\\[(.+)\\]$`))
       if (columnMatch) {
-        state.value.columns[columnMatch[1]] = value !== "false"
+        columns.value[columnMatch[1]] = value !== "false"
       }
     })
   }
@@ -327,7 +317,8 @@ export function useDatatableState(options: DatatableStateOptions = {}): Datatabl
    * Reset state to defaults
    */
   function reset() {
-    state.value = createDefaultState(options)
+    // Reset to initial state by updating all underlying refs
+    setState(initialState)
   }
 
   // Optional: Auto-sync with URL if enabled
@@ -359,9 +350,6 @@ export function useDatatableState(options: DatatableStateOptions = {}): Datatabl
     setSort,
     toggleSort,
     setSearch,
-    setPage,
-    setPerPage,
-    setCursor,
     makeSticky,
     undoSticky,
     toggleColumn,

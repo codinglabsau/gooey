@@ -24,7 +24,7 @@ interface Props {
   /**
    * Whether this column is sticky
    */
-  sticky?: boolean
+  stickyColumns?: boolean
 
   /**
    * Whether this is the last sticky column (for visual separator)
@@ -38,7 +38,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  sticky: false,
+  stickyColumns: false,
   isLastSticky: false,
 })
 
@@ -65,7 +65,7 @@ const cellClasses = computed(() => {
     props.column.cellClasses,
     {
       // Sticky column with semi-transparent background and calculated offset (disabled on mobile)
-      "md:sticky md:z-10 md:bg-white/90 md:dark:bg-zinc-900/90": props.sticky,
+      "md:sticky md:z-10 md:bg-white/90 md:dark:bg-zinc-900/90": props.stickyColumns,
     },
     // Visual separator for last sticky column
     props.isLastSticky ? verticalLineClasses : ""
@@ -74,7 +74,7 @@ const cellClasses = computed(() => {
 
 // Compute sticky style
 const stickyStyle = computed(() => {
-  if (props.sticky && props.stickyOffsetVar) {
+  if (props.stickyColumns && props.stickyOffsetVar) {
     return { left: `var(${props.stickyOffsetVar}, 0px)` }
   }
   return {}

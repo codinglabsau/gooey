@@ -143,21 +143,6 @@ export interface DatatableStateComposable {
   setSearch: (query: string) => void
 
   /**
-   * Set current page
-   */
-  setPage: (page: number) => void
-
-  /**
-   * Set items per page
-   */
-  setPerPage: (perPage: number) => void
-
-  /**
-   * Set cursor for cursor pagination
-   */
-  setCursor: (cursor: string | null) => void
-
-  /**
    * Make a column sticky (and all columns before it)
    */
   makeSticky: (columnKey: string) => void

@@ -1,165 +1,11 @@
 <script setup lang="ts">
-/**
- * Datatable Component
- *
- * Main datatable component with server-driven architecture.
- * Uses composables and sub-components for maintainability.
- *
- * For specific issues, search for:
- * - "useDatatableSelection" - Selection logic
- * - "useDatatableActions" - Actions logic
- * - "useStickyTable" - Sticky positioning logic
- * - "useDatatableState" - State management
- * - "DatatableCell" - Cell rendering issues
- * - "DatatableSelectionCell" - Selection checkbox issues
- * - "DatatableActionsCell" - Actions dropdown issues
- */
-
 import { computed, onMounted, onUnmounted, ref, toRef, watch } from "vue"
 import { cn } from "@/lib/utils"
 
 // Types
 import type { DatatableProps } from "./types"
 
-// Composables
-import { useDatatableState } from "./useDatatableState"
-import { useDatatableSelection } from "./useDatatableSelection"
-import { useDatatableActions } from "./useDatatableActions"
-import { useStickyColumns, useStickyHeader } from "./useStickyTable"
-
-// Components
-import DatatableHeaderCell from "./DatatableHeaderCell.vue"
-import DatatableCell from "./DatatableCell.vue"
-import DatatableSelectionCell from "./DatatableSelectionCell.vue"
-import DatatableActionsCell from "./DatatableActionsCell.vue"
-
-// ============================================================================
-// PROPS & EMITS
-// ============================================================================
-
-const props = withDefaults(defineProps<DatatableProps>(), {
-  tableClasses: "bg-white",
-  stickyColumns: () => [],
-  actions: () => [],
-})
-
-const emit = defineEmits<{
-  "state-change": [state: any]
-  "selection-change": [selectedRows: Set<number>]
-}>()
-
-// ============================================================================
-// STATE MANAGEMENT
-// ============================================================================
-
-// Internal state (used when datatableState prop not provided)
-const internalState = useDatatableState({
-  columns: props.columns.map((c) => c.key),
-})
-
-// Use external state if provided, otherwise use internal state
-const datatableState = computed(() => props.datatableState || internalState)
-
-// Sync stickyColumns prop to state (backward compatibility)
-watch(
-  () => props.stickyColumns,
-  (newStickyColumns) => {
-    if (!props.datatableState && newStickyColumns) {
-      datatableState.value.state.value.sticky = newStickyColumns
-    }
-  },
-  { immediate: true }
-)
-
-// Emit state changes
-watch(
-  () => datatableState.value.state.value,
-  (newState) => {
-    emit("state-change", newState)
-  },
-  { deep: true }
-)
-
-// ============================================================================
-// DATA PROCESSING
-// ============================================================================
-
-// Check if data is a pagination response
-const isPaginationResponse = (data: any): boolean => {
-  return data && typeof data === "object" && "data" in data && Array.isArray(data.data)
-}
-
-// Extract table data from props (plain array or pagination response)
-const tableData = computed<Record<string, any>[]>(() => {
-  if (Array.isArray(props.data)) {
-    return props.data
-  }
-
-  if (isPaginationResponse(props.data)) {
-    return props.data.data
-  }
-
-  return []
-})
-
-// Check if table is empty
-const isEmpty = computed(() => !tableData.value || tableData.value.length === 0)
-
-// ============================================================================
-// SELECTION LOGIC (via composable)
-// ============================================================================
-
-const selection = useDatatableSelection({
-  tableData,
-  onSelectionChange: (selectedRows) => {
-    emit("selection-change", selectedRows)
-  },
-})
-
-// ============================================================================
-// ACTIONS LOGIC (via composable)
-// ============================================================================
-
-const actions = useDatatableActions({
-  actions: toRef(props, "actions"),
-})
-
-// ============================================================================
-// STICKY COLUMNS & HEADER LOGIC
-// ============================================================================
-
-const tableContainerRef = ref<HTMLElement | null>(null)
-const theadRef = ref<HTMLElement | null>(null)
-
-const stickyColumns = useStickyColumns(() => tableContainerRef.value)
-const stickyHeader = useStickyHeader(
-  () => tableContainerRef.value,
-  () => theadRef.value
-)
-
-onMounted(() => {
-  stickyColumns.add()
-  stickyHeader.add()
-})
-
-onUnmounted(() => {
-  stickyColumns.remove()
-  stickyHeader.remove()
-})
-
-// Helpers for sticky column logic
-const isColumnSticky = (columnKey: string): boolean => {
-  return props.stickyColumns.includes(columnKey)
-}
-
-const isLastStickyColumn = (columnKey: string): boolean => {
-  const lastStickyKey = props.stickyColumns[props.stickyColumns.length - 1]
-  return columnKey === lastStickyKey
-}
-
-const getStickyOffsetVar = (columnKey: string): string => {
-  return `--column-${columnKey}-offset`
-}
+const props = defineProps<DatatableProps>()
 </script>
 
 <template>
@@ -184,7 +30,7 @@ const getStickyOffsetVar = (columnKey: string): string => {
             v-for="column in columns"
             :key="column.key"
             :column="column"
-            :sticky="isColumnSticky(column.key)"
+            :sticky-columns="isColumnSticky(column.key)"
             :is-last-sticky="isLastStickyColumn(column.key)"
             :sticky-offset-var="getStickyOffsetVar(column.key)"
           />
@@ -215,7 +61,7 @@ const getStickyOffsetVar = (columnKey: string): string => {
               :key="column.key"
               :column="column"
               :row="row"
-              :sticky="isColumnSticky(column.key)"
+              :sticky-columns="isColumnSticky(column.key)"
               :is-last-sticky="isLastStickyColumn(column.key)"
               :sticky-offset-var="getStickyOffsetVar(column.key)"
             >
