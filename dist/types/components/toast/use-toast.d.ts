@@ -142,6 +142,10 @@ declare function useToast(): {
             __isBuiltIn?: boolean | undefined;
             __file?: string | undefined;
             __name?: string | undefined;
+            remember?: string | string[] | {
+                data: string | string[];
+                key?: string | (() => string) | undefined;
+            } | undefined;
         } | undefined;
         id: string;
         icon?: string | import("vue").FunctionalComponent<any, {}, any, {}> | {
@@ -262,6 +266,10 @@ declare function useToast(): {
             __isBuiltIn?: boolean | undefined;
             __file?: string | undefined;
             __name?: string | undefined;
+            remember?: string | string[] | {
+                data: string | string[];
+                key?: string | (() => string) | undefined;
+            } | undefined;
         } | undefined;
         iconClasses?: string | undefined;
         title?: string | undefined;
@@ -384,6 +392,10 @@ declare function useToast(): {
             __isBuiltIn?: boolean | undefined;
             __file?: string | undefined;
             __name?: string | undefined;
+            remember?: string | string[] | {
+                data: string | string[];
+                key?: string | (() => string) | undefined;
+            } | undefined;
         } | undefined;
         objectFormat?: ObjectFormat | undefined;
         meta?: object | undefined;

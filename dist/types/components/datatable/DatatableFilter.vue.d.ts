@@ -1,48 +1,29 @@
-import type { ActionConfig } from "./types";
 interface Props {
-    /**
-     * Whether this is a header cell (th) or body cell (td)
-     */
-    isHeader?: boolean;
-    /**
-     * Array of visible actions for this row (body cells only)
-     */
-    visibleActions?: ActionConfig[];
-    /**
-     * Row data object (body cells only)
-     */
-    row?: Record<string, any>;
-    /**
-     * Row index (body cells only)
-     */
-    rowIndex?: number;
-    /**
-     * Whether sticky positioning is enabled (desktop only)
-     */
-    stickyColumns?: boolean;
+    label?: string;
+    active?: boolean;
+    disabled?: boolean;
 }
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
-    isHeader: boolean;
-    visibleActions: () => never[];
-    stickyColumns: boolean;
+    label: string;
+    active: boolean;
+    disabled: boolean;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "action-click": (action: ActionConfig, row: Record<string, any>) => void;
+    clear: () => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
-    isHeader: boolean;
-    visibleActions: () => never[];
-    stickyColumns: boolean;
+    label: string;
+    active: boolean;
+    disabled: boolean;
 }>>> & Readonly<{
-    "onAction-click"?: ((action: ActionConfig, row: Record<string, any>) => any) | undefined;
+    onClear?: (() => any) | undefined;
 }>, {
-    isHeader: boolean;
-    visibleActions: ActionConfig[];
-    stickyColumns: boolean;
+    disabled: boolean;
+    label: string;
+    active: boolean;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
-    actions?(_: {
-        row: Record<string, any> | undefined;
-        rowIndex: number | undefined;
-        visibleActions: ActionConfig[];
-    }): any;
+    label?(_: {}): any;
+    "display-value"?(_: {}): any;
+    summary?(_: {}): any;
+    form?(_: {}): any;
 }>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

@@ -1,23 +1,14 @@
 // Main Component
 export { default as Datatable } from "./Datatable.vue"
 
-// Sub-components (for advanced customization)
-export { default as DatatableHeaderCell } from "./DatatableHeaderCell.vue"
-export { default as DatatableCell } from "./DatatableCell.vue"
-export { default as DatatableSelectionCell } from "./DatatableSelectionCell.vue"
-export { default as DatatableActionsCell } from "./DatatableActionsCell.vue"
-
-// Types
-export type { ColumnConfig, DatatableProps, ActionConfig } from "./types"
-export type { DatatableState, DatatableStateOptions, DatatableStateComposable } from "./state"
-export type {
-  DatatableSelectionComposable,
-  DatatableSelectionOptions,
-} from "./useDatatableSelection"
-export type { DatatableActionsComposable, DatatableActionsOptions } from "./useDatatableActions"
-
 // Composables
-export { useDatatableState } from "./useDatatableState"
-export { useDatatableSelection } from "./useDatatableSelection"
-export { useDatatableActions } from "./useDatatableActions"
-export { useStickyColumns, useStickyHeader } from "./useStickyTable"
+export { useDatatable } from "./useDatatable"
+
+// UI building blocks for topbar
+export { default as DatatableFilter } from "./DatatableFilter.vue"
+export { default as DatatableSearch } from "./DatatableSearch.vue"
+export { default as DatatableTextFilter } from "./filters/DatatableTextFilter.vue"
+export { default as DatatableSelectFilter } from "./filters/DatatableSelectFilter.vue"
+export { default as DatatableDateFilter } from "./filters/DatatableDateFilter.vue"
+export { default as DatatableNumberFilter } from "./filters/DatatableNumberFilter.vue"
+export { default as DatatableNumberRangeFilter } from "./filters/DatatableNumberRangeFilter.vue"

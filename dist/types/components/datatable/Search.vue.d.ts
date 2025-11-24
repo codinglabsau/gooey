@@ -1,40 +1,25 @@
 interface Props {
-    /**
-     * Whether this is a header cell (th) or body cell (td)
-     */
-    isHeader?: boolean;
-    /**
-     * Whether the checkbox is checked
-     */
-    checked?: boolean;
-    /**
-     * Whether the checkbox is in indeterminate state (header only)
-     */
-    indeterminate?: boolean;
-    /**
-     * Whether sticky positioning is enabled (desktop only)
-     */
-    stickyColumns?: boolean;
+    modelValue: string;
+    placeholder?: string;
+    debounce?: number;
 }
 declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
-    isHeader: boolean;
-    checked: boolean;
-    indeterminate: boolean;
-    stickyColumns: boolean;
+    placeholder: string;
+    debounce: number;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    change: () => void;
+    "update:model-value": (value: string) => void;
+    submit: () => void;
+    clear: () => void;
 }, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<Props>, {
-    isHeader: boolean;
-    checked: boolean;
-    indeterminate: boolean;
-    stickyColumns: boolean;
+    placeholder: string;
+    debounce: number;
 }>>> & Readonly<{
-    onChange?: (() => any) | undefined;
+    onSubmit?: (() => any) | undefined;
+    onClear?: (() => any) | undefined;
+    "onUpdate:model-value"?: ((value: string) => any) | undefined;
 }>, {
-    indeterminate: boolean;
-    isHeader: boolean;
-    stickyColumns: boolean;
-    checked: boolean;
+    placeholder: string;
+    debounce: number;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;

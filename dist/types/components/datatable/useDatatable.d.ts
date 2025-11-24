@@ -1,11 +1,32 @@
-import type { ActionConfig, ColumnConfig, SortingConfig } from "@/components/datatable/types";
+import type { ActionConfig, ColumnConfig, FilterConfig, PaginationResponse, DatatableStrings } from "@/components/datatable/types";
 import { type DatatableColumnsComposable } from "@/components/datatable/useDatatableColumns";
 import { type DatatableActionsComposable } from "@/components/datatable/useDatatableActions";
-import { type DatatableSortingComposable } from "@/components/datatable/useDatatableSorting";
-export type DatatableState = DatatableColumnsComposable & DatatableActionsComposable & DatatableSortingComposable;
+import { type DatatableInertiaComposable } from "@/components/datatable/useDatatableInertia";
+import { type ComputedRef } from "vue";
+export type DatatableState = DatatableColumnsComposable & DatatableActionsComposable & DatatableInertiaComposable & {
+    data: ComputedRef<PaginationResponse>;
+    hasData: ComputedRef<boolean>;
+    emptyMessage: ComputedRef<string>;
+    strings?: DatatableStrings;
+    tableClass?: string;
+    tableContainerClass?: string;
+};
 export interface DatatableOptions {
-    actions?: ActionConfig[];
+    /**
+     * Required key of the Inertia page prop that contains the paginated dataset,
+     * e.g. 'auctions'. Data is read reactively from usePage().props.value[dataKey].
+     */
+    dataKey: string;
     columns: ColumnConfig[];
-    sorting: SortingConfig;
+    actions?: ActionConfig[];
+    filters?: FilterConfig[];
+    defaultSort?: string | null;
+    search?: boolean;
+    searchParamName?: string;
+    searchAutoApply?: boolean;
+    strings?: DatatableStrings;
+    emptyMessage?: string;
+    tableClass?: string;
+    tableContainerClass?: string;
 }
 export declare function useDatatable(options: DatatableOptions): DatatableState;

@@ -4,22 +4,10 @@
  */
 import type { Ref } from "vue";
 /**
- * Filter state for a single filter
- */
-export interface FilterState {
-    enabled: boolean;
-    value: any;
-}
-/**
  * Complete datatable state structure
  * This state can be hydrated from URL params and dehydrated back to URL
  */
 export interface DatatableState {
-    /**
-     * Active filters keyed by filter attribute
-     * Example: { status: { enabled: true, value: 'active' } }
-     */
-    filters: Record<string, FilterState>;
     /**
      * Current sort configuration
      * Example: { column: 'name', direction: 'asc' }
@@ -65,10 +53,6 @@ export interface DatatableStateOptions {
      */
     initialState?: Partial<DatatableState>;
     /**
-     * Available filter definitions (for validation)
-     */
-    filters?: string[];
-    /**
      * Available column keys (for validation)
      */
     columns?: string[];
@@ -94,18 +78,6 @@ export interface DatatableStateComposable {
      * Reactive state object
      */
     state: Ref<DatatableState>;
-    /**
-     * Add or update a filter
-     */
-    addFilter: (key: string, value: any) => void;
-    /**
-     * Remove a filter
-     */
-    removeFilter: (key: string) => void;
-    /**
-     * Clear all filters
-     */
-    clearFilters: () => void;
     /**
      * Set sort column and direction
      */
