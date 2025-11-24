@@ -42,7 +42,7 @@ const summary = computed(() =>
   <DatatableFilter :label="label" :active="active" @clear="onClear">
     <template #label>{{ label }}</template>
 
-    <template #summary>
+    <template #display-value>
       <span>{{ summary }}</span>
     </template>
 

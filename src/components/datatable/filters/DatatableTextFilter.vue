@@ -37,7 +37,7 @@ const onClear = () => props.table.resetFilter(id.value)
   <DatatableFilter :label="label" :active="active" @clear="onClear">
     <template #label>{{ label }}</template>
 
-    <template #summary>
+    <template #display-value>
       <span v-if="active">{{ String(current ?? "") }}</span>
 
       <span v-else>{{ table.strings?.any ?? "Any" }}</span>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue"
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/popover"
-import { XIcon, PlusIcon } from "lucide-vue-next"
+import { X, Plus } from "lucide-vue-next"
 
 interface Props {
   label?: string
@@ -64,7 +64,7 @@ const onClear = (e: MouseEvent) => {
           title="Edit filter"
         >
           <!-- Plus icon when inactive -->
-          <PlusIcon v-if="!active" class="h-3 w-3 text-gray-400" />
+          <Plus v-if="!active" class="h-3 w-3 text-gray-400" />
 
           <!-- Label and optional value -->
           <span class="truncate" :class="active ? 'text-gray-500' : 'text-gray-500'">
@@ -94,7 +94,7 @@ const onClear = (e: MouseEvent) => {
       aria-label="Clear filter"
       @click="onClear"
     >
-      <XIcon class="h-3 w-3 text-gray-400 group-hover:text-red-600" />
+      <X class="h-3 w-3 text-gray-400 group-hover:text-red-600" />
     </button>
   </div>
 </template>
