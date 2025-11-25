@@ -31,6 +31,8 @@ export type DatatableState = DatatableColumnsComposable &
     // Optional classes; only applied when provided and non-empty
     tableClass?: string
     tableContainerClass?: string
+    // Behavior
+    stickyHeader: boolean
   }
 
 export interface DatatableOptions {
@@ -43,6 +45,8 @@ export interface DatatableOptions {
   columns: ColumnConfig[]
 
   actions?: ActionConfig[]
+  /** Optional key or function to resolve a row's unique id for selection; default 'id' */
+  rowKey?: string | ((row: Record<string, any>) => string)
 
   filters?: FilterConfig[]
 
@@ -63,12 +67,27 @@ export interface DatatableOptions {
   // Classes
   tableClass?: string
   tableContainerClass?: string
+
+  // Behavior
+  /** When true, the table header is sticky within the scroll container. Default: true */
+  stickyHeader?: boolean
 }
 
 export function useDatatable(options: DatatableOptions): DatatableState {
   const columnState = useDatatableColumns(options.columns)
 
-  const actionState = useDatatableActions(options.actions ? options.actions : [])
+  // Action + selection state
+  // Provide current page rows and row key resolver
+  const page = usePage()
+  const data: ComputedRef<PaginationResponse> = computed(
+    () => page.props[options.dataKey] as PaginationResponse
+  )
+  const getPageRows = () => ((data.value?.data as any[]) ?? [])
+  const actionState = useDatatableActions(
+    options.actions ? options.actions : [],
+    getPageRows,
+    options.rowKey
+  )
 
   const inertiaState = useDatatableInertia({
     sorting: {
@@ -85,10 +104,6 @@ export function useDatatable(options: DatatableOptions): DatatableState {
   })
 
   // Read data reactively from Inertia page props using the required key
-  const page = usePage()
-  const data: ComputedRef<PaginationResponse> = computed(
-    () => page.props[options.dataKey] as PaginationResponse
-  )
 
   const hasData = computed(() => (data.value?.data?.length ?? 0) > 0)
 
@@ -121,5 +136,8 @@ export function useDatatable(options: DatatableOptions): DatatableState {
       options.tableContainerClass.trim().length > 0
         ? options.tableContainerClass
         : undefined,
+
+    // Behavior
+    stickyHeader: options.stickyHeader !== false,
   }
 }

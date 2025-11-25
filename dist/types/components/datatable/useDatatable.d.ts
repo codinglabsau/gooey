@@ -10,6 +10,7 @@ export type DatatableState = DatatableColumnsComposable & DatatableActionsCompos
     strings?: DatatableStrings;
     tableClass?: string;
     tableContainerClass?: string;
+    stickyHeader: boolean;
 };
 export interface DatatableOptions {
     /**
@@ -19,6 +20,8 @@ export interface DatatableOptions {
     dataKey: string;
     columns: ColumnConfig[];
     actions?: ActionConfig[];
+    /** Optional key or function to resolve a row's unique id for selection; default 'id' */
+    rowKey?: string | ((row: Record<string, any>) => string);
     filters?: FilterConfig[];
     defaultSort?: string | null;
     search?: boolean;
@@ -28,5 +31,7 @@ export interface DatatableOptions {
     emptyMessage?: string;
     tableClass?: string;
     tableContainerClass?: string;
+    /** When true, the table header is sticky within the scroll container. Default: true */
+    stickyHeader?: boolean;
 }
 export declare function useDatatable(options: DatatableOptions): DatatableState;

@@ -9,6 +9,19 @@ export interface ColumnConfig {
   cellClasses?: string
   cellContentClasses?: string
   /**
+   * Whether this column can be made sticky by the UI/state. Defaults to true.
+   */
+  sticky?: boolean
+  /**
+   * When true, this column is always sticky regardless of runtime stickyColumns state.
+   * Useful for selection checkboxes or action columns.
+   */
+  alwaysSticky?: boolean
+  /**
+   * Side to stick to when sticky. Defaults to 'left'.
+   */
+  stickTo?: "left" | "right"
+  /**
    * When true, the column header renders sorting affordances and clicking it will
    * cycle sort: asc → desc → none. Defaults to false.
    */
@@ -25,8 +38,37 @@ export interface ActionConfig {
   id: string
   label: string
   bulk?: boolean
+  /** Return false to hide this action for a given row */
   visible?: (row: Record<string, any>) => boolean
-  handler: (rows: Record<string, any>[]) => void | Promise<void>
+  /** Optional icon component for rendering the action */
+  icon?: any | null
+  /** When true/string/object, ask for confirmation before running the handler */
+  confirm?:
+    | boolean
+    | string
+    | {
+        title?: string
+        message?: string
+        confirmLabel?: string
+        cancelLabel?: string
+      }
+  /** Mark as destructive for styling hints (e.g. red) */
+  destructive?: boolean
+  /** Optionally disable based on current selection */
+  disabled?: (rows: Record<string, any>[]) => boolean
+  /**
+   * Main action handler. Receives an array of rows (length 1 for per-row actions,
+   * or N for bulk actions). Can be async.
+   * Optional: when omitted, no default button is rendered and the consumer is
+   * expected to provide slot content for this action (e.g. to open a modal).
+   */
+  handler?: (rows: Record<string, any>[]) => void | Promise<void>
+  /**
+   * Optional hook to open a custom modal. If provided, you control the entire
+   * flow; the default confirm + handler will be skipped and this will be called
+   * with the target rows.
+   */
+  openModal?: (rows: Record<string, any>[]) => void
 }
 
 export interface FilterConfig {

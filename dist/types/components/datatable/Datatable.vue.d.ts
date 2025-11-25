@@ -2,6 +2,12 @@ import type { DatatableProps } from "./types";
 import type { ColumnConfig } from "@/components/datatable/types";
 import type { DatatableState } from "@/components/datatable/useDatatable";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DatatableProps>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<DatatableProps>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, Partial<Record<string, (_: {
+    action: import("./types").ActionConfig;
+    table: DatatableState;
+    selectedRows: Record<string, any>[];
+    anySelected: import("vue").ComputedRef<boolean>;
+    performAction: (rows: any) => Promise<void>;
+}) => any>> & Partial<Record<string, (_: {
     column: ColumnConfig;
     table: DatatableState;
 }) => any>> & Partial<Record<string, (_: {
@@ -14,6 +20,16 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
 }) => any>> & Partial<Record<string, (_: {
     row: Record<string, any>;
     table: DatatableState;
+}) => any>> & Partial<Record<string, (_: {
+    action: import("./types").ActionConfig;
+    row: Record<string, any>;
+    table: DatatableState;
+    performAction: (rows: any) => Promise<void>;
+}) => any>> & Partial<Record<string, (_: {
+    action: import("./types").ActionConfig;
+    row: Record<string, any>;
+    table: DatatableState;
+    performAction: (rows: any) => Promise<void>;
 }) => any>> & {
     topbar?(_: {
         table: DatatableState;
@@ -32,6 +48,20 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
         hasSearch: () => boolean;
         appliedQuery: import("vue").ComputedRef<Record<string, any>>;
         filterConfigs: import("./types").FilterConfig[] | undefined;
+    }): any;
+    "head-cell:_select"?(_: {
+        table: DatatableState;
+    }): any;
+    "head-cell:_actions"?(_: {
+        table: DatatableState;
+    }): any;
+    "body-cell:_select"?(_: {
+        row: Record<string, any>;
+        table: DatatableState;
+    }): any;
+    "body-cell:_actions"?(_: {
+        row: Record<string, any>;
+        table: DatatableState;
     }): any;
 }>;
 export default _default;
