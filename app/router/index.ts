@@ -31,6 +31,7 @@ import {
   Flasher,
   Heading,
   Input,
+  InputOTP,
   Label,
   Pagination,
   Popover,
@@ -196,6 +197,12 @@ const routes = [
         name: "Input",
         path: "/components/input",
         component: Input,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Input OTP",
+        path: "/components/input-otp",
+        component: InputOTP,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {

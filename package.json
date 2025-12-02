@@ -48,7 +48,8 @@
     "reka-ui": "^2.5.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "vaul-vue": "^0.4.1"
+    "vaul-vue": "^0.4.1",
+    "vue-input-otp": "^0.3.2"
   },
   "devDependencies": {
     "@inertiajs/vue3": "^1.0.0",
