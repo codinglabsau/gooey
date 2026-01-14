@@ -6,6 +6,7 @@ import { Separator } from "@/components/separator"
   <div>
     <div class="space-y-1">
       <h4 class="text-sm font-medium leading-none">Gooey UI</h4>
+
       <p class="text-sm text-muted-foreground">An open-source UI component library.</p>
     </div>
 
@@ -13,9 +14,13 @@ import { Separator } from "@/components/separator"
 
     <div class="flex h-5 items-center space-x-4 text-sm">
       <div>Blog</div>
+
       <Separator orientation="vertical" />
+
       <div>Docs</div>
+
       <Separator orientation="vertical" />
+
       <div>Source</div>
     </div>
   </div>

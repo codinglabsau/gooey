@@ -29,6 +29,7 @@ export * from "@/components/pagination";
 export * from "@/components/popover";
 export * from "@/components/progress";
 export * from "@/components/select";
+export * from "@/components/separator";
 export * from "@/components/sheet";
 export * from "@/components/skeleton";
 export * from "@/components/slider";
