@@ -37,6 +37,7 @@ import {
   Popover,
   Progress,
   Select,
+  Separator,
   Sheet,
   Skeleton,
   Slider,
@@ -162,6 +163,12 @@ const routes = [
         name: "Progress",
         path: "/components/progress",
         component: Progress,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Separator",
+        path: "/components/separator",
+        component: Separator,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
