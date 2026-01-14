@@ -13,3 +13,5 @@ node_modules
 
 cypress/support/style.css
 cypress/screenshots
+
+.claude/settings.local.json
