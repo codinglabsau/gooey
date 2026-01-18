@@ -13,10 +13,13 @@ import {
 
   // components
   Accord,
+  Alert,
   Avatar,
   AlertDialog,
   Badge,
+  Breadcrumb,
   Button,
+  ContextMenu,
   Card,
   Carousel,
   Checkbox,
@@ -36,9 +39,11 @@ import {
   Pagination,
   Popover,
   Progress,
+  ResponsiveTable,
   Select,
   Separator,
   Sheet,
+  Sidebar,
   Skeleton,
   Slider,
   Switch,
@@ -88,6 +93,12 @@ const routes = [
         meta: { layout: ComponentLayout },
       },
       {
+        name: "Alert",
+        path: "/components/alert",
+        component: Alert,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
         name: "Avatar",
         path: "/components/avatar",
         component: Avatar,
@@ -97,6 +108,12 @@ const routes = [
         name: "Badge",
         path: "/components/badge",
         component: Badge,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Breadcrumb",
+        path: "/components/breadcrumb",
+        component: Breadcrumb,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
@@ -136,6 +153,12 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: false },
       },
       {
+        name: "Context Menu",
+        path: "/components/context-menu",
+        component: ContextMenu,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
         name: "Dropdown Menu",
         path: "/components/dropdown-menu",
         component: DropdownMenu,
@@ -166,9 +189,21 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
+        name: "Responsive Table",
+        path: "/components/responsive-table",
+        component: ResponsiveTable,
+        meta: { layout: ComponentLayout },
+      },
+      {
         name: "Separator",
         path: "/components/separator",
         component: Separator,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Sidebar",
+        path: "/components/sidebar",
+        component: Sidebar,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {

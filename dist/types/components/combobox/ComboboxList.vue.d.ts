@@ -22,7 +22,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     onFocusOutside?: ((event: import("reka-ui").FocusOutsideEvent) => any) | undefined;
     onInteractOutside?: ((event: import("reka-ui").PointerDownOutsideEvent | import("reka-ui").FocusOutsideEvent) => any) | undefined;
 }>, {
-    align: "start" | "center" | "end";
+    align: "end" | "start" | "center";
     position: "inline" | "popper";
     sideOffset: number;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
