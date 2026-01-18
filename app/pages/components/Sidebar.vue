@@ -29,9 +29,9 @@ import { ComponentHeading } from "@app/components"
         mobile views.
       </p>
 
-      <div class="mt-4 h-[400px] overflow-hidden rounded-lg border">
-        <SidebarProvider data-cy="sidebar">
-          <Sidebar>
+      <div class="relative mt-4 h-[400px] overflow-hidden rounded-lg border">
+        <SidebarProvider data-cy="sidebar" class="!min-h-0">
+          <Sidebar collapsible="none">
             <SidebarHeader class="border-b p-4">
               <div class="font-semibold">My App</div>
             </SidebarHeader>
