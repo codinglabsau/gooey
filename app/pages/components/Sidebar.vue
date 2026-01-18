@@ -36,20 +36,26 @@ import { ComponentHeading } from "@app/components"
             <li><code class="rounded bg-muted px-1">Sidebar</code> - Main container</li>
 
             <li>
-              <code class="rounded bg-muted px-1">SidebarHeader</code>,
-              <code class="rounded bg-muted px-1">SidebarContent</code>,
+              <code class="rounded bg-muted px-1">SidebarHeader</code>
+,
+              <code class="rounded bg-muted px-1">SidebarContent</code>
+,
               <code class="rounded bg-muted px-1">SidebarFooter</code> - Layout sections
             </li>
 
             <li>
-              <code class="rounded bg-muted px-1">SidebarGroup</code>,
-              <code class="rounded bg-muted px-1">SidebarGroupLabel</code>,
+              <code class="rounded bg-muted px-1">SidebarGroup</code>
+,
+              <code class="rounded bg-muted px-1">SidebarGroupLabel</code>
+,
               <code class="rounded bg-muted px-1">SidebarGroupContent</code> - Grouping
             </li>
 
             <li>
-              <code class="rounded bg-muted px-1">SidebarMenu</code>,
-              <code class="rounded bg-muted px-1">SidebarMenuItem</code>,
+              <code class="rounded bg-muted px-1">SidebarMenu</code>
+,
+              <code class="rounded bg-muted px-1">SidebarMenuItem</code>
+,
               <code class="rounded bg-muted px-1">SidebarMenuButton</code> - Navigation items
             </li>
 

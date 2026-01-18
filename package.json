@@ -10,6 +10,7 @@
   "module": "./dist/gooey.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/gooey.js",
       "require": "./dist/gooey.umd.cjs"
     },
