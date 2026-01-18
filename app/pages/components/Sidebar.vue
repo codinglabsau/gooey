@@ -1,27 +1,11 @@
 <script setup lang="ts">
-import { Home, Settings, User, ChevronDown } from "lucide-vue-next"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger,
-  SidebarInset,
-} from "@/components/sidebar"
 import { ComponentHeading } from "@app/components"
 </script>
 
 <template>
   <div class="space-y-8">
     <div>
-      <ComponentHeading>Default</ComponentHeading>
+      <ComponentHeading>Sidebar</ComponentHeading>
 
       <p class="mt-2 text-sm text-muted-foreground">
         The Sidebar component provides a responsive navigation sidebar with mobile support. It
@@ -29,62 +13,52 @@ import { ComponentHeading } from "@app/components"
         mobile views.
       </p>
 
-      <div class="relative mt-4 h-[400px] overflow-hidden rounded-lg border">
-        <SidebarProvider data-cy="sidebar" class="!min-h-0">
-          <Sidebar collapsible="none">
-            <SidebarHeader class="border-b p-4">
-              <div class="font-semibold">My App</div>
-            </SidebarHeader>
+      <div class="mt-4 rounded-lg border bg-muted/50 p-6">
+        <p class="text-sm text-muted-foreground">
+          The Sidebar component uses fixed positioning and is designed to be used as the main
+          navigation for an application. See the
+          <a
+            href="https://ui.shadcn.com/docs/components/sidebar"
+            target="_blank"
+            class="font-medium text-primary underline"
+          >
+            shadcn/ui sidebar documentation
+          </a>
+          for interactive examples and full usage details.
+        </p>
 
-            <SidebarContent>
-              <SidebarGroup>
-                <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+        <div class="mt-4 space-y-2 text-sm">
+          <p class="font-medium">Available components:</p>
 
-                <SidebarGroupContent>
-                  <SidebarMenu>
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <Home class="h-4 w-4" />
+          <ul class="list-inside list-disc space-y-1 text-muted-foreground">
+            <li><code class="rounded bg-muted px-1">SidebarProvider</code> - Context provider</li>
 
-                        <span>Home</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
+            <li><code class="rounded bg-muted px-1">Sidebar</code> - Main container</li>
 
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <User class="h-4 w-4" />
+            <li>
+              <code class="rounded bg-muted px-1">SidebarHeader</code>,
+              <code class="rounded bg-muted px-1">SidebarContent</code>,
+              <code class="rounded bg-muted px-1">SidebarFooter</code> - Layout sections
+            </li>
 
-                        <span>Profile</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
+            <li>
+              <code class="rounded bg-muted px-1">SidebarGroup</code>,
+              <code class="rounded bg-muted px-1">SidebarGroupLabel</code>,
+              <code class="rounded bg-muted px-1">SidebarGroupContent</code> - Grouping
+            </li>
 
-                    <SidebarMenuItem>
-                      <SidebarMenuButton>
-                        <Settings class="h-4 w-4" />
+            <li>
+              <code class="rounded bg-muted px-1">SidebarMenu</code>,
+              <code class="rounded bg-muted px-1">SidebarMenuItem</code>,
+              <code class="rounded bg-muted px-1">SidebarMenuButton</code> - Navigation items
+            </li>
 
-                        <span>Settings</span>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  </SidebarMenu>
-                </SidebarGroupContent>
-              </SidebarGroup>
-            </SidebarContent>
-
-            <SidebarFooter class="border-t p-4">
-              <div class="text-xs text-muted-foreground">v1.0.0</div>
-            </SidebarFooter>
-          </Sidebar>
-
-          <SidebarInset>
-            <div class="flex h-full items-center justify-center p-8">
-              <div class="text-center">
-                <p class="text-muted-foreground">Main content area</p>
-
-                <SidebarTrigger class="mt-4" />
-              </div>
-            </div>
-          </SidebarInset>
-        </SidebarProvider>
+            <li>
+              <code class="rounded bg-muted px-1">SidebarTrigger</code> - Toggle button for
+              collapsible behavior
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
