@@ -10,8 +10,6 @@ import {
   BarChart3,
   HelpCircle,
   ChevronLeft,
-  ChevronsLeft,
-  ChevronsRight,
 } from "lucide-vue-next"
 
 import {
@@ -21,7 +19,6 @@ import {
   CollapsibleSidebarTrigger,
   CollapsibleMenuButton,
   CollapsibleMenuGroup,
-  useCollapsibleSidebar,
   TwoColumnLayoutSidebar,
   TwoColumnLayoutSidebarMobile,
   Header,
@@ -29,7 +26,6 @@ import {
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
 import MobileSidebar from "./MobileSidebar.vue"
-import SidebarCollapseToggle from "./SidebarCollapseToggle.vue"
 
 const mode = useColorMode()
 const colourMode = ref(mode.value === "dark")
@@ -128,12 +124,10 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
             </CollapsibleMenuButton>
           </CollapsibleMenuGroup>
         </div>
-
-        <SidebarCollapseToggle />
       </CollapsibleSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
-    <CollapsibleMain>
+    <CollapsibleMain class="bg-background">
       <div class="space-y-6">
         <div>
           <h1 class="text-2xl font-bold">
@@ -178,6 +172,118 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
 
             <li>Tailwind v3 and v4 compatible CSS variables</li>
           </ul>
+        </div>
+
+        <div class="rounded-lg border bg-card p-6 shadow-sm">
+          <h2 class="mb-4 text-lg font-semibold">Recent Activity</h2>
+
+          <div class="space-y-4">
+            <div
+              v-for="i in 8"
+              :key="i"
+              class="flex items-center justify-between border-b pb-4 last:border-0 last:pb-0"
+            >
+              <div class="flex items-center gap-4">
+                <div class="h-10 w-10 rounded-full bg-muted" />
+
+                <div>
+                  <div class="font-medium">Activity Item {{ i }}</div>
+
+                  <div class="text-sm text-muted-foreground">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </div>
+                </div>
+              </div>
+
+              <div class="text-sm text-muted-foreground">{{ i }}h ago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="rounded-lg border bg-card p-6 shadow-sm">
+            <h2 class="mb-4 text-lg font-semibold">Performance Overview</h2>
+
+            <div class="space-y-4">
+              <div v-for="i in 5" :key="i">
+                <div class="mb-1 flex justify-between text-sm">
+                  <span>Metric {{ i }}</span>
+
+                  <span class="text-muted-foreground">{{ 20 * i }}%</span>
+                </div>
+
+                <div class="h-2 rounded-full bg-muted">
+                  <div class="h-2 rounded-full bg-primary" :style="{ width: `${20 * i}%` }" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-lg border bg-card p-6 shadow-sm">
+            <h2 class="mb-4 text-lg font-semibold">Quick Actions</h2>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button
+                v-for="action in [
+                  'Create Report',
+                  'Export Data',
+                  'Send Email',
+                  'Schedule Task',
+                  'View Logs',
+                  'Settings',
+                ]"
+                :key="action"
+                class="rounded-md border bg-background p-3 text-sm transition-colors hover:bg-accent"
+              >
+                {{ action }}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-lg border bg-card p-6 shadow-sm">
+          <h2 class="mb-4 text-lg font-semibold">Data Table</h2>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b">
+                  <th class="pb-3 text-left font-medium">Name</th>
+
+                  <th class="pb-3 text-left font-medium">Status</th>
+
+                  <th class="pb-3 text-left font-medium">Date</th>
+
+                  <th class="pb-3 text-right font-medium">Amount</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr v-for="i in 10" :key="i" class="border-b last:border-0">
+                  <td class="py-3">Item {{ i }}</td>
+
+                  <td class="py-3">
+                    <span
+                      class="rounded-full px-2 py-1 text-xs"
+                      :class="
+                        i % 3 === 0
+                          ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                          : i % 3 === 1
+                            ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300'
+                            : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                      "
+                    >
+                      {{ i % 3 === 0 ? "Complete" : i % 3 === 1 ? "Pending" : "In Progress" }}
+                    </span>
+                  </td>
+
+                  <td class="py-3 text-muted-foreground">Jan {{ i + 10 }}, 2026</td>
+
+                  <td class="py-3 text-right">${{ (Math.random() * 1000).toFixed(2) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </CollapsibleMain>
