@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
-import { VisuallyHidden } from "radix-vue"
+import { VisuallyHidden } from "reka-ui"
 import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 

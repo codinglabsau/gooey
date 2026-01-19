@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from "vue"
-import {
-  PopoverContent,
-  type PopoverContentEmits,
-  type PopoverContentProps,
-  PopoverPortal,
-  useForwardPropsEmits,
-} from "radix-vue"
+import type { PopoverContentEmits, PopoverContentProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+import { reactiveOmit } from "@vueuse/core"
+import { PopoverContent, PopoverPortal, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
 
 const props = withDefaults(
@@ -23,11 +19,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, "class")
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type AccordionRootEmits, type AccordionRootProps, useForwardPropsEmits } from "radix-vue"
+import { type AccordionRootEmits, type AccordionRootProps, useForwardPropsEmits } from "reka-ui"
 import { AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion"
 import Accordion from "@/components/accordion/Accordion.vue"
 

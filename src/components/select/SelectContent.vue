@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from "vue"
-import {
-  SelectContent,
-  type SelectContentEmits,
-  type SelectContentProps,
-  SelectPortal,
-  SelectViewport,
-  useForwardPropsEmits,
-} from "radix-vue"
-import { SelectScrollDownButton, SelectScrollUpButton } from "."
+import type { SelectContentEmits, SelectContentProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+import { reactiveOmit } from "@vueuse/core"
+import { SelectContent, SelectPortal, SelectViewport, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
+import { SelectScrollDownButton, SelectScrollUpButton } from "."
 
 const props = withDefaults(
   defineProps<SelectContentProps & { class?: HTMLAttributes["class"] }>(),
@@ -24,11 +19,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, "class")
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
@@ -53,7 +44,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
           cn(
             'p-1',
             position === 'popper' &&
-              'h-[--radix-select-trigger-height] w-full min-w-[--radix-select-trigger-width]',
+              'h-[--reka-select-trigger-height] w-full min-w-[--reka-select-trigger-width]',
           )
         "
       >

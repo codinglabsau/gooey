@@ -1,28 +1,32 @@
 <script setup lang="ts">
-import { type HTMLAttributes, computed } from "vue"
-import type { SliderRootEmits, SliderRootProps } from "radix-vue"
-import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from "radix-vue"
+import type { SliderRootEmits, SliderRootProps } from "reka-ui"
+import type { HTMLAttributes } from "vue"
+import { reactiveOmit } from "@vueuse/core"
+import { SliderRange, SliderRoot, SliderThumb, SliderTrack, useForwardPropsEmits } from "reka-ui"
 import { cn } from "@/lib/utils"
 
 const props = defineProps<SliderRootProps & { class?: HTMLAttributes["class"] }>()
 const emits = defineEmits<SliderRootEmits>()
 
-const delegatedProps = computed(() => {
-  const { class: _, ...delegated } = props
-
-  return delegated
-})
+const delegatedProps = reactiveOmit(props, "class")
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits)
 </script>
 
 <template>
   <SliderRoot
-    :class="cn('relative flex w-full touch-none items-center select-none', props.class)"
+    :class="
+      cn(
+        'relative flex w-full touch-none items-center select-none data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5 data-[orientation=vertical]:flex-col',
+        props.class,
+      )
+    "
     v-bind="forwarded"
   >
-    <SliderTrack class="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20">
-      <SliderRange class="absolute h-full bg-primary" />
+    <SliderTrack
+      class="relative h-1.5 w-full grow overflow-hidden rounded-full bg-primary/20 data-[orientation=vertical]:w-1.5"
+    >
+      <SliderRange class="absolute h-full bg-primary data-[orientation=vertical]:w-full" />
     </SliderTrack>
 
     <SliderThumb

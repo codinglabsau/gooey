@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Sonner } from "@/components/sonner"
+import { Toaster as Sonner } from "@/components/sonner"
 import { Button } from "@/components/button"
 import { toast } from "vue-sonner"
 </script>

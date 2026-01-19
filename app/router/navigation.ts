@@ -49,7 +49,6 @@ export const navigation: NavigationGroup[] = [
       { name: "Skeleton", path: "/components/skeleton" },
       { name: "Sonner", path: "/components/sonner" },
       { name: "Spinner", path: "/components/spinner" },
-      { name: "Toast", path: "/components/toast" },
       { name: "Tip", path: "/components/tip" },
     ],
   },

@@ -71,7 +71,6 @@ import {
   TagsInput,
   Textarea,
   Tip,
-  Toast,
   Toggle,
   ToggleGroup,
   TwoColumnLayout,
@@ -275,12 +274,6 @@ const routes = [
         path: "/components/spinner",
         component: Spinner,
         meta: { layout: ComponentLayout, shadcn: true },
-      },
-      {
-        name: "Toast",
-        path: "/components/toast",
-        component: Toast,
-        meta: { layout: ComponentLayout, shadcn: true, modified: true },
       },
       {
         name: "Tip",

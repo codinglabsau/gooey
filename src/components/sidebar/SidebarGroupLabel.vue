@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from "@/lib/utils"
-import type { PrimitiveProps } from "radix-vue"
-import { Primitive } from "radix-vue"
+import type { PrimitiveProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
+import { Primitive } from "reka-ui"
+import { cn } from "@/lib/utils"
 
 const props = defineProps<
   PrimitiveProps & {
@@ -18,7 +18,7 @@ const props = defineProps<
     :as-child="asChild"
     :class="
       cn(
-        'flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 ring-sidebar-ring transition-[margin,opa] duration-200 ease-linear outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+        'flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium text-sidebar-foreground/70 ring-sidebar-ring transition-[margin,opacity] duration-200 ease-linear outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
         'group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0',
         props.class,
       )
