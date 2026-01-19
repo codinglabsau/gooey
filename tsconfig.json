@@ -12,6 +12,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@app/*": [
+        "app/*"
       ]
     },
     "outDir": "dist",

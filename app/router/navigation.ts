@@ -37,7 +37,6 @@ export const navigation: NavigationGroup[] = [
       { name: "Flasher", path: "/components/flasher" },
       { name: "Popover", path: "/components/popover" },
       { name: "Progress", path: "/components/progress" },
-      { name: "Responsive Table", path: "/components/responsive-table" },
       { name: "Separator", path: "/components/separator" },
       { name: "Sidebar", path: "/components/sidebar" },
       { name: "Skeleton", path: "/components/skeleton" },

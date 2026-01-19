@@ -39,7 +39,6 @@ import {
   Pagination,
   Popover,
   Progress,
-  ResponsiveTable,
   Select,
   Separator,
   Sheet,
@@ -189,21 +188,9 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
-        name: "Responsive Table",
-        path: "/components/responsive-table",
-        component: ResponsiveTable,
-        meta: { layout: ComponentLayout },
-      },
-      {
         name: "Separator",
         path: "/components/separator",
         component: Separator,
-        meta: { layout: ComponentLayout, shadcn: true },
-      },
-      {
-        name: "Sidebar",
-        path: "/components/sidebar",
-        component: Sidebar,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
@@ -301,6 +288,12 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
+        name: "Drawer",
+        path: "/components/drawer",
+        component: Drawer,
+        meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
         name: "Heading",
         path: "/components/heading",
         component: Heading,
@@ -313,9 +306,9 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {
-        name: "Drawer",
-        path: "/components/drawer",
-        component: Drawer,
+        name: "Sidebar",
+        path: "/components/sidebar",
+        component: Sidebar,
         meta: { layout: ComponentLayout, shadcn: true },
       },
       {

@@ -11,7 +11,7 @@ before(() => {
 
   cy.task('readFileMaybe', tailwindPath).then((css) => {
     if (! css) {
-      cy.exec("npx tailwindcss -i ./src/style.css -m").then(({ stdout }) => {
+      cy.exec("npx tailwindcss -i ./app/style.css -m").then(({ stdout }) => {
         cy.writeFile(tailwindPath, stdout)
         css = stdout
       })

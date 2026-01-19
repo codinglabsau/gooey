@@ -17,7 +17,6 @@ export * from "@/components/layout"
 export * from "@/components/flasher"
 export * from "@/components/heading"
 export * from "@/components/accordion"
-export * from "@/components/responsive-table"
 export * from "@/components/tooltip"
 
 // shadcn components
