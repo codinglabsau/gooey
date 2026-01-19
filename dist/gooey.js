@@ -26514,7 +26514,7 @@ const OI = {
       })
     ]));
   }
-}), $v = "collapsible_sidebar_state", RI = 3600 * 24 * 7, VI = "18rem", FI = "3rem", aH = "18rem", NI = "b", [$s, LI] = Se("CollapsibleTwoColumnLayout"), zI = ["data-state", "data-collapsible"], rH = /* @__PURE__ */ b({
+}), $v = "sidebar_state", RI = 3600 * 24 * 7, VI = "18rem", FI = "3rem", aH = "18rem", NI = "b", [$s, LI] = Se("CollapsibleTwoColumnLayout"), zI = ["data-state", "data-collapsible"], rH = /* @__PURE__ */ b({
   __name: "CollapsibleTwoColumnLayout",
   props: {
     defaultOpen: { type: Boolean, default: !Xy?.cookie.includes(`${$v}=false`) },

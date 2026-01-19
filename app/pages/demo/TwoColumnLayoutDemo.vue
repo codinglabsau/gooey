@@ -25,12 +25,6 @@ import {
   Main,
 } from "@/components/layout"
 import {
-  SidebarFooter,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/sidebar"
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -139,35 +133,33 @@ function setActiveRoute(route: string) {
           </button>
         </nav>
 
-        <SidebarFooter class="border-t">
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger as-child>
-                  <SidebarMenuButton>
-                    <User2 class="h-5 w-5" />
-                    Username
-                    <ChevronUp class="ml-auto h-4 w-4" />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
+        <div class="border-t p-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger as-child>
+              <button
+                class="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                <User2 class="h-5 w-5" />
+                Username
+                <ChevronUp class="ml-auto h-4 w-4" />
+              </button>
+            </DropdownMenuTrigger>
 
-                <DropdownMenuContent side="top" class="w-[--reka-popper-anchor-width]">
-                  <DropdownMenuItem>
-                    <span>Account</span>
-                  </DropdownMenuItem>
+            <DropdownMenuContent side="top" class="w-[--reka-popper-anchor-width]">
+              <DropdownMenuItem>
+                <span>Account</span>
+              </DropdownMenuItem>
 
-                  <DropdownMenuItem>
-                    <span>Billing</span>
-                  </DropdownMenuItem>
+              <DropdownMenuItem>
+                <span>Billing</span>
+              </DropdownMenuItem>
 
-                  <DropdownMenuItem>
-                    <span>Sign out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarFooter>
+              <DropdownMenuItem>
+                <span>Sign out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 

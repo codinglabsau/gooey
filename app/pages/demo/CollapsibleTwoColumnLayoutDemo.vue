@@ -124,6 +124,7 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
             </CollapsibleMenuButton>
           </CollapsibleMenuGroup>
         </div>
+
       </CollapsibleSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
