@@ -10,6 +10,7 @@ import {
 
   // demos
   TwoColumnLayoutDemo,
+  CollapsibleTwoColumnLayoutDemo,
 
   // components
   Accord,
@@ -81,6 +82,7 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 const routes = [
   { path: "", component: Index },
   { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo },
+  { path: "/demo/collapsible-two-column-layout", component: CollapsibleTwoColumnLayoutDemo },
   {
     name: "Getting Started",
     children: [
