@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeftIcon } from "@radix-icons/vue"
+import { ArrowLeft } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
 import { useCarousel } from "./useCarousel"
 import { Button } from "@/components/button"
@@ -26,7 +26,7 @@ const { orientation, canScrollPrev, scrollPrev } = useCarousel()
     @click="scrollPrev"
   >
     <slot>
-      <ArrowLeftIcon class="size-4 text-current" />
+      <ArrowLeft class="size-4 text-current" />
 
       <span class="sr-only">Previous Slide</span>
     </slot>

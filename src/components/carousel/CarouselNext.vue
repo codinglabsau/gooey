@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRightIcon } from "@radix-icons/vue"
+import { ArrowRight } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
 import { useCarousel } from "./useCarousel"
 import { Button } from "@/components/button"
@@ -26,7 +26,7 @@ const { orientation, canScrollNext, scrollNext } = useCarousel()
     @click="scrollNext"
   >
     <slot>
-      <ArrowRightIcon class="size-4 text-current" />
+      <ArrowRight class="size-4 text-current" />
 
       <span class="sr-only">Next Slide</span>
     </slot>
