@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import { VisuallyHidden } from "reka-ui"
-import { useCollapsibleSidebar } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { ScrollArea } from "@/components/scroll-area"
 import { Separator } from "@/components/separator"
 import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
 
-const { openMobile, setOpenMobile } = useCollapsibleSidebar()
+const open = defineModel<boolean>("open", { default: false })
 
 function onNavigated() {
-  setOpenMobile(false)
+  open.value = false
 }
 </script>
 
 <template>
-  <Sheet :open="openMobile" @update:open="setOpenMobile">
+  <Sheet v-model:open="open">
     <SheetContent side="left" class="w-72 p-0">
       <SheetHeader class="px-4 py-4">
         <SheetTitle class="flex items-center space-x-2">

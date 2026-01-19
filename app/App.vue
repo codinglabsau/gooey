@@ -4,13 +4,13 @@ import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
 import {
-  CollapsibleTwoColumnLayout,
-  CollapsibleSidebarDesktop,
-  CollapsibleMain,
-  CollapsibleSidebarTrigger,
+  TwoColumnLayout,
   TwoColumnLayoutSidebar,
+  TwoColumnLayoutSidebarDesktop,
   TwoColumnLayoutSidebarMobile,
+  TwoColumnLayoutSidebarTrigger,
   Header,
+  Main,
 } from "@/components/layout"
 import { Switch } from "@/components/switch"
 import { ScrollArea } from "@/components/scroll-area"
@@ -21,24 +21,22 @@ import MobileSidebar from "@app/components/MobileSidebar.vue"
 const mode = useColorMode()
 const colourMode = ref(mode.value === "dark")
 watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
+
+const sidebarOpen = ref(false)
 </script>
 
 <template>
-  <CollapsibleTwoColumnLayout collapsible="icon">
+  <TwoColumnLayout>
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
           <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-          <div
-            class="text-xl font-semibold tracking-tight group-data-[state=collapsed]/collapsible-layout:hidden"
-          >
-            GOOEY
-          </div>
+          <div class="text-xl font-semibold tracking-tight">GOOEY</div>
         </div>
       </RouterLink>
 
-      <CollapsibleSidebarTrigger />
+      <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
@@ -53,20 +51,20 @@ watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 
     <TwoColumnLayoutSidebar>
       <TwoColumnLayoutSidebarMobile>
-        <MobileSidebar />
+        <MobileSidebar v-model:open="sidebarOpen" />
       </TwoColumnLayoutSidebarMobile>
 
-      <CollapsibleSidebarDesktop>
-        <ScrollArea class="flex-1 px-2">
+      <TwoColumnLayoutSidebarDesktop>
+        <ScrollArea class="h-full px-2">
           <SidebarNavigation :items="navigation" />
         </ScrollArea>
-      </CollapsibleSidebarDesktop>
+      </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
-    <CollapsibleMain>
+    <Main>
       <component :is="$route.meta.layout || 'div'" class="sm:px-6 lg:px-8">
         <RouterView />
       </component>
-    </CollapsibleMain>
-  </CollapsibleTwoColumnLayout>
+    </Main>
+  </TwoColumnLayout>
 </template>
