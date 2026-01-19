@@ -15,6 +15,8 @@ import {
 } from "@/components/layout"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
+import { ScrollArea } from "@/components/scroll-area"
+import { Separator } from "@/components/separator"
 import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
 
@@ -32,7 +34,7 @@ const sidebarOpen = ref(false)
         <div class="flex items-center space-x-2">
           <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-          <div class="text-xl">GOOEY</div>
+          <div class="text-xl font-semibold tracking-tight">GOOEY</div>
         </div>
       </RouterLink>
 
@@ -52,26 +54,34 @@ const sidebarOpen = ref(false)
     <TwoColumnLayoutSidebar>
       <TwoColumnLayoutSidebarMobile>
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
-          <SheetContent side="left">
-            <SheetHeader>
+          <SheetContent side="left" class="w-72 p-0">
+            <SheetHeader class="px-4 py-4">
               <SheetTitle class="flex items-center space-x-2">
                 <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-                <div class="text-xl">GOOEY</div>
+                <div class="text-xl font-semibold tracking-tight">GOOEY</div>
               </SheetTitle>
             </SheetHeader>
 
             <VisuallyHidden as-child>
-              <SheetDescription> Sidebar navigation</SheetDescription>
+              <SheetDescription>Sidebar navigation</SheetDescription>
             </VisuallyHidden>
 
-            <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
+            <Separator />
+
+            <ScrollArea class="h-[calc(100vh-5rem)]">
+              <div class="px-2 py-2">
+                <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
+              </div>
+            </ScrollArea>
           </SheetContent>
         </Sheet>
       </TwoColumnLayoutSidebarMobile>
 
       <TwoColumnLayoutSidebarDesktop>
-        <SidebarNavigation :items="navigation" />
+        <ScrollArea class="h-full px-2">
+          <SidebarNavigation :items="navigation" />
+        </ScrollArea>
       </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
