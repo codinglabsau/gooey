@@ -58,7 +58,6 @@ export const navigation: NavigationGroup[] = [
     children: [
       { name: "Calendar", path: "/components/calendar" },
       { name: "Checkbox", path: "/components/checkbox" },
-      { name: "Date Picker", path: "/components/date-picker" },
       { name: "Field", path: "/components/field" },
       { name: "Form", path: "/components/form" },
       { name: "Input", path: "/components/input" },
