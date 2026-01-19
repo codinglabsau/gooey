@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { DateValue } from "@internationalized/date"
 import type { HTMLAttributes } from "vue"
-import { getLocalTimeZone, today } from "@internationalized/date"
+import { DateFormatter, getLocalTimeZone, today } from "@internationalized/date"
 import { CalendarIcon } from "lucide-vue-next"
-import { computed } from "vue"
+import { computed, ref } from "vue"
 import { Button } from "@/components/button"
 import { Calendar } from "@/components/calendar"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/popover"
@@ -23,16 +23,25 @@ const props = withDefaults(
 
 const modelValue = defineModel<DateValue | undefined>()
 
+const open = ref(false)
 const defaultPlaceholder = today(getLocalTimeZone())
+
+const df = new DateFormatter("en-US", {
+  dateStyle: "long",
+})
 
 const displayValue = computed(() => {
   if (!modelValue.value) return props.placeholder
-  return modelValue.value.toString()
+  return df.format(modelValue.value.toDate(getLocalTimeZone()))
 })
+
+function onDateSelect() {
+  open.value = false
+}
 </script>
 
 <template>
-  <Popover>
+  <Popover v-model:open="open">
     <PopoverTrigger as-child>
       <Button
         variant="outline"
@@ -50,11 +59,13 @@ const displayValue = computed(() => {
       </Button>
     </PopoverTrigger>
 
-    <PopoverContent class="w-auto p-0">
+    <PopoverContent class="w-auto p-0" align="start">
       <Calendar
         v-model="modelValue"
-        :initial-focus="true"
         :default-placeholder="defaultPlaceholder"
+        layout="month-and-year"
+        initial-focus
+        @update:model-value="onDateSelect"
       />
     </PopoverContent>
   </Popover>
