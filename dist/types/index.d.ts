@@ -4,6 +4,7 @@ export * from "@/lib/utils";
 export * from "@/lib/createContext";
 export * from "@/composables";
 export * from "@/components/confirm-dialog";
+export * from "@/components/date-picker";
 export * from "@/components/layout";
 export * from "@/components/flasher";
 export * from "@/components/heading";

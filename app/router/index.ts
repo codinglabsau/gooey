@@ -31,6 +31,7 @@ import {
   Command,
   ConfirmDialog,
   ContextMenu,
+  DatePicker,
   Dialog,
   Drawer,
   DropdownMenu,
@@ -304,6 +305,12 @@ const routes = [
         path: "/components/checkbox",
         component: Checkbox,
         meta: { layout: ComponentLayout, shadcn: true },
+      },
+      {
+        name: "Date Picker",
+        path: "/components/date-picker",
+        component: DatePicker,
+        meta: { layout: ComponentLayout },
       },
       {
         name: "Field",
