@@ -15,7 +15,7 @@ This library supports both **Tailwind CSS v3** and **Tailwind CSS v4**. Choose t
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss @tailwindcss/vite tw-animate-css @tailwindcss/forms
+npm install -D tailwindcss @tailwindcss/vite tw-animate-css
 ```
 
 2. Add the Tailwind plugin to your `vite.config.js`:
@@ -34,8 +34,6 @@ export default defineConfig({
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@codinglabsau/gooey/presets/slate.css";
-
-@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -112,7 +110,7 @@ export default defineConfig({
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer tailwindcss-animate @tailwindcss/forms
+npm install -D tailwindcss postcss autoprefixer tailwindcss-animate
 ```
 
 2. Add the preset to your `tailwind.config.js`:
@@ -126,9 +124,6 @@ export default {
   content: [
     './node_modules/@codinglabsau/gooey/**/*.{js,vue}',
     // ... your content paths
-  ],
-  plugins: [
-    require('@tailwindcss/typography'),
   ],
 }
 ```
