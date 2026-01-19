@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
-import { VisuallyHidden } from "reka-ui"
 import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 import {
@@ -11,53 +10,48 @@ import {
   BarChart3,
   HelpCircle,
   ChevronLeft,
-  ChevronUp,
-  User2,
 } from "lucide-vue-next"
 
 import {
-  TwoColumnLayout,
+  CollapsibleTwoColumnLayout,
+  CollapsibleSidebarDesktop,
+  CollapsibleMain,
+  CollapsibleSidebarTrigger,
+  CollapsibleMenuButton,
+  CollapsibleMenuGroup,
   TwoColumnLayoutSidebar,
-  TwoColumnLayoutSidebarDesktop,
   TwoColumnLayoutSidebarMobile,
-  TwoColumnLayoutSidebarTrigger,
   Header,
-  Main,
 } from "@/components/layout"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/dropdown-menu"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
+import MobileSidebar from "./MobileSidebar.vue"
 
 const mode = useColorMode()
 const colourMode = ref(mode.value === "dark")
 watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 
-const sidebarOpen = ref(false)
 const activeRoute = ref("/dashboard")
-
-const navItems = [
-  { route: "/dashboard", icon: LayoutGrid, label: "Dashboard" },
-  { route: "/analytics", icon: BarChart3, label: "Analytics" },
-  { route: "/users", icon: Users, label: "Users" },
-  { route: "/documents", icon: FileText, label: "Documents" },
-  { route: "/settings", icon: Settings, label: "Settings" },
-  { route: "/help", icon: HelpCircle, label: "Help" },
-]
 
 function setActiveRoute(route: string) {
   activeRoute.value = route
-  sidebarOpen.value = false
 }
+
+const navItems = [
+  { route: "/dashboard", icon: LayoutGrid, label: "Dashboard", group: "Platform" },
+  { route: "/analytics", icon: BarChart3, label: "Analytics", group: "Platform" },
+  { route: "/users", icon: Users, label: "Users", group: "Platform" },
+  { route: "/documents", icon: FileText, label: "Documents", group: "Platform" },
+  { route: "/settings", icon: Settings, label: "Settings", group: "Settings" },
+  { route: "/help", icon: HelpCircle, label: "Help", group: "Settings" },
+]
+
+const platformItems = navItems.filter((item) => item.group === "Platform")
+const settingsItems = navItems.filter((item) => item.group === "Settings")
 </script>
 
 <template>
-  <TwoColumnLayout class="absolute inset-0 z-50">
+  <CollapsibleTwoColumnLayout class="absolute inset-0 z-50" collapsible="icon">
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
@@ -67,7 +61,7 @@ function setActiveRoute(route: string) {
         </div>
       </RouterLink>
 
-      <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
+      <CollapsibleSidebarTrigger />
 
       <div class="flex w-full items-center justify-end gap-4">
         <div class="group flex cursor-pointer items-center space-x-2">
@@ -79,7 +73,7 @@ function setActiveRoute(route: string) {
         </div>
 
         <Button variant="ghost" size="sm" as-child>
-          <RouterLink to="/components/two-column-layout">
+          <RouterLink to="/components/collapsible-two-column-layout">
             <ChevronLeft class="mr-1 h-4 w-4" />
             Back
           </RouterLink>
@@ -89,81 +83,52 @@ function setActiveRoute(route: string) {
 
     <TwoColumnLayoutSidebar>
       <TwoColumnLayoutSidebarMobile>
-        <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
-          <SheetContent side="left" class="w-72 p-0">
-            <SheetHeader class="border-b p-4">
-              <SheetTitle class="flex items-center space-x-2">
-                <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
-
-                <span class="text-xl">Brand</span>
-              </SheetTitle>
-            </SheetHeader>
-
-            <VisuallyHidden as-child>
-              <SheetDescription>Sidebar navigation</SheetDescription>
-            </VisuallyHidden>
-
-            <nav class="space-y-1 p-4">
-              <button
-                v-for="item in navItems"
-                :key="item.route"
-                class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-                :class="activeRoute === item.route && 'bg-accent text-accent-foreground'"
-                @click="setActiveRoute(item.route)"
-              >
-                <component :is="item.icon" class="h-5 w-5" />
-                {{ item.label }}
-              </button>
-            </nav>
-          </SheetContent>
-        </Sheet>
+        <MobileSidebar
+          :active-route="activeRoute"
+          :nav-items="navItems"
+          @navigate="setActiveRoute"
+        />
       </TwoColumnLayoutSidebarMobile>
 
-      <TwoColumnLayoutSidebarDesktop class="flex h-full flex-col">
-        <nav class="flex-1 space-y-1">
-          <button
-            v-for="item in navItems"
-            :key="item.route"
-            class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-            :class="activeRoute === item.route && 'bg-accent text-accent-foreground'"
-            @click="activeRoute = item.route"
-          >
-            <component :is="item.icon" class="h-5 w-5" />
-            {{ item.label }}
-          </button>
-        </nav>
+      <CollapsibleSidebarDesktop class="flex flex-col">
+        <div class="flex-1">
+          <CollapsibleMenuGroup label="Platform" class="mb-6">
+            <CollapsibleMenuButton
+              v-for="item in platformItems"
+              :key="item.route"
+              :tooltip="item.label"
+              :active="activeRoute === item.route"
+              @click="setActiveRoute(item.route)"
+            >
+              <component :is="item.icon" class="h-5 w-5 shrink-0" />
 
-        <div class="border-t p-2">
-          <DropdownMenu>
-            <DropdownMenuTrigger as-child>
-              <button
-                class="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
-              >
-                <User2 class="h-5 w-5" />
-                Username
-                <ChevronUp class="ml-auto h-4 w-4" />
-              </button>
-            </DropdownMenuTrigger>
+              <span class="group-data-[state=collapsed]/collapsible-layout:hidden">{{
+                item.label
+              }}</span>
+            </CollapsibleMenuButton>
+          </CollapsibleMenuGroup>
 
-            <DropdownMenuContent side="top" class="w-[--reka-popper-anchor-width]">
-              <DropdownMenuItem>
-                <span>Account</span>
-              </DropdownMenuItem>
+          <CollapsibleMenuGroup label="Settings" class="mb-6">
+            <CollapsibleMenuButton
+              v-for="item in settingsItems"
+              :key="item.route"
+              :tooltip="item.label"
+              :active="activeRoute === item.route"
+              @click="setActiveRoute(item.route)"
+            >
+              <component :is="item.icon" class="h-5 w-5 shrink-0" />
 
-              <DropdownMenuItem>
-                <span>Billing</span>
-              </DropdownMenuItem>
-
-              <DropdownMenuItem>
-                <span>Sign out</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              <span class="group-data-[state=collapsed]/collapsible-layout:hidden">{{
+                item.label
+              }}</span>
+            </CollapsibleMenuButton>
+          </CollapsibleMenuGroup>
         </div>
-      </TwoColumnLayoutSidebarDesktop>
+
+      </CollapsibleSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
-    <Main class="bg-background">
+    <CollapsibleMain class="bg-background">
       <div class="space-y-6">
         <div>
           <h1 class="text-2xl font-bold">
@@ -171,8 +136,12 @@ function setActiveRoute(route: string) {
           </h1>
 
           <p class="text-muted-foreground">
-            This is a basic two-column layout. The sidebar is fixed on desktop and uses a sheet on
-            mobile.
+            This is the {{ activeRoute.slice(1) }} page. Use the collapse button at the bottom of
+            the sidebar, or press
+            <kbd class="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">⌘B</kbd>
+            /
+            <kbd class="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">Ctrl+B</kbd>
+            to toggle the sidebar.
           </p>
         </div>
 
@@ -185,22 +154,25 @@ function setActiveRoute(route: string) {
         </div>
 
         <div class="rounded-lg border bg-card p-6 shadow-sm">
-          <h2 class="mb-4 text-lg font-semibold">About This Layout</h2>
+          <h2 class="mb-4 text-lg font-semibold">Features</h2>
 
-          <p class="text-muted-foreground">
-            The basic TwoColumnLayout provides a simple fixed sidebar that is always visible on
-            desktop (lg breakpoint and above). On mobile, it collapses to a hamburger menu that
-            opens a sheet from the left side.
-          </p>
+          <ul class="list-inside list-disc space-y-2 text-muted-foreground">
+            <li>Collapsible sidebar with smooth 200ms transition</li>
 
-          <p class="mt-4 text-muted-foreground">
-            For a more advanced layout with collapsible sidebar support and keyboard shortcuts, try
-            the
-            <RouterLink to="/demo/collapsible-two-column-layout" class="text-primary underline">
-              Collapsible Two Column Layout
-            </RouterLink>
-            demo.
-          </p>
+            <li>Collapse button in sidebar footer</li>
+
+            <li>Keyboard shortcut (⌘B / Ctrl+B) to toggle</li>
+
+            <li>State persisted to cookies for 7 days</li>
+
+            <li>Tooltips appear when sidebar is collapsed</li>
+
+            <li>Group labels auto-hide when collapsed</li>
+
+            <li>Works with existing TwoColumnLayout components</li>
+
+            <li>Tailwind v3 and v4 compatible CSS variables</li>
+          </ul>
         </div>
 
         <div class="rounded-lg border bg-card p-6 shadow-sm">
@@ -315,6 +287,6 @@ function setActiveRoute(route: string) {
           </div>
         </div>
       </div>
-    </Main>
-  </TwoColumnLayout>
+    </CollapsibleMain>
+  </CollapsibleTwoColumnLayout>
 </template>

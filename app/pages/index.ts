@@ -6,6 +6,7 @@ export { default as Theme } from "./theme.md"
 
 // demos
 export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
+export { default as CollapsibleTwoColumnLayoutDemo } from "./demo/CollapsibleTwoColumnLayoutDemo.vue"
 
 // components
 export { default as Accord } from "./components/Accord.vue"
