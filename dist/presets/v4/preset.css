@@ -1,6 +1,9 @@
 /**
  * Tailwind CSS v4 preset for Gooey
  *
+ * Prerequisites:
+ *   npm install -D tailwindcss @tailwindcss/vite tw-animate-css
+ *
  * Usage in consumer's main CSS file:
  * ```css
  * @import '@codinglabsau/gooey/presets/v4';

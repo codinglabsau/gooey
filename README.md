@@ -112,7 +112,7 @@ export default defineConfig({
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer tailwindcss-animate
+npm install -D tailwindcss postcss autoprefixer tw-animate-css
 ```
 
 2. Add the preset to your `tailwind.config.js`:
@@ -140,6 +140,7 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
+@import 'tw-animate-css';
 @import '@codinglabsau/gooey/dist/presets/slate.css';
 ```
 

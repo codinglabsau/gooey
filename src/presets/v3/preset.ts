@@ -1,6 +1,9 @@
 /*
  * Tailwind CSS v3 preset for Gooey
  *
+ * Prerequisites:
+ *   npm install -D tailwindcss postcss autoprefixer tw-animate-css
+ *
  * Usage in consumer's tailwind.config.js:
  *
  * import { preset } from '@codinglabsau/gooey/presets/v3'
@@ -8,6 +11,14 @@
  *   presets: [preset],
  *   content: ['./node_modules/@codinglabsau/gooey/**\/*.js'],
  * }
+ *
+ * Usage in consumer's main CSS file:
+ *
+ * @tailwind base;
+ * @tailwind components;
+ * @tailwind utilities;
+ * @import 'tw-animate-css';
+ * @import '@codinglabsau/gooey/dist/presets/slate.css';
  */
 export default {
   darkMode: ["class"],
