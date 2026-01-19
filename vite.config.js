@@ -19,7 +19,7 @@ export default defineConfig({
       ]
     },
     copyPublicDir: false,
-    emptyOutDir: false
+    emptyOutDir: true
   },
   plugins: [
     vue({

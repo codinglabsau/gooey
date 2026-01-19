@@ -22,7 +22,7 @@
   "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "run-p format type-check && vite build",
+    "build": "run-p format && vite build && vue-tsc --declaration --emitDeclarationOnly",
     "prepare": "relative-deps",
     "type-check": "vue-tsc --declaration --emitDeclarationOnly",
     "format": "run-p prettier lint",
