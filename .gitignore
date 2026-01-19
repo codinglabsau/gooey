@@ -15,3 +15,6 @@ cypress/support/style.css
 cypress/screenshots
 
 .claude/settings.local.json
+
+# Build artifacts (docs app bundle with content hash)
+dist/index-*.js

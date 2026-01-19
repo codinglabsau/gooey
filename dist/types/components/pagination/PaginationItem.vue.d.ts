@@ -1,18 +1,18 @@
 import type { PaginationListItemProps } from "reka-ui";
 declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<PaginationListItemProps & {
-    size?: "default" | "xs" | "sm" | "lg" | "icon" | null | undefined;
+    size?: "default" | "xs" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg" | null | undefined;
     class?: any;
     isActive?: boolean | undefined;
 }>, {
     size: string;
 }>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<PaginationListItemProps & {
-    size?: "default" | "xs" | "sm" | "lg" | "icon" | null | undefined;
+    size?: "default" | "xs" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg" | null | undefined;
     class?: any;
     isActive?: boolean | undefined;
 }>, {
     size: string;
 }>>> & Readonly<{}>, {
-    size: "default" | "xs" | "sm" | "lg" | "icon" | null;
+    size: "default" | "xs" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg" | null;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;
 }>;

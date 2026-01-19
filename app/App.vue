@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue"
 import { VisuallyHidden } from "radix-vue"
-import { useRouter } from "vue-router"
 import { useColorMode } from "@vueuse/core"
 import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 
@@ -17,13 +16,11 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 import { SidebarNavigation } from "@app/components"
+import { navigation } from "@app/router/navigation"
 
-const router = useRouter()
 const mode = useColorMode()
 const colourMode = ref(mode.value === "dark")
 watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
-
-const navigation = router.getRoutes().filter((route) => route.children.length > 0)
 
 const sidebarOpen = ref(false)
 </script>

@@ -23,7 +23,6 @@ Once added, the files will be added in /src/components.
 ## Git
 Finally, create a git branch {user-name}/add-{component} and create a draft pr
 
-
 ## Sign Off
 
 Return a structured summary of what was added, if necessary add a couple points on how this component can be used (for fun).

@@ -1,13 +1,12 @@
 <script setup lang="ts">
+import type { NavigationGroup } from "@app/router/navigation"
+
 defineProps<{
-  items: {
-    type: Array
-    required: true
-  }
+  items: NavigationGroup[]
 }>()
 
 defineEmits<{
-  navigated: void
+  navigated: []
 }>()
 </script>
 

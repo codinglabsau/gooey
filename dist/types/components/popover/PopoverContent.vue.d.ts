@@ -24,7 +24,7 @@ declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<im
     onOpenAutoFocus?: ((event: Event) => any) | undefined;
     onCloseAutoFocus?: ((event: Event) => any) | undefined;
 }>, {
-    align: "start" | "center" | "end";
+    align: "end" | "start" | "center";
     sideOffset: number;
 }, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
     default?(_: {}): any;

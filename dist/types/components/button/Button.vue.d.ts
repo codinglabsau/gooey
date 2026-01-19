@@ -1,6 +1,6 @@
+import type { PrimitiveProps } from "reka-ui";
 import type { HTMLAttributes } from "vue";
-import { type PrimitiveProps } from "radix-vue";
-import { type ButtonVariants } from ".";
+import type { ButtonVariants } from ".";
 interface Props extends PrimitiveProps {
     variant?: ButtonVariants["variant"];
     size?: ButtonVariants["size"];
