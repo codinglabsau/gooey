@@ -16,7 +16,7 @@ const props = withDefaults(
     side: "left",
     variant: "sidebar",
     collapsible: "offcanvas",
-  }
+  },
 )
 
 defineOptions({
@@ -70,7 +70,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
           'group-data-[side=right]:rotate-180',
           variant === 'floating' || variant === 'inset'
             ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
-            : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]'
+            : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
         )
       "
     />
@@ -86,7 +86,7 @@ const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
           variant === 'floating' || variant === 'inset'
             ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
             : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon] group-data-[side=left]:border-r group-data-[side=right]:border-l',
-          props.class
+          props.class,
         )
       "
       v-bind="$attrs"

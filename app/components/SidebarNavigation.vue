@@ -13,7 +13,7 @@ defineEmits<{
 <template>
   <nav class="space-y-4 px-6">
     <div v-for="group in items" :key="group.name">
-      <h3 class="text-md font-bold leading-6">{{ group.name }}</h3>
+      <h3 class="text-md leading-6 font-bold">{{ group.name }}</h3>
 
       <ul role="list" class="mt-2 flex flex-1 flex-col gap-y-7">
         <li>
@@ -21,7 +21,7 @@ defineEmits<{
             <li v-for="route in group.children" :key="route.name" class="flex items-center">
               <RouterLink
                 :to="route.path"
-                class="group flex gap-x-3 rounded-md px-2 text-sm font-light leading-5 hover:underline"
+                class="group flex gap-x-3 rounded-md px-2 text-sm leading-5 font-light hover:underline"
                 @click="$emit('navigated')"
               >
                 {{ route.name }}

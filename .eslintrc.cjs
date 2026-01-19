@@ -3,7 +3,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:vue/vue3-recommended",
-    "plugin:tailwindcss/recommended",
     "prettier",
   ],
   plugins: ["unused-imports"],
@@ -39,8 +38,6 @@ module.exports = {
     "vue/require-default-prop": "off",
     "vue/valid-v-slot": "off",
 
-    "tailwindcss/no-custom-classname": "off",
-
     "no-undef": "off",
     "no-unused-vars": "off",
     "no-console": ["warn"],
@@ -48,7 +45,6 @@ module.exports = {
 
     // sticking to the team's rules
     "vue/prefer-separate-static-class": "off",
-    "tailwindcss/enforces-shorthand": "off",
     "vue/no-reserved-component-names": "off",
     "vue/no-setup-props-destructure": "off",
     "vue/prefer-true-attribute-shorthand": "off",

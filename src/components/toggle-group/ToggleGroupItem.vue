@@ -35,7 +35,7 @@ const forwardedProps = useForwardProps(delegatedProps)
           variant: context?.variant || variant,
           size: context?.size || size,
         }),
-        props.class
+        props.class,
       )
     "
   >

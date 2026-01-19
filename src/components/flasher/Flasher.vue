@@ -13,7 +13,7 @@ const props = withDefaults(
   }>(),
   {
     objectFormat: "value",
-  }
+  },
 )
 
 const {
@@ -32,7 +32,7 @@ watch(
   },
   {
     immediate: true,
-  }
+  },
 )
 
 watch(
@@ -42,7 +42,7 @@ watch(
       successNotification(props.success as string)
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 watch(
@@ -52,7 +52,7 @@ watch(
       warningNotification(props.warning as string)
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 watch(
@@ -61,7 +61,7 @@ watch(
     if (props.errors !== undefined && Object.keys(props.errors!).length > 0) {
       errorNotification(props.errors, props.objectFormat)
     }
-  }
+  },
 )
 </script>
 

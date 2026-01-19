@@ -29,7 +29,7 @@ export function useMobileNavigation() {
 
 export function useSwipeNavigation(
   target: Ref<HTMLElement | null>,
-  options: SwipeNavigationOptions = {}
+  options: SwipeNavigationOptions = {},
 ) {
   const { threshold = 50, enabled = true, onSwipeLeft, onSwipeRight } = options
 

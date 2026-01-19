@@ -5,7 +5,7 @@ import { Separator } from "@/components/separator"
 <template>
   <div>
     <div class="space-y-1">
-      <h4 class="text-sm font-medium leading-none">Gooey UI</h4>
+      <h4 class="text-sm leading-none font-medium">Gooey UI</h4>
 
       <p class="text-sm text-muted-foreground">An open-source UI component library.</p>
     </div>

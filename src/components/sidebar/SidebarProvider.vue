@@ -21,7 +21,7 @@ const props = withDefaults(
   {
     defaultOpen: true,
     open: undefined,
-  }
+  },
 )
 
 const emits = defineEmits<{
@@ -84,7 +84,7 @@ provideSidebarContext({
       :class="
         cn(
           'group/sidebar-wrapper flex min-h-svh w-full text-sidebar-foreground has-[[data-variant=inset]]:bg-sidebar',
-          props.class
+          props.class,
         )
       "
     >

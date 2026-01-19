@@ -1,3 +1,14 @@
+/**
+ * Slate theme for Gooey
+ *
+ * This file defines CSS custom properties for the slate color theme.
+ * Works with both Tailwind v3 and v4.
+ *
+ * Usage:
+ * - v3: Import in your main CSS file after Tailwind directives
+ * - v4: @import '@codinglabsau/gooey/presets/slate.css';
+ */
+
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
@@ -35,6 +46,16 @@
   --ring: 222.2 84% 4.9%;
 
   --radius: 0.5rem;
+
+  /* Sidebar variables */
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
 .dark {
@@ -68,17 +89,28 @@
   --warning: 35 92% 33%;
   --warning-foreground: 55 92% 95%;
 
-  --success: 142, 72%, 29%;
+  --success: 142 72% 29%;
   --success-foreground: 138 76% 97%;
 
   --ring: 212.7 26.8% 83.9%;
+
+  /* Sidebar variables - dark mode */
+  --sidebar-background: 240 5.9% 10%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 224.3 76.3% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
-/** todo: this border is not working for some reason and needs to be redeclared downstream */
+/* Base styles - using standard CSS instead of @apply for v4 compatibility */
 * {
-  @apply border-border;
+  border-color: hsl(var(--border));
 }
 
 body {
-  @apply bg-background text-foreground;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }

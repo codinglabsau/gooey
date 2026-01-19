@@ -10,7 +10,7 @@ const [useProvideCarousel, useInjectCarousel] = createInjectionState(
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
-      plugins
+      plugins,
     )
 
     function scrollPrev() {
@@ -47,7 +47,7 @@ const [useProvideCarousel, useInjectCarousel] = createInjectionState(
       scrollNext,
       orientation,
     }
-  }
+  },
 )
 
 function useCarousel() {

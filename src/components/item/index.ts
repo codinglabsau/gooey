@@ -30,7 +30,7 @@ export const itemVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 )
 
 export const itemMediaVariants = cva(
@@ -46,7 +46,7 @@ export const itemMediaVariants = cva(
     defaultVariants: {
       variant: "default",
     },
-  }
+  },
 )
 
 export type ItemVariants = VariantProps<typeof itemVariants>

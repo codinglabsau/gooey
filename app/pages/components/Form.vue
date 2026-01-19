@@ -16,7 +16,7 @@ import * as z from "zod"
 const formSchema = toTypedSchema(
   z.object({
     username: z.string().min(2).max(50),
-  })
+  }),
 )
 
 const { handleSubmit } = useForm({

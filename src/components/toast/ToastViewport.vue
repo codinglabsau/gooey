@@ -8,7 +8,7 @@ const props = withDefaults(
   defineProps<ToastViewportProps & { class?: HTMLAttributes["class"] }>(),
   {
     position: "bottom-right",
-  }
+  },
 )
 
 const delegatedProps = computed(() => {
@@ -40,9 +40,9 @@ const positionClass = computed(() => {
       cn(
         // overriding the defaults to position at the bottom on mobile viewport
         // 'fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]',
-        'fixed flex-col z-[100] flex max-h-screen w-full p-4 md:max-w-[420px]',
+        'fixed z-[100] flex max-h-screen w-full flex-col p-4 md:max-w-[420px]',
         positionClass,
-        props.class
+        props.class,
       )
     "
   />
