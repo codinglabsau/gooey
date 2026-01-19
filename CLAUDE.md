@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Gooey is a Vue 3 component library built on Tailwind CSS and shadcn-vue. It contains both shadcn components and custom components, published as `@codinglabsau/gooey` on GitHub Packages.
 
+The library supports both Tailwind CSS v3 and v4. The demo app uses Tailwind v4, while consumers can use either version with the appropriate preset.
+
 ## Commands
 
 ```bash

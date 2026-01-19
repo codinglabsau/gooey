@@ -19,7 +19,7 @@ const props = withDefaults(
     variant: "default",
     size: "default",
     disabled: false,
-  }
+  },
 )
 
 const emits = defineEmits<ToggleEmits>()

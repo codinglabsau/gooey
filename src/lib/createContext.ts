@@ -14,7 +14,7 @@ import { inject, provide } from "vue"
  */
 export function createContext<ContextValue>(
   providerComponentName: string | string[],
-  contextName?: string
+  contextName?: string,
 ) {
   const symbolDescription =
     typeof providerComponentName === "string" && !contextName
@@ -30,7 +30,7 @@ export function createContext<ContextValue>(
    * This happens when the component injecting the context is not a child of the root component providing the context.
    */
   const injectContext = <T extends ContextValue | null | undefined = ContextValue>(
-    fallback?: T
+    fallback?: T,
   ): T extends null ? ContextValue | null : ContextValue => {
     const context = inject(injectionKey, fallback)
     if (context) return context
@@ -42,7 +42,7 @@ export function createContext<ContextValue>(
         Array.isArray(providerComponentName)
           ? `one of the following components: ${providerComponentName.join(", ")}`
           : `\`${providerComponentName}\``
-      }`
+      }`,
     )
   }
 

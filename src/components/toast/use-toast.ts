@@ -94,7 +94,7 @@ function dispatch(action: Action) {
 
     case actionTypes.UPDATE_TOAST:
       state.value.toasts = state.value.toasts.map((t) =>
-        t.id === action.toast.id ? { ...t, ...action.toast } : t
+        t.id === action.toast.id ? { ...t, ...action.toast } : t,
       )
       break
 
@@ -115,7 +115,7 @@ function dispatch(action: Action) {
               ...t,
               open: false,
             }
-          : t
+          : t,
       )
       break
     }

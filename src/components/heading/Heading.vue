@@ -9,7 +9,7 @@ const props = withDefaults(
   }>(),
   {
     as: "h2",
-  }
+  },
 )
 </script>
 

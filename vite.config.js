@@ -1,6 +1,7 @@
 import path from "node:path"
 import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
+import tailwindcss from "@tailwindcss/vite"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 import Markdown from 'unplugin-vue-markdown/vite'
 
@@ -22,6 +23,7 @@ export default defineConfig({
     emptyOutDir: true
   },
   plugins: [
+    tailwindcss(),
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
@@ -31,6 +33,10 @@ export default defineConfig({
         {
           src: "src/presets/slate.css",
           dest: "presets"
+        },
+        {
+          src: "src/presets/v4/preset.css",
+          dest: "presets/v4"
         }
       ]
     })

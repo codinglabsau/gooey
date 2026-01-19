@@ -22,7 +22,7 @@ export const fieldVariants = cva(
     defaultVariants: {
       orientation: "vertical",
     },
-  }
+  },
 )
 
 export type FieldVariants = VariantProps<typeof fieldVariants>

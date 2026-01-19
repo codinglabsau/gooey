@@ -49,7 +49,7 @@ const goal = ref(5)
                 {{ goal }}
               </div>
 
-              <div class="text-[0.70rem] uppercase text-muted-foreground">Issues per day</div>
+              <div class="text-[0.70rem] text-muted-foreground uppercase">Issues per day</div>
             </div>
 
             <Button

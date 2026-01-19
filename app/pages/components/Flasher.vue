@@ -138,7 +138,7 @@ const props = ref<any>({})
                   firstname: 'firstname is required',
                   surname: 'surname must be of type: that\'s what she said',
                 },
-                'key'
+                'key',
               )
             }
           "
@@ -156,7 +156,7 @@ const props = ref<any>({})
                   firstname: 'firstname is required',
                   surname: 'surname must be of type: that\'s what she said',
                 },
-                'both'
+                'both',
               )
             }
           "
