@@ -104,6 +104,8 @@ declare const _default: {
             };
         };
     };
-    plugins: never[];
+    plugins: {
+        handler: () => void;
+    }[];
 };
 export default _default;

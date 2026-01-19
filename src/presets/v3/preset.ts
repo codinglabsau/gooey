@@ -2,7 +2,7 @@
  * Tailwind CSS v3 preset for Gooey
  *
  * Prerequisites:
- *   npm install -D tailwindcss postcss autoprefixer tw-animate-css
+ *   npm install -D tailwindcss postcss autoprefixer tailwindcss-animate @tailwindcss/forms
  *
  * Usage in consumer's tailwind.config.js:
  *
@@ -17,9 +17,11 @@
  * @tailwind base;
  * @tailwind components;
  * @tailwind utilities;
- * @import 'tw-animate-css';
  * @import '@codinglabsau/gooey/dist/presets/slate.css';
  */
+import forms from "@tailwindcss/forms"
+import animate from "tailwindcss-animate"
+
 export default {
   darkMode: ["class"],
   safelist: ["dark"],
@@ -112,5 +114,10 @@ export default {
     },
   },
 
-  plugins: [],
+  plugins: [
+    animate,
+    forms({
+      strategy: "class",
+    }),
+  ],
 }

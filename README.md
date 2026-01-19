@@ -15,7 +15,7 @@ This library supports both **Tailwind CSS v3** and **Tailwind CSS v4**. Choose t
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss @tailwindcss/vite tw-animate-css
+npm install -D tailwindcss @tailwindcss/vite tw-animate-css @tailwindcss/forms
 ```
 
 2. Add the Tailwind plugin to your `vite.config.js`:
@@ -112,7 +112,7 @@ export default defineConfig({
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer tw-animate-css
+npm install -D tailwindcss postcss autoprefixer tailwindcss-animate @tailwindcss/forms
 ```
 
 2. Add the preset to your `tailwind.config.js`:
@@ -140,7 +140,6 @@ export default {
 @tailwind components;
 @tailwind utilities;
 
-@import 'tw-animate-css';
 @import '@codinglabsau/gooey/dist/presets/slate.css';
 ```
 

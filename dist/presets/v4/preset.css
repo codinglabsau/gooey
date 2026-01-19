@@ -2,7 +2,7 @@
  * Tailwind CSS v4 preset for Gooey
  *
  * Prerequisites:
- *   npm install -D tailwindcss @tailwindcss/vite tw-animate-css
+ *   npm install -D tailwindcss @tailwindcss/vite tw-animate-css @tailwindcss/forms
  *
  * Usage in consumer's main CSS file:
  * ```css
@@ -16,6 +16,9 @@
 @import "tw-animate-css";
 
 @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms" {
+  strategy: class;
+}
 
 @custom-variant dark (&:is(.dark *));
 
