@@ -11,6 +11,8 @@ import {
   BarChart3,
   HelpCircle,
   ChevronLeft,
+  ChevronUp,
+  User2,
 } from "lucide-vue-next"
 
 import {
@@ -22,6 +24,18 @@ import {
   Header,
   Main,
 } from "@/components/layout"
+import {
+  SidebarFooter,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/sidebar"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/dropdown-menu"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
@@ -125,14 +139,35 @@ function setActiveRoute(route: string) {
           </button>
         </nav>
 
-        <div class="border-t pt-4">
-          <button
-            class="flex w-full items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-          >
-            <HelpCircle class="h-5 w-5" />
-            Contact Support
-          </button>
-        </div>
+        <SidebarFooter class="border-t">
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger as-child>
+                  <SidebarMenuButton>
+                    <User2 class="h-5 w-5" />
+                    Username
+                    <ChevronUp class="ml-auto h-4 w-4" />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+
+                <DropdownMenuContent side="top" class="w-[--reka-popper-anchor-width]">
+                  <DropdownMenuItem>
+                    <span>Account</span>
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem>
+                    <span>Billing</span>
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem>
+                    <span>Sign out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
       </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 
