@@ -26460,7 +26460,7 @@ function _I(e, t) {
     _(e.$slots, "default")
   ]);
 }
-const R7 = /* @__PURE__ */ vr(yI, [["render", _I]]), wI = {}, xI = { class: "px-4 py-10 sm:px-6 lg:px-8 lg:pl-72" };
+const R7 = /* @__PURE__ */ vr(yI, [["render", _I]]), wI = {}, xI = { class: "px-4 py-6 sm:px-6 lg:px-8 lg:pl-72" };
 function CI(e, t) {
   return h(), G("main", xI, [
     _(e.$slots, "default")
@@ -26470,7 +26470,7 @@ const V7 = /* @__PURE__ */ vr(wI, [["render", CI]]), SI = {};
 function $I(e, t) {
   return _(e.$slots, "default");
 }
-const F7 = /* @__PURE__ */ vr(SI, [["render", $I]]), kI = {}, BI = { class: "hidden px-6 py-10 lg:fixed lg:inset-y-0 lg:top-16 lg:z-50 lg:flex lg:w-72 lg:flex-col" }, DI = { class: "gap-y-5 overflow-y-auto" };
+const F7 = /* @__PURE__ */ vr(SI, [["render", $I]]), kI = {}, BI = { class: "hidden px-6 py-6 lg:fixed lg:inset-y-0 lg:top-16 lg:z-50 lg:flex lg:w-72 lg:flex-col" }, DI = { class: "gap-y-5 overflow-y-auto" };
 function PI(e, t) {
   return h(), G("div", BI, [
     xe("div", DI, [

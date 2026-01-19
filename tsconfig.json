@@ -19,7 +19,9 @@
       ]
     },
     "outDir": "dist",
+    "noEmit": false,
     "declaration": true,
+    "emitDeclarationOnly": true,
     "declarationDir": "dist/types"
   },
   "include": [
