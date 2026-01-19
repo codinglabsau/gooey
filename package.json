@@ -21,6 +21,7 @@
     },
     "./presets/v4": "./dist/presets/v4/preset.css",
     "./presets/slate.css": "./dist/presets/slate.css",
+    "./style.css": "./dist/gooey.css",
     "./dist/presets/*.css": {
       "import": "./dist/presets/*.css",
       "require": "./dist/presets/*.css"
