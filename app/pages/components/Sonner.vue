@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import { computed } from "vue"
+import { useColorMode } from "@vueuse/core"
 import { Toaster as Sonner } from "@/components/sonner"
 import { Button } from "@/components/button"
 import { toast } from "vue-sonner"
+
+const mode = useColorMode()
+const theme = computed(() => (mode.value === "auto" ? "system" : mode.value))
 </script>
 
 <template>
@@ -22,6 +27,6 @@ import { toast } from "vue-sonner"
       <Button variant="outline" @click="toast.info('For your information')"> Info </Button>
     </div>
 
-    <Sonner />
+    <Sonner :theme="theme" />
   </div>
 </template>
