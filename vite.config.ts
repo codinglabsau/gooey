@@ -9,7 +9,8 @@ import Markdown from "unplugin-vue-markdown/vite"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  define: command === "build" ? { "process.env.NODE_ENV": '"production"' } : {},
   build: {
     lib: {
       entry: path.resolve(__dirname, "./src/index.ts"),
@@ -47,4 +48,4 @@ export default defineConfig({
       "@app": path.resolve(__dirname, "./app"),
     },
   },
-})
+}))
