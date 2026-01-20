@@ -1,6 +1,6 @@
 import type { BulletLegendItemInterface } from "@unovis/ts";
 type __VLS_Props = {
-    items: BulletLegendItemInterface[];
+    items?: BulletLegendItemInterface[];
 };
 declare const __VLS_export: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
     legendItemClick: (d: BulletLegendItemInterface, i: number) => any;

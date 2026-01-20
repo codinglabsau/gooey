@@ -1,7 +1,7 @@
 import type { BulletLegendItemInterface } from "@unovis/ts";
 import type { Component } from "vue";
 type __VLS_Props = {
-    colors: string[];
+    colors?: string[];
     index: string;
     items: BulletLegendItemInterface[];
     customTooltip?: Component;
