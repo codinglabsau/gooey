@@ -1,4 +1,11 @@
-import { type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
+import type { HTMLAttributes } from "vue";
+export interface SidebarProps {
+    side?: "left" | "right";
+    variant?: "sidebar" | "floating" | "inset";
+    collapsible?: "offcanvas" | "icon" | "none";
+    class?: HTMLAttributes["class"];
+}
 export { default as Sidebar } from "./Sidebar.vue";
 export { default as SidebarContent } from "./SidebarContent.vue";
 export { default as SidebarFooter } from "./SidebarFooter.vue";
@@ -26,5 +33,5 @@ export { useSidebar } from "./utils";
 export declare const sidebarMenuButtonVariants: (props?: ({
     variant?: "default" | "outline" | null | undefined;
     size?: "default" | "sm" | "lg" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type SidebarMenuButtonVariants = VariantProps<typeof sidebarMenuButtonVariants>;

@@ -9,11 +9,11 @@ export { default as InputGroupText } from "./InputGroupText.vue";
 export { default as InputGroupTextarea } from "./InputGroupTextarea.vue";
 export declare const inputGroupAddonVariants: (props?: ({
     align?: "inline-start" | "inline-end" | "block-start" | "block-end" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type InputGroupVariants = VariantProps<typeof inputGroupAddonVariants>;
 export declare const inputGroupButtonVariants: (props?: ({
     size?: "xs" | "sm" | "icon-sm" | "icon-xs" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type InputGroupButtonVariants = VariantProps<typeof inputGroupButtonVariants>;
 export interface InputGroupButtonProps {
     variant?: ButtonVariants["variant"];

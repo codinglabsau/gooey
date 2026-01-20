@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { cn } from "@/lib/utils"
-import { Primitive, type PrimitiveProps } from "radix-vue"
+import type { PrimitiveProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
+import { Primitive } from "reka-ui"
+import { cn } from "@/lib/utils"
 
 const props = withDefaults(
   defineProps<
@@ -22,7 +23,6 @@ const props = withDefaults(
     :class="
       cn(
         'absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground ring-sidebar-ring transition-transform outline-none peer-hover/menu-button:text-sidebar-accent-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
-        // Increases the hit area of the button on mobile.
         'after:absolute after:-inset-2 after:md:hidden',
         'peer-data-[size=sm]/menu-button:top-1',
         'peer-data-[size=default]/menu-button:top-1.5',

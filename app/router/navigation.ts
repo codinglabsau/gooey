@@ -1,3 +1,6 @@
+import type { Component } from "vue"
+import { BookOpen, Blocks, FormInput, Layout, Columns } from "lucide-vue-next"
+
 export interface NavigationItem {
   name: string
   path: string
@@ -5,12 +8,14 @@ export interface NavigationItem {
 
 export interface NavigationGroup {
   name: string
+  icon?: Component
   children: NavigationItem[]
 }
 
 export const navigation: NavigationGroup[] = [
   {
     name: "Getting Started",
+    icon: BookOpen,
     children: [
       { name: "Installation", path: "/installation" },
       { name: "Theme", path: "/theme" },
@@ -19,8 +24,9 @@ export const navigation: NavigationGroup[] = [
   },
   {
     name: "Components",
+    icon: Blocks,
     children: [
-      { name: "Accord", path: "/components/accordion" },
+      { name: "Accordion", path: "/components/accordion" },
       { name: "Alert", path: "/components/alert" },
       { name: "Aspect Ratio", path: "/components/aspect-ratio" },
       { name: "Avatar", path: "/components/avatar" },
@@ -49,12 +55,12 @@ export const navigation: NavigationGroup[] = [
       { name: "Skeleton", path: "/components/skeleton" },
       { name: "Sonner", path: "/components/sonner" },
       { name: "Spinner", path: "/components/spinner" },
-      { name: "Toast", path: "/components/toast" },
       { name: "Tip", path: "/components/tip" },
     ],
   },
   {
     name: "Forms",
+    icon: FormInput,
     children: [
       { name: "Calendar", path: "/components/calendar" },
       { name: "Checkbox", path: "/components/checkbox" },
@@ -79,6 +85,7 @@ export const navigation: NavigationGroup[] = [
   },
   {
     name: "Page Layout",
+    icon: Layout,
     children: [
       { name: "Alert Dialog", path: "/components/alert-dialog" },
       { name: "Card", path: "/components/card" },
@@ -96,6 +103,7 @@ export const navigation: NavigationGroup[] = [
   },
   {
     name: "App Layouts",
+    icon: Columns,
     children: [{ name: "Two Column", path: "/components/two-column-layout" }],
   },
 ]

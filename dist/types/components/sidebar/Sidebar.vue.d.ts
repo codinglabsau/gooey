@@ -1,47 +1,21 @@
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    side?: "right" | "left" | undefined;
-    variant?: "inset" | "sidebar" | "floating" | undefined;
-    collapsible?: "icon" | "none" | "offcanvas" | undefined;
-    class?: any;
-}>, {
-    side: string;
-    variant: string;
-    collapsible: string;
-}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
-    side?: "right" | "left" | undefined;
-    variant?: "inset" | "sidebar" | "floating" | undefined;
-    collapsible?: "icon" | "none" | "offcanvas" | undefined;
-    class?: any;
-}>, {
-    side: string;
-    variant: string;
-    collapsible: string;
-}>>> & Readonly<{}>, {
-    collapsible: "icon" | "none" | "offcanvas";
-    variant: "inset" | "sidebar" | "floating";
-    side: "right" | "left";
-}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
-    default?(_: {}): any;
-}>;
+import type { SidebarProps } from ".";
+declare var __VLS_1: {}, __VLS_18: {}, __VLS_20: {};
+type __VLS_Slots = {} & {
+    default?: (props: typeof __VLS_1) => any;
+} & {
+    default?: (props: typeof __VLS_18) => any;
+} & {
+    default?: (props: typeof __VLS_20) => any;
+};
+declare const __VLS_base: import("vue").DefineComponent<SidebarProps, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<SidebarProps> & Readonly<{}>, {
+    variant: "sidebar" | "floating" | "inset";
+    collapsible: "offcanvas" | "icon" | "none";
+    side: "left" | "right";
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
+declare const _default: typeof __VLS_export;
 export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
-};
-type __VLS_WithDefaults<P, D> = {
-    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
-        default: D[K];
-    }> : P[K];
-};
-type __VLS_Prettify<T> = {
-    [K in keyof T]: T[K];
-} & {};
-type __VLS_WithTemplateSlots<T, S> = T & {
+type __VLS_WithSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

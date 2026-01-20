@@ -1,22 +1,18 @@
-import { type AccordionRootProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<AccordionRootProps<string | string[], import("radix-vue/dist/shared/types").SingleOrMultipleType>>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
-    "update:modelValue": (value: string | string[] | undefined) => void;
-}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<AccordionRootProps<string | string[], import("radix-vue/dist/shared/types").SingleOrMultipleType>>>> & Readonly<{
-    "onUpdate:modelValue"?: ((value: string | string[] | undefined) => any) | undefined;
-}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
-    default?(_: {}): any;
-}>;
-export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
+import type { AccordionRootProps } from "reka-ui";
+type __VLS_Props = AccordionRootProps;
+declare var __VLS_8: {};
+type __VLS_Slots = {} & {
+    default?: (props: typeof __VLS_8) => any;
 };
-type __VLS_WithTemplateSlots<T, S> = T & {
+declare const __VLS_base: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+    "update:modelValue": (value: string | string[] | undefined) => any;
+}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{
+    "onUpdate:modelValue"?: ((value: string | string[] | undefined) => any) | undefined;
+}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
+declare const _default: typeof __VLS_export;
+export default _default;
+type __VLS_WithSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

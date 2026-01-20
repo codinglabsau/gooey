@@ -5,7 +5,7 @@ import { VisBulletLegend } from "@unovis/vue"
 import { nextTick, onMounted, ref } from "vue"
 import { buttonVariants } from "@/components/button"
 
-const props = withDefaults(defineProps<{ items: BulletLegendItemInterface[] }>(), {
+const props = withDefaults(defineProps<{ items?: BulletLegendItemInterface[] }>(), {
   items: () => [],
 })
 
@@ -32,7 +32,8 @@ onMounted(() => {
 
 function onLegendItemClick(d: BulletLegendItemInterface, i: number) {
   emits("legendItemClick", d, i)
-  const isBulletActive = !props.items[i].inactive
+  const item = props.items[i]
+  const isBulletActive = item ? !item.inactive : true
   const isFilterApplied = props.items.some((i) => i.inactive)
   if (isFilterApplied && isBulletActive) {
     // reset filter

@@ -15,6 +15,11 @@ When adding a component, ensure you do these things:
 4. Register the documentation route in `app/router/index.ts`
 5. Add at least one cypress smoke test next to the component in src/components
 
+## Updating Components
+When updating a component, run `npx shadcn-vue@latest update <component-name> --overwrite`.
+
+Ensure that any breaking API changes are reviewed to preserve semantic versioning.
+
 ## Local Development
 Spin up the vite dev server with:
 ```bash

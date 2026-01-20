@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CircleAlertIcon } from "lucide-vue-next"
+import { toast } from "vue-sonner"
 import { Button } from "@/components/button"
 import {
   Dialog,
@@ -10,20 +10,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/dialog"
+import { Toaster as Sonner } from "@/components/sonner"
 import { Input } from "@/components/input"
 import { Label } from "@/components/label"
-import { Toaster, useToast } from "@/components/toast"
-
-const { toast } = useToast()
 
 const handleClose = () => {
-  toast({
-    title: "Attention!",
-    icon: CircleAlertIcon,
-    iconClasses: "text-orange-400 !size-10",
-    description:
-      "When defining the state of a Dialog (via the open prop), you will need to listen to the @close emit on the DialogContent to manually handle the state change.",
-  })
+  toast.info(
+    "When defining the state of a Dialog (via the open prop), you will need to listen to the @close emit on the DialogContent to manually handle the state change.",
+  )
 }
 </script>
 
@@ -62,5 +56,5 @@ const handleClose = () => {
     </DialogContent>
   </Dialog>
 
-  <Toaster />
+  <Sonner />
 </template>

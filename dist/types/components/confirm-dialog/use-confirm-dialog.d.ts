@@ -16,7 +16,7 @@ declare function useConfirmDialog(): {
     confirmDialog: (confirmDialogConfig: ConfirmDialogType) => void;
     title: import("vue").Ref<string, string>;
     description: import("vue").Ref<string, string>;
-    variant: import("vue").Ref<"default" | "link" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined, "default" | "link" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined>;
+    variant: import("vue").Ref<"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined, "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined>;
     isOpen: import("vue").Ref<boolean, boolean>;
     close: () => void;
     cancelButton: import("vue").Ref<{

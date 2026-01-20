@@ -1,25 +1,12 @@
 import type { BulletLegendItemInterface } from "@unovis/ts";
 import type { Component } from "vue";
-declare const _default: import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
+type __VLS_Props = {
     selector: string;
     index: string;
-    items?: BulletLegendItemInterface[] | undefined;
-    valueFormatter?: ((tick: number, i?: number, ticks?: number[]) => string) | undefined;
-    customTooltip?: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | undefined;
-}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
-    selector: string;
-    index: string;
-    items?: BulletLegendItemInterface[] | undefined;
-    valueFormatter?: ((tick: number, i?: number, ticks?: number[]) => string) | undefined;
-    customTooltip?: Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | undefined;
-}>>> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>;
-export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
+    items?: BulletLegendItemInterface[];
+    valueFormatter?: (tick: number, i?: number, ticks?: number[]) => string;
+    customTooltip?: Component;
 };
+declare const __VLS_export: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const _default: typeof __VLS_export;
+export default _default;

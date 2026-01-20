@@ -7,5 +7,5 @@ export { default as EmptyMedia } from "./EmptyMedia.vue";
 export { default as EmptyTitle } from "./EmptyTitle.vue";
 export declare const emptyMediaVariants: (props?: ({
     variant?: "default" | "icon" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type EmptyMediaVariants = VariantProps<typeof emptyMediaVariants>;

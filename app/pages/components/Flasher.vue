@@ -1,26 +1,92 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { computed, ref } from "vue"
+import { useColorMode } from "@vueuse/core"
 import { Flasher, useFlasher } from "@/components/flasher"
 import { Button } from "@/components/button"
-import { ComponentHeading } from "@app/components"
+import { ComponentHeading, ComponentProps } from "@app/components"
+import { type ComponentProp } from "@app/types/globals"
 
 const { info, success, warning, error } = useFlasher()
 
-const props = ref<any>({})
+const mode = useColorMode()
+
+const flasherProps = ref({
+  theme: mode.value === "auto" ? "system" : mode.value,
+})
+
+const componentProps: ComponentProp[] = [
+  {
+    name: "info",
+    type: "string",
+    description: "Info message to display",
+  },
+  {
+    name: "success",
+    type: "string",
+    description: "Success message to display",
+  },
+  {
+    name: "warning",
+    type: "string",
+    description: "Warning message to display",
+  },
+  {
+    name: "errors",
+    type: "ErrorBag",
+    description: "Object containing error messages (Record<string, string>)",
+  },
+  {
+    name: "objectFormat",
+    type: "string",
+    default: "value",
+    description: 'How to format error objects: "value" (default), "key", or "both"',
+  },
+  {
+    name: "theme",
+    type: "string",
+    default: "light",
+    description: "'light', 'dark' or 'system'",
+  },
+]
 </script>
 
 <template>
-  <Flasher v-bind="props" />
+  <Flasher v-bind="flasherProps" />
 
-  <div class="space-y-12">
+  <div class="space-y-8">
     <section>
-      <ComponentHeading>Flasher via props</ComponentHeading>
+      <ComponentHeading>Description</ComponentHeading>
 
-      <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
+      <p>
+        Flasher is a standalone notification component built on top of
+        <strong>vue-sonner</strong>. It provides a simple API for displaying info, success, warning,
+        and error notifications without modifying the underlying Sonner or Toast components.
+      </p>
+
+      <p class="mt-2">Use Flasher when you need:</p>
+
+      <ul class="mt-2 list-disc pl-6">
+        <li>Pre-styled info/success/warning/error notification types</li>
+
+        <li>Error bag support for form validation errors</li>
+
+        <li>Both prop-based and composable-based APIs</li>
+      </ul>
+    </section>
+
+    <section>
+      <ComponentHeading>Via Props</ComponentHeading>
+
+      <p class="mb-4">
+        Pass notification props directly to the Flasher component. Useful for server-driven
+        notifications (e.g., Inertia flash messages).
+      </p>
+
+      <div class="flex flex-wrap gap-2">
         <Button
           variant="outline"
           data-cy="prop-info"
-          @click="props.info = 'This is an info notification'"
+          @click="flasherProps.info = 'This is an info notification'"
         >
           Info
         </Button>
@@ -28,7 +94,7 @@ const props = ref<any>({})
         <Button
           variant="outline"
           data-cy="prop-success"
-          @click="props.success = 'This is a success notification'"
+          @click="flasherProps.success = 'This is a success notification'"
         >
           Success
         </Button>
@@ -36,7 +102,7 @@ const props = ref<any>({})
         <Button
           variant="outline"
           data-cy="prop-warning"
-          @click="props.warning = 'This is a warning notification'"
+          @click="flasherProps.warning = 'This is a warning notification'"
         >
           Warning
         </Button>
@@ -46,15 +112,15 @@ const props = ref<any>({})
           data-cy="prop-errors"
           @click="
             () => {
-              props.objectFormat = 'value'
-              props.errors = {
+              flasherProps.objectFormat = 'value'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
-                surname: 'surname must be of type: that\'s what she said',
+                surname: 'surname is required',
               }
             }
           "
         >
-          Errors (default)
+          Errors
         </Button>
 
         <Button
@@ -62,10 +128,10 @@ const props = ref<any>({})
           data-cy="prop-errors-key"
           @click="
             () => {
-              props.objectFormat = 'key'
-              props.errors = {
+              flasherProps.objectFormat = 'key'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
-                surname: 'surname must be of type: that\'s what she said',
+                surname: 'surname is required',
               }
             }
           "
@@ -78,39 +144,45 @@ const props = ref<any>({})
           data-cy="prop-errors-both"
           @click="
             () => {
-              props.objectFormat = 'both'
-              props.errors = {
+              flasherProps.objectFormat = 'both'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
-                surname: 'surname must be of type: that\'s what she said',
+                surname: 'surname is required',
               }
             }
           "
         >
-          Errors (keys and values)
+          Errors (keys + values)
         </Button>
       </div>
     </section>
 
     <section>
-      <ComponentHeading>Flasher via helper</ComponentHeading>
+      <ComponentHeading>Via Composable</ComponentHeading>
 
-      <div class="mt-2 flex flex-col gap-x-2 md:flex-row">
-        <Button variant="outline" data-cy="info" @click="info('This is an info notification')"
-          >Info toast</Button
-        >
+      <p class="mb-4">
+        Use the <code>useFlasher()</code> composable for programmatic notifications.
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        <Button variant="outline" data-cy="info" @click="info('This is an info notification')">
+          Info
+        </Button>
 
         <Button
           variant="outline"
           data-cy="success"
           @click="success('This is a success notification')"
-          >Success
+        >
+          Success
         </Button>
 
         <Button
           variant="outline"
           data-cy="warning"
           @click="warning('This is a warning notification')"
-          >Warning
+        >
+          Warning
         </Button>
 
         <Button
@@ -120,12 +192,12 @@ const props = ref<any>({})
             () => {
               error({
                 firstname: 'firstname is required',
-                surname: 'surname must be of type: that\'s what she said',
+                surname: 'surname is required',
               })
             }
           "
         >
-          Errors (default)
+          Errors
         </Button>
 
         <Button
@@ -136,7 +208,7 @@ const props = ref<any>({})
               error(
                 {
                   firstname: 'firstname is required',
-                  surname: 'surname must be of type: that\'s what she said',
+                  surname: 'surname is required',
                 },
                 'key',
               )
@@ -154,16 +226,18 @@ const props = ref<any>({})
               error(
                 {
                   firstname: 'firstname is required',
-                  surname: 'surname must be of type: that\'s what she said',
+                  surname: 'surname is required',
                 },
                 'both',
               )
             }
           "
         >
-          Errors (keys and values)
+          Errors (keys + values)
         </Button>
       </div>
     </section>
+
+    <ComponentProps :props="componentProps" :meta="$route.meta" />
   </div>
 </template>

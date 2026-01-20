@@ -1,1 +1,2 @@
-export { default as Sonner } from "./Sonner.vue";
+import "vue-sonner/style.css";
+export { default as Toaster } from "./Sonner.vue";

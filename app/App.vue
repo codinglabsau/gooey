@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from "vue"
-import { VisuallyHidden } from "radix-vue"
+import { ref, computed } from "vue"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
+import { Moon, Sun } from "lucide-vue-next"
 
 import {
   TwoColumnLayout,
@@ -13,14 +12,19 @@ import {
   Header,
   Main,
 } from "@/components/layout"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
+import { ScrollArea } from "@/components/scroll-area"
 import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
+import MobileSidebar from "@app/components/MobileSidebar.vue"
 
 const mode = useColorMode()
-const colourMode = ref(mode.value === "dark")
-watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
+const isDark = computed({
+  get: () => mode.value === "dark",
+  set: (val) => {
+    mode.value = val ? "dark" : "light"
+  },
+})
 
 const sidebarOpen = ref(false)
 </script>
@@ -32,7 +36,7 @@ const sidebarOpen = ref(false)
         <div class="flex items-center space-x-2">
           <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
 
-          <div class="text-xl">GOOEY</div>
+          <div class="text-xl font-semibold tracking-tight">GOOEY</div>
         </div>
       </RouterLink>
 
@@ -40,38 +44,24 @@ const sidebarOpen = ref(false)
 
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
-          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+          <Sun class="size-5 text-primary" @click="mode = 'light'" />
 
-          <Switch v-model:checked="colourMode" />
+          <Switch v-model="isDark" />
 
-          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
+          <Moon class="size-5 text-primary" @click="mode = 'dark'" />
         </div>
       </div>
     </Header>
 
     <TwoColumnLayoutSidebar>
       <TwoColumnLayoutSidebarMobile>
-        <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
-          <SheetContent side="left">
-            <SheetHeader>
-              <SheetTitle class="flex items-center space-x-2">
-                <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
-
-                <div class="text-xl">GOOEY</div>
-              </SheetTitle>
-            </SheetHeader>
-
-            <VisuallyHidden as-child>
-              <SheetDescription> Sidebar navigation</SheetDescription>
-            </VisuallyHidden>
-
-            <SidebarNavigation :items="navigation" @navigated="sidebarOpen = false" />
-          </SheetContent>
-        </Sheet>
+        <MobileSidebar v-model:open="sidebarOpen" />
       </TwoColumnLayoutSidebarMobile>
 
       <TwoColumnLayoutSidebarDesktop>
-        <SidebarNavigation :items="navigation" />
+        <ScrollArea class="h-full px-2">
+          <SidebarNavigation :items="navigation" />
+        </ScrollArea>
       </TwoColumnLayoutSidebarDesktop>
     </TwoColumnLayoutSidebar>
 

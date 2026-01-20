@@ -12,9 +12,9 @@ export { default as ItemTitle } from "./ItemTitle.vue";
 export declare const itemVariants: (props?: ({
     variant?: "default" | "outline" | "muted" | null | undefined;
     size?: "default" | "sm" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export declare const itemMediaVariants: (props?: ({
-    variant?: "default" | "image" | "icon" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+    variant?: "default" | "icon" | "image" | null | undefined;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type ItemVariants = VariantProps<typeof itemVariants>;
 export type ItemMediaVariants = VariantProps<typeof itemMediaVariants>;

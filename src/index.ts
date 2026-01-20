@@ -1,8 +1,8 @@
 // tailwind presets
 import preset from "@/presets/preset"
 
-// radix components
-import { DropdownMenuPortal } from "radix-vue"
+// reka-ui components
+import { DropdownMenuPortal } from "reka-ui"
 
 // utils
 export * from "@/lib/utils"
@@ -75,7 +75,6 @@ export * from "@/components/table"
 export * from "@/components/tabs"
 export * from "@/components/tags-input"
 export * from "@/components/textarea"
-export * from "@/components/toast"
 export * from "@/components/toggle"
 export * from "@/components/toggle-group"
 

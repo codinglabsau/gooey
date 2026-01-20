@@ -1,5 +1,5 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "lib": [
       "ESNext",
@@ -19,7 +19,9 @@
       ]
     },
     "outDir": "dist",
+    "noEmit": false,
     "declaration": true,
+    "emitDeclarationOnly": true,
     "declarationDir": "dist/types"
   },
   "include": [

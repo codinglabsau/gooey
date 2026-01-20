@@ -8,9 +8,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-info"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("FYI")
   })
 
@@ -19,9 +18,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-success"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Success")
   })
 
@@ -30,9 +28,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-warning"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Warning")
   })
 
@@ -41,9 +38,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-errors"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
   })
 
@@ -52,11 +48,10 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-errors-key"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
       .contains("firstname")
   })
 
@@ -65,11 +60,10 @@ describe("template spec", () => {
 
     cy.get('[data-cy="prop-errors-both"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
       .contains("firstname: firstname is required")
   })
 
@@ -78,9 +72,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="success"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Success")
   })
 
@@ -89,9 +82,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="warning"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Warning")
   })
 
@@ -100,9 +92,8 @@ describe("template spec", () => {
 
     cy.get('[data-cy="errors"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
   })
 
@@ -111,11 +102,10 @@ describe("template spec", () => {
 
     cy.get('[data-cy="errors-key"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
       .contains("firstname")
   })
 
@@ -124,11 +114,10 @@ describe("template spec", () => {
 
     cy.get('[data-cy="errors-both"]')
       .click()
-      .get("[data-radix-vue-collection-item]")
-      .then(($el) => Cypress.dom.isVisible($el))
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
+      .should("be.visible")
       .contains("Oh snap")
-      .get("[data-radix-vue-collection-item]")
+      .get("[data-sonner-toast]")
       .contains("firstname: firstname is required")
   })
 })

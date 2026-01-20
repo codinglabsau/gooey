@@ -8,4 +8,4 @@
  *
  * @param contextName The description for injection key symbol.
  */
-export declare function createContext<ContextValue>(providerComponentName: string | string[], contextName?: string): readonly [<T extends ContextValue | null | undefined = ContextValue>(fallback?: T | undefined) => T extends null ? ContextValue | null : ContextValue, (contextValue: ContextValue) => ContextValue];
+export declare function createContext<ContextValue>(providerComponentName: string | string[], contextName?: string): readonly [<T extends ContextValue | null | undefined = ContextValue>(fallback?: T) => T extends null ? ContextValue | null : ContextValue, (contextValue: ContextValue) => ContextValue];

@@ -1,43 +1,22 @@
-import type { PrimitiveProps } from "radix-vue";
-declare const _default: __VLS_WithTemplateSlots<import("vue").DefineComponent<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<PrimitiveProps & {
-    size?: "sm" | "md" | undefined;
-    isActive?: boolean | undefined;
-    class?: any;
-}>, {
-    as: string;
-    size: string;
-}>>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<PrimitiveProps & {
-    size?: "sm" | "md" | undefined;
-    isActive?: boolean | undefined;
-    class?: any;
-}>, {
-    as: string;
-    size: string;
-}>>> & Readonly<{}>, {
-    as: string | import("vue").Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any>;
+import type { PrimitiveProps } from "reka-ui";
+import type { HTMLAttributes } from "vue";
+type __VLS_Props = PrimitiveProps & {
+    size?: "sm" | "md";
+    isActive?: boolean;
+    class?: HTMLAttributes["class"];
+};
+declare var __VLS_8: {};
+type __VLS_Slots = {} & {
+    default?: (props: typeof __VLS_8) => any;
+};
+declare const __VLS_base: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
     size: "sm" | "md";
-}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, any>, {
-    default?(_: {}): any;
-}>;
+    as: import("reka-ui").AsTag | import("vue").Component;
+}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
+declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
+declare const _default: typeof __VLS_export;
 export default _default;
-type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
-type __VLS_TypePropsToRuntimeProps<T> = {
-    [K in keyof T]-?: {} extends Pick<T, K> ? {
-        type: import('vue').PropType<__VLS_NonUndefinedable<T[K]>>;
-    } : {
-        type: import('vue').PropType<T[K]>;
-        required: true;
-    };
-};
-type __VLS_WithDefaults<P, D> = {
-    [K in keyof Pick<P, keyof P>]: K extends keyof D ? __VLS_Prettify<P[K] & {
-        default: D[K];
-    }> : P[K];
-};
-type __VLS_Prettify<T> = {
-    [K in keyof T]: T[K];
-} & {};
-type __VLS_WithTemplateSlots<T, S> = T & {
+type __VLS_WithSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

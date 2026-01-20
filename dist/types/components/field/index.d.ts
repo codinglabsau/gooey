@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 export declare const fieldVariants: (props?: ({
     orientation?: "vertical" | "horizontal" | "responsive" | null | undefined;
-} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+} & import("class-variance-authority/types").ClassProp) | undefined) => string;
 export type FieldVariants = VariantProps<typeof fieldVariants>;
 export { default as Field } from "./Field.vue";
 export { default as FieldContent } from "./FieldContent.vue";

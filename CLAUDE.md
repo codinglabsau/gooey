@@ -8,6 +8,10 @@ Gooey is a Vue 3 component library built on Tailwind CSS and shadcn-vue. It cont
 
 The library supports both Tailwind CSS v3 and v4. The demo app uses Tailwind v4, while consumers can use either version with the appropriate preset.
 
+## Rules
+- The upstream shadcn-vue components should NOT be modified without approval
+- It should always be safe and encouraged to overwrite any shadcn-vue sourced component using `npx shadcn-vue@latest add <component-name> --overwrite --yes`
+
 ## Commands
 
 ```bash
@@ -43,11 +47,7 @@ npm run format
 
 ### Adding a New shadcn Component
 
-1. Run `npx shadcn-vue@latest add <component-name>` (adds to `src/components/`)
-2. Add export to `src/index.ts` (alphabetically in the shadcn section)
-3. Create showcase in `app/pages/components/<Component>.vue`
-4. Export showcase in `app/pages/index.ts` (alphabetically)
-5. Add route in `app/router/index.ts` (import + route object, alphabetically)
+Use the `/add-shadcn-component` command in Claude Code.
 
 ### Path Aliases
 

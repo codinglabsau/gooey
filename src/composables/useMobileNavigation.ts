@@ -1,4 +1,4 @@
-import { SwipeDirection, useMediaQuery, useSwipe } from "@vueuse/core"
+import { useMediaQuery, useSwipe, type UseSwipeDirection } from "@vueuse/core"
 import { computed, onMounted, onUnmounted, ref, type Ref } from "vue"
 
 export interface SwipeNavigationOptions {
@@ -39,9 +39,9 @@ export function useSwipeNavigation(
       if (!enabled) return
 
       if (Math.abs(lengthX.value) >= threshold) {
-        if (direction.value === SwipeDirection.LEFT && onSwipeLeft) {
+        if (direction.value === "left" && onSwipeLeft) {
           onSwipeLeft()
-        } else if (direction.value === SwipeDirection.RIGHT && onSwipeRight) {
+        } else if (direction.value === "right" && onSwipeRight) {
           onSwipeRight()
         }
       }

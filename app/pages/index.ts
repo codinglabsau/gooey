@@ -6,6 +6,7 @@ export { default as Theme } from "./theme.md"
 
 // demos
 export { default as TwoColumnLayoutDemo } from "./demo/TwoColumnLayoutDemo.vue"
+export { default as CollapsibleTwoColumnLayoutDemo } from "./demo/CollapsibleTwoColumnLayoutDemo.vue"
 
 // components
 export { default as Accord } from "./components/Accord.vue"
@@ -67,7 +68,6 @@ export { default as Tabs } from "./components/Tabs.vue"
 export { default as TagsInput } from "./components/TagsInput.vue"
 export { default as Textarea } from "./components/Textarea.vue"
 export { default as Tip } from "./components/Tip.vue"
-export { default as Toast } from "./components/Toast.vue"
 export { default as Toggle } from "./components/Toggle.vue"
 export { default as ToggleGroup } from "./components/ToggleGroup.vue"
 export { default as TwoColumnLayout } from "./components/TwoColumnLayout.vue"

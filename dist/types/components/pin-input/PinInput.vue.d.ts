@@ -1,79 +1,27 @@
-declare const _default: <Type extends "number" | "text" = "text">(__VLS_props: {
-    disabled?: boolean | undefined;
-    dir?: ("ltr" | "rtl") | undefined;
-    asChild?: boolean | undefined;
-    as?: string | import("vue").Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | undefined;
-    type?: Type | undefined;
-    modelValue?: ([Type] extends ["number"] ? number[] : string[]) | null | undefined;
-    defaultValue?: ([Type] extends ["number"] ? number[] : string[]) | undefined;
-    readonly "onUpdate:modelValue"?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-    name?: string | undefined;
-    placeholder?: string | undefined;
-    mask?: boolean | undefined;
-    required?: boolean | undefined;
-    id?: string | undefined;
-    readonly onComplete?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-    otp?: boolean | undefined;
-} & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, __VLS_ctx?: {
+import type { PinInputRootProps } from "reka-ui";
+import type { HTMLAttributes } from "vue";
+declare const __VLS_export: <Type extends "text" | "number" = "text">(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_exposed?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
+    props: import("vue").PublicProps & __VLS_PrettifyLocal<(PinInputRootProps<Type> & {
+        class?: HTMLAttributes["class"];
+    }) & {
+        "onUpdate:modelValue"?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
+        onComplete?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
+    }> & (typeof globalThis extends {
+        __VLS_PROPS_FALLBACK: infer P;
+    } ? P : {});
+    expose: (exposed: {}) => void;
     attrs: any;
     slots: {
-        default?(_: {}): any;
+        default?: (props: {}) => any;
     };
     emit: ((evt: "update:modelValue", value: [Type] extends ["number"] ? number[] : string[]) => void) & ((evt: "complete", value: [Type] extends ["number"] ? number[] : string[]) => void);
-} | undefined, __VLS_expose?: ((exposed: import('vue').ShallowUnwrapRef<{}>) => void) | undefined, __VLS_setup?: Promise<{
-    props: {
-        disabled?: boolean | undefined;
-        dir?: ("ltr" | "rtl") | undefined;
-        asChild?: boolean | undefined;
-        as?: string | import("vue").Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | undefined;
-        type?: Type | undefined;
-        modelValue?: ([Type] extends ["number"] ? number[] : string[]) | null | undefined;
-        defaultValue?: ([Type] extends ["number"] ? number[] : string[]) | undefined;
-        readonly "onUpdate:modelValue"?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-        name?: string | undefined;
-        placeholder?: string | undefined;
-        mask?: boolean | undefined;
-        required?: boolean | undefined;
-        id?: string | undefined;
-        readonly onComplete?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-        otp?: boolean | undefined;
-    } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
-    expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
-    attrs: any;
-    slots: {
-        default?(_: {}): any;
-    };
-    emit: ((evt: "update:modelValue", value: [Type] extends ["number"] ? number[] : string[]) => void) & ((evt: "complete", value: [Type] extends ["number"] ? number[] : string[]) => void);
-}>) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
-    [key: string]: any;
-}> & {
-    __ctx?: {
-        props: {
-            disabled?: boolean | undefined;
-            dir?: ("ltr" | "rtl") | undefined;
-            asChild?: boolean | undefined;
-            as?: string | import("vue").Component<any, any, any, import("vue").ComputedOptions, import("vue").MethodOptions, {}, any> | undefined;
-            type?: Type | undefined;
-            modelValue?: ([Type] extends ["number"] ? number[] : string[]) | null | undefined;
-            defaultValue?: ([Type] extends ["number"] ? number[] : string[]) | undefined;
-            readonly "onUpdate:modelValue"?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-            name?: string | undefined;
-            placeholder?: string | undefined;
-            mask?: boolean | undefined;
-            required?: boolean | undefined;
-            id?: string | undefined;
-            readonly onComplete?: ((value: [Type] extends ["number"] ? number[] : string[]) => any) | undefined;
-            otp?: boolean | undefined;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps;
-        expose(exposed: import('vue').ShallowUnwrapRef<{}>): void;
-        attrs: any;
-        slots: {
-            default?(_: {}): any;
-        };
-        emit: ((evt: "update:modelValue", value: [Type] extends ["number"] ? number[] : string[]) => void) & ((evt: "complete", value: [Type] extends ["number"] ? number[] : string[]) => void);
-    } | undefined;
+}>) => import("vue").VNode & {
+    __ctx?: Awaited<typeof __VLS_setup>;
 };
+declare const _default: typeof __VLS_export;
 export default _default;
-type __VLS_Prettify<T> = {
+type __VLS_PrettifyLocal<T> = (T extends any ? {
     [K in keyof T]: T[K];
-} & {};
+} : {
+    [K in keyof T as K]: T[K];
+}) & {};

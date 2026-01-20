@@ -10,6 +10,7 @@ import {
 
   // demos
   TwoColumnLayoutDemo,
+  CollapsibleTwoColumnLayoutDemo,
 
   // components
   Accord,
@@ -71,7 +72,6 @@ import {
   TagsInput,
   Textarea,
   Tip,
-  Toast,
   Toggle,
   ToggleGroup,
   TwoColumnLayout,
@@ -82,6 +82,7 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 const routes = [
   { path: "", component: Index },
   { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo },
+  { path: "/demo/collapsible-two-column-layout", component: CollapsibleTwoColumnLayoutDemo },
   {
     name: "Getting Started",
     children: [
@@ -275,12 +276,6 @@ const routes = [
         path: "/components/spinner",
         component: Spinner,
         meta: { layout: ComponentLayout, shadcn: true },
-      },
-      {
-        name: "Toast",
-        path: "/components/toast",
-        component: Toast,
-        meta: { layout: ComponentLayout, shadcn: true, modified: true },
       },
       {
         name: "Tip",
