@@ -80,6 +80,10 @@ watch(
       classes: {
         toast:
           'group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg',
+        success: 'group-[.toaster]:border-success',
+        error: 'group-[.toaster]:border-destructive',
+        warning: 'group-[.toaster]:border-warning',
+        info: 'group-[.toaster]:border-primary',
         description: 'group-[.toast]:text-muted-foreground',
         actionButton: 'group-[.toast]:bg-primary group-[.toast]:text-primary-foreground',
         cancelButton: 'group-[.toast]:bg-muted group-[.toast]:text-muted-foreground',
@@ -87,19 +91,19 @@ watch(
     }"
   >
     <template #success-icon>
-      <CircleCheckIcon class="size-4" />
+      <CircleCheckIcon class="size-4 text-success" />
     </template>
 
     <template #info-icon>
-      <InfoIcon class="size-4" />
+      <InfoIcon class="size-4 text-primary" />
     </template>
 
     <template #warning-icon>
-      <TriangleAlertIcon class="size-4" />
+      <TriangleAlertIcon class="size-4 text-warning" />
     </template>
 
     <template #error-icon>
-      <OctagonXIcon class="size-4" />
+      <OctagonXIcon class="size-4 text-destructive" />
     </template>
 
     <template #loading-icon>
