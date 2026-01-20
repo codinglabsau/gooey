@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from "vue"
+import { ref } from "vue"
 import { VisuallyHidden } from "reka-ui"
-import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
 import {
   LayoutGrid,
   Settings,
@@ -10,9 +8,9 @@ import {
   FileText,
   BarChart3,
   HelpCircle,
-  ChevronLeft,
   ChevronUp,
   User2,
+  X,
 } from "lucide-vue-next"
 
 import {
@@ -31,12 +29,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
-import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
-
-const mode = useColorMode()
-const colourMode = ref(mode.value === "dark")
-watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 
 const sidebarOpen = ref(false)
 const activeRoute = ref("/dashboard")
@@ -70,18 +63,9 @@ function setActiveRoute(route: string) {
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
       <div class="flex w-full items-center justify-end gap-4">
-        <div class="group flex cursor-pointer items-center space-x-2">
-          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
-
-          <Switch v-model:checked="colourMode" />
-
-          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
-        </div>
-
-        <Button variant="ghost" size="sm" as-child>
+        <Button variant="ghost" size="icon" as-child>
           <RouterLink to="/components/two-column-layout">
-            <ChevronLeft class="mr-1 h-4 w-4" />
-            Back
+            <X class="h-4 w-4" />
           </RouterLink>
         </Button>
       </div>

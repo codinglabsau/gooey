@@ -1,16 +1,6 @@
 <script setup lang="ts">
-import { ref, watch } from "vue"
-import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
-import {
-  LayoutGrid,
-  Settings,
-  Users,
-  FileText,
-  BarChart3,
-  HelpCircle,
-  ChevronLeft,
-} from "lucide-vue-next"
+import { ref } from "vue"
+import { LayoutGrid, Settings, Users, FileText, BarChart3, HelpCircle, X } from "lucide-vue-next"
 
 import {
   CollapsibleTwoColumnLayout,
@@ -23,13 +13,8 @@ import {
   TwoColumnLayoutSidebarMobile,
   Header,
 } from "@/components/layout"
-import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
 import MobileSidebar from "./MobileSidebar.vue"
-
-const mode = useColorMode()
-const colourMode = ref(mode.value === "dark")
-watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
 
 const activeRoute = ref("/dashboard")
 
@@ -64,18 +49,9 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
       <CollapsibleSidebarTrigger />
 
       <div class="flex w-full items-center justify-end gap-4">
-        <div class="group flex cursor-pointer items-center space-x-2">
-          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
-
-          <Switch v-model:checked="colourMode" />
-
-          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
-        </div>
-
-        <Button variant="ghost" size="sm" as-child>
-          <RouterLink to="/components/collapsible-two-column-layout">
-            <ChevronLeft class="mr-1 h-4 w-4" />
-            Back
+        <Button variant="ghost" size="icon" as-child>
+          <RouterLink to="/components/two-column-layout">
+            <X class="h-4 w-4" />
           </RouterLink>
         </Button>
       </div>
