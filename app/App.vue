@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, watch } from "vue"
+import { ref, computed } from "vue"
 import { useColorMode } from "@vueuse/core"
-import { MoonIcon, SunIcon } from "@heroicons/vue/24/outline"
+import { Moon, Sun } from "lucide-vue-next"
 
 import {
   TwoColumnLayout,
@@ -19,8 +19,12 @@ import { navigation } from "@app/router/navigation"
 import MobileSidebar from "@app/components/MobileSidebar.vue"
 
 const mode = useColorMode()
-const colourMode = ref(mode.value === "dark")
-watch(colourMode, (value) => (mode.value = value ? "dark" : "light"))
+const isDark = computed({
+  get: () => mode.value === "dark",
+  set: (val) => {
+    mode.value = val ? "dark" : "light"
+  },
+})
 
 const sidebarOpen = ref(false)
 </script>
@@ -40,11 +44,11 @@ const sidebarOpen = ref(false)
 
       <div class="flex w-full justify-end">
         <div class="group flex cursor-pointer items-center space-x-2">
-          <SunIcon class="size-5 text-primary" @click="colourMode = false" />
+          <Sun class="size-5 text-primary" @click="mode = 'light'" />
 
-          <Switch v-model:checked="colourMode" />
+          <Switch v-model="isDark" />
 
-          <MoonIcon class="size-5 text-primary" @click="colourMode = true" />
+          <Moon class="size-5 text-primary" @click="mode = 'dark'" />
         </div>
       </div>
     </Header>

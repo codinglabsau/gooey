@@ -1,6 +1,17 @@
 <script setup lang="ts">
-import { ref } from "vue"
-import { LayoutGrid, Settings, Users, FileText, BarChart3, HelpCircle, X } from "lucide-vue-next"
+import { ref, computed } from "vue"
+import { useColorMode } from "@vueuse/core"
+import {
+  LayoutGrid,
+  Settings,
+  Users,
+  FileText,
+  BarChart3,
+  HelpCircle,
+  X,
+  Sun,
+  Moon,
+} from "lucide-vue-next"
 
 import {
   CollapsibleTwoColumnLayout,
@@ -13,8 +24,17 @@ import {
   TwoColumnLayoutSidebarMobile,
   Header,
 } from "@/components/layout"
+import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
 import MobileSidebar from "./MobileSidebar.vue"
+
+const mode = useColorMode()
+const isDark = computed({
+  get: () => mode.value === "dark",
+  set: (val) => {
+    mode.value = val ? "dark" : "light"
+  },
+})
 
 const activeRoute = ref("/dashboard")
 
@@ -49,6 +69,14 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
       <CollapsibleSidebarTrigger />
 
       <div class="flex w-full items-center justify-end gap-4">
+        <div class="group flex cursor-pointer items-center space-x-2">
+          <Sun class="size-5 text-primary" @click="mode = 'light'" />
+
+          <Switch v-model="isDark" />
+
+          <Moon class="size-5 text-primary" @click="mode = 'dark'" />
+        </div>
+
         <Button variant="ghost" size="icon" as-child>
           <RouterLink to="/components/two-column-layout">
             <X class="h-4 w-4" />

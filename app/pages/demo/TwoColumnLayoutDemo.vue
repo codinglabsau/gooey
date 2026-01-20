@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, computed } from "vue"
 import { VisuallyHidden } from "reka-ui"
+import { useColorMode } from "@vueuse/core"
 import {
   LayoutGrid,
   Settings,
@@ -11,6 +12,8 @@ import {
   ChevronUp,
   User2,
   X,
+  Sun,
+  Moon,
 } from "lucide-vue-next"
 
 import {
@@ -29,7 +32,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/dropdown-menu"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
+import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
+
+const mode = useColorMode()
+const isDark = computed({
+  get: () => mode.value === "dark",
+  set: (val) => {
+    mode.value = val ? "dark" : "light"
+  },
+})
 
 const sidebarOpen = ref(false)
 const activeRoute = ref("/dashboard")
@@ -63,6 +75,14 @@ function setActiveRoute(route: string) {
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
       <div class="flex w-full items-center justify-end gap-4">
+        <div class="group flex cursor-pointer items-center space-x-2">
+          <Sun class="size-5 text-primary" @click="mode = 'light'" />
+
+          <Switch v-model="isDark" />
+
+          <Moon class="size-5 text-primary" @click="mode = 'dark'" />
+        </div>
+
         <Button variant="ghost" size="icon" as-child>
           <RouterLink to="/components/two-column-layout">
             <X class="h-4 w-4" />
