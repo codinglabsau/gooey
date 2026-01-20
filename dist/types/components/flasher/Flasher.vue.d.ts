@@ -1,5 +1,7 @@
+import type { HTMLAttributes } from "vue";
 import { type ErrorBag, type ObjectFormat } from "./use-flasher";
 type __VLS_Props = {
+    class?: HTMLAttributes["class"];
     info?: string;
     success?: string;
     warning?: string;

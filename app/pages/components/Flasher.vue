@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { computed, ref } from "vue"
+import { useColorMode } from "@vueuse/core"
 import { Flasher, useFlasher } from "@/components/flasher"
 import { Button } from "@/components/button"
 import { ComponentHeading, ComponentProps } from "@app/components"
@@ -7,7 +8,11 @@ import { type ComponentProp } from "@app/types/globals"
 
 const { info, success, warning, error } = useFlasher()
 
-const props = ref<Record<string, unknown>>({})
+const mode = useColorMode()
+
+const flasherProps = ref({
+  theme: mode.value === "auto" ? "system" : mode.value,
+})
 
 const componentProps: ComponentProp[] = [
   {
@@ -36,11 +41,17 @@ const componentProps: ComponentProp[] = [
     default: "value",
     description: 'How to format error objects: "value" (default), "key", or "both"',
   },
+  {
+    name: "theme",
+    type: "string",
+    default: "light",
+    description: "'light', 'dark' or 'system'",
+  },
 ]
 </script>
 
 <template>
-  <Flasher v-bind="props" />
+  <Flasher v-bind="flasherProps" />
 
   <div class="space-y-8">
     <section>
@@ -75,7 +86,7 @@ const componentProps: ComponentProp[] = [
         <Button
           variant="outline"
           data-cy="prop-info"
-          @click="props.info = 'This is an info notification'"
+          @click="flasherProps.info = 'This is an info notification'"
         >
           Info
         </Button>
@@ -83,7 +94,7 @@ const componentProps: ComponentProp[] = [
         <Button
           variant="outline"
           data-cy="prop-success"
-          @click="props.success = 'This is a success notification'"
+          @click="flasherProps.success = 'This is a success notification'"
         >
           Success
         </Button>
@@ -91,7 +102,7 @@ const componentProps: ComponentProp[] = [
         <Button
           variant="outline"
           data-cy="prop-warning"
-          @click="props.warning = 'This is a warning notification'"
+          @click="flasherProps.warning = 'This is a warning notification'"
         >
           Warning
         </Button>
@@ -101,8 +112,8 @@ const componentProps: ComponentProp[] = [
           data-cy="prop-errors"
           @click="
             () => {
-              props.objectFormat = 'value'
-              props.errors = {
+              flasherProps.objectFormat = 'value'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
                 surname: 'surname is required',
               }
@@ -117,8 +128,8 @@ const componentProps: ComponentProp[] = [
           data-cy="prop-errors-key"
           @click="
             () => {
-              props.objectFormat = 'key'
-              props.errors = {
+              flasherProps.objectFormat = 'key'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
                 surname: 'surname is required',
               }
@@ -133,8 +144,8 @@ const componentProps: ComponentProp[] = [
           data-cy="prop-errors-both"
           @click="
             () => {
-              props.objectFormat = 'both'
-              props.errors = {
+              flasherProps.objectFormat = 'both'
+              flasherProps.errors = {
                 firstname: 'firstname is required',
                 surname: 'surname is required',
               }

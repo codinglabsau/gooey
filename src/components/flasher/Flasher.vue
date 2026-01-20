@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { HTMLAttributes } from "vue"
 import { watch } from "vue"
 import { Toaster as Sonner } from "vue-sonner"
 import {
@@ -9,10 +10,12 @@ import {
   TriangleAlertIcon,
   XIcon,
 } from "lucide-vue-next"
+import { cn } from "@/lib/utils"
 import { useFlasher, type ErrorBag, type ObjectFormat } from "./use-flasher"
 
 const props = withDefaults(
   defineProps<{
+    class?: HTMLAttributes["class"]
     info?: string
     success?: string
     warning?: string
@@ -75,7 +78,7 @@ watch(
 
 <template>
   <Sonner
-    class="toaster group"
+    :class="cn('toaster group', props.class)"
     :toast-options="{
       classes: {
         toast:

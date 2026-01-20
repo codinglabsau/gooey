@@ -27911,6 +27911,7 @@ function QO() {
 const c7 = /* @__PURE__ */ b({
   __name: "Flasher",
   props: {
+    class: {},
     info: {},
     success: {},
     warning: {},
@@ -27950,7 +27951,7 @@ const c7 = /* @__PURE__ */ b({
         t.errors !== void 0 && Object.keys(t.errors).length > 0 && o(t.errors, t.objectFormat);
       }
     ), (s, i) => (h(), x(l(fb), {
-      class: "toaster group",
+      class: ae(l(V)("toaster group", t.class)),
       "toast-options": {
         classes: {
           toast: "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
@@ -27985,7 +27986,7 @@ const c7 = /* @__PURE__ */ b({
         N(l(lo), { class: "size-4" })
       ]),
       _: 1
-    }));
+    }, 8, ["class"]));
   }
 }), e3 = { class: "flex items-center justify-between space-y-2" }, t3 = { class: "flex items-center space-x-2" }, f7 = /* @__PURE__ */ b({
   __name: "Heading",
