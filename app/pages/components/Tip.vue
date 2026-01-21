@@ -32,7 +32,7 @@ const openTooltip = ref(false)
         <span class="border-b border-dotted border-primary">Tooltip with custom tooltip slot</span>
 
         <template #tooltip>
-          <Logo alt="Coding Labs UI" class="w-32" />
+          <Logo alt="Gooey" class="w-36" />
         </template>
       </Tip>
     </section>

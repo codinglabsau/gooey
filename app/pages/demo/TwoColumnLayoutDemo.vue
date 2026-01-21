@@ -66,11 +66,7 @@ function setActiveRoute(route: string) {
   <TwoColumnLayout class="absolute inset-0 z-50">
     <Header>
       <RouterLink to="/" class="hidden lg:block">
-        <div class="flex items-center space-x-2">
-          <Logo alt="Coding Labs UI" class="w-6" />
-
-          <div class="text-xl">Brand</div>
-        </div>
+        <Logo alt="Gooey" class="w-36" />
       </RouterLink>
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
@@ -97,10 +93,8 @@ function setActiveRoute(route: string) {
         <Sheet :open="sidebarOpen" @update:open="sidebarOpen = !sidebarOpen">
           <SheetContent side="left" class="w-72 p-0">
             <SheetHeader class="border-b p-4">
-              <SheetTitle class="flex items-center space-x-2">
-                <Logo alt="Coding Labs UI" class="w-6" />
-
-                <span class="text-xl">Brand</span>
+              <SheetTitle>
+                <Logo alt="Gooey" class="w-36" />
               </SheetTitle>
             </SheetHeader>
 

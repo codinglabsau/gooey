@@ -31,10 +31,8 @@ function navigate(route: string) {
   <Sheet :open="openMobile" @update:open="setOpenMobile">
     <SheetContent side="left" class="w-72 p-0">
       <SheetHeader class="border-b p-4">
-        <SheetTitle class="flex items-center space-x-2">
-          <Logo alt="Coding Labs UI" class="w-6" />
-
-          <span class="text-xl">Brand</span>
+        <SheetTitle>
+          <Logo alt="Gooey" class="w-36" />
         </SheetTitle>
       </SheetHeader>
 

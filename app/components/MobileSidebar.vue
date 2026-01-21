@@ -17,10 +17,8 @@ function onNavigated() {
   <Sheet v-model:open="open">
     <SheetContent side="left" class="w-72 p-0">
       <SheetHeader class="px-4 py-4">
-        <SheetTitle class="flex items-center space-x-2">
-          <Logo alt="Coding Labs UI" class="w-6" />
-
-          <div class="text-xl font-semibold tracking-tight">GOOEY</div>
+        <SheetTitle>
+          <Logo alt="Gooey" class="w-36" />
         </SheetTitle>
       </SheetHeader>
 

@@ -10,7 +10,7 @@ import {
   HelpCircle,
   X,
   Sun,
-  Moon,
+  Moon
 } from "lucide-vue-next"
 
 import {
@@ -22,7 +22,7 @@ import {
   CollapsibleMenuGroup,
   TwoColumnLayoutSidebar,
   TwoColumnLayoutSidebarMobile,
-  Header,
+  Header
 } from "@/components/layout"
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
@@ -34,7 +34,7 @@ const isDark = computed({
   get: () => mode.value === "dark",
   set: (val) => {
     mode.value = val ? "dark" : "light"
-  },
+  }
 })
 
 const activeRoute = ref("/dashboard")
@@ -49,7 +49,7 @@ const navItems = [
   { route: "/users", icon: Users, label: "Users", group: "Platform" },
   { route: "/documents", icon: FileText, label: "Documents", group: "Platform" },
   { route: "/settings", icon: Settings, label: "Settings", group: "Settings" },
-  { route: "/help", icon: HelpCircle, label: "Help", group: "Settings" },
+  { route: "/help", icon: HelpCircle, label: "Help", group: "Settings" }
 ]
 
 const platformItems = navItems.filter((item) => item.group === "Platform")
@@ -60,11 +60,7 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
   <CollapsibleTwoColumnLayout class="absolute inset-0 z-50" collapsible="icon">
     <Header>
       <RouterLink to="/" class="hidden lg:block">
-        <div class="flex items-center space-x-2">
-          <Logo alt="Coding Labs UI" class="w-6" />
-
-          <div class="text-xl">Brand</div>
-        </div>
+        <Logo alt="Gooey" class="w-36" />
       </RouterLink>
 
       <CollapsibleSidebarTrigger />
@@ -108,8 +104,8 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
               <component :is="item.icon" class="h-5 w-5 shrink-0" />
 
               <span class="group-data-[state=collapsed]/collapsible-layout:hidden">{{
-                item.label
-              }}</span>
+                  item.label
+                }}</span>
             </CollapsibleMenuButton>
           </CollapsibleMenuGroup>
 
@@ -124,8 +120,8 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
               <component :is="item.icon" class="h-5 w-5 shrink-0" />
 
               <span class="group-data-[state=collapsed]/collapsible-layout:hidden">{{
-                item.label
-              }}</span>
+                  item.label
+                }}</span>
             </CollapsibleMenuButton>
           </CollapsibleMenuGroup>
         </div>
@@ -252,22 +248,22 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead>
-                <tr class="border-b">
-                  <th class="pb-3 text-left font-medium">Name</th>
+              <tr class="border-b">
+                <th class="pb-3 text-left font-medium">Name</th>
 
-                  <th class="pb-3 text-left font-medium">Status</th>
+                <th class="pb-3 text-left font-medium">Status</th>
 
-                  <th class="pb-3 text-left font-medium">Date</th>
+                <th class="pb-3 text-left font-medium">Date</th>
 
-                  <th class="pb-3 text-right font-medium">Amount</th>
-                </tr>
+                <th class="pb-3 text-right font-medium">Amount</th>
+              </tr>
               </thead>
 
               <tbody>
-                <tr v-for="i in 10" :key="i" class="border-b last:border-0">
-                  <td class="py-3">Item {{ i }}</td>
+              <tr v-for="i in 10" :key="i" class="border-b last:border-0">
+                <td class="py-3">Item {{ i }}</td>
 
-                  <td class="py-3">
+                <td class="py-3">
                     <span
                       class="rounded-full px-2 py-1 text-xs"
                       :class="
@@ -280,12 +276,12 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
                     >
                       {{ i % 3 === 0 ? "Complete" : i % 3 === 1 ? "Pending" : "In Progress" }}
                     </span>
-                  </td>
+                </td>
 
-                  <td class="py-3 text-muted-foreground">Jan {{ i + 10 }}, 2026</td>
+                <td class="py-3 text-muted-foreground">Jan {{ i + 10 }}, 2026</td>
 
-                  <td class="py-3 text-right">${{ (Math.random() * 1000).toFixed(2) }}</td>
-                </tr>
+                <td class="py-3 text-right">${{ (Math.random() * 1000).toFixed(2) }}</td>
+              </tr>
               </tbody>
             </table>
           </div>

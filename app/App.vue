@@ -10,7 +10,7 @@ import {
   TwoColumnLayoutSidebarMobile,
   TwoColumnLayoutSidebarTrigger,
   Header,
-  Main,
+  Main
 } from "@/components/layout"
 import { Switch } from "@/components/switch"
 import { ScrollArea } from "@/components/scroll-area"
@@ -24,7 +24,7 @@ const isDark = computed({
   get: () => mode.value === "dark",
   set: (val) => {
     mode.value = val ? "dark" : "light"
-  },
+  }
 })
 
 const sidebarOpen = ref(false)
@@ -34,11 +34,7 @@ const sidebarOpen = ref(false)
   <TwoColumnLayout>
     <Header>
       <RouterLink to="/" class="hidden lg:block">
-        <div class="flex items-center space-x-2">
-          <Logo alt="Coding Labs UI" class="w-6" />
-
-          <div class="text-xl font-semibold tracking-tight">GOOEY</div>
-        </div>
+        <Logo alt="Gooey" class="w-36" />
       </RouterLink>
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />

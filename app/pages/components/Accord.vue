@@ -30,7 +30,7 @@ const content = {
         </template>
 
         <template #second.content="{ item }">
-          <img :src="item.content" alt="Coding Labs UI" class="mx-auto w-52" />
+          <img :src="item.content" alt="Gooey" class="mx-auto w-52" />
         </template>
       </Accord>
     </section>
