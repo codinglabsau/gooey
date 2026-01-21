@@ -3,6 +3,7 @@ import type { Component } from "vue"
 import { VisuallyHidden } from "reka-ui"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { useCollapsibleSidebar } from "@/components/layout"
+import { Logo } from "@app/components"
 
 defineProps<{
   activeRoute: string
@@ -31,7 +32,7 @@ function navigate(route: string) {
     <SheetContent side="left" class="w-72 p-0">
       <SheetHeader class="border-b p-4">
         <SheetTitle class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <Logo alt="Coding Labs UI" class="w-6" />
 
           <span class="text-xl">Brand</span>
         </SheetTitle>

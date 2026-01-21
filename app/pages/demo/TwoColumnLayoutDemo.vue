@@ -34,6 +34,7 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
+import { Logo } from "@app/components"
 
 const mode = useColorMode()
 const isDark = computed({
@@ -66,7 +67,7 @@ function setActiveRoute(route: string) {
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <Logo alt="Coding Labs UI" class="w-6" />
 
           <div class="text-xl">Brand</div>
         </div>
@@ -97,7 +98,7 @@ function setActiveRoute(route: string) {
           <SheetContent side="left" class="w-72 p-0">
             <SheetHeader class="border-b p-4">
               <SheetTitle class="flex items-center space-x-2">
-                <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+                <Logo alt="Coding Labs UI" class="w-6" />
 
                 <span class="text-xl">Brand</span>
               </SheetTitle>

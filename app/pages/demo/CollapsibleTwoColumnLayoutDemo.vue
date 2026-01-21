@@ -27,6 +27,7 @@ import {
 import { Switch } from "@/components/switch"
 import { Button } from "@/components/button"
 import MobileSidebar from "./MobileSidebar.vue"
+import { Logo } from "@app/components"
 
 const mode = useColorMode()
 const isDark = computed({
@@ -60,7 +61,7 @@ const settingsItems = navItems.filter((item) => item.group === "Settings")
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <Logo alt="Coding Labs UI" class="w-6" />
 
           <div class="text-xl">Brand</div>
         </div>

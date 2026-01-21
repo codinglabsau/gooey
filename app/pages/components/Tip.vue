@@ -2,6 +2,7 @@
 import { Tip } from "@/components/tooltip"
 import { ref } from "vue"
 import { Button } from "@"
+import { Logo } from "@app/components"
 
 const openTooltip = ref(false)
 </script>
@@ -31,7 +32,7 @@ const openTooltip = ref(false)
         <span class="border-b border-dotted border-primary">Tooltip with custom tooltip slot</span>
 
         <template #tooltip>
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-32" />
+          <Logo alt="Coding Labs UI" class="w-32" />
         </template>
       </Tip>
     </section>

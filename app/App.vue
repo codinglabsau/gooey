@@ -17,6 +17,7 @@ import { ScrollArea } from "@/components/scroll-area"
 import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
 import MobileSidebar from "@app/components/MobileSidebar.vue"
+import Logo from "@app/components/Logo.vue"
 
 const mode = useColorMode()
 const isDark = computed({
@@ -34,7 +35,7 @@ const sidebarOpen = ref(false)
     <Header>
       <RouterLink to="/" class="hidden lg:block">
         <div class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <Logo alt="Coding Labs UI" class="w-6" />
 
           <div class="text-xl font-semibold tracking-tight">GOOEY</div>
         </div>

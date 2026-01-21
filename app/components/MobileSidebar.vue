@@ -3,7 +3,7 @@ import { VisuallyHidden } from "reka-ui"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/sheet"
 import { ScrollArea } from "@/components/scroll-area"
 import { Separator } from "@/components/separator"
-import { SidebarNavigation } from "@app/components"
+import { Logo, SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
 
 const open = defineModel<boolean>("open", { default: false })
@@ -18,7 +18,7 @@ function onNavigated() {
     <SheetContent side="left" class="w-72 p-0">
       <SheetHeader class="px-4 py-4">
         <SheetTitle class="flex items-center space-x-2">
-          <img src="/logo.svg" alt="Coding Labs UI" class="w-6" />
+          <Logo alt="Coding Labs UI" class="w-6" />
 
           <div class="text-xl font-semibold tracking-tight">GOOEY</div>
         </SheetTitle>
