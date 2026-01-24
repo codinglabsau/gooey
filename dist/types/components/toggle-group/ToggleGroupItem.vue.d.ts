@@ -1,27 +1,26 @@
-import type { VariantProps } from "class-variance-authority";
-import type { ToggleGroupItemProps } from "reka-ui";
-import type { HTMLAttributes } from "vue";
-import { toggleVariants } from "@/components/toggle";
+import { VariantProps } from 'class-variance-authority';
+import { ToggleGroupItemProps } from 'reka-ui';
+import { HTMLAttributes } from 'vue';
+import { toggleVariants } from '../toggle';
 type ToggleGroupVariants = VariantProps<typeof toggleVariants>;
 type __VLS_Props = ToggleGroupItemProps & {
     class?: HTMLAttributes["class"];
     variant?: ToggleGroupVariants["variant"];
     size?: ToggleGroupVariants["size"];
 };
-declare var __VLS_8: {
-    modelValue: boolean;
-    state: "on" | "off";
-    pressed: boolean;
-    disabled: boolean;
+declare function __VLS_template(): {
+    attrs: Partial<{}>;
+    slots: {
+        default?(_: any): any;
+    };
+    refs: {};
+    rootEl: any;
 };
-type __VLS_Slots = {} & {
-    default?: (props: typeof __VLS_8) => any;
-};
-declare const __VLS_base: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
-declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
-declare const _default: typeof __VLS_export;
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
-type __VLS_WithSlots<T, S> = T & {
+type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

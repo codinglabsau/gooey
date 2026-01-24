@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue"
 import tailwindcss from "@tailwindcss/vite"
 import { viteStaticCopy } from "vite-plugin-static-copy"
 import Markdown from "unplugin-vue-markdown/vite"
+import dts from "vite-plugin-dts"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -40,6 +41,12 @@ export default defineConfig(({ command }) => ({
           dest: "presets/v4",
         },
       ],
+    }),
+    dts({
+      outDir: "dist/types",
+      tsconfigPath: "./tsconfig.json",
+      include: ["src/**/*"],
+      exclude: ["src/**/*.spec.ts", "app/**/*"],
     }),
   ],
   resolve: {

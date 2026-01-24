@@ -1,25 +1,28 @@
-import { type TooltipRootProps } from "reka-ui";
+import { TooltipRootProps } from 'reka-ui';
 interface ExtendedTooltipRootProps extends TooltipRootProps {
     tooltip?: string;
     indicator?: boolean;
 }
-declare var __VLS_20: {}, __VLS_28: {};
-type __VLS_Slots = {} & {
-    default?: (props: typeof __VLS_20) => any;
-} & {
-    tooltip?: (props: typeof __VLS_28) => any;
+declare function __VLS_template(): {
+    attrs: Partial<{}>;
+    slots: {
+        default?(_: {}): any;
+        tooltip?(_: {}): any;
+    };
+    refs: {};
+    rootEl: any;
 };
-declare const __VLS_base: import("vue").DefineComponent<ExtendedTooltipRootProps, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<ExtendedTooltipRootProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:open": (value: boolean) => any;
-}, string, import("vue").PublicProps, Readonly<ExtendedTooltipRootProps> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<ExtendedTooltipRootProps> & Readonly<{
     "onUpdate:open"?: ((value: boolean) => any) | undefined;
 }>, {
     delayDuration: number;
-}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
-declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
-declare const _default: typeof __VLS_export;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
-type __VLS_WithSlots<T, S> = T & {
+type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

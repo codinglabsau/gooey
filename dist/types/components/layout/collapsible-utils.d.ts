@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref } from "vue";
+import { ComputedRef, Ref } from 'vue';
 export declare const COLLAPSIBLE_SIDEBAR_COOKIE_NAME = "sidebar_state";
 export declare const COLLAPSIBLE_SIDEBAR_COOKIE_MAX_AGE: number;
 export declare const COLLAPSIBLE_SIDEBAR_WIDTH = "18rem";

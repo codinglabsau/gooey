@@ -1,4 +1,4 @@
-import type { Spacing } from "@unovis/ts";
+import { Spacing } from '@unovis/ts';
 type KeyOf<T extends Record<string, any>> = Extract<keyof T, string>;
 export interface BaseChartProps<T extends Record<string, any>> {
     /**

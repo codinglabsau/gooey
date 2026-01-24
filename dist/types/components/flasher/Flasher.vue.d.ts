@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from "vue";
-import { type ErrorBag, type ObjectFormat } from "./use-flasher";
+import { HTMLAttributes } from 'vue';
+import { ErrorBag, ObjectFormat } from './use-flasher';
 type __VLS_Props = {
     class?: HTMLAttributes["class"];
     info?: string;
@@ -8,8 +8,7 @@ type __VLS_Props = {
     errors?: ErrorBag;
     objectFormat?: ObjectFormat;
 };
-declare const __VLS_export: import("vue").DefineComponent<__VLS_Props, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {}, string, import("vue").PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
+declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
     objectFormat: ObjectFormat;
-}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
-declare const _default: typeof __VLS_export;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;

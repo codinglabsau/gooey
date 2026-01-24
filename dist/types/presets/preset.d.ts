@@ -6,5 +6,5 @@
  * - Tailwind v3: import { preset } from '@codinglabsau/gooey/presets/v3'
  * - Tailwind v4: @import '@codinglabsau/gooey/presets/v4'
  */
-export { default as preset } from "./v3/preset";
-export { default } from "./v3/preset";
+export { default as preset } from './v3/preset';
+export { default } from './v3/preset';

@@ -1,16 +1,21 @@
-import type { DrawerRootProps } from "vaul-vue";
-declare var __VLS_8: {};
-type __VLS_Slots = {} & {
-    default?: (props: typeof __VLS_8) => any;
+import { DrawerRootProps } from 'vaul-vue';
+declare function __VLS_template(): {
+    attrs: Partial<{}>;
+    slots: {
+        default?(_: {}): any;
+    };
+    refs: {};
+    rootEl: any;
 };
-declare const __VLS_base: import("vue").DefineComponent<DrawerRootProps, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {} & {
+type __VLS_TemplateResult = ReturnType<typeof __VLS_template>;
+declare const __VLS_component: import('vue').DefineComponent<DrawerRootProps, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {} & {
     close: () => any;
     drag: (percentageDragged: number) => any;
     "update:open": (open: boolean) => any;
     animationEnd: (open: boolean) => any;
     release: (open: boolean) => any;
     "update:activeSnapPoint": (val: string | number) => any;
-}, string, import("vue").PublicProps, Readonly<DrawerRootProps> & Readonly<{
+}, string, import('vue').PublicProps, Readonly<DrawerRootProps> & Readonly<{
     onClose?: (() => any) | undefined;
     onDrag?: ((percentageDragged: number) => any) | undefined;
     "onUpdate:open"?: ((open: boolean) => any) | undefined;
@@ -19,11 +24,10 @@ declare const __VLS_base: import("vue").DefineComponent<DrawerRootProps, {}, {},
     "onUpdate:activeSnapPoint"?: ((val: string | number) => any) | undefined;
 }>, {
     shouldScaleBackground: boolean;
-}, {}, {}, {}, string, import("vue").ComponentProvideOptions, false, {}, any>;
-declare const __VLS_export: __VLS_WithSlots<typeof __VLS_base, __VLS_Slots>;
-declare const _default: typeof __VLS_export;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
-type __VLS_WithSlots<T, S> = T & {
+type __VLS_WithTemplateSlots<T, S> = T & {
     new (): {
         $slots: S;
     };

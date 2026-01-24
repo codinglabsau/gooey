@@ -1,4 +1,4 @@
-import type { ButtonVariants } from "@/components/button";
+import { ButtonVariants } from '../button';
 type ActionHandler = () => void;
 type ActionObject = {
     label: string | undefined;
@@ -14,19 +14,19 @@ type ConfirmDialogType = {
 };
 declare function useConfirmDialog(): {
     confirmDialog: (confirmDialogConfig: ConfirmDialogType) => void;
-    title: import("vue").Ref<string, string>;
-    description: import("vue").Ref<string, string>;
-    variant: import("vue").Ref<"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined, "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined>;
-    isOpen: import("vue").Ref<boolean, boolean>;
+    title: import('vue').Ref<string, string>;
+    description: import('vue').Ref<string, string>;
+    variant: import('vue').Ref<"default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined, "default" | "destructive" | "outline" | "secondary" | "ghost" | "link" | null | undefined>;
+    isOpen: import('vue').Ref<boolean, boolean>;
     close: () => void;
-    cancelButton: import("vue").Ref<{
+    cancelButton: import('vue').Ref<{
         label: string | undefined;
         handler: ActionHandler;
     }, ActionObject | {
         label: string | undefined;
         handler: ActionHandler;
     }>;
-    actionButton: import("vue").Ref<{
+    actionButton: import('vue').Ref<{
         label: string | undefined;
         handler: ActionHandler;
     }, ActionObject | {
