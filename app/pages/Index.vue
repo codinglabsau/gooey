@@ -1,20 +1,18 @@
 <script setup lang="ts">
 import { ArrowRight, Blocks, Paintbrush, Zap } from "lucide-vue-next"
 import { Button } from "@/components/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/card"
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/card"
 import { Heading } from "@/components/heading"
-import { Badge } from "@/components/badge"
+import Logo from "@app/components/Logo.vue"
 </script>
 
 <template>
   <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
     <div class="text-center">
-      <Badge variant="outline" class="mb-4">Vue 3 + Tailwind CSS</Badge>
-
-      <Heading as="h1" class="text-4xl font-bold tracking-tight sm:text-6xl"> Gooey </Heading>
+      <Logo alt="Gooey" class="mx-auto mb-10 w-[20rem]" />
 
       <p class="mt-6 text-lg leading-8 text-muted-foreground">
-        A collection of Vue components built on Tailwind CSS and shadcn-vue. Designed for
+        Gooey is a collection of Vue components built on Tailwind CSS and shadcn-vue. Designed for
         consistency across projects.
       </p>
 
