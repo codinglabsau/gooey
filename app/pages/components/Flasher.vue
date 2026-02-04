@@ -267,7 +267,7 @@ const componentProps: ComponentProp[] = [
 
         <Button
           variant="outline"
-          data-cy="errors-both"
+          data-cy="flash-custom"
           @click="
             () => {
               flash('Custom Flash', {
