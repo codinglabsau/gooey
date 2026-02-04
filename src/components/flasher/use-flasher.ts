@@ -1,4 +1,4 @@
-import { toast } from "vue-sonner"
+import { toast, type ExternalToast } from "vue-sonner"
 
 export type ErrorBag = Record<string, string>
 export type ObjectFormat = "key" | "value" | "both"
@@ -15,27 +15,35 @@ function formatErrorMessage(errors: ErrorBag, objectFormat: ObjectFormat): strin
 
 function useFlasher() {
   return {
-    info: (message: string) => {
+    info: (message: string, data?: ExternalToast) => {
       toast.info("FYI", {
         description: message,
+        ...data,
       })
     },
 
-    success: (message: string) => {
+    flash: (heading: string, options?: ExternalToast) => {
+      toast(heading, options)
+    },
+
+    success: (message: string, data?: ExternalToast) => {
       toast.success("Success", {
         description: message,
+        ...data,
       })
     },
 
-    warning: (message: string) => {
+    warning: (message: string, data?: ExternalToast) => {
       toast.warning("Warning", {
         description: message,
+        ...data,
       })
     },
 
-    error: (errors: ErrorBag, objectFormat: ObjectFormat = "value") => {
+    error: (errors: ErrorBag, objectFormat: ObjectFormat = "value", data?: ExternalToast) => {
       toast.error("Oh snap! Some errors were encountered.", {
         description: formatErrorMessage(errors, objectFormat),
+        ...data,
       })
     },
   }

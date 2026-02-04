@@ -10,7 +10,7 @@ import {
   TwoColumnLayoutSidebarMobile,
   TwoColumnLayoutSidebarTrigger,
   Header,
-  Main
+  Main,
 } from "@/components/layout"
 import { Switch } from "@/components/switch"
 import { ScrollArea } from "@/components/scroll-area"
@@ -24,7 +24,7 @@ const isDark = computed({
   get: () => mode.value === "dark",
   set: (val) => {
     mode.value = val ? "dark" : "light"
-  }
+  },
 })
 
 const sidebarOpen = ref(false)

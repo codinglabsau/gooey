@@ -161,7 +161,12 @@ const componentProps: ComponentProp[] = [
       <ComponentHeading>Via Composable</ComponentHeading>
 
       <p class="mb-4">
-        Use the <code>useFlasher()</code> composable for programmatic notifications.
+        Use the <code>useFlasher()</code>
+        composable for programmatic notifications. The entire
+        <a href="https://vue-sonner.vercel.app/" target="_blank" class="underline">
+          Sonner API options
+        </a>
+        are available through the second argument.
       </p>
 
       <div class="flex flex-wrap gap-2">
