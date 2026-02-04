@@ -3,7 +3,7 @@ import { ComponentSummary, ComponentHeading } from "@app/components"
 </script>
 
 <template>
-  <article>
+  <article class="mx-auto max-w-3xl">
     <ComponentSummary :meta="$route.meta" />
 
     <hr class="my-8" />

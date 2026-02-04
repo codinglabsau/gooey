@@ -127,11 +127,24 @@
   opacity: 0.9;
 }
 
+.dark .prose pre.shiki,
+.dark .prose pre.shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.prose pre.shiki {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.7142857;
+}
+
 .dark .prose code {
   color: rgb(238 242 255);
 }
 
-.dark .prose pre {
+.dark .prose pre:not(.shiki) {
   background-color: rgb(17 24 39);
   color: rgb(229 231 235);
 }
