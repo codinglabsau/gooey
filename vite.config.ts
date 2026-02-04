@@ -37,6 +37,22 @@ export default defineConfig(({ command }) => ({
             light: 'github-light',
             dark: 'github-dark',
           },
+          transformers: [
+            {
+              name: 'copy-button',
+              pre(node) {
+                node.children.push({
+                  type: 'element',
+                  tagName: 'button',
+                  properties: {
+                    class: 'copy-button',
+                    onclick: `navigator.clipboard.writeText(this.parentElement.querySelector('code').textContent).then(()=>{this.classList.add('copied');setTimeout(()=>this.classList.remove('copied'),2000)})`,
+                  },
+                  children: [],
+                })
+              },
+            },
+          ],
         }))
       },
     }),

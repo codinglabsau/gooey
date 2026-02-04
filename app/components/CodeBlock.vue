@@ -2,6 +2,7 @@
 import { ref, onMounted, watch } from "vue"
 import { createHighlighterCore, type HighlighterCore } from "shiki/core"
 import { createJavaScriptRegexEngine } from "shiki/engine/javascript"
+import { Copy, Check } from "lucide-vue-next"
 
 const props = withDefaults(
   defineProps<{
@@ -12,6 +13,7 @@ const props = withDefaults(
 )
 
 const html = ref("")
+const copied = ref(false)
 
 let highlighter: HighlighterCore | null = null
 
@@ -40,12 +42,29 @@ const highlight = async () => {
   })
 }
 
+const copy = async () => {
+  await navigator.clipboard.writeText(props.code.trim())
+  copied.value = true
+  setTimeout(() => (copied.value = false), 2000)
+}
+
 onMounted(highlight)
 watch(() => props.code, highlight)
 </script>
 
 <template>
-  <div class="shiki-wrapper [&_pre]:!rounded-lg [&_pre]:!p-4 [&_pre]:text-sm" v-html="html" />
+  <div class="shiki-wrapper group relative rounded-lg border border-border">
+    <button
+      type="button"
+      class="absolute top-2 right-2 rounded-md p-1.5 text-muted-foreground transition hover:bg-accent hover:text-foreground"
+      @click="copy"
+    >
+      <Check v-if="copied" class="size-4 text-success" />
+      <Copy v-else class="size-4" />
+    </button>
+
+    <div class="[&_pre]:!rounded-lg [&_pre]:!border-0 [&_pre]:!p-4 [&_pre]:text-sm" v-html="html" />
+  </div>
 </template>
 
 <style>

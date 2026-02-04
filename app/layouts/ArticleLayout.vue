@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-auto max-w-3xl prose dark:prose-invert">
+  <div class="mx-auto prose max-w-3xl dark:prose-invert">
     <slot />
   </div>
 </template>

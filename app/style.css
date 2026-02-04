@@ -136,8 +136,32 @@
 .prose pre.shiki {
   padding: 1rem;
   border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
   font-size: 0.875rem;
   line-height: 1.7142857;
+  position: relative;
+}
+
+.prose pre.shiki .copy-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  background: transparent no-repeat center / 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='14' height='14' x='8' y='8' rx='2' ry='2'/%3E%3Cpath d='M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2'/%3E%3C/svg%3E");
+  border: none;
+  transition: background-color 0.15s;
+}
+
+.prose pre.shiki .copy-button:hover {
+  background-color: hsl(var(--accent));
+}
+
+.prose pre.shiki .copy-button.copied {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 }
 
 .dark .prose code {
