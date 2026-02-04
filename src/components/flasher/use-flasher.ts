@@ -22,8 +22,8 @@ function useFlasher() {
       })
     },
 
-    flash: (heading: string, options?: ExternalToast) => {
-      toast(heading, options)
+    flash: (heading: string, data?: ExternalToast) => {
+      toast(heading, data)
     },
 
     success: (message: string, data?: ExternalToast) => {
