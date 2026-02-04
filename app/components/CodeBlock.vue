@@ -60,10 +60,14 @@ watch(() => props.code, highlight)
       @click="copy"
     >
       <Check v-if="copied" class="size-4 text-success" />
+
       <Copy v-else class="size-4" />
     </button>
 
-    <div class="[&_pre]:!rounded-lg [&_pre]:!border-0 [&_pre]:!p-4 [&_pre]:text-sm" v-html="html" />
+    <div
+      class="[&_pre]:!rounded-lg [&_pre]:!border-0 [&_pre]:!p-4 [&_pre]:text-sm [&_pre]:!break-words [&_pre]:!whitespace-pre-wrap"
+      v-html="html"
+    />
   </div>
 </template>
 

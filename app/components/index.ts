@@ -1,3 +1,4 @@
+export { default as CodeBlock } from "./CodeBlock.vue"
 export { default as CodingLabsLogo } from "./CodingLabsLogo.vue"
 export { default as ComposableSection } from "./ComposableSection.vue"
 export { default as ComponentEvents } from "./ComponentEvents.vue"

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import { ref } from "vue"
 import { Button } from "@/components/button"
 import {
@@ -12,68 +13,111 @@ import {
   DrawerTitle,
 } from "@/components/drawer"
 import { Minus, Plus } from "lucide-vue-next"
+import { CodeBlock, ComponentHeading } from "@app/components"
 
 const goal = ref(5)
-</script>
+
+const code = `<script setup lang="ts">
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+  Button,
+} from '@codinglabsau/gooey'
+<\/script>
 
 <template>
   <Drawer>
     <DrawerTrigger as-child>
-      <Button variant="outline"> Open Drawer </Button>
+      <Button variant="outline">Open Drawer</Button>
     </DrawerTrigger>
-
     <DrawerContent>
-      <div class="mx-auto w-full max-w-sm">
-        <DrawerHeader>
-          <DrawerTitle>Backlog tasks</DrawerTitle>
-
-          <DrawerDescription>Set your daily goal.</DrawerDescription>
-        </DrawerHeader>
-
-        <div class="p-4 pb-0">
-          <div class="flex items-center justify-center space-x-2">
-            <Button
-              variant="outline"
-              size="icon"
-              class="h-8 w-8 shrink-0 rounded-full"
-              :disabled="goal <= 0"
-              @click="goal -= 1"
-            >
-              <Minus class="h-4 w-4" />
-
-              <span class="sr-only">Decrease</span>
-            </Button>
-
-            <div class="flex-1 text-center">
-              <div class="text-7xl font-bold tracking-tighter">
-                {{ goal }}
-              </div>
-
-              <div class="text-[0.70rem] text-muted-foreground uppercase">Issues per day</div>
-            </div>
-
-            <Button
-              variant="outline"
-              size="icon"
-              class="h-8 w-8 shrink-0 rounded-full"
-              :disabled="goal >= 10"
-              @click="goal += 1"
-            >
-              <Plus class="h-4 w-4" />
-
-              <span class="sr-only">Increase</span>
-            </Button>
-          </div>
-        </div>
-
-        <DrawerFooter>
-          <Button>Submit</Button>
-
-          <DrawerClose as-child>
-            <Button variant="outline"> Cancel </Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </div>
+      <DrawerHeader>
+        <DrawerTitle>Title</DrawerTitle>
+        <DrawerDescription>Description</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose as-child>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
     </DrawerContent>
   </Drawer>
+</template>`
+</script>
+
+<template>
+  <div>
+    <ComponentHeading>Basic Usage</ComponentHeading>
+
+    <div class="mt-4">
+      <Drawer>
+        <DrawerTrigger as-child>
+          <Button variant="outline"> Open Drawer </Button>
+        </DrawerTrigger>
+
+        <DrawerContent>
+          <div class="mx-auto w-full max-w-sm">
+            <DrawerHeader>
+              <DrawerTitle>Backlog tasks</DrawerTitle>
+
+              <DrawerDescription>Set your daily goal.</DrawerDescription>
+            </DrawerHeader>
+
+            <div class="p-4 pb-0">
+              <div class="flex items-center justify-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  class="h-8 w-8 shrink-0 rounded-full"
+                  :disabled="goal <= 0"
+                  @click="goal -= 1"
+                >
+                  <Minus class="h-4 w-4" />
+
+                  <span class="sr-only">Decrease</span>
+                </Button>
+
+                <div class="flex-1 text-center">
+                  <div class="text-7xl font-bold tracking-tighter">
+                    {{ goal }}
+                  </div>
+
+                  <div class="text-[0.70rem] text-muted-foreground uppercase">Issues per day</div>
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="icon"
+                  class="h-8 w-8 shrink-0 rounded-full"
+                  :disabled="goal >= 10"
+                  @click="goal += 1"
+                >
+                  <Plus class="h-4 w-4" />
+
+                  <span class="sr-only">Increase</span>
+                </Button>
+              </div>
+            </div>
+
+            <DrawerFooter>
+              <Button>Submit</Button>
+
+              <DrawerClose as-child>
+                <Button variant="outline"> Cancel </Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </div>
+
+    <CodeBlock class="mt-4" lang="vue" :code="code" />
+  </div>
 </template>

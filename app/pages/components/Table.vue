@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import {
   Table,
   TableBody,
@@ -8,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table"
+import { CodeBlock, ComponentHeading } from "@app/components"
 
 const invoices = [
   {
@@ -53,38 +55,80 @@ const invoices = [
     paymentMethod: "Credit Card",
   },
 ]
-</script>
+
+const code = `<script setup lang="ts">
+import {
+  Table, TableBody, TableCaption, TableCell,
+  TableHead, TableHeader, TableRow,
+} from '@codinglabsau/gooey'
+
+const invoices = [
+  { invoice: 'INV001', status: 'Paid', amount: '$250.00', method: 'Credit Card' },
+  { invoice: 'INV002', status: 'Pending', amount: '$150.00', method: 'PayPal' },
+]
+<\/script>
 
 <template>
   <Table>
     <TableCaption>A list of your recent invoices.</TableCaption>
-
     <TableHeader>
       <TableRow>
-        <TableHead class="w-[100px]"> Invoice </TableHead>
-
+        <TableHead>Invoice</TableHead>
         <TableHead>Status</TableHead>
-
         <TableHead>Method</TableHead>
-
-        <TableHead class="text-right"> Amount </TableHead>
+        <TableHead class="text-right">Amount</TableHead>
       </TableRow>
     </TableHeader>
-
     <TableBody>
       <TableRow v-for="invoice in invoices" :key="invoice.invoice">
-        <TableCell class="font-medium">
-          {{ invoice.invoice }}
-        </TableCell>
-
-        <TableCell>{{ invoice.paymentStatus }}</TableCell>
-
-        <TableCell>{{ invoice.paymentMethod }}</TableCell>
-
-        <TableCell class="text-right">
-          {{ invoice.totalAmount }}
-        </TableCell>
+        <TableCell>{{ invoice.invoice }}</TableCell>
+        <TableCell>{{ invoice.status }}</TableCell>
+        <TableCell>{{ invoice.method }}</TableCell>
+        <TableCell class="text-right">{{ invoice.amount }}</TableCell>
       </TableRow>
     </TableBody>
   </Table>
+</template>`
+</script>
+
+<template>
+  <div>
+    <ComponentHeading>Basic Usage</ComponentHeading>
+
+    <div class="mt-4">
+      <Table>
+        <TableCaption>A list of your recent invoices.</TableCaption>
+
+        <TableHeader>
+          <TableRow>
+            <TableHead class="w-[100px]"> Invoice </TableHead>
+
+            <TableHead>Status</TableHead>
+
+            <TableHead>Method</TableHead>
+
+            <TableHead class="text-right"> Amount </TableHead>
+          </TableRow>
+        </TableHeader>
+
+        <TableBody>
+          <TableRow v-for="invoice in invoices" :key="invoice.invoice">
+            <TableCell class="font-medium">
+              {{ invoice.invoice }}
+            </TableCell>
+
+            <TableCell>{{ invoice.paymentStatus }}</TableCell>
+
+            <TableCell>{{ invoice.paymentMethod }}</TableCell>
+
+            <TableCell class="text-right">
+              {{ invoice.totalAmount }}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
+
+    <CodeBlock class="mt-4" lang="vue" :code="code" />
+  </div>
 </template>

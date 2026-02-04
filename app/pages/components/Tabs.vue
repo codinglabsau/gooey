@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import { Input } from "@/components/input"
 import { Label } from "@/components/label"
 import { Button } from "@/components/button"
@@ -11,76 +12,103 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/card"
+import { CodeBlock, ComponentHeading } from "@app/components"
+
+const code = `<script setup lang="ts">
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@codinglabsau/gooey'
+<\/script>
+
+<template>
+  <Tabs default-value="account" class="w-[400px]">
+    <TabsList class="grid w-full grid-cols-2">
+      <TabsTrigger value="account">Account</TabsTrigger>
+      <TabsTrigger value="password">Password</TabsTrigger>
+    </TabsList>
+    <TabsContent value="account">Account content</TabsContent>
+    <TabsContent value="password">Password content</TabsContent>
+  </Tabs>
+</template>`
 </script>
 
 <template>
-  <section>
-    <Tabs default-value="account" class="w-[400px]">
-      <TabsList class="grid w-full grid-cols-2">
-        <TabsTrigger value="account"> Account </TabsTrigger>
+  <div>
+    <ComponentHeading>Basic Usage</ComponentHeading>
 
-        <TabsTrigger value="password"> Password </TabsTrigger>
-      </TabsList>
+    <div class="mt-4">
+      <Tabs default-value="account" class="w-[400px]">
+        <TabsList class="grid w-full grid-cols-2">
+          <TabsTrigger value="account"> Account </TabsTrigger>
 
-      <TabsContent value="account">
-        <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
+          <TabsTrigger value="password"> Password </TabsTrigger>
+        </TabsList>
 
-            <CardDescription>
-              Make changes to your account here. Click save when you're done.
-            </CardDescription>
-          </CardHeader>
+        <TabsContent value="account">
+          <Card>
+            <CardHeader>
+              <CardTitle>Account</CardTitle>
 
-          <CardContent class="space-y-2">
-            <div class="space-y-1">
-              <Label for="name">Name</Label>
+              <CardDescription>
+                Make changes to your account here. Click save when you're done.
+              </CardDescription>
+            </CardHeader>
 
-              <Input id="name" default-value="Pedro Duarte" />
-            </div>
+            <CardContent class="space-y-2">
+              <div class="space-y-1">
+                <Label for="name">Name</Label>
 
-            <div class="space-y-1">
-              <Label for="username">Username</Label>
+                <Input id="name" default-value="Pedro Duarte" />
+              </div>
 
-              <Input id="username" default-value="@peduarte" />
-            </div>
-          </CardContent>
+              <div class="space-y-1">
+                <Label for="username">Username</Label>
 
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
+                <Input id="username" default-value="@peduarte" />
+              </div>
+            </CardContent>
 
-      <TabsContent value="password">
-        <Card>
-          <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardFooter>
+              <Button>Save changes</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
 
-            <CardDescription>
-              Change your password here. After saving, you'll be logged out.
-            </CardDescription>
-          </CardHeader>
+        <TabsContent value="password">
+          <Card>
+            <CardHeader>
+              <CardTitle>Password</CardTitle>
 
-          <CardContent class="space-y-2">
-            <div class="space-y-1">
-              <Label for="current">Current password</Label>
+              <CardDescription>
+                Change your password here. After saving, you'll be logged out.
+              </CardDescription>
+            </CardHeader>
 
-              <Input id="current" type="password" />
-            </div>
+            <CardContent class="space-y-2">
+              <div class="space-y-1">
+                <Label for="current">Current password</Label>
 
-            <div class="space-y-1">
-              <Label for="new">New password</Label>
+                <Input id="current" type="password" />
+              </div>
 
-              <Input id="new" type="password" />
-            </div>
-          </CardContent>
+              <div class="space-y-1">
+                <Label for="new">New password</Label>
 
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-    </Tabs>
-  </section>
+                <Input id="new" type="password" />
+              </div>
+            </CardContent>
+
+            <CardFooter>
+              <Button>Save password</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
+
+    <CodeBlock class="mt-4" lang="vue" :code="code" />
+  </div>
 </template>

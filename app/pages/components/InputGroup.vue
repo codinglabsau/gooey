@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import {
   InputGroup,
   InputGroupAddon,
@@ -6,32 +7,57 @@ import {
   InputGroupInput,
 } from "@/components/input-group"
 import { Search, Mail } from "lucide-vue-next"
+import { CodeBlock, ComponentHeading } from "@app/components"
+
+const code = `<script setup lang="ts">
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from '@codinglabsau/gooey'
+import { Mail } from 'lucide-vue-next'
+<\/script>
+
+<template>
+  <InputGroup>
+    <InputGroupAddon>
+      <Mail class="size-4" />
+    </InputGroupAddon>
+    <InputGroupInput placeholder="Email address" />
+  </InputGroup>
+</template>`
 </script>
 
 <template>
-  <div class="max-w-md space-y-4">
-    <InputGroup>
-      <InputGroupAddon>
-        <Mail class="size-4" />
-      </InputGroupAddon>
+  <div>
+    <ComponentHeading>Basic Usage</ComponentHeading>
 
-      <InputGroupInput placeholder="Email address" />
-    </InputGroup>
+    <div class="mt-4 max-w-md space-y-4">
+      <InputGroup>
+        <InputGroupAddon>
+          <Mail class="size-4" />
+        </InputGroupAddon>
 
-    <InputGroup>
-      <InputGroupAddon>https://</InputGroupAddon>
+        <InputGroupInput placeholder="Email address" />
+      </InputGroup>
 
-      <InputGroupInput placeholder="example.com" />
-    </InputGroup>
+      <InputGroup>
+        <InputGroupAddon>https://</InputGroupAddon>
 
-    <InputGroup>
-      <InputGroupInput placeholder="Search..." />
+        <InputGroupInput placeholder="example.com" />
+      </InputGroup>
 
-      <InputGroupAddon align="inline-end">
-        <InputGroupButton>
-          <Search class="size-4" />
-        </InputGroupButton>
-      </InputGroupAddon>
-    </InputGroup>
+      <InputGroup>
+        <InputGroupInput placeholder="Search..." />
+
+        <InputGroupAddon align="inline-end">
+          <InputGroupButton>
+            <Search class="size-4" />
+          </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+    </div>
+
+    <CodeBlock class="mt-4" lang="vue" :code="code" />
   </div>
 </template>

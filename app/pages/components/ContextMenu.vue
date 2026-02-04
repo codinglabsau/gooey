@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import {
   ContextMenu,
   ContextMenuContent,
@@ -10,7 +11,29 @@ import {
   ContextMenuSubTrigger,
   ContextMenuTrigger,
 } from "@/components/context-menu"
-import { ComponentHeading } from "@app/components"
+import { CodeBlock, ComponentHeading } from "@app/components"
+
+const code = `<script setup lang="ts">
+import {
+  ContextMenu, ContextMenuContent, ContextMenuItem,
+  ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger,
+} from '@codinglabsau/gooey'
+<\/script>
+
+<template>
+  <ContextMenu>
+    <ContextMenuTrigger class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
+      Right click here
+    </ContextMenuTrigger>
+    <ContextMenuContent class="w-64">
+      <ContextMenuItem>
+        Back <ContextMenuShortcut>Cmd+[</ContextMenuShortcut>
+      </ContextMenuItem>
+      <ContextMenuSeparator />
+      <ContextMenuItem>Inspect</ContextMenuItem>
+    </ContextMenuContent>
+  </ContextMenu>
+</template>`
 </script>
 
 <template>
@@ -72,6 +95,8 @@ import { ComponentHeading } from "@app/components"
           </ContextMenuContent>
         </ContextMenu>
       </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="code" />
     </div>
   </div>
 </template>

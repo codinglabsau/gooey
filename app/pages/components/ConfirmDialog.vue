@@ -1,5 +1,7 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import { Button, ConfirmDialog, useConfirmDialog } from "@"
+import { CodeBlock, ComponentHeading } from "@app/components"
 
 const { confirmDialog, close } = useConfirmDialog()
 
@@ -52,16 +54,48 @@ const customDialog = () => {
     },
   })
 }
+
+const code = `<script setup lang="ts">
+import {
+  Button,
+  ConfirmDialog,
+  useConfirmDialog,
+} from '@codinglabsau/gooey'
+
+const { confirmDialog, close } = useConfirmDialog()
+
+const showDialog = () => {
+  confirmDialog({
+    title: 'Are you sure?',
+    description: 'This action cannot be undone.',
+    action: () => {
+      // handle confirm
+      close()
+    },
+  })
+}
+<\/script>
+
+<template>
+  <Button @click="showDialog">Confirm</Button>
+  <ConfirmDialog />
+</template>`
 </script>
 
 <template>
-  <div class="flex gap-2">
-    <Button data-cy="base" @click="baseDialog"> Base Confirm </Button>
+  <div>
+    <ComponentHeading>Basic Usage</ComponentHeading>
 
-    <Button data-cy="custom-labels" @click="customLabels"> Custom Labels </Button>
+    <div class="mt-4 flex gap-2">
+      <Button data-cy="base" @click="baseDialog"> Base Confirm </Button>
 
-    <Button data-cy="custom-handlers" @click="customDialog"> Custom Handlers </Button>
+      <Button data-cy="custom-labels" @click="customLabels"> Custom Labels </Button>
 
-    <ConfirmDialog />
+      <Button data-cy="custom-handlers" @click="customDialog"> Custom Handlers </Button>
+
+      <ConfirmDialog />
+    </div>
+
+    <CodeBlock class="mt-4" lang="vue" :code="code" />
   </div>
 </template>

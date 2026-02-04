@@ -1,10 +1,11 @@
 <script setup lang="ts">
+/* eslint-disable no-useless-escape */
 import { ref } from "vue"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
 import { Flasher, useFlasher } from "@/components/flasher"
 import { Button } from "@/components/button"
-import { ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
+import { CodeBlock, ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
 import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
 
 const { info, success, warning, error, flash } = useFlasher()
@@ -77,6 +78,34 @@ const componentProps: ComponentProp[] = [
     description: "'light', 'dark' or 'system'",
   },
 ]
+
+const propsCode = `<script setup lang="ts">
+import { ref } from 'vue'
+import { Flasher } from '@codinglabsau/gooey'
+
+const flasherProps = ref({ theme: 'system' })
+<\/script>
+
+<template>
+  <Flasher v-bind="flasherProps" />
+
+  <button @click="flasherProps.info = 'Info!'">Info</button>
+  <button @click="flasherProps.success = 'Success!'">Success</button>
+</template>`
+
+const composableCode = `<script setup lang="ts">
+import { Flasher, useFlasher } from '@codinglabsau/gooey'
+
+const { info, success, warning, error } = useFlasher()
+<\/script>
+
+<template>
+  <Flasher />
+
+  <button @click="info('Info notification')">Info</button>
+  <button @click="success('Success!')">Success</button>
+  <button @click="error({ email: 'required' })">Errors</button>
+</template>`
 </script>
 
 <template>
@@ -184,6 +213,8 @@ const componentProps: ComponentProp[] = [
           Errors (keys + values)
         </Button>
       </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="propsCode" />
     </section>
 
     <section>
@@ -288,6 +319,8 @@ const componentProps: ComponentProp[] = [
           Flash (custom)
         </Button>
       </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="composableCode" />
     </section>
 
     <ComposableSection :methods="composableMethods">

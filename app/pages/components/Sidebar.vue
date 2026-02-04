@@ -1,5 +1,37 @@
 <script setup lang="ts">
-import { ComponentHeading } from "@app/components"
+/* eslint-disable no-useless-escape */
+import { CodeBlock, ComponentHeading } from "@app/components"
+
+const code = `<script setup lang="ts">
+import {
+  Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent,
+  SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem,
+  SidebarProvider, SidebarTrigger,
+} from '@codinglabsau/gooey'
+<\/script>
+
+<template>
+  <SidebarProvider>
+    <Sidebar>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>Dashboard</SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
+    <main>
+      <SidebarTrigger />
+      <!-- page content -->
+    </main>
+  </SidebarProvider>
+</template>`
 </script>
 
 <template>
@@ -19,5 +51,7 @@ import { ComponentHeading } from "@app/components"
         for full usage details.
       </p>
     </div>
+
+    <CodeBlock lang="vue" :code="code" />
   </div>
 </template>
