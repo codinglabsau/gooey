@@ -35,7 +35,9 @@
     "format": "run-p prettier lint",
     "prettier": "prettier 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --write",
     "lint": "eslint 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --fix",
-    "test": "cypress run"
+    "test": "cypress run",
+    "docs:build": "vite build --config vite.docs.config.ts",
+    "docs:preview": "vite preview --config vite.docs.config.ts"
   },
   "publishConfig": {
     "@codinglabsau:registry": "https://npm.pkg.github.com"
