@@ -275,7 +275,7 @@ const componentProps: ComponentProp[] = [
                 classes: {
                   icon: 'text-muted',
                 },
-                description: 'This flash uses more of the available sonnet api',
+                description: 'This flash uses more of the available sonner api',
                 position: 'bottom-center',
                 action: {
                   label: 'Confirm',
