@@ -18,3 +18,9 @@ export type ComponentEvent = {
   description: string
   payload?: string
 }
+
+export type ComposableMethod = {
+  name: string
+  signature: string
+  description: string
+}

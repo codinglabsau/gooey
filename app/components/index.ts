@@ -1,4 +1,5 @@
 export { default as CodingLabsLogo } from "./CodingLabsLogo.vue"
+export { default as ComposableSection } from "./ComposableSection.vue"
 export { default as ComponentEvents } from "./ComponentEvents.vue"
 export { default as ComponentHeading } from "./ComponentHeading.vue"
 export { default as ComponentProps } from "./ComponentProps.vue"

@@ -1,18 +1,47 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
+import { ref } from "vue"
+import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
 import { Flasher, useFlasher } from "@/components/flasher"
 import { Button } from "@/components/button"
-import { ComponentHeading, ComponentProps } from "@app/components"
-import { type ComponentProp } from "@app/types/globals"
+import { ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
+import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
 
-const { info, success, warning, error } = useFlasher()
+const { info, success, warning, error, flash } = useFlasher()
 
 const mode = useColorMode()
 
 const flasherProps = ref({
   theme: mode.value === "auto" ? "system" : mode.value,
 })
+
+const composableMethods: ComposableMethod[] = [
+  {
+    name: "info",
+    signature: "(message: string, data?: ExternalToast)",
+    description: "Displays an info notification with the given message.",
+  },
+  {
+    name: "success",
+    signature: "(message: string, data?: ExternalToast)",
+    description: "Displays a success notification with the given message.",
+  },
+  {
+    name: "warning",
+    signature: "(message: string, data?: ExternalToast)",
+    description: "Displays a warning notification with the given message.",
+  },
+  {
+    name: "error",
+    signature: "(errors: ErrorBag, objectFormat?: ObjectFormat, data?: ExternalToast)",
+    description: "Displays an error notification from a validation error bag.",
+  },
+  {
+    name: "flash",
+    signature: "(heading: string, options?: ExternalToast)",
+    description: "Displays a generic notification with a custom heading.",
+  },
+]
 
 const componentProps: ComponentProp[] = [
   {
@@ -235,8 +264,46 @@ const componentProps: ComponentProp[] = [
         >
           Errors (keys + values)
         </Button>
+
+        <Button
+          variant="outline"
+          data-cy="flash-custom"
+          @click="
+            () => {
+              flash('Custom Flash', {
+                icon: Hammer,
+                classes: {
+                  icon: 'text-muted',
+                },
+                description: 'This flash uses more of the available sonner api',
+                position: 'bottom-center',
+                action: {
+                  label: 'Confirm',
+                  onClick: () => console.log('Confirmed!'),
+                },
+              })
+            }
+          "
+        >
+          Flash (custom)
+        </Button>
       </div>
     </section>
+
+    <ComposableSection :methods="composableMethods">
+      <p class="mb-4">
+        The entire
+        <a
+          href="https://github.com/xiaoluoboding/vue-sonner/blob/4f6e3038981d7c748048913f259470fefa204b7a/src/packages/types.ts#L71"
+          target="_blank"
+          class="underline"
+        >
+          Sonner API options
+        </a>
+        are available through the
+        <span class="bg-muted px-1 py-0.5 font-mono">data</span> argument.
+      </p>
+    </ComposableSection>
 
     <ComponentProps :props="componentProps" :meta="$route.meta" />
   </div>
