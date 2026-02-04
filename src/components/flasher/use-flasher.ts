@@ -22,10 +22,6 @@ function useFlasher() {
       })
     },
 
-    flash: (heading: string, data?: ExternalToast) => {
-      toast(heading, data)
-    },
-
     success: (message: string, data?: ExternalToast) => {
       toast.success("Success", {
         description: message,
@@ -45,6 +41,10 @@ function useFlasher() {
         description: formatErrorMessage(errors, objectFormat),
         ...data,
       })
+    },
+
+    flash: (heading: string, data?: ExternalToast) => {
+      toast(heading, data)
     },
   }
 }
