@@ -1,27 +1,55 @@
-# GOOEY
+<p align="center">
+  <img src="./app/images/icon.png" alt="Gooey" height="100">
+</p>
 
-A collection of Vue components based on Tailwind CSS, Shadcn-vue, and others.
+<h1 align="center">Gooey</h1>
+
+<p align="center">
+  A Vue 3 component library built on Tailwind CSS, Reka UI, and shadcn-vue.
+</p>
 
 ## Documentation
 
-For installation instructions, component documentation, and examples, run the docs locally:
+Full documentation, installation guide, and component examples are available at:
+
+**[codinglabsau.github.io/gooey](https://codinglabsau.github.io/gooey/)**
+
+## Installation
 
 ```bash
-git clone https://github.com/codinglabsau/gooey.git
-cd gooey
-npm install
-npm run dev
+npm install @codinglabsau/gooey
 ```
 
-Then open http://localhost:5173 in your browser.
+See the [installation guide](https://codinglabsau.github.io/gooey/installation) for full setup instructions including Tailwind CSS configuration.
 
-## Testing
+## Features
 
-Tests are implemented with Cypress, and can be run on CLI using `npm run test`. We are implementing end-to-end tests as most components are tested upstream.
+- 60+ ready-to-use Vue 3 components
+- Built on Reka UI (formerly Radix Vue) primitives
+- Tailwind CSS v4 support
+- Dark mode support
+- TypeScript-first
+- Accessible by default
 
-For shadcn components, we do simple smoke tests to ensure they are not generating errors with basic usage.
+## Development
 
-For custom components, we are testing the functionality in depth.
+```bash
+# Install dependencies
+npm install
+
+# Run docs site locally
+npm run dev
+
+# Build library
+npm run build
+
+# Run tests
+npm run test
+```
+
+## Changelog
+
+See [CHANGELOG](CHANGELOG.md) for release history.
 
 ## Security
 
