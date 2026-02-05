@@ -36,8 +36,8 @@ const sidebarOpen = ref(false)
 <template>
   <TwoColumnLayout>
     <Header>
-      <RouterLink to="/" class="hidden lg:block">
-        <Logo alt="Gooey" class="w-36 cursor-pointer" @click.prevent="slimeSplatter?.splat()" />
+      <RouterLink to="/" class="hidden lg:block" @click.prevent="slimeSplatter?.splat()">
+        <Logo alt="Gooey" class="w-36 cursor-pointer" />
       </RouterLink>
 
       <SlimeSplatter ref="slimeSplatter" />
