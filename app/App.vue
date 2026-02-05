@@ -18,6 +18,9 @@ import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
 import MobileSidebar from "@app/components/MobileSidebar.vue"
 import Logo from "@app/components/Logo.vue"
+import SlimeSplatter from "@app/components/SlimeSplatter.vue"
+
+const slimeSplatter = ref<InstanceType<typeof SlimeSplatter>>()
 
 const mode = useColorMode()
 const isDark = computed({
@@ -33,9 +36,11 @@ const sidebarOpen = ref(false)
 <template>
   <TwoColumnLayout>
     <Header>
-      <RouterLink to="/" class="hidden lg:block">
-        <Logo alt="Gooey" class="w-36" />
+      <RouterLink to="/" class="hidden lg:block" @click.prevent="slimeSplatter?.splat()">
+        <Logo alt="Gooey" class="w-36 cursor-pointer" />
       </RouterLink>
+
+      <SlimeSplatter ref="slimeSplatter" />
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
