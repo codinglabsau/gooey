@@ -5,6 +5,7 @@ import {
 
   // getting started
   Installation,
+  UpgradeGuide,
   ContributionGuide,
   Theme,
 
@@ -90,6 +91,12 @@ const routes = [
         name: "Installation",
         path: "/installation",
         component: Installation,
+        meta: { layout: ArticleLayout, shadcn: true },
+      },
+      {
+        name: "Upgrade Guide",
+        path: "/upgrade-guide",
+        component: UpgradeGuide,
         meta: { layout: ArticleLayout, shadcn: true },
       },
       {

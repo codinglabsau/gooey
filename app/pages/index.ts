@@ -2,6 +2,7 @@
 export { default as Index } from "./Index.vue"
 export { default as ContributionGuide } from "./contribution-guide.md"
 export { default as Installation } from "./installation.md"
+export { default as UpgradeGuide } from "./upgrade-guide.md"
 export { default as Theme } from "./theme.md"
 
 // demos

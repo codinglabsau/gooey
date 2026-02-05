@@ -18,6 +18,7 @@ export const navigation: NavigationGroup[] = [
     icon: BookOpen,
     children: [
       { name: "Installation", path: "/installation" },
+      { name: "Upgrade Guide", path: "/upgrade-guide" },
       { name: "Theme", path: "/theme" },
       { name: "Contribution Guide", path: "/contribution-guide" },
     ],
