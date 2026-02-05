@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onUnmounted, nextTick } from "vue"
-import spriteSlime from "@app/images/sprite-slime-2.png"
+import spriteSlime from "@app/images/sprite-slime-3.png"
 import slimeSplatterUrl from "@app/images/slime-splatter.svg"
 
 const phase = ref<"idle" | "sprite" | "splatter">("idle")
@@ -8,16 +8,15 @@ const frame = ref(0)
 let animationTimer: ReturnType<typeof setTimeout> | null = null
 let fadeTimer: ReturnType<typeof setTimeout> | null = null
 
-// Spritesheet: 4062x739, horizontal strip, 7 frames
+// Spritesheet: 6383x739, horizontal strip, 11 frames
 const FRAME_W = 580.3
 const FRAME_H = 739
-const TOTAL_FRAMES = 7
-const SPRITE_W = 4062
+const TOTAL_FRAMES = 11
+const SPRITE_W = 6383
 const SPRITE_H = 739
 
 // Frame sequence (0-indexed left to right):
-// 0: idle, 1: squish, 2: jump, 3: land big, 4: splat particles, 5: spread, 6: scatter
-const frames = [0, 1, 2, 3, 4, 5, 6]
+const frames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const FRAME_DURATION = 120 // ms per frame
 
