@@ -8,15 +8,15 @@ const frame = ref(0)
 let animationTimer: ReturnType<typeof setTimeout> | null = null
 let fadeTimer: ReturnType<typeof setTimeout> | null = null
 
-// Spritesheet: 6383x739, horizontal strip, 11 frames
+// Spritesheet: 5223x739, horizontal strip, 9 frames
 const FRAME_W = 580.3
 const FRAME_H = 739
-const TOTAL_FRAMES = 11
-const SPRITE_W = 6383
+const TOTAL_FRAMES = 9
+const SPRITE_W = 5223
 const SPRITE_H = 739
 
 // Frame sequence (0-indexed left to right):
-const frames = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const frames = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 const FRAME_DURATION = 120 // ms per frame
 
