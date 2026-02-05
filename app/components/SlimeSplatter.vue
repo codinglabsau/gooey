@@ -7,43 +7,24 @@ const frame = ref(0)
 let animationTimer: ReturnType<typeof setTimeout> | null = null
 let fadeTimer: ReturnType<typeof setTimeout> | null = null
 
-// Spritesheet: 2321x2215, 4 columns x 4 rows
-// Each frame ~580x554
-const COLS = 4
-const FRAME_W = 580
-const FRAME_H = 554
-const SPRITE_W = 2321
-const SPRITE_H = 2215
+// Spritesheet: 5803x739, horizontal strip, 10 frames
+const FRAME_W = 580.25
+const FRAME_H = 739
+const TOTAL_FRAMES = 10
+const SPRITE_W = 5803
+const SPRITE_H = 739
 
-// Frame sequence for the animation (row * COLS + col)
-// Row 0: idle, squish, jump, flat
-// Row 1: stand, lean, jump-high, particles
-// Row 2: splat-small, splat-big, (empty), (empty)
-// Row 3: particles-small, particles-big, (empty), (empty)
-const frames = [
-  0,  // idle
-  4,  // stand tall
-  1,  // squish down
-  2,  // jump up
-  6,  // jump high
-  2,  // come back down
-  5,  // lean/land
-  3,  // flat squish
-  7,  // particles start
-  11, // particles spread
-  10, // splat bigger
-  9,  // splat
-  8,  // splat small
-]
+// Frame sequence (0-indexed left to right):
+// 0: idle, 1: squish, 2: jump, 3: land/spread, 4: wide squish,
+// 5: small bounce, 6: tall stand, 7: splat particles, 8: particles spread, 9: scatter
+const frames = [0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 7, 8, 9]
 
 const FRAME_DURATION = 120 // ms per frame
 
 function getFramePosition(frameIndex: number) {
-  const col = frameIndex % COLS
-  const row = Math.floor(frameIndex / COLS)
   return {
-    x: col * FRAME_W,
-    y: row * FRAME_H,
+    x: frameIndex * FRAME_W,
+    y: 0,
   }
 }
 
@@ -175,7 +156,7 @@ defineExpose({ splat })
 
 .sprite-frame {
   image-rendering: pixelated;
-  transform: scale(0.45);
+  transform: scale(0.4);
 }
 
 /* ── Splatter overlay ── */
