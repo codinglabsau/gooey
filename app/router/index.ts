@@ -59,6 +59,7 @@ import {
   Resizable,
   ScrollArea,
   Select,
+  SimpleSelect,
   Separator,
   Sheet,
   Sidebar,
@@ -82,8 +83,16 @@ import ComponentLayout from "@app/layouts/ComponentLayout.vue"
 
 const routes = [
   { path: "", component: Index, meta: { title: "Gooey" } },
-  { path: "/demo/two-column-layout", component: TwoColumnLayoutDemo, meta: { title: "Two Column Layout Demo" } },
-  { path: "/demo/collapsible-two-column-layout", component: CollapsibleTwoColumnLayoutDemo, meta: { title: "Collapsible Two Column Layout Demo" } },
+  {
+    path: "/demo/two-column-layout",
+    component: TwoColumnLayoutDemo,
+    meta: { title: "Two Column Layout Demo" },
+  },
+  {
+    path: "/demo/collapsible-two-column-layout",
+    component: CollapsibleTwoColumnLayoutDemo,
+    meta: { title: "Collapsible Two Column Layout Demo" },
+  },
   {
     name: "Getting Started",
     children: [
@@ -372,6 +381,12 @@ const routes = [
         path: "/components/select",
         component: Select,
         meta: { layout: ComponentLayout, shadcn: true, title: "Select" },
+      },
+      {
+        name: "Simple Select",
+        path: "/components/simple-select",
+        component: SimpleSelect,
+        meta: { layout: ComponentLayout, title: "Simple Select" },
       },
       {
         name: "Slider",

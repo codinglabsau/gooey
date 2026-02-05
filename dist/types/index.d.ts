@@ -51,6 +51,7 @@ export * from './components/range-calendar';
 export * from './components/resizable';
 export * from './components/scroll-area';
 export * from './components/select';
+export * from './components/simple-select';
 export * from './components/separator';
 export * from './components/sheet';
 export * from './components/sidebar';
