@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onUnmounted, nextTick } from "vue"
-import spriteSlime from "@app/images/sprite-slime-3.png"
+import spriteSlime from "@app/images/sprite-slime.png"
 import slimeSplatterUrl from "@app/images/slime-splatter.svg"
 
 const showSprite = ref(false)
