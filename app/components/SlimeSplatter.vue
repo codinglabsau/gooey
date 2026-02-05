@@ -22,18 +22,18 @@ const frames = [0, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 7, 8, 9]
 
 const FRAME_DURATION = 120 // ms per frame
 
-// Splatter variations — each gets a different position, scale, rotation
+// Splatter variations — all start from center, fly outward with different rotations/scales
 const splatters = [
-  { id: 1, top: "5%", left: "10%", scale: 0.18, rotate: 0, delay: 0 },
-  { id: 2, top: "8%", left: "65%", scale: 0.22, rotate: 90, delay: 0.08 },
-  { id: 3, top: "30%", left: "5%", scale: 0.15, rotate: 200, delay: 0.15 },
-  { id: 4, top: "25%", left: "75%", scale: 0.2, rotate: 45, delay: 0.05 },
-  { id: 5, top: "55%", left: "15%", scale: 0.17, rotate: 130, delay: 0.12 },
-  { id: 6, top: "50%", left: "60%", scale: 0.25, rotate: 270, delay: 0.03 },
-  { id: 7, top: "15%", left: "35%", scale: 0.14, rotate: 160, delay: 0.1 },
-  { id: 8, top: "65%", left: "45%", scale: 0.19, rotate: 310, delay: 0.07 },
-  { id: 9, top: "40%", left: "85%", scale: 0.16, rotate: 70, delay: 0.18 },
-  { id: 10, top: "70%", left: "80%", scale: 0.13, rotate: 220, delay: 0.14 },
+  { id: 1, tx: -320, ty: -220, scale: 0.08, rotate: 0, delay: 0 },
+  { id: 2, tx: 280, ty: -180, scale: 0.1, rotate: 90, delay: 0.08 },
+  { id: 3, tx: -200, ty: 160, scale: 0.07, rotate: 200, delay: 0.15 },
+  { id: 4, tx: 340, ty: 120, scale: 0.09, rotate: 45, delay: 0.05 },
+  { id: 5, tx: -380, ty: 30, scale: 0.06, rotate: 130, delay: 0.12 },
+  { id: 6, tx: 150, ty: 240, scale: 0.11, rotate: 270, delay: 0.03 },
+  { id: 7, tx: -60, ty: -300, scale: 0.07, rotate: 160, delay: 0.1 },
+  { id: 8, tx: 50, ty: -120, scale: 0.08, rotate: 310, delay: 0.07 },
+  { id: 9, tx: -280, ty: -80, scale: 0.065, rotate: 70, delay: 0.18 },
+  { id: 10, tx: 260, ty: -50, scale: 0.055, rotate: 220, delay: 0.14 },
 ]
 
 function getFramePosition(frameIndex: number) {
@@ -98,7 +98,7 @@ defineExpose({ splat })
       />
     </div>
 
-    <!-- Phase 2: Pixel-art splatters scattered across screen -->
+    <!-- Phase 2: Pixel-art splatters burst from center of screen -->
     <Transition name="splatter">
       <div v-if="phase === 'splatter'" class="splatter-overlay" aria-hidden="true">
         <img
@@ -106,11 +106,11 @@ defineExpose({ splat })
           :key="s.id"
           :src="slimeSplatterUrl"
           class="splatter-instance"
-          :class="`splatter-${s.id}`"
           :style="{
-            top: s.top,
-            left: s.left,
-            transform: `scale(${s.scale}) rotate(${s.rotate}deg)`,
+            '--tx': `${s.tx}px`,
+            '--ty': `${s.ty}px`,
+            '--scale': s.scale,
+            '--rotate': `${s.rotate}deg`,
             animationDelay: `${s.delay}s`,
           }"
         />
@@ -145,11 +145,18 @@ defineExpose({ splat })
   z-index: 9999;
   pointer-events: none;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ── Individual splatter instances ── */
 .splatter-instance {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -1074px; /* half of SVG height (2149/2) */
+  margin-left: -900px; /* half of SVG width (1799/2) */
   opacity: 0;
   transform-origin: center;
   animation: splat-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -158,18 +165,15 @@ defineExpose({ splat })
 @keyframes splat-in {
   0% {
     opacity: 0;
-    filter: blur(4px);
-    scale: 0;
+    transform: translate(0, 0) scale(0) rotate(var(--rotate));
   }
   50% {
     opacity: 0.9;
-    filter: blur(0px);
-    scale: 1.15;
+    transform: translate(var(--tx), var(--ty)) scale(calc(var(--scale) * 1.15)) rotate(var(--rotate));
   }
   100% {
     opacity: 0.85;
-    filter: blur(0px);
-    scale: 1;
+    transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(var(--rotate));
   }
 }
 
