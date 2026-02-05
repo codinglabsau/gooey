@@ -3,7 +3,8 @@ import { ref, onUnmounted, nextTick } from "vue"
 import spriteSlime from "@app/images/sprite-slime-3.png"
 import slimeSplatterUrl from "@app/images/slime-splatter.svg"
 
-const phase = ref<"idle" | "sprite" | "splatter">("idle")
+const showSprite = ref(false)
+const showSplatters = ref(false)
 const frame = ref(0)
 let animationTimer: ReturnType<typeof setTimeout> | null = null
 let fadeTimer: ReturnType<typeof setTimeout> | null = null
@@ -19,6 +20,7 @@ const SPRITE_H = 739
 const frames = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 const FRAME_DURATION = 120 // ms per frame
+const SPLATTER_FRAME = 4 // trigger splatters at jump peak
 
 // Splatter variations — all start from center, fly outward with different rotations/scales
 const splatters = [
@@ -43,16 +45,23 @@ function getFramePosition(frameIndex: number) {
 
 function playSprite(currentFrame: number) {
   if (currentFrame >= frames.length) {
-    // Sprite animation done — trigger splatters
-    phase.value = "splatter"
+    // Sprite done — hide it
+    showSprite.value = false
+    // Splatters fade out after a delay
     fadeTimer = setTimeout(() => {
-      phase.value = "idle"
+      showSplatters.value = false
       frame.value = 0
     }, 2800)
     return
   }
 
   frame.value = frames[currentFrame]
+
+  // Trigger splatters at the jump peak frame
+  if (currentFrame === SPLATTER_FRAME) {
+    showSplatters.value = true
+  }
+
   animationTimer = setTimeout(() => {
     playSprite(currentFrame + 1)
   }, FRAME_DURATION)
@@ -61,7 +70,8 @@ function playSprite(currentFrame: number) {
 function splat() {
   // Reset any ongoing animation
   cleanup()
-  phase.value = "sprite"
+  showSprite.value = true
+  showSplatters.value = false
   frame.value = frames[0]
   nextTick(() => {
     playSprite(0)
@@ -73,6 +83,8 @@ function cleanup() {
   if (fadeTimer) clearTimeout(fadeTimer)
   animationTimer = null
   fadeTimer = null
+  showSprite.value = false
+  showSplatters.value = false
 }
 
 onUnmounted(cleanup)
@@ -82,8 +94,8 @@ defineExpose({ splat })
 
 <template>
   <Teleport to="body">
-    <!-- Phase 1: Sprite animation at bottom center -->
-    <div v-if="phase === 'sprite'" class="sprite-container" aria-hidden="true">
+    <!-- Sprite animation at bottom center -->
+    <div v-if="showSprite" class="sprite-container" aria-hidden="true">
       <div
         class="sprite-frame"
         :style="{
@@ -96,9 +108,9 @@ defineExpose({ splat })
       />
     </div>
 
-    <!-- Phase 2: Pixel-art splatters burst from center of screen -->
+    <!-- Splatters burst from center (triggered mid-sprite) -->
     <Transition name="splatter">
-      <div v-if="phase === 'splatter'" class="splatter-overlay" aria-hidden="true">
+      <div v-if="showSplatters" class="splatter-overlay" aria-hidden="true">
         <img
           v-for="s in splatters"
           :key="s.id"
