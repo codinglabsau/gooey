@@ -17,7 +17,7 @@ const SPRITE_H = 739
 
 // Frame sequence (0-indexed left to right):
 // 0: idle, 1: squish, 2: jump, 3: land big, 4: splat particles, 5: spread, 6: scatter
-const frames = [0, 1, 2, 3, 1, 2, 3, 4, 5, 6]
+const frames = [0, 1, 2, 3, 4, 5, 6]
 
 const FRAME_DURATION = 120 // ms per frame
 
