@@ -16,6 +16,7 @@ import { Switch } from "@/components/switch"
 import { ScrollArea } from "@/components/scroll-area"
 import { SidebarNavigation } from "@app/components"
 import { navigation } from "@app/router/navigation"
+import GitHubIcon from "@app/components/GitHubIcon.vue"
 import MobileSidebar from "@app/components/MobileSidebar.vue"
 import Logo from "@app/components/Logo.vue"
 import SlimeSplatter from "@app/components/SlimeSplatter.vue"
@@ -46,7 +47,7 @@ const sidebarOpen = ref(false)
 
       <TwoColumnLayoutSidebarTrigger @click="sidebarOpen = true" />
 
-      <div class="flex w-full justify-end">
+      <div class="flex w-full items-center justify-end gap-4">
         <div class="group flex cursor-pointer items-center space-x-2">
           <Sun class="size-5 text-primary" @click="mode = 'light'" />
 
@@ -54,6 +55,14 @@ const sidebarOpen = ref(false)
 
           <Moon class="size-5 text-primary" @click="mode = 'dark'" />
         </div>
+
+        <a
+          href="https://github.com/codinglabsau/gooey"
+          target="_blank"
+          class="text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <GitHubIcon />
+        </a>
       </div>
     </Header>
 

@@ -18,6 +18,7 @@ export const navigation: NavigationGroup[] = [
     icon: BookOpen,
     children: [
       { name: "Installation", path: "/installation" },
+      { name: "Upgrade Guide", path: "/upgrade-guide" },
       { name: "Theme", path: "/theme" },
       { name: "Contribution Guide", path: "/contribution-guide" },
     ],
@@ -75,6 +76,7 @@ export const navigation: NavigationGroup[] = [
       { name: "Radio Group", path: "/components/radio-group" },
       { name: "Range Calendar", path: "/components/range-calendar" },
       { name: "Select", path: "/components/select" },
+      { name: "Simple Select", path: "/components/simple-select" },
       { name: "Slider", path: "/components/slider" },
       { name: "Switch", path: "/components/switch" },
       { name: "Tags Input", path: "/components/tags-input" },

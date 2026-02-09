@@ -2,6 +2,7 @@
 export { default as Index } from "./Index.vue"
 export { default as ContributionGuide } from "./contribution-guide.md"
 export { default as Installation } from "./installation.md"
+export { default as UpgradeGuide } from "./upgrade-guide.md"
 export { default as Theme } from "./theme.md"
 
 // demos
@@ -54,6 +55,7 @@ export { default as RangeCalendar } from "./components/RangeCalendar.vue"
 export { default as Resizable } from "./components/Resizable.vue"
 export { default as ScrollArea } from "./components/ScrollArea.vue"
 export { default as Select } from "./components/Select.vue"
+export { default as SimpleSelect } from "./components/SimpleSelect.vue"
 export { default as Separator } from "./components/Separator.vue"
 export { default as Sheet } from "./components/Sheet.vue"
 export { default as Sidebar } from "./components/Sidebar.vue"
