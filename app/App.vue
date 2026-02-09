@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue"
+import { ref, computed, provide } from "vue"
 import { useColorMode } from "@vueuse/core"
 import { Moon, Sun } from "lucide-vue-next"
 
@@ -22,6 +22,8 @@ import SlimeSplatter from "@app/components/SlimeSplatter.vue"
 
 const slimeSplatter = ref<InstanceType<typeof SlimeSplatter>>()
 
+provide("splat", () => slimeSplatter.value?.splat())
+
 const mode = useColorMode()
 const isDark = computed({
   get: () => mode.value === "dark",
@@ -36,7 +38,7 @@ const sidebarOpen = ref(false)
 <template>
   <TwoColumnLayout>
     <Header>
-      <RouterLink to="/" class="hidden lg:block" @click.prevent="slimeSplatter?.splat()">
+      <RouterLink to="/" class="hidden lg:block" @click="slimeSplatter?.splat()">
         <Logo alt="Gooey" class="w-36 cursor-pointer" />
       </RouterLink>
 

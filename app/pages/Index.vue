@@ -1,15 +1,18 @@
 <script setup lang="ts">
+import { inject } from "vue"
 import { ArrowRight, Blocks, Paintbrush, Zap } from "lucide-vue-next"
 import { Button } from "@/components/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/card"
 import { Heading } from "@/components/heading"
 import Logo from "@app/components/Logo.vue"
+
+const splat = inject<() => void>("splat")
 </script>
 
 <template>
   <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
     <div class="text-center">
-      <Logo alt="Gooey" class="mx-auto mb-10 w-[20rem]" />
+      <Logo alt="Gooey" class="mx-auto mb-10 w-[20rem] cursor-pointer" @click="splat?.()" />
 
       <p class="mt-6 text-lg leading-8 text-muted-foreground">
         Gooey is a collection of Vue components built on Tailwind CSS and shadcn-vue. Designed for

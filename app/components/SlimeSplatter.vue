@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onUnmounted, nextTick } from "vue"
+import { ref, computed, onUnmounted, nextTick } from "vue"
+import { useMediaQuery } from "@vueuse/core"
 import spriteSlime from "@app/images/sprite-slime.png"
 import slimeSplatterUrl from "@app/images/slime-splatter.svg"
 
@@ -22,8 +23,10 @@ const frames = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 const FRAME_DURATION = 120 // ms per frame
 const SPLATTER_FRAME = 4 // trigger splatters at jump peak
 
+const isMobile = useMediaQuery("(max-width: 768px)")
+
 // Splatter variations — all start from center, fly outward with different rotations/scales
-const splatters = [
+const desktopSplatters = [
   { id: 1, tx: -320, ty: -220, scale: 0.08, rotate: 0, delay: 0 },
   { id: 2, tx: 280, ty: -180, scale: 0.1, rotate: 90, delay: 0.08 },
   { id: 3, tx: -200, ty: 160, scale: 0.07, rotate: 200, delay: 0.15 },
@@ -35,6 +38,21 @@ const splatters = [
   { id: 9, tx: -280, ty: -80, scale: 0.065, rotate: 70, delay: 0.18 },
   { id: 10, tx: 260, ty: -50, scale: 0.055, rotate: 220, delay: 0.14 },
 ]
+
+const mobileSplatters = [
+  { id: 1, tx: -130, ty: -160, scale: 0.14, rotate: 0, delay: 0 },
+  { id: 2, tx: 120, ty: -130, scale: 0.16, rotate: 90, delay: 0.08 },
+  { id: 3, tx: -90, ty: 120, scale: 0.12, rotate: 200, delay: 0.15 },
+  { id: 4, tx: 140, ty: 90, scale: 0.15, rotate: 45, delay: 0.05 },
+  { id: 5, tx: -150, ty: 25, scale: 0.11, rotate: 130, delay: 0.12 },
+  { id: 6, tx: 70, ty: 180, scale: 0.18, rotate: 270, delay: 0.03 },
+  { id: 7, tx: -25, ty: -210, scale: 0.12, rotate: 160, delay: 0.1 },
+  { id: 8, tx: 25, ty: -80, scale: 0.14, rotate: 310, delay: 0.07 },
+  { id: 9, tx: -110, ty: -60, scale: 0.11, rotate: 70, delay: 0.18 },
+  { id: 10, tx: 100, ty: -35, scale: 0.1, rotate: 220, delay: 0.14 },
+]
+
+const splatters = computed(() => (isMobile.value ? mobileSplatters : desktopSplatters))
 
 function getFramePosition(frameIndex: number) {
   return {
@@ -146,6 +164,13 @@ defineExpose({ splat })
   image-rendering: pixelated;
   transform: scale(0.4);
   transform-origin: bottom center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sprite-frame {
+    transform: scale(0.25);
+  }
 }
 
 /* ── Splatter overlay ── */
@@ -165,8 +190,6 @@ defineExpose({ splat })
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -1074px; /* half of SVG height (2149/2) */
-  margin-left: -900px; /* half of SVG width (1799/2) */
   opacity: 0;
   transform-origin: center;
   animation: splat-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -175,15 +198,15 @@ defineExpose({ splat })
 @keyframes splat-in {
   0% {
     opacity: 0;
-    transform: translate(0, 0) scale(0) rotate(var(--rotate));
+    transform: translate(-50%, -50%) scale(0) rotate(var(--rotate));
   }
   50% {
     opacity: 0.9;
-    transform: translate(var(--tx), var(--ty)) scale(calc(var(--scale) * 1.15)) rotate(var(--rotate));
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(calc(var(--scale) * 1.15)) rotate(var(--rotate));
   }
   100% {
     opacity: 0.85;
-    transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(var(--rotate));
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(var(--scale)) rotate(var(--rotate));
   }
 }
 
