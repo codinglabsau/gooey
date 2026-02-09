@@ -202,11 +202,13 @@ defineExpose({ splat })
   }
   50% {
     opacity: 0.9;
-    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(calc(var(--scale) * 1.15)) rotate(var(--rotate));
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(calc(var(--scale) * 1.15)) rotate(var(--rotate));
   }
   100% {
     opacity: 0.85;
-    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(var(--scale)) rotate(var(--rotate));
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(var(--scale))
+      rotate(var(--rotate));
   }
 }
 
