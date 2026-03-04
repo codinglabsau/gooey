@@ -103,7 +103,7 @@ export default defineConfig({
 1. Install dependencies:
 
 ```bash
-npm install -D tailwindcss postcss autoprefixer tailwindcss-animate
+npm install -D tailwindcss@3 postcss autoprefixer tailwindcss-animate
 ```
 
 2. Add the preset to your `tailwind.config.js`:
@@ -115,7 +115,7 @@ export default {
   darkMode: ['class'],
   presets: [preset],
   content: [
-    './node_modules/@codinglabsau/gooey/**/*.{js,vue}',
+    './node_modules/@codinglabsau/gooey/{src,dist}/**/*.{js,vue}',
     // ... your content paths
   ],
 }
