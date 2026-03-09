@@ -30,14 +30,6 @@ toast('Hello')
 </script>
 ```
 
-## CSS import required
-
-Apps using Sonner or Flasher must now import the bundled CSS:
-
-```css
-@import "@codinglabsau/gooey/style.css";
-```
-
 ## Dependencies removed
 
 The following are no longer dependencies of Gooey:
@@ -100,7 +92,7 @@ See the [Theme](/theme) page for full configuration details.
 |---|---|
 | `radix-vue` | `reka-ui` |
 | `Toast` / `useToast()` | `Sonner` / `toast()` from vue-sonner |
-| No CSS import needed | `@import "@codinglabsau/gooey/style.css"` |
+| `radix-vue` bundled | `reka-ui` external |
 | `@inertiajs/vue3` bundled | Install separately |
 | `@radix-icons/vue` | `lucide-vue-next` |
 | Tailwind v3 only | Tailwind v3 + v4 support |
