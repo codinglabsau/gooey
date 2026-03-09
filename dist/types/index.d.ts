@@ -1,5 +1,4 @@
 import { default as preset } from './presets/preset';
-import { DropdownMenuPortal } from 'reka-ui';
 export * from './lib/utils';
 export * from './lib/createContext';
 export * from './composables';
@@ -67,4 +66,4 @@ export * from './components/tags-input';
 export * from './components/textarea';
 export * from './components/toggle';
 export * from './components/toggle-group';
-export { preset, DropdownMenuPortal };
+export { preset };
