@@ -1,9 +1,6 @@
 // tailwind presets
 import preset from "@/presets/preset"
 
-// reka-ui components
-import { DropdownMenuPortal } from "reka-ui"
-
 // utils
 export * from "@/lib/utils"
 export * from "@/lib/createContext"
@@ -79,4 +76,4 @@ export * from "@/components/textarea"
 export * from "@/components/toggle"
 export * from "@/components/toggle-group"
 
-export { preset, DropdownMenuPortal }
+export { preset }
