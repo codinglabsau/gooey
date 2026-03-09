@@ -76,6 +76,10 @@ export default defineConfig(({ command }) => ({
     viteStaticCopy({
       targets: [
         {
+          src: "src/presets/style.css",
+          dest: ".",
+        },
+        {
           src: "src/presets/slate.css",
           dest: "presets",
         },

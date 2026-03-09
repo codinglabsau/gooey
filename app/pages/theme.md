@@ -26,6 +26,7 @@ export default defineConfig({
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@codinglabsau/gooey/presets/slate.css";
+@import "@codinglabsau/gooey/style.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -128,6 +129,7 @@ export default {
 @tailwind utilities;
 
 @import '@codinglabsau/gooey/presets/slate.css';
+@import '@codinglabsau/gooey/style.css';
 ```
 
 ## Customising the theme

@@ -20,6 +20,7 @@
       "require": "./src/presets/v3/index.ts"
     },
     "./presets/v4": "./dist/presets/v4/preset.css",
+    "./style.css": "./dist/style.css",
     "./presets/slate.css": "./dist/presets/slate.css",
     "./dist/presets/*.css": {
       "import": "./dist/presets/*.css",
