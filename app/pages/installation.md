@@ -26,3 +26,31 @@ npm install @codinglabsau/gooey
 ```
 
 This library supports both **Tailwind CSS v3** and **Tailwind CSS v4**. See the [theme setup](theme) page for version-specific configuration.
+
+## Plugin setup (optional)
+
+Gooey ships a Vue plugin that lets you configure a global link component. This is used by components like [LaravelPaginator](/components/laravel-paginator) to render SPA navigation links instead of full page reloads.
+
+If you don't install the plugin, everything still works — links render as plain `<a>` tags.
+
+### Inertia.js
+
+```ts
+import { createApp } from 'vue'
+import { gooey } from '@codinglabsau/gooey'
+import { Link } from '@inertiajs/vue3'
+
+const app = createApp(...)
+app.use(gooey, { link: Link })
+```
+
+### Nuxt
+
+```ts
+import { gooey } from '@codinglabsau/gooey'
+import { NuxtLink } from '#components'
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(gooey, { link: NuxtLink })
+})
+```

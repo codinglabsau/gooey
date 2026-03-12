@@ -1,6 +1,10 @@
 // tailwind presets
 import preset from "@/presets/preset"
 
+// plugin
+export { gooey } from "@/plugin"
+export type { GooeyOptions } from "@/plugin"
+
 // utils
 export * from "@/lib/utils"
 export * from "@/lib/createContext"
@@ -10,6 +14,7 @@ export * from "@/composables"
 
 // custom components
 export * from "@/components/confirm-dialog"
+export * from "@/components/laravel-paginator"
 export * from "@/components/layout"
 export * from "@/components/flasher"
 export * from "@/components/heading"

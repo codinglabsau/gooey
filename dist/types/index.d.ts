@@ -1,8 +1,11 @@
 import { default as preset } from './presets/preset';
+export { gooey } from './plugin';
+export type { GooeyOptions } from './plugin';
 export * from './lib/utils';
 export * from './lib/createContext';
 export * from './composables';
 export * from './components/confirm-dialog';
+export * from './components/laravel-paginator';
 export * from './components/layout';
 export * from './components/flasher';
 export * from './components/heading';
