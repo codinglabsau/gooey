@@ -48,6 +48,7 @@ import {
   Item,
   Kbd,
   Label,
+  LaravelPaginator,
   Menubar,
   NumberField,
   Pagination,
@@ -464,6 +465,12 @@ const routes = [
         path: "/components/heading",
         component: Heading,
         meta: { layout: ComponentLayout, title: "Heading" },
+      },
+      {
+        name: "Laravel Paginator",
+        path: "/components/laravel-paginator",
+        component: LaravelPaginator,
+        meta: { layout: ComponentLayout, title: "Laravel Paginator" },
       },
       {
         name: "Pagination",

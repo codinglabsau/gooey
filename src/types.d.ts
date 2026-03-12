@@ -27,4 +27,17 @@ declare global {
   interface Paginator<T> extends PaginatorMeta {
     data: T[]
   }
+
+  interface CursorPaginatorMeta {
+    path: string
+    per_page: number
+    next_cursor: string | null
+    prev_cursor: string | null
+    next_page_url: string | null
+    prev_page_url: string | null
+  }
+
+  interface CursorPaginatorResponse<T> extends CursorPaginatorMeta {
+    data: T[]
+  }
 }
