@@ -2,7 +2,17 @@
 /* eslint-disable no-useless-escape */
 import { ref } from "vue"
 import { LaravelPaginator } from "@/components/laravel-paginator"
-import { CodeBlock, ComponentHeading } from "@app/components"
+import { CodeBlock, ComponentHeading, ComponentProps } from "@app/components"
+import { type ComponentProp } from "@app/types/globals"
+
+const componentProps: ComponentProp[] = [
+  {
+    name: "paginator",
+    type: ["Paginator<T>", "CursorPaginatorResponse<T>"],
+    description:
+      "A Laravel paginated response. Accepts both LengthAwarePaginator and CursorPaginator JSON shapes. The component auto-detects which type was provided.",
+  },
+]
 
 const lengthAwarePaginator = ref<Paginator<{ id: number; name: string }>>({
   current_page: 3,
@@ -60,67 +70,136 @@ const emptyPaginator = ref<Paginator<never>>({
   data: [],
 })
 
-const setupCode = `import { gooey } from '@codinglabsau/gooey'
+const inertiaSetupCode = `import { gooey } from '@codinglabsau/gooey'
 import { Link } from '@inertiajs/vue3'
 
 app.use(gooey, { link: Link })`
 
+const nuxtSetupCode = `import { gooey } from '@codinglabsau/gooey'
+import { NuxtLink } from '#components'
+
+app.use(gooey, { link: NuxtLink })`
+
 const basicCode = `<script setup lang="ts">
 import { LaravelPaginator } from '@codinglabsau/gooey'
+
+// Pass any Laravel paginated response directly
+const props = defineProps<{
+  users: Paginator<User>
+}>()
 <\/script>
 
 <template>
   <LaravelPaginator :paginator="users" />
 </template>`
 
-const cursorCode = `<!-- Works with CursorPaginator too — auto-detected -->
-<LaravelPaginator :paginator="cursorPaginatedUsers" />`
+const cursorCode = `<script setup lang="ts">
+import { LaravelPaginator } from '@codinglabsau/gooey'
+
+// Works with CursorPaginator too — auto-detected
+const props = defineProps<{
+  users: CursorPaginatorResponse<User>
+}>()
+<\/script>
+
+<template>
+  <LaravelPaginator :paginator="users" />
+</template>`
 </script>
 
 <template>
-  <div>
-    <ComponentHeading>Plugin Setup (optional)</ComponentHeading>
+  <div class="space-y-8">
+    <section>
+      <ComponentHeading>Description</ComponentHeading>
 
-    <p class="mt-2 text-sm text-muted-foreground">
-      Configure a link component once at app setup. Falls back to plain
-      <code class="text-xs">&lt;a&gt;</code> tags if not configured.
-    </p>
+      <p>
+        LaravelPaginator renders navigation links from a standard Laravel paginated JSON response.
+        Pass the paginator prop and it handles the rest — no configuration needed.
+      </p>
 
-    <CodeBlock class="mt-4" lang="ts" :code="setupCode" />
+      <p class="mt-2">It supports both paginator types:</p>
 
-    <ComponentHeading class="mt-10">LengthAwarePaginator</ComponentHeading>
+      <ul class="mt-2 list-disc pl-6">
+        <li>
+          <strong>LengthAwarePaginator</strong> — numbered page links with "Showing X to Y of Z
+          results" on desktop, simple prev/next on mobile
+        </li>
 
-    <p class="mt-2 text-sm text-muted-foreground">
-      Standard Laravel paginator with numbered page links. Shows "Showing X to Y of Z results" on
-      desktop, simple prev/next on mobile.
-    </p>
+        <li><strong>CursorPaginator</strong> — previous/next navigation only (no page numbers)</li>
+      </ul>
 
-    <div class="mt-4 rounded-lg border p-4" data-cy="length-aware">
-      <LaravelPaginator :paginator="lengthAwarePaginator" />
-    </div>
+      <p class="mt-2">
+        The component auto-detects which type was provided by checking for the
+        <code class="bg-muted px-1 py-0.5 font-mono text-xs">last_page</code> property.
+      </p>
+    </section>
 
-    <CodeBlock class="mt-4" lang="vue" :code="basicCode" />
+    <section>
+      <ComponentHeading>Plugin Setup (optional)</ComponentHeading>
 
-    <ComponentHeading class="mt-10">CursorPaginator</ComponentHeading>
+      <p>
+        By default, pagination links render as plain
+        <code class="bg-muted px-1 py-0.5 font-mono text-xs">&lt;a&gt;</code> tags. To use your
+        framework's link component (for SPA navigation without full page reloads), configure the
+        Gooey plugin once at app setup:
+      </p>
 
-    <p class="mt-2 text-sm text-muted-foreground">
-      Cursor-based pagination with previous/next navigation only.
-    </p>
+      <div class="mt-4 space-y-4">
+        <div>
+          <p class="mb-2 text-sm font-medium">Inertia.js</p>
 
-    <div class="mt-4 rounded-lg border p-4" data-cy="cursor">
-      <LaravelPaginator :paginator="cursorPaginator" />
-    </div>
+          <CodeBlock lang="ts" :code="inertiaSetupCode" />
+        </div>
 
-    <CodeBlock class="mt-4" lang="vue" :code="cursorCode" />
+        <div>
+          <p class="mb-2 text-sm font-medium">Nuxt</p>
 
-    <ComponentHeading class="mt-10">Empty State</ComponentHeading>
+          <CodeBlock lang="ts" :code="nuxtSetupCode" />
+        </div>
+      </div>
+    </section>
 
-    <p class="mt-2 text-sm text-muted-foreground">
-      When there are no results, navigation is disabled gracefully.
-    </p>
+    <section>
+      <ComponentHeading>LengthAwarePaginator</ComponentHeading>
 
-    <div class="mt-4 rounded-lg border p-4" data-cy="empty">
-      <LaravelPaginator :paginator="emptyPaginator" />
-    </div>
+      <p class="mb-4 text-sm text-muted-foreground">
+        Standard Laravel paginator with numbered page links. Resize the browser to see the
+        responsive layout.
+      </p>
+
+      <div class="rounded-lg border p-4" data-cy="length-aware">
+        <LaravelPaginator :paginator="lengthAwarePaginator" />
+      </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="basicCode" />
+    </section>
+
+    <section>
+      <ComponentHeading>CursorPaginator</ComponentHeading>
+
+      <p class="mb-4 text-sm text-muted-foreground">
+        Cursor-based pagination with previous/next navigation only.
+      </p>
+
+      <div class="rounded-lg border p-4" data-cy="cursor">
+        <LaravelPaginator :paginator="cursorPaginator" />
+      </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="cursorCode" />
+    </section>
+
+    <section>
+      <ComponentHeading>Empty State</ComponentHeading>
+
+      <p class="mb-4 text-sm text-muted-foreground">
+        When there are no results, navigation buttons are disabled gracefully.
+      </p>
+
+      <div class="rounded-lg border p-4" data-cy="empty">
+        <LaravelPaginator :paginator="emptyPaginator" />
+      </div>
+    </section>
+
+    <ComponentProps :props="componentProps" :meta="$route.meta" />
   </div>
 </template>
