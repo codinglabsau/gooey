@@ -135,7 +135,8 @@ const props = defineProps<{
 
       <p class="mt-2">
         The
-        <code class="bg-muted px-1 py-0.5 font-mono text-xs">Paginator&lt;T&gt;</code> and
+        <code class="bg-muted px-1 py-0.5 font-mono text-xs">Paginator&lt;T&gt;</code>
+        and
         <code class="bg-muted px-1 py-0.5 font-mono text-xs">CursorPaginatorResponse&lt;T&gt;</code>
         types are globally declared — no import needed.
       </p>
