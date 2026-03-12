@@ -23,6 +23,7 @@ defineProps<{
           )
         "
       >
+        <ChevronLeftIcon class="size-4" />
         Previous
       </component>
 
@@ -37,6 +38,7 @@ defineProps<{
         "
       >
         Next
+        <ChevronRightIcon class="size-4" />
       </component>
     </div>
 
