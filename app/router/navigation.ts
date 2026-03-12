@@ -95,6 +95,7 @@ export const navigation: NavigationGroup[] = [
       { name: "Dialog (modal)", path: "/components/dialog" },
       { name: "Drawer", path: "/components/drawer" },
       { name: "Heading", path: "/components/heading" },
+      { name: "Laravel Paginator", path: "/components/laravel-paginator" },
       { name: "Pagination", path: "/components/pagination" },
       { name: "Resizable", path: "/components/resizable" },
       { name: "Sheet / Slideover", path: "/components/sheet" },
