@@ -742,7 +742,7 @@ const H = /* @__PURE__ */ i({
             _: 1
           }, 8, ["href", "class"])),
           (r(!0), y(T, null, R(t.paginator.links, (o, n) => (r(), y(T, { key: n }, [
-            o.label !== "« Previous" && o.label !== "Next »" ? (r(), y(T, { key: 0 }, [
+            n !== 0 && n !== t.paginator.links.length - 1 ? (r(), y(T, { key: 0 }, [
               o.label === "..." ? (r(), y("span", {
                 key: 0,
                 class: b(

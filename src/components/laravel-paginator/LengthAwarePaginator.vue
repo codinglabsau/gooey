@@ -66,8 +66,8 @@ defineProps<{
         </component>
 
         <template v-for="(link, index) in paginator.links" :key="index">
-          <!-- Skip the built-in prev/next labels -->
-          <template v-if="link.label !== '&laquo; Previous' && link.label !== 'Next &raquo;'">
+          <!-- Skip the first and last entries (Laravel's built-in prev/next labels) -->
+          <template v-if="index !== 0 && index !== paginator.links.length - 1">
             <span
               v-if="link.label === '...'"
               :class="
