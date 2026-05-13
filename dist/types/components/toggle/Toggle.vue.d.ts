@@ -9,7 +9,12 @@ type __VLS_Props = ToggleProps & {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
-        default?(_: any): any;
+        default?(_: {
+            modelValue: boolean;
+            state: "on" | "off";
+            pressed: boolean;
+            disabled: boolean;
+        }): any;
     };
     refs: {};
     rootEl: any;

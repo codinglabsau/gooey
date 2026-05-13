@@ -6,7 +6,9 @@ type __VLS_Props = StepperIndicatorProps & {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
-        default?(_: any): any;
+        default?(_: {
+            step: number;
+        }): any;
     };
     refs: {};
     rootEl: any;

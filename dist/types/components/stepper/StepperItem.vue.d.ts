@@ -6,7 +6,9 @@ type __VLS_Props = StepperItemProps & {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
-        default?(_: any): any;
+        default?(_: {
+            state: "active" | "completed" | "inactive";
+        }): any;
     };
     refs: {};
     rootEl: any;

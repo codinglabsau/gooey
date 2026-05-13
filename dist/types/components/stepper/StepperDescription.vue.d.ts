@@ -6,7 +6,7 @@ type __VLS_Props = StepperDescriptionProps & {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
-        default?(_: any): any;
+        default?(_: {}): any;
     };
     refs: {};
     rootEl: any;
