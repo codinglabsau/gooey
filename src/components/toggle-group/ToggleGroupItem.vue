@@ -3,7 +3,7 @@ import type { VariantProps } from "class-variance-authority"
 import type { ToggleGroupItemProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { ToggleGroupItem, useForwardProps } from "reka-ui"
+import { ToggleGroupItem as ToggleGroupItemRoot, useForwardProps } from "reka-ui"
 import { inject } from "vue"
 import { cn } from "@/lib/utils"
 import { toggleVariants } from "@/components/toggle"
@@ -26,7 +26,7 @@ const forwardedProps = useForwardProps(delegatedProps)
 </script>
 
 <template>
-  <ToggleGroupItem
+  <ToggleGroupItemRoot
     v-slot="slotProps"
     v-bind="forwardedProps"
     :class="
@@ -40,5 +40,5 @@ const forwardedProps = useForwardProps(delegatedProps)
     "
   >
     <slot v-bind="slotProps" />
-  </ToggleGroupItem>
+  </ToggleGroupItemRoot>
 </template>

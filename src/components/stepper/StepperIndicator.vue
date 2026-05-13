@@ -2,7 +2,7 @@
 import type { StepperIndicatorProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { StepperIndicator, useForwardProps } from "reka-ui"
+import { StepperIndicator as StepperIndicatorRoot, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
 
 const props = defineProps<StepperIndicatorProps & { class?: HTMLAttributes["class"] }>()
@@ -13,7 +13,7 @@ const forwarded = useForwardProps(delegatedProps)
 </script>
 
 <template>
-  <StepperIndicator
+  <StepperIndicatorRoot
     v-slot="slotProps"
     v-bind="forwarded"
     :class="
@@ -30,5 +30,5 @@ const forwarded = useForwardProps(delegatedProps)
     "
   >
     <slot v-bind="slotProps" />
-  </StepperIndicator>
+  </StepperIndicatorRoot>
 </template>
