@@ -9,7 +9,7 @@ declare function __VLS_template(): {
         default?(_: {}): any;
     };
     refs: {
-        itemRef: {} | null;
+        itemRef: import('vue').ShallowUnwrapRef<{}> | null;
     };
     rootEl: any;
 };
@@ -19,7 +19,7 @@ declare const __VLS_component: import('vue').DefineComponent<__VLS_Props, {}, {}
 }, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{
     onSelect?: ((event: import('reka-ui').ListboxItemSelectEvent<import('reka-ui').AcceptableValue>) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {
-    itemRef: {} | null;
+    itemRef: import('vue').ShallowUnwrapRef<{}> | null;
 }, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
 export default _default;
