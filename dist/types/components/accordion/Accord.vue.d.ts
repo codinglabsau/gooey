@@ -22,7 +22,7 @@ declare const __VLS_component: import('vue').DefineComponent<ExtendedAccordionRo
 }, string, import('vue').PublicProps, Readonly<ExtendedAccordionRootProps> & Readonly<{
     "onUpdate:modelValue"?: ((value: string | string[] | undefined) => any) | undefined;
 }>, {
-    type: import('reka-ui').SingleOrMultipleType;
+    type: "single" | "multiple";
     collapsible: boolean;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;

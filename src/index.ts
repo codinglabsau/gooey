@@ -14,14 +14,11 @@ export * from "@/composables"
 
 // custom components
 export * from "@/components/confirm-dialog"
-export * from "@/components/email"
 export * from "@/components/laravel-paginator"
 export * from "@/components/layout"
 export * from "@/components/flasher"
 export * from "@/components/heading"
 export * from "@/components/accordion"
-export * from "@/components/number"
-export * from "@/components/price"
 export * from "@/components/tooltip"
 
 // shadcn components
