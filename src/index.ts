@@ -22,7 +22,6 @@ export * from "@/components/heading"
 export * from "@/components/accordion"
 export * from "@/components/number"
 export * from "@/components/price"
-export * from "@/components/text"
 export * from "@/components/tooltip"
 
 // shadcn components
