@@ -4,6 +4,6 @@ type __VLS_Props = SeparatorProps & {
     class?: HTMLAttributes["class"];
 };
 declare const _default: import('vue').DefineComponent<__VLS_Props, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<__VLS_Props> & Readonly<{}>, {
-    orientation: "vertical" | "horizontal";
+    orientation: import('reka-ui').DataOrientation;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
 export default _default;
