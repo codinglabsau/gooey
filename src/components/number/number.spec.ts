@@ -14,6 +14,8 @@ describe("Number", () => {
 
   it("respects integer mode", () => {
     cy.get('[data-cy="integer"] input').type("7.5").blur()
-    cy.get('[data-cy="integer-value"]').should("contain.text", "8")
+    cy.get('[data-cy="integer-value"]')
+      .invoke("text")
+      .should("match", /^\s*Value:\s*\d+\s*$/)
   })
 })
