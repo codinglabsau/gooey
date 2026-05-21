@@ -33,6 +33,7 @@ import {
   Command,
   ConfirmDialog,
   ContextMenu,
+  DatePicker,
   Dialog,
   Drawer,
   DropdownMenu,
@@ -76,7 +77,6 @@ import {
   Table,
   Tabs,
   TagsInput,
-  Text,
   Textarea,
   Tip,
   Toggle,
@@ -322,6 +322,12 @@ const routes = [
         meta: { layout: ComponentLayout, shadcn: true, title: "Checkbox" },
       },
       {
+        name: "Date Picker",
+        path: "/components/date-picker",
+        component: DatePicker,
+        meta: { layout: ComponentLayout, title: "Date Picker" },
+      },
+      {
         name: "Email",
         path: "/components/email",
         component: Email,
@@ -428,12 +434,6 @@ const routes = [
         path: "/components/tags-input",
         component: TagsInput,
         meta: { layout: ComponentLayout, shadcn: true, title: "Tags Input" },
-      },
-      {
-        name: "Text",
-        path: "/components/text",
-        component: Text,
-        meta: { layout: ComponentLayout, title: "Text" },
       },
       {
         name: "Textarea",
