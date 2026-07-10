@@ -11,8 +11,8 @@ defineProps<{
 
 <template>
   <nav role="navigation" aria-label="Pagination" class="flex w-full items-center justify-between">
-    <!-- Mobile: simple prev/next -->
-    <div class="flex flex-1 justify-between sm:hidden">
+    <!-- Mobile: prev/next around the row range -->
+    <div class="flex flex-1 items-center justify-between gap-2 sm:hidden">
       <component
         :is="paginator.prev_page_url ? GooeyLink : 'span'"
         :href="paginator.prev_page_url ?? undefined"
@@ -26,6 +26,13 @@ defineProps<{
         <ChevronLeftIcon class="size-4" />
         Previous
       </component>
+
+      <p class="px-1 text-center text-sm text-muted-foreground">
+        {{ (paginator.from ?? 0).toLocaleString() }}&ndash;{{
+          (paginator.to ?? 0).toLocaleString()
+        }}
+        of {{ paginator.total.toLocaleString() }}
+      </p>
 
       <component
         :is="paginator.next_page_url ? GooeyLink : 'span'"
@@ -45,11 +52,11 @@ defineProps<{
     <!-- Desktop: full pagination -->
     <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
       <p class="text-sm text-muted-foreground">
-        Showing <span class="font-medium">{{ paginator.from ?? 0 }}</span>
+        Showing <span class="font-medium">{{ (paginator.from ?? 0).toLocaleString() }}</span>
         to
-        <span class="font-medium">{{ paginator.to ?? 0 }}</span>
+        <span class="font-medium">{{ (paginator.to ?? 0).toLocaleString() }}</span>
         of
-        <span class="font-medium">{{ paginator.total }}</span> results
+        <span class="font-medium">{{ paginator.total.toLocaleString() }}</span> results
       </p>
 
       <div class="flex items-center gap-1">
