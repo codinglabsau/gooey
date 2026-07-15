@@ -1,7 +1,9 @@
 import { AlertDialogActionProps } from 'reka-ui';
 import { HTMLAttributes } from 'vue';
+import { ButtonVariants } from '../button';
 type __VLS_Props = AlertDialogActionProps & {
     class?: HTMLAttributes["class"];
+    variant?: ButtonVariants["variant"];
 };
 declare function __VLS_template(): {
     attrs: Partial<{}>;
