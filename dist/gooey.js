@@ -359,8 +359,7 @@ const er = /* @__PURE__ */ i({
   __name: "AlertDialog",
   props: {
     open: { type: Boolean },
-    defaultOpen: { type: Boolean },
-    unmountOnHide: { type: Boolean }
+    defaultOpen: { type: Boolean }
   },
   emits: ["update:open"],
   setup(t, { emit: a }) {
@@ -3158,7 +3157,6 @@ const Td = /* @__PURE__ */ i({
     position: { default: "popper" },
     bodyLock: { type: Boolean },
     hideWhenEmpty: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: { default: 4 },
     sideFlip: { type: Boolean },
@@ -3177,7 +3175,6 @@ const Td = /* @__PURE__ */ i({
     disableUpdateOnLayoutShift: { type: Boolean },
     prioritizePosition: { type: Boolean },
     reference: {},
-    dir: {},
     asChild: { type: Boolean },
     as: {},
     disableOutsidePointerEvents: { type: Boolean },
@@ -3302,8 +3299,7 @@ const Td = /* @__PURE__ */ i({
   props: {
     open: { type: Boolean },
     defaultOpen: { type: Boolean },
-    modal: { type: Boolean },
-    unmountOnHide: { type: Boolean }
+    modal: { type: Boolean }
   },
   emits: ["update:open"],
   setup(t, { emit: a }) {
@@ -3495,8 +3491,7 @@ const Td = /* @__PURE__ */ i({
   props: {
     open: { type: Boolean },
     defaultOpen: { type: Boolean },
-    modal: { type: Boolean },
-    unmountOnHide: { type: Boolean }
+    modal: { type: Boolean }
   },
   emits: ["update:open"],
   setup(t, { emit: a }) {
@@ -3753,7 +3748,6 @@ const Td = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     sideFlip: { type: Boolean },
     alignOffset: {},
     alignFlip: { type: Boolean },
@@ -3948,7 +3942,6 @@ const Td = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     sideOffset: {},
     sideFlip: { type: Boolean },
     alignOffset: {},
@@ -4036,10 +4029,7 @@ class Nl {
   constructor(a, s = {}) {
     this.formatter = jt(a, s), this.options = s;
   }
-  /**
-  * Formats a date as a string according to the locale and format options passed to the
-  * constructor.
-  */
+  /** Formats a date as a string according to the locale and format options passed to the constructor. */
   format(a) {
     return this.formatter.format(a);
   }
@@ -4152,7 +4142,6 @@ const Yl = /* @__PURE__ */ i({
   __name: "PopoverContent",
   props: {
     forceMount: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: { default: 4 },
     sideFlip: { type: Boolean },
@@ -4171,7 +4160,6 @@ const Yl = /* @__PURE__ */ i({
     disableUpdateOnLayoutShift: { type: Boolean },
     prioritizePosition: { type: Boolean },
     reference: {},
-    dir: {},
     asChild: { type: Boolean },
     as: {},
     disableOutsidePointerEvents: { type: Boolean },
@@ -4498,7 +4486,6 @@ const Yl = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: { default: 4 },
     sideFlip: { type: Boolean },
@@ -4697,7 +4684,6 @@ const Yl = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     sideOffset: {},
     sideFlip: { type: Boolean },
     alignOffset: {},
@@ -5234,8 +5220,7 @@ const np = /* @__PURE__ */ i({
     defaultOpen: { type: Boolean },
     open: { type: Boolean },
     openDelay: {},
-    closeDelay: {},
-    enableTouch: { type: Boolean }
+    closeDelay: {}
   },
   emits: ["update:open"],
   setup(t, { emit: a }) {
@@ -5251,7 +5236,6 @@ const np = /* @__PURE__ */ i({
   __name: "HoverCardContent",
   props: {
     forceMount: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: { default: 4 },
     sideFlip: { type: Boolean },
@@ -5270,7 +5254,6 @@ const np = /* @__PURE__ */ i({
     disableUpdateOnLayoutShift: { type: Boolean },
     prioritizePosition: { type: Boolean },
     reference: {},
-    dir: {},
     asChild: { type: Boolean },
     as: {},
     class: { type: [Boolean, null, String, Object, Array] }
@@ -5888,7 +5871,6 @@ const np = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: { default: 8 },
     sideFlip: { type: Boolean },
@@ -6101,7 +6083,6 @@ const np = /* @__PURE__ */ i({
   props: {
     forceMount: { type: Boolean },
     loop: { type: Boolean },
-    memoDependencies: {},
     sideOffset: {},
     sideFlip: { type: Boolean },
     alignOffset: {},
@@ -7161,7 +7142,6 @@ const np = /* @__PURE__ */ i({
     defaultOpen: { type: Boolean },
     defaultValue: {},
     modelValue: {},
-    nullableValue: {},
     by: { type: [String, Function] },
     dir: {},
     multiple: { type: Boolean },
@@ -7187,7 +7167,6 @@ const np = /* @__PURE__ */ i({
     forceMount: { type: Boolean },
     position: { default: "popper" },
     bodyLock: { type: Boolean },
-    memoDependencies: {},
     side: {},
     sideOffset: {},
     sideFlip: { type: Boolean },
@@ -7206,7 +7185,6 @@ const np = /* @__PURE__ */ i({
     disableUpdateOnLayoutShift: { type: Boolean },
     prioritizePosition: { type: Boolean },
     reference: {},
-    dir: {},
     asChild: { type: Boolean },
     as: {},
     disableOutsidePointerEvents: { type: Boolean },
@@ -7487,8 +7465,7 @@ const np = /* @__PURE__ */ i({
   props: {
     open: { type: Boolean },
     defaultOpen: { type: Boolean },
-    modal: { type: Boolean },
-    unmountOnHide: { type: Boolean }
+    modal: { type: Boolean }
   },
   emits: ["update:open"],
   setup(t, { emit: a }) {
