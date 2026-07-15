@@ -11,6 +11,7 @@ The library supports both Tailwind CSS v3 and v4. The demo app uses Tailwind v4,
 ## Rules
 - The upstream shadcn-vue components should NOT be modified without approval
 - It should always be safe and encouraged to overwrite any shadcn-vue sourced component using `npx shadcn-vue@latest add <component-name> --overwrite --yes`
+- **This is a PUBLIC repo — never add PII or client fingerprints to any pushed artefact** (PR body, commit message, review comment, code, comments, test fixtures). No client/consumer codenames, no consuming-app or page names, no customer data, no secrets. Describe changes from the problem class (e.g. "consuming apps"), never from a specific consumer. Editing after the fact does NOT scrub it — GitHub keeps edit history publicly visible — so keep it clean the first time.
 
 ## Commands
 
