@@ -44,22 +44,35 @@ const datetime = ref('')
     <ComponentHeading class="mt-10">Input Type</ComponentHeading>
 
     <p class="mt-2 text-sm text-muted-foreground">
-      <code>Input</code> does not declare a <code>type</code> prop. Any native attribute you pass —
-      <code>type</code>, <code>min</code>, <code>step</code>, <code>autocomplete</code> and so on —
-      falls through to the underlying <code>&lt;input&gt;</code> via Vue's attribute fallthrough, and
-      works alongside <code>v-model</code>.
+      <code>Input</code>
+
+       does not declare a <code>type</code>
+ prop. Any native attribute you pass —
+      <code>type</code>
+
+      , <code>min</code>
+
+      , <code>step</code>
+
+      , <code>autocomplete</code>
+ and so on —
+      falls through to the underlying <code>&lt;input&gt;</code>
+ via Vue's attribute fallthrough,
+      and works alongside <code>v-model</code>.
     </p>
 
     <div class="mt-4 flex flex-col gap-4">
       <div class="flex items-center gap-4">
-        <Input type="date" v-model="date" data-cy="input-date" />
+        <Input v-model="date" type="date" data-cy="input-date" />
+
         <span v-if="date" class="text-sm text-muted-foreground" data-cy="date-value">
           Selected: {{ date }}
         </span>
       </div>
 
       <div class="flex items-center gap-4">
-        <Input type="datetime-local" v-model="datetime" data-cy="input-datetime" />
+        <Input v-model="datetime" type="datetime-local" data-cy="input-datetime" />
+
         <span v-if="datetime" class="text-sm text-muted-foreground" data-cy="datetime-value">
           Selected: {{ datetime }}
         </span>
