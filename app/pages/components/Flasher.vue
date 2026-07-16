@@ -1,6 +1,7 @@
 <script setup lang="ts">
 /* eslint-disable no-useless-escape */
 import { ref } from "vue"
+import { useRoute } from "vue-router"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
 import { Flasher, useFlasher } from "@/components/flasher"
@@ -12,8 +13,17 @@ const { info, success, warning, error, flash } = useFlasher()
 
 const mode = useColorMode()
 
+// Seed notification props from the URL query so a Flasher can mount with a
+// value already present — the server-driven (e.g. Inertia flash) case, and the
+// path exercised by the mount-time e2e tests.
+const route = useRoute()
+
 const flasherProps = ref({
   theme: mode.value === "auto" ? "system" : mode.value,
+  info: route.query.info as string | undefined,
+  success: route.query.success as string | undefined,
+  warning: route.query.warning as string | undefined,
+  errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
 })
 
 const composableMethods: ComposableMethod[] = [
