@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { watch } from "vue"
+import { onMounted, watch } from "vue"
 import { Toaster as Sonner } from "vue-sonner"
 import {
   CircleCheckIcon,
@@ -34,15 +34,35 @@ const {
   error: errorNotification,
 } = useFlasher()
 
+// Fire on mount, not via `immediate`: an immediate watch runs during setup —
+// before the child <Sonner> Toaster has subscribed to the toast store — so any
+// toast raised then is dropped. onMounted runs after the Toaster is mounted.
+function flash() {
+  if (props.info) {
+    infoNotification(props.info)
+  }
+
+  if (props.success) {
+    successNotification(props.success)
+  }
+
+  if (props.warning) {
+    warningNotification(props.warning)
+  }
+
+  if (props.errors !== undefined && Object.keys(props.errors).length > 0) {
+    errorNotification(props.errors, props.objectFormat)
+  }
+}
+
+onMounted(flash)
+
 watch(
   () => props.info,
   (newVal) => {
     if (newVal) {
-      infoNotification(props.info as string)
+      infoNotification(newVal)
     }
-  },
-  {
-    immediate: true,
   },
 )
 
@@ -50,27 +70,25 @@ watch(
   () => props.success,
   (newVal) => {
     if (newVal) {
-      successNotification(props.success as string)
+      successNotification(newVal)
     }
   },
-  { immediate: true },
 )
 
 watch(
   () => props.warning,
   (newVal) => {
     if (newVal) {
-      warningNotification(props.warning as string)
+      warningNotification(newVal)
     }
   },
-  { immediate: true },
 )
 
 watch(
   () => props.errors,
-  () => {
-    if (props.errors !== undefined && Object.keys(props.errors!).length > 0) {
-      errorNotification(props.errors, props.objectFormat)
+  (newVal) => {
+    if (newVal !== undefined && Object.keys(newVal).length > 0) {
+      errorNotification(newVal, props.objectFormat)
     }
   },
 )
