@@ -28,8 +28,9 @@ vite
 The local server contains a demo and documentation for all the components.
 
 ## Publishing Releases
-1. Increment the version in `package.json` following semver rules
-2. Run `npm update` to update the lock file
+1. Bump the version with `npm version <patch|minor|major> --no-git-tag-version` (following semver). This updates the version in **both** `package.json` and `package-lock.json` and leaves dependencies untouched.
+2. Verify the lock file is in sync: `npm ci --dry-run` should complete with no `Missing … from lock file` errors.
+   - **Do not run `npm update`.** It upgrades every dependency to the newest its range allows rather than just syncing the version, which churns the lock file and makes the release workflow's `npm ci` hard-fail before it can publish. A library's lock file isn't consumed by downstream apps, so there's no benefit to upgrading it in a release.
 3. Ensure all components are registered in `src/index.ts`
 4. Run `npm run build`; this will format, lint, type check and do a vite build
 5. Push to GitHub
