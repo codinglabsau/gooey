@@ -46,8 +46,8 @@ const datetime = ref('')
     <p class="mt-2 text-sm text-muted-foreground">
       <code>Input</code>
 
-       does not declare a <code>type</code>
- prop. Any native attribute you pass —
+      does not declare a <code>type</code>
+      prop. Any native attribute you pass —
       <code>type</code>
 
       , <code>min</code>
@@ -55,10 +55,10 @@ const datetime = ref('')
       , <code>step</code>
 
       , <code>autocomplete</code>
- and so on —
-      falls through to the underlying <code>&lt;input&gt;</code>
- via Vue's attribute fallthrough,
-      and works alongside <code>v-model</code>.
+      and so on — falls through to the underlying
+      <code>&lt;input&gt;</code>
+      via Vue's attribute fallthrough, and works alongside
+      <code>v-model</code>.
     </p>
 
     <div class="mt-4 flex flex-col gap-4">
