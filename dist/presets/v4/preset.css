@@ -17,7 +17,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
+/*
+ * Colors use `@theme inline` so each utility emits `hsl(var(--token))` directly
+ * rather than a reference to a `--color-*` variable resolved once at `:root`.
+ * A plain `@theme` substitutes `var(--token)` where the variable is declared —
+ * at the root — so a `.dark` class on any element below the root flips the
+ * triples but not the already-resolved colors, giving light cards on a dark page.
+ */
+@theme inline {
   /* Colors - using CSS custom properties */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -61,7 +68,9 @@
   --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
 
+@theme {
   /* Border radius */
   --radius-xl: calc(var(--radius) + 4px);
   --radius-lg: var(--radius);
