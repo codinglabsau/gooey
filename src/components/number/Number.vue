@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { NumberField, NumberFieldContent, NumberFieldInput } from "@/components/number-field"
+import { toNumberOrUndefined } from "@/lib/utils"
 
 const props = withDefaults(
   defineProps<{
@@ -20,7 +21,15 @@ const props = withDefaults(
   },
 )
 
-const model = defineModel<number>()
+const model = defineModel<number | string | null>()
+
+// Clearing emits null rather than undefined so the field survives JSON serialisation.
+const numericModel = computed<number | undefined>({
+  get: () => toNumberOrUndefined(model.value),
+  set: (value) => {
+    model.value = value ?? null
+  },
+})
 
 const resolvedFormatOptions = computed<Intl.NumberFormatOptions | undefined>(() => {
   if (props.integer) {
@@ -32,7 +41,7 @@ const resolvedFormatOptions = computed<Intl.NumberFormatOptions | undefined>(() 
 
 <template>
   <NumberField
-    v-model="model"
+    v-model="numericModel"
     :min="min"
     :max="max"
     :step="step"

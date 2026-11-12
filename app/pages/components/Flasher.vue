@@ -23,7 +23,12 @@ const flasherProps = ref({
   info: route.query.info as string | undefined,
   success: route.query.success as string | undefined,
   warning: route.query.warning as string | undefined,
-  errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
+  errors:
+    route.query.errors === "null"
+      ? null
+      : route.query.errors
+        ? { firstname: "firstname is required" }
+        : undefined,
 })
 
 const composableMethods: ComposableMethod[] = [

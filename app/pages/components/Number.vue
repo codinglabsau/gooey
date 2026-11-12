@@ -6,6 +6,7 @@ import { CodeBlock, ComponentHeading } from "@app/components"
 
 const basic = ref<number>()
 const integer = ref<number>()
+const nullable = ref<number | string | null>("")
 
 const code = `<script setup lang="ts">
 import { ref } from 'vue'
@@ -55,6 +56,21 @@ const quantity = ref<number>()
 
       <p v-if="integer !== undefined" class="text-sm text-muted-foreground" data-cy="integer-value">
         Value: {{ integer }}
+      </p>
+    </div>
+
+    <ComponentHeading class="mt-8">Empty Values</ComponentHeading>
+
+    <p class="mt-2 text-sm text-muted-foreground">
+      An empty string renders as an empty input, and clearing the input sets the v-model to
+      <code>null</code>.
+    </p>
+
+    <div class="mt-4 max-w-xs space-y-2">
+      <Number v-model="nullable" placeholder="Unlimited" data-cy="nullable" />
+
+      <p class="text-sm text-muted-foreground" data-cy="nullable-value">
+        Value: {{ JSON.stringify(nullable) }}
       </p>
     </div>
 

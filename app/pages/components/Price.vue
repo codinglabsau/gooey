@@ -6,6 +6,7 @@ import { CodeBlock, ComponentHeading } from "@app/components"
 
 const basic = ref<number>()
 const usd = ref<number>(19.99)
+const nzd = ref<number | null>(25)
 
 const code = `<script setup lang="ts">
 import { ref } from 'vue'
@@ -64,6 +65,22 @@ const amount = ref<number>()
       <Price v-model="usd" currency="USD" locale="en-US" data-cy="usd" />
 
       <p class="text-sm text-muted-foreground">v-model: {{ usd }}</p>
+    </div>
+
+    <ComponentHeading class="mt-8">Currency Code</ComponentHeading>
+
+    <p class="mt-2 text-sm text-muted-foreground">
+      Pass <code>currency-display="code"</code> to show the ISO code instead of a symbol, so that
+      currencies sharing a symbol can be told apart. Clearing the input sets the v-model to
+      <code>null</code>.
+    </p>
+
+    <div class="mt-4 max-w-xs space-y-2">
+      <Price v-model="nzd" currency="NZD" currency-display="code" data-cy="code" />
+
+      <p class="text-sm text-muted-foreground" data-cy="code-value">
+        v-model: {{ JSON.stringify(nzd) }}
+      </p>
     </div>
 
     <ComponentHeading class="mt-8">Disabled</ComponentHeading>
