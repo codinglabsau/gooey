@@ -105,12 +105,18 @@
   --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
-/* Base styles - using standard CSS instead of @apply for v4 compatibility */
-* {
-  border-color: hsl(var(--border));
-}
+/*
+ * Base styles - using standard CSS instead of @apply for v4 compatibility.
+ * Layered as base so utilities can override them: unlayered rules beat every
+ * cascade layer, which would make `border-*` colour utilities a no-op.
+ */
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
