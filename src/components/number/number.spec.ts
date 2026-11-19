@@ -18,4 +18,15 @@ describe("Number", () => {
       .invoke("text")
       .should("match", /^\s*Value:\s*\d+\s*$/)
   })
+
+  it("renders an empty string as an empty input", () => {
+    cy.get('[data-cy="nullable"] input').should("have.value", "")
+  })
+
+  it("sets the v-model to null when cleared", () => {
+    cy.get('[data-cy="nullable"] input').type("5").blur()
+    cy.get('[data-cy="nullable-value"]').should("contain.text", "Value: 5")
+    cy.get('[data-cy="nullable"] input').clear().blur()
+    cy.get('[data-cy="nullable-value"]').should("contain.text", "Value: null")
+  })
 })

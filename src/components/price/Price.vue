@@ -2,14 +2,16 @@
 import type { HTMLAttributes } from "vue"
 import { computed } from "vue"
 import { NumberField, NumberFieldContent, NumberFieldInput } from "@/components/number-field"
+import { toNumberOrUndefined } from "@/lib/utils"
 
 /**
- * v-model is a `number` representing the amount in **dollars** (e.g. `19.99`).
+ * v-model is a `number` representing the amount in **dollars** (e.g. `19.99`), or `null` when empty.
  * Consumers do not need to convert to/from cents.
  */
 const props = withDefaults(
   defineProps<{
     currency?: string
+    currencyDisplay?: Intl.NumberFormatOptions["currencyDisplay"]
     locale?: string
     min?: number
     max?: number
@@ -20,24 +22,33 @@ const props = withDefaults(
   }>(),
   {
     currency: "AUD",
+    currencyDisplay: "symbol",
     locale: "en-AU",
     min: 0,
     step: 0.01,
   },
 )
 
-const model = defineModel<number>()
+const model = defineModel<number | string | null>()
+
+// Clearing emits null rather than undefined so the field survives JSON serialisation.
+const numericModel = computed<number | undefined>({
+  get: () => toNumberOrUndefined(model.value),
+  set: (value) => {
+    model.value = value ?? null
+  },
+})
 
 const formatOptions = computed<Intl.NumberFormatOptions>(() => ({
   style: "currency",
   currency: props.currency,
-  currencyDisplay: "symbol",
+  currencyDisplay: props.currencyDisplay,
 }))
 </script>
 
 <template>
   <NumberField
-    v-model="model"
+    v-model="numericModel"
     :min="min"
     :max="max"
     :step="step"

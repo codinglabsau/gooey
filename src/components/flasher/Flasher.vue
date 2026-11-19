@@ -19,7 +19,7 @@ const props = withDefaults(
     info?: string
     success?: string
     warning?: string
-    errors?: ErrorBag
+    errors?: ErrorBag | null
     objectFormat?: ObjectFormat
   }>(),
   {
@@ -50,7 +50,7 @@ function flash() {
     warningNotification(props.warning)
   }
 
-  if (props.errors !== undefined && Object.keys(props.errors).length > 0) {
+  if (props.errors != null && Object.keys(props.errors).length > 0) {
     errorNotification(props.errors, props.objectFormat)
   }
 }
@@ -87,7 +87,7 @@ watch(
 watch(
   () => props.errors,
   (newVal) => {
-    if (newVal !== undefined && Object.keys(newVal).length > 0) {
+    if (newVal != null && Object.keys(newVal).length > 0) {
       errorNotification(newVal, props.objectFormat)
     }
   },
