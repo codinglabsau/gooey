@@ -937,7 +937,11 @@ const Ec = /* @__PURE__ */ N(Ir, [["render", zr]]), Fr = {
       passive: s.open === void 0
     });
     function y(S) {
-      f.value = S, s.collapsible !== "none" && (document.cookie = `${Ge}=${f.value}; path=/; max-age=${Vr}`);
+      if (f.value = S, s.collapsible !== "none")
+        try {
+          document.cookie = `${Ge}=${f.value}; path=/; max-age=${Vr}`;
+        } catch {
+        }
     }
     function B(S) {
       l.value = S;
@@ -8153,7 +8157,11 @@ const Jf = /* @__PURE__ */ N(sc, [["render", oc]]), Qf = /* @__PURE__ */ i({
       passive: s.open === void 0
     });
     function y(S) {
-      f.value = S, document.cookie = `${Ke}=${f.value}; path=/; max-age=${Wi}`;
+      f.value = S;
+      try {
+        document.cookie = `${Ke}=${f.value}; path=/; max-age=${Wi}`;
+      } catch {
+      }
     }
     function B(S) {
       l.value = S;

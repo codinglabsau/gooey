@@ -46,9 +46,15 @@ const open = useVModel(props, "open", emits, {
 function setOpen(value: boolean) {
   open.value = value
 
-  // Persist state to cookies when collapsible is enabled
+  // Persist state to cookies when collapsible is enabled. Writing document.cookie
+  // throws in a sandboxed iframe without allow-same-origin, and anywhere cookies
+  // are blocked — the layout still works there, it just stops persisting.
   if (props.collapsible !== "none") {
-    document.cookie = `${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${COLLAPSIBLE_SIDEBAR_COOKIE_MAX_AGE}`
+    try {
+      document.cookie = `${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${COLLAPSIBLE_SIDEBAR_COOKIE_MAX_AGE}`
+    } catch {
+      // state is kept in memory only
+    }
   }
 }
 

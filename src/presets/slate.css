@@ -108,9 +108,13 @@
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 217.2 91.2% 59.8%;
 
-  /* Chart variables - dark mode */
+  /*
+   * Chart variables - dark mode. --vis-primary-color must be redeclared here:
+   * custom properties inherit their substituted value, so a .dark scoped below
+   * the root would otherwise keep the light --primary. --vis-secondary-color is
+   * a literal triple, so it inherits from :root correctly.
+   */
   --vis-primary-color: var(--primary);
-  --vis-secondary-color: 160 84% 39%;
 }
 
 /*
