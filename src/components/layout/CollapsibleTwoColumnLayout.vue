@@ -22,7 +22,10 @@ const props = withDefaults(
     class?: HTMLAttributes["class"]
   }>(),
   {
-    defaultOpen: !defaultDocument?.cookie.includes(`${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=false`),
+    // a factory, so the cookie is read when the component is created rather than when the
+    // module loads — reading document.cookie throws in sandboxed iframes without allow-same-origin
+    defaultOpen: () =>
+      !defaultDocument?.cookie.includes(`${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=false`),
     open: undefined,
     collapsible: "icon",
   },
