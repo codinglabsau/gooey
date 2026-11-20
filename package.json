@@ -64,7 +64,6 @@
     "@tanstack/vue-table": "^8.21.2",
     "@unovis/ts": "^1.6.2",
     "@unovis/vue": "^1.6.2",
-    "@vee-validate/zod": "^4.15.1",
     "@vueuse/core": "^14.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -75,8 +74,7 @@
     "vaul-vue": "^0.4.1",
     "vee-validate": "^4.15.1",
     "vue-input-otp": "^0.3.2",
-    "vue-sonner": "^2.0.9",
-    "zod": "^3.25.76"
+    "vue-sonner": "^2.0.9"
   },
   "overrides": {
     "@types/d3-dispatch": "3.0.6"
@@ -84,8 +82,9 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@shikijs/markdown-it": "^3.22.0",
-    "@tailwindcss/typography": "^0.5.15",
+    "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.1.18",
+    "@vee-validate/zod": "^4.15.1",
     "@vitejs/plugin-vue": "^6.0.3",
     "@vue/tsconfig": "^0.8.1",
     "cypress": "^15.9.0",
@@ -107,6 +106,7 @@
     "vite-plugin-static-copy": "^3.1.4",
     "vue": "^3.2.37",
     "vue-router": "^4.4.4",
-    "vue-tsc": "^3.2.2"
+    "vue-tsc": "^3.2.2",
+    "zod": "^3.25.76"
   }
 }
