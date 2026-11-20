@@ -13,9 +13,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-# Least privilege: both jobs only read the checkout. Without this the workflow
-# inherits the repository default, which CodeQL flags as overly broad
-# (actions/missing-workflow-permissions).
 permissions:
   contents: read
 
