@@ -21,3 +21,6 @@ cypress/screenshots
 # could silently change what gets published.
 dist
 docs-dist
+
+# Vitest browser-mode attachments
+.vitest

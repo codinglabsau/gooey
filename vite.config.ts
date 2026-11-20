@@ -93,7 +93,7 @@ export default defineConfig(({ command }) => ({
       outDir: "dist/types",
       tsconfigPath: "./tsconfig.json",
       include: ["src/**/*"],
-      exclude: ["src/**/*.spec.ts", "app/**/*"],
+      exclude: ["src/**/*.spec.ts", "src/**/*.browser.ts", "src/mount-cases.ts", "app/**/*"],
     }),
   ],
   resolve: {

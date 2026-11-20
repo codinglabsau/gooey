@@ -33,6 +33,22 @@ jobs:
       # A file read and a regex — a plain Node check rather than a browser test.
       - run: npm run check:import-safety
 
+  components:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Vitest serves the components itself, so there is no app to build or run.
+      - run: npx playwright install chromium --only-shell --with-deps
+      - run: npm run test:components
+
   type-check:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
