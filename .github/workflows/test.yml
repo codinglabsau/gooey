@@ -24,10 +24,11 @@ jobs:
       - uses: actions/checkout@v7
       - uses: cypress-io/github-action@v6
         with:
-          # dist is not committed, and the import-safety check below asserts
-          # against the built bundle, so build before the suite runs.
-          build: npx vite build
-          start: npm run dev
+          # Builds the library (the import-safety check reads its bundle) and the
+          # docs app, which is served as static files: the dev server transformed
+          # each route on first visit and that dominated the run.
+          build: npm run test:build
+          start: npm run test:serve
 
       # A file read and a regex — a plain Node check rather than a browser test.
       - run: npm run check:import-safety
