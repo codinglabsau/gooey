@@ -34,6 +34,13 @@ export default defineConfig({
     specPattern: "src/**/*.spec.ts",
     experimentalRunAllSpecs: true,
 
+    // Vite transforms each showcase route on first visit, so a cold page can
+    // outrun a command timeout. Retry in CI only: a page that is actually
+    // broken still fails every attempt, but a slow first compile does not fail
+    // the build. Interactive runs stay unretried so flakes surface while you
+    // are looking at them.
+    retries: { runMode: 2, openMode: 0 },
+
     setupNodeEvents(on, config) {
       // todo: get vite to launch if not already running
       // on("before:run", () => {
