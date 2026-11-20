@@ -32,7 +32,10 @@ The local server contains a demo and documentation for all the components.
 2. Verify the lock file is in sync: `npm ci --dry-run` should complete with no `Missing … from lock file` errors.
    - **Do not run `npm update`.** It upgrades every dependency to the newest its range allows rather than just syncing the version, which churns the lock file and makes the release workflow's `npm ci` hard-fail before it can publish. A library's lock file isn't consumed by downstream apps, so there's no benefit to upgrading it in a release.
 3. Ensure all components are registered in `src/index.ts`
-4. Run `npm run build`; this will format, lint, type check and do a vite build
+4. Run `npm run build` to check it still formats, lints and builds cleanly. The
+   output is **not** committed — `dist` is gitignored, and the release workflow
+   builds it before publishing, so what ships is always built from the tagged
+   source rather than from a checked-in copy that may have drifted.
 5. Push to GitHub
 6. Tag a release on GitHub matching the new version number
 

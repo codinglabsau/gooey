@@ -21,6 +21,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: cypress-io/github-action@v6
         with:
+          # import-safety.spec.ts asserts against the built bundle, and dist is
+          # no longer committed, so build it before the suite runs.
+          build: npx vite build
           start: npm run dev
 
   type-check:

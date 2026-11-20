@@ -16,6 +16,8 @@ cypress/screenshots
 
 .claude/settings.local.json
 
-# Build artifacts
-dist/index-*.js
+# Build artifacts — dist is built at pack time (see the prepack script),
+# so it is never committed. Tracking it meant any tool that wrote there
+# could silently change what gets published.
+dist
 docs-dist
