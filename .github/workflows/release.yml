@@ -27,6 +27,13 @@ jobs:
 
       - run: npm ci
 
+      # dist is not committed; build it here rather than from a lifecycle hook,
+      # which `ignore-scripts` would silently skip and publish an empty package.
+      - run: npx vite build
+
+      - name: Verify the build produced a publishable dist
+        run: test -f dist/gooey.js && test -f dist/types/index.d.ts
+
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
