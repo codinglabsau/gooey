@@ -36,7 +36,7 @@
     "prettier": "prettier 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --write",
     "lint": "eslint 'src/**/*.{js,ts,vue}' 'app/**/*.{js,ts,vue}' --fix",
     "test": "cypress run",
-    "test:build": "vite build --config vite.docs.config.ts --base=/",
+    "test:build": "vite build && vite build --config vite.docs.config.ts --base=/",
     "test:serve": "vite preview --config vite.docs.config.ts --base=/ --port 5173",
     "check:import-safety": "node scripts/check-import-safety.mjs",
     "docs:build": "vite build --config vite.docs.config.ts",
