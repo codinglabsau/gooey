@@ -22,3 +22,17 @@ jobs:
       - uses: cypress-io/github-action@v6
         with:
           start: npm run dev
+
+  type-check:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run type-check
