@@ -925,7 +925,7 @@ const Ec = /* @__PURE__ */ N(Ir, [["render", zr]]), Fr = {
 }), Ge = "sidebar_state", Vr = 3600 * 24 * 7, Rr = "18rem", Lr = "3rem", Hc = "18rem", Er = "b", [te, Gr] = re("CollapsibleTwoColumnLayout"), Hr = ["data-state", "data-collapsible"], Nc = /* @__PURE__ */ i({
   __name: "CollapsibleTwoColumnLayout",
   props: {
-    defaultOpen: { type: Boolean, default: !Je?.cookie.includes(`${Ge}=false`) },
+    defaultOpen: { type: Boolean, default: () => !Je?.cookie.includes(`${Ge}=false`) },
     open: { type: Boolean, default: void 0 },
     collapsible: { default: "icon" },
     class: { type: [Boolean, null, String, Object, Array] }
@@ -937,7 +937,11 @@ const Ec = /* @__PURE__ */ N(Ir, [["render", zr]]), Fr = {
       passive: s.open === void 0
     });
     function y(S) {
-      f.value = S, s.collapsible !== "none" && (document.cookie = `${Ge}=${f.value}; path=/; max-age=${Vr}`);
+      if (f.value = S, s.collapsible !== "none")
+        try {
+          document.cookie = `${Ge}=${f.value}; path=/; max-age=${Vr}`;
+        } catch {
+        }
     }
     function B(S) {
       l.value = S;
@@ -8142,7 +8146,7 @@ function oc(t, a) {
 const Jf = /* @__PURE__ */ N(sc, [["render", oc]]), Qf = /* @__PURE__ */ i({
   __name: "SidebarProvider",
   props: {
-    defaultOpen: { type: Boolean, default: !Je?.cookie.includes(`${Ke}=false`) },
+    defaultOpen: { type: Boolean, default: () => !Je?.cookie.includes(`${Ke}=false`) },
     open: { type: Boolean, default: void 0 },
     class: { type: [Boolean, null, String, Object, Array] }
   },
@@ -8153,7 +8157,11 @@ const Jf = /* @__PURE__ */ N(sc, [["render", oc]]), Qf = /* @__PURE__ */ i({
       passive: s.open === void 0
     });
     function y(S) {
-      f.value = S, document.cookie = `${Ke}=${f.value}; path=/; max-age=${Wi}`;
+      f.value = S;
+      try {
+        document.cookie = `${Ke}=${f.value}; path=/; max-age=${Wi}`;
+      } catch {
+      }
     }
     function B(S) {
       l.value = S;

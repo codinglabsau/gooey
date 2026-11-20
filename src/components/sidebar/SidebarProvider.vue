@@ -20,7 +20,9 @@ const props = withDefaults(
     class?: HTMLAttributes["class"]
   }>(),
   {
-    defaultOpen: !defaultDocument?.cookie.includes(`${SIDEBAR_COOKIE_NAME}=false`),
+    // a factory, so the cookie is read when the component is created rather than when the
+    // module loads — reading document.cookie throws in sandboxed iframes without allow-same-origin
+    defaultOpen: () => !defaultDocument?.cookie.includes(`${SIDEBAR_COOKIE_NAME}=false`),
     open: undefined,
   },
 )
@@ -40,8 +42,14 @@ const open = useVModel(props, "open", emits, {
 function setOpen(value: boolean) {
   open.value = value // emits('update:open', value)
 
-  // This sets the cookie to keep the sidebar state.
-  document.cookie = `${SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+  // This sets the cookie to keep the sidebar state. Writing document.cookie throws
+  // in a sandboxed iframe without allow-same-origin, and anywhere cookies are
+  // blocked — the sidebar still works there, it just stops persisting.
+  try {
+    document.cookie = `${SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+  } catch {
+    // state is kept in memory only
+  }
 }
 
 function setOpenMobile(value: boolean) {
