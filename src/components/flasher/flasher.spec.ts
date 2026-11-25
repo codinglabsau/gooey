@@ -232,4 +232,21 @@ describe("template spec", () => {
 
     cy.get("[data-sonner-toast]").should("have.length", 1).contains("name is required")
   })
+
+  it("treats a null flash id as no id", () => {
+    cy.visit("/components/flasher?nullFlashId=1")
+
+    cy.get('[data-cy="prop-success"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Success")
+  })
+
+  it("shows server toasts with a null id and an unknown type every time", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="toast-loose"]').click()
+    cy.get("[data-sonner-toast]").should("have.length", 1).contains("Loose server toast")
+
+    cy.get('[data-cy="toast-loose"]').click()
+    cy.get("[data-sonner-toast]").should("have.length", 2)
+  })
 })

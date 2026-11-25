@@ -39,7 +39,7 @@ const flasherProps = ref<{
   warning?: string
   errors?: ErrorBag
   objectFormat?: ObjectFormat
-  flashId?: string | number
+  flashId?: string | number | null
   toasts?: FlashToast[]
   titles?: Partial<FlasherTitles>
 }>({
@@ -48,6 +48,8 @@ const flasherProps = ref<{
   success: route.query.success as string | undefined,
   warning: route.query.warning as string | undefined,
   errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
+  // Inertia shares a missing flash id as null.
+  flashId: route.query.nullFlashId ? null : undefined,
 })
 
 // Server-driven demos: each "response" carries a flash id, as a backend would. The id
@@ -82,6 +84,13 @@ function flashToastWithAction() {
       description: "The hammer was removed from your cart.",
       action: { label: "Undo", url: "/cart/restore", method: "post" },
     },
+  ]
+}
+
+// Server data as it often arrives: a null id and a type the Flasher doesn't know.
+function flashLooseToast() {
+  flasherProps.value.toasts = [
+    { id: null, type: "notice" as FlashToast["type"], description: "Loose server toast" },
   ]
 }
 
@@ -527,6 +536,10 @@ const { info, success, warning, error } = useFlasher()
 
         <Button variant="outline" data-cy="toast-id-replay" @click="replayToastId">
           Toast with id
+        </Button>
+
+        <Button variant="outline" data-cy="toast-loose" @click="flashLooseToast">
+          Toast with no id
         </Button>
 
         <Button variant="outline" data-cy="custom-titles" @click="customTitles">

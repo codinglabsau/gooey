@@ -3,7 +3,9 @@ import { toast, type ExternalToast } from "vue-sonner"
 
 export type ErrorBag = Record<string, string>
 export type ObjectFormat = "key" | "value" | "both"
-export type FlasherType = "info" | "success" | "warning" | "error"
+export const flasherTypes = ["info", "success", "warning", "error"] as const
+
+export type FlasherType = (typeof flasherTypes)[number]
 export type FlasherTitles = Record<FlasherType, string>
 
 /** Sonner options, plus a `title` that overrides the type's default title for one call. */
@@ -18,7 +20,7 @@ export interface FlashAction {
 /** A server-shaped toast, e.g. shared from the session as an Inertia flash prop. */
 export interface FlashToast {
   /** Shown once per id, so a re-render or history restore can't replay it. */
-  id?: string | number
+  id?: string | number | null
   type?: FlasherType | "default"
   title?: string
   description?: string
@@ -63,14 +65,14 @@ const defaultTitles: FlasherTitles = {
 const titles = reactive<FlasherTitles>({ ...defaultTitles })
 
 // Ids already shown this page session, shared across Flasher instances.
-const shown = new Set<string | number>()
+const shown = new Set<string>()
 
 export function setFlasherTitles(overrides: Partial<FlasherTitles>) {
   Object.assign(titles, defaultTitles, overrides)
 }
 
-/** True the first time an id is seen; false on every replay. */
-export function claimFlash(id: string | number): boolean {
+/** True the first time a key is seen; false on every replay. */
+export function claimFlash(id: string): boolean {
   if (shown.has(id)) {
     return false
   }
@@ -110,6 +112,11 @@ function track<T extends object = object>(messages: TrackMessages, options?: T):
   return {
     ...(options as T),
     onStart: (...args: unknown[]) => {
+      // Reused for a second visit before the first settled: don't strand its spinner.
+      if (!settled && id !== undefined) {
+        toast.dismiss(id)
+      }
+
       settled = false
       id = toast.loading(messages.loading)
 

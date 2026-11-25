@@ -13,12 +13,14 @@ import {
 import { cn } from "@/lib/utils"
 import {
   claimFlash,
+  flasherTypes,
   setFlasherTitles,
   show,
   useFlasher,
   type ErrorBag,
   type FlashAction,
   type FlasherOptions,
+  type FlasherType,
   type FlasherTitles,
   type FlashToast,
   type ObjectFormat,
@@ -37,7 +39,7 @@ const props = withDefaults(
      * per new id instead of once per changed value, so repeating the same message
      * still toasts and replaying a seen id (e.g. history restore) does not.
      */
-    flashId?: string | number
+    flashId?: string | number | null
     toasts?: FlashToast[]
     titles?: Partial<FlasherTitles>
     /** Handles a toast action; bind as `@action`. Without it, GET actions navigate. */
@@ -74,7 +76,7 @@ function runAction(action: FlashAction, flashToast: FlashToast) {
   }
 
   // Other methods need a request client (e.g. Inertia's router), so they need @action.
-  if ((action.method ?? "get") === "get") {
+  if ((action.method ?? "get").toLowerCase() === "get") {
     window.location.assign(action.url)
   }
 }
@@ -92,7 +94,10 @@ function showToast(flashToast: FlashToast) {
     options.action = { label: action.label, onClick: () => runAction(action, flashToast) }
   }
 
-  const type = flashToast.type ?? "default"
+  // Server data: an unknown type falls back to a plain toast rather than throwing.
+  const type = flasherTypes.includes(flashToast.type as FlasherType)
+    ? (flashToast.type as FlasherType)
+    : "default"
 
   if (type === "default") {
     // A plain toast leads with its title, falling back to the description.
@@ -109,7 +114,7 @@ function showToast(flashToast: FlashToast) {
 
 function showToasts(toasts: FlashToast[] | undefined) {
   toasts?.forEach((flashToast) => {
-    if (flashToast.id === undefined || claimFlash(flashToast.id)) {
+    if (flashToast.id == null || claimFlash(`toast:${flashToast.id}`)) {
       showToast(flashToast)
     }
   })
@@ -139,7 +144,7 @@ function flashErrors(errors: ErrorBag | undefined) {
 // before the child <Sonner> Toaster has subscribed to the toast store — so any
 // toast raised then is dropped. onMounted runs after the Toaster is mounted.
 onMounted(() => {
-  if (props.flashId === undefined || claimFlash(props.flashId)) {
+  if (props.flashId == null || claimFlash(`flash:${props.flashId}`)) {
     flashMessages()
   }
 
@@ -150,7 +155,7 @@ onMounted(() => {
 watch(
   () => props.flashId,
   (id) => {
-    if (id !== undefined && claimFlash(id)) {
+    if (id != null && claimFlash(`flash:${id}`)) {
       flashMessages()
     }
   },
@@ -160,7 +165,7 @@ watch(
 watch(
   () => props.info,
   (newVal) => {
-    if (props.flashId === undefined && newVal) {
+    if (props.flashId == null && newVal) {
       infoNotification(newVal)
     }
   },
@@ -169,7 +174,7 @@ watch(
 watch(
   () => props.success,
   (newVal) => {
-    if (props.flashId === undefined && newVal) {
+    if (props.flashId == null && newVal) {
       successNotification(newVal)
     }
   },
@@ -178,7 +183,7 @@ watch(
 watch(
   () => props.warning,
   (newVal) => {
-    if (props.flashId === undefined && newVal) {
+    if (props.flashId == null && newVal) {
       warningNotification(newVal)
     }
   },
