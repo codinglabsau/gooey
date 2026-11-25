@@ -8,7 +8,6 @@ export type {
   FlasherType,
   FlashToast,
   ObjectFormat,
-  TrackableVisit,
   TrackedVisit,
   TrackMessages,
 } from "./use-flasher"

@@ -4,10 +4,24 @@ import { nextTick, ref } from "vue"
 import { useRoute } from "vue-router"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
-import { Flasher, useFlasher, type FlashAction, type FlashToast } from "@/components/flasher"
+import {
+  Flasher,
+  useFlasher,
+  type ErrorBag,
+  type FlashAction,
+  type FlasherTitles,
+  type FlashToast,
+  type ObjectFormat,
+} from "@/components/flasher"
 import { Button } from "@/components/button"
-import { CodeBlock, ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
-import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
+import {
+  CodeBlock,
+  ComponentEvents,
+  ComponentHeading,
+  ComponentProps,
+  ComposableSection,
+} from "@app/components"
+import { type ComponentEvent, type ComponentProp, type ComposableMethod } from "@app/types/globals"
 
 const { info, success, warning, error, flash, track } = useFlasher()
 
@@ -23,11 +37,11 @@ const flasherProps = ref<{
   info?: string
   success?: string
   warning?: string
-  errors?: Record<string, string>
-  objectFormat?: "key" | "value" | "both"
+  errors?: ErrorBag
+  objectFormat?: ObjectFormat
   flashId?: string | number
   toasts?: FlashToast[]
-  titles?: Record<string, string>
+  titles?: Partial<FlasherTitles>
 }>({
   theme: mode.value === "auto" ? "system" : mode.value,
   info: route.query.info as string | undefined,
@@ -36,18 +50,22 @@ const flasherProps = ref<{
   errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
 })
 
-// Server-driven demos: each "response" carries a fresh flash id, as a backend would.
+// Server-driven demos: each "response" carries a flash id, as a backend would. The id
+// is cleared once the Flasher has seen it so the "Via Props" demos keep firing per value.
 let responseCount = 0
+let replayId = "flash-b"
 
-function flashWithId(message: string) {
+async function flashWithId(message: string, id: string | number) {
   flasherProps.value.success = message
-  flasherProps.value.flashId = ++responseCount
+  flasherProps.value.flashId = id
+  await nextTick()
+  flasherProps.value.flashId = undefined
 }
 
 // Alternates between two ids, so the third click replays an id that was already shown.
 function replayFlashId() {
-  flasherProps.value.success = "Replayable flash"
-  flasherProps.value.flashId = flasherProps.value.flashId === "flash-a" ? "flash-b" : "flash-a"
+  replayId = replayId === "flash-a" ? "flash-b" : "flash-a"
+  flashWithId("Replayable flash", replayId)
 }
 
 const lastAction = ref<string>()
@@ -72,10 +90,12 @@ function replayToastId() {
   flasherProps.value.toasts = [{ id: "toast-1", type: "info", description: "Shown once per id" }]
 }
 
+// Titles are shared app-wide, so the demo restores the defaults after its toast.
 async function customTitles() {
   flasherProps.value.titles = { success: "Nice one" }
   await nextTick()
   success("Titles are set once on the Flasher")
+  flasherProps.value.titles = {}
 }
 
 // Simulates an Inertia visit by calling the callbacks track() returns.
@@ -178,12 +198,6 @@ const componentProps: ComponentProp[] = [
       "Overrides the default info/success/warning/error titles app-wide (pass translated strings).",
   },
   {
-    name: "@action",
-    type: "(action: FlashAction, toast: FlashToast) => void",
-    description:
-      "Handles a toast action, e.g. with router.visit(). Without a handler, GET actions navigate and other methods are ignored.",
-  },
-  {
     name: "theme",
     type: "string",
     default: "light",
@@ -204,6 +218,15 @@ const flasherProps = ref({ theme: 'system' })
   <button @click="flasherProps.info = 'Info!'">Info</button>
   <button @click="flasherProps.success = 'Success!'">Success</button>
 </template>`
+
+const componentEvents: ComponentEvent[] = [
+  {
+    name: "action",
+    payload: "(action: FlashAction, toast: FlashToast)",
+    description:
+      "A toast action was clicked, e.g. handle it with router.visit(). Without a listener, GET actions navigate and other methods are ignored.",
+  },
+]
 
 const serverCode = `<script setup lang="ts">
 import { router } from '@inertiajs/vue3'
@@ -228,7 +251,7 @@ import { useFlasher } from '@codinglabsau/gooey'
 const { track } = useFlasher()
 
 function save() {
-  router.post('/settings', form, track(
+  router.post('/settings', { name: 'my-app' }, track(
     { loading: 'Saving…', success: 'Settings saved' },
     { preserveScroll: true },
   ))
@@ -481,15 +504,16 @@ const { info, success, warning, error } = useFlasher()
       <ComponentHeading>Server-Driven Toasts</ComponentHeading>
 
       <p class="mb-4">
-        Pair messages with a <code>flashId</code>
-        so the same message can show twice, send
-        <code>toasts</code>
-
-        with actions, and set translated <code>titles</code> once.
+        Pair messages with a flash id so a repeated message still shows, send toasts with actions,
+        and set translated titles once.
       </p>
 
       <div class="flex flex-wrap gap-2">
-        <Button variant="outline" data-cy="flash-id-repeat" @click="flashWithId('Stock updated')">
+        <Button
+          variant="outline"
+          data-cy="flash-id-repeat"
+          @click="flashWithId('Stock updated', ++responseCount)"
+        >
           Same message, new flash id
         </Button>
 
@@ -554,5 +578,7 @@ const { info, success, warning, error } = useFlasher()
     </ComposableSection>
 
     <ComponentProps :props="componentProps" :meta="$route.meta" />
+
+    <ComponentEvents :events="componentEvents" />
   </div>
 </template>

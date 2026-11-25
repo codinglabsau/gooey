@@ -38,7 +38,7 @@ export interface TrackMessages {
  * The visit callbacks track() wraps. Structural, so gooey stays free of an
  * Inertia dependency — pass real Inertia visit options and spread the result.
  */
-export interface TrackableVisit {
+interface TrackableVisit {
   onStart?: (...args: never[]) => unknown
   onSuccess?: (...args: never[]) => unknown
   onError?: (errors: ErrorBag) => unknown
