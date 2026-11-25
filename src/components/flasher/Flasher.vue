@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { onMounted, watch } from "vue"
-import { Toaster as Sonner } from "vue-sonner"
+import { Toaster as Sonner, toast } from "vue-sonner"
 import {
   CircleCheckIcon,
   InfoIcon,
@@ -11,7 +11,18 @@ import {
   XIcon,
 } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
-import { useFlasher, type ErrorBag, type ObjectFormat } from "./use-flasher"
+import {
+  claimFlash,
+  setFlasherTitles,
+  show,
+  useFlasher,
+  type ErrorBag,
+  type FlashAction,
+  type FlasherOptions,
+  type FlasherTitles,
+  type FlashToast,
+  type ObjectFormat,
+} from "./use-flasher"
 
 const props = withDefaults(
   defineProps<{
@@ -21,6 +32,16 @@ const props = withDefaults(
     warning?: string
     errors?: ErrorBag
     objectFormat?: ObjectFormat
+    /**
+     * Identifies the flash behind info/success/warning. When set, those fire once
+     * per new id instead of once per changed value, so repeating the same message
+     * still toasts and replaying a seen id (e.g. history restore) does not.
+     */
+    flashId?: string | number
+    toasts?: FlashToast[]
+    titles?: Partial<FlasherTitles>
+    /** Handles a toast action; bind as `@action`. Without it, GET actions navigate. */
+    onAction?: (action: FlashAction, toast: FlashToast) => void
   }>(),
   {
     objectFormat: "value",
@@ -34,10 +55,67 @@ const {
   error: errorNotification,
 } = useFlasher()
 
-// Fire on mount, not via `immediate`: an immediate watch runs during setup —
-// before the child <Sonner> Toaster has subscribed to the toast store — so any
-// toast raised then is dropped. onMounted runs after the Toaster is mounted.
-function flash() {
+// Titles are set during setup so toasts raised on mount already use them.
+watch(
+  () => props.titles,
+  (titles) => {
+    if (titles) {
+      setFlasherTitles(titles)
+    }
+  },
+  { immediate: true, deep: true },
+)
+
+function runAction(action: FlashAction, flashToast: FlashToast) {
+  if (props.onAction) {
+    props.onAction(action, flashToast)
+
+    return
+  }
+
+  // Other methods need a request client (e.g. Inertia's router), so they need @action.
+  if ((action.method ?? "get") === "get") {
+    window.location.assign(action.url)
+  }
+}
+
+function showToast(flashToast: FlashToast) {
+  const options: FlasherOptions = {}
+
+  if (flashToast.duration !== undefined) {
+    options.duration = flashToast.duration
+  }
+
+  if (flashToast.action) {
+    const action = flashToast.action
+
+    options.action = { label: action.label, onClick: () => runAction(action, flashToast) }
+  }
+
+  const type = flashToast.type ?? "default"
+
+  if (type === "default") {
+    // A plain toast leads with its title, falling back to the description.
+    toast(flashToast.title ?? flashToast.description ?? "", {
+      ...options,
+      description: flashToast.title ? flashToast.description : undefined,
+    })
+
+    return
+  }
+
+  show(type, flashToast.description ?? "", { ...options, title: flashToast.title })
+}
+
+function showToasts(toasts: FlashToast[] | undefined) {
+  toasts?.forEach((flashToast) => {
+    if (flashToast.id === undefined || claimFlash(flashToast.id)) {
+      showToast(flashToast)
+    }
+  })
+}
+
+function flashMessages() {
   if (props.info) {
     infoNotification(props.info)
   }
@@ -49,18 +127,40 @@ function flash() {
   if (props.warning) {
     warningNotification(props.warning)
   }
+}
 
-  if (props.errors !== undefined && Object.keys(props.errors).length > 0) {
-    errorNotification(props.errors, props.objectFormat)
+function flashErrors(errors: ErrorBag | undefined) {
+  if (errors !== undefined && Object.keys(errors).length > 0) {
+    errorNotification(errors, props.objectFormat)
   }
 }
 
-onMounted(flash)
+// Fire on mount, not via `immediate`: an immediate watch runs during setup —
+// before the child <Sonner> Toaster has subscribed to the toast store — so any
+// toast raised then is dropped. onMounted runs after the Toaster is mounted.
+onMounted(() => {
+  if (props.flashId === undefined || claimFlash(props.flashId)) {
+    flashMessages()
+  }
 
+  flashErrors(props.errors)
+  showToasts(props.toasts)
+})
+
+watch(
+  () => props.flashId,
+  (id) => {
+    if (id !== undefined && claimFlash(id)) {
+      flashMessages()
+    }
+  },
+)
+
+// Without a flashId, each message fires when its value changes.
 watch(
   () => props.info,
   (newVal) => {
-    if (newVal) {
+    if (props.flashId === undefined && newVal) {
       infoNotification(newVal)
     }
   },
@@ -69,7 +169,7 @@ watch(
 watch(
   () => props.success,
   (newVal) => {
-    if (newVal) {
+    if (props.flashId === undefined && newVal) {
       successNotification(newVal)
     }
   },
@@ -78,20 +178,17 @@ watch(
 watch(
   () => props.warning,
   (newVal) => {
-    if (newVal) {
+    if (props.flashId === undefined && newVal) {
       warningNotification(newVal)
     }
   },
 )
 
-watch(
-  () => props.errors,
-  (newVal) => {
-    if (newVal !== undefined && Object.keys(newVal).length > 0) {
-      errorNotification(newVal, props.objectFormat)
-    }
-  },
-)
+// Errors are validation state, not flash: each new bag fires, regardless of flashId.
+watch(() => props.errors, flashErrors)
+
+// Each new array fires; items with an id fire once per id.
+watch(() => props.toasts, showToasts)
 </script>
 
 <template>
