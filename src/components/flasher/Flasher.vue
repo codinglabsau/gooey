@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
 import { onMounted, watch } from "vue"
-import { Toaster as Sonner } from "vue-sonner"
+import { Toaster as Sonner, toast } from "vue-sonner"
 import {
   CircleCheckIcon,
   InfoIcon,
@@ -11,7 +11,16 @@ import {
   XIcon,
 } from "lucide-vue-next"
 import { cn } from "@/lib/utils"
-import { useFlasher, type ErrorBag, type ObjectFormat } from "./use-flasher"
+import {
+  claimFlash,
+  flasherTypes,
+  show,
+  useFlasher,
+  type ErrorBag,
+  type FlasherType,
+  type FlashToast,
+  type ObjectFormat,
+} from "./use-flasher"
 
 const props = withDefaults(
   defineProps<{
@@ -21,6 +30,7 @@ const props = withDefaults(
     warning?: string
     errors?: ErrorBag
     objectFormat?: ObjectFormat
+    toasts?: FlashToast[]
   }>(),
   {
     objectFormat: "value",
@@ -33,6 +43,35 @@ const {
   warning: warningNotification,
   error: errorNotification,
 } = useFlasher()
+
+function showToast(flashToast: FlashToast) {
+  const options = flashToast.duration === undefined ? {} : { duration: flashToast.duration }
+
+  // Server data: an unknown type falls back to a plain toast rather than throwing.
+  const type = flasherTypes.includes(flashToast.type as FlasherType)
+    ? (flashToast.type as FlasherType)
+    : undefined
+
+  if (type) {
+    show(type, flashToast.description ?? "", { ...options, title: flashToast.title })
+
+    return
+  }
+
+  // A plain toast leads with its title, falling back to the description.
+  toast(flashToast.title ?? flashToast.description ?? "", {
+    ...options,
+    description: flashToast.title ? flashToast.description : undefined,
+  })
+}
+
+function showToasts(toasts: FlashToast[] | undefined) {
+  toasts?.forEach((flashToast) => {
+    if (flashToast.id == null || claimFlash(`toast:${flashToast.id}`)) {
+      showToast(flashToast)
+    }
+  })
+}
 
 // Fire on mount, not via `immediate`: an immediate watch runs during setup —
 // before the child <Sonner> Toaster has subscribed to the toast store — so any
@@ -55,7 +94,10 @@ function flash() {
   }
 }
 
-onMounted(flash)
+onMounted(() => {
+  flash()
+  showToasts(props.toasts)
+})
 
 watch(
   () => props.info,
@@ -92,6 +134,9 @@ watch(
     }
   },
 )
+
+// Each new array fires; a toast with an id shows once per id.
+watch(() => props.toasts, showToasts)
 </script>
 
 <template>

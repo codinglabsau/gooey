@@ -4,7 +4,7 @@ import { ref } from "vue"
 import { useRoute } from "vue-router"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
-import { Flasher, useFlasher } from "@/components/flasher"
+import { Flasher, useFlasher, type FlashToast } from "@/components/flasher"
 import { Button } from "@/components/button"
 import { CodeBlock, ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
 import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
@@ -18,13 +18,34 @@ const mode = useColorMode()
 // path exercised by the mount-time e2e tests.
 const route = useRoute()
 
-const flasherProps = ref({
+const flasherProps = ref<{
+  theme: string
+  info?: string
+  success?: string
+  warning?: string
+  errors?: Record<string, string>
+  objectFormat?: "key" | "value" | "both"
+  toasts?: FlashToast[]
+}>({
   theme: mode.value === "auto" ? "system" : mode.value,
   info: route.query.info as string | undefined,
   success: route.query.success as string | undefined,
   warning: route.query.warning as string | undefined,
   errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
 })
+
+// Server data as it arrives: a titled toast, and one with a type the Flasher doesn't know.
+function flashServerToasts() {
+  flasherProps.value.toasts = [
+    {
+      id: "profile",
+      type: "success",
+      title: "Profile saved",
+      description: "Your changes are live.",
+    },
+    { type: "notice" as FlashToast["type"], description: "Loose server toast" },
+  ]
+}
 
 const composableMethods: ComposableMethod[] = [
   {
@@ -80,6 +101,12 @@ const componentProps: ComponentProp[] = [
     type: "string",
     default: "value",
     description: 'How to format error objects: "value" (default), "key", or "both"',
+  },
+  {
+    name: "toasts",
+    type: "FlashToast[]",
+    description:
+      "Server-shaped toasts: { id?, type?, title?, description?, duration? }. Each new array fires; a toast with an id shows once per id. With Inertia v3, use InertiaFlasher instead.",
   },
   {
     name: "theme",
@@ -221,6 +248,10 @@ const { info, success, warning, error } = useFlasher()
           "
         >
           Errors (keys + values)
+        </Button>
+
+        <Button variant="outline" data-cy="prop-toasts" @click="flashServerToasts">
+          Server toasts
         </Button>
       </div>
 
