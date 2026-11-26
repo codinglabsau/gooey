@@ -63,7 +63,7 @@ return back()->with('success', 'Saved');
 // Or flash a toast from a redirect or an Inertia response
 return back()->toast('Saved');
 return back()->toast(Toast::warning('You have used 90% of your storage.')->title('Plan limit'));
-return Inertia::render('Dashboard')->toast('Welcome back', 'info');
+return redirect()->route('dashboard')->toast('Welcome back', 'info');
 
 // Or from anywhere in the request
 Toast::success('Invoice sent')->flash();`

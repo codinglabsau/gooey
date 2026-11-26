@@ -5,6 +5,7 @@ namespace Codinglabs\Gooey;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use Inertia\Support\SessionKey;
 
 /**
  * A toast for the gooey Flasher, delivered through Inertia's flash data so it
@@ -74,7 +75,26 @@ class Toast implements Arrayable
     /** Add the toast to the toasts already flashed for the next page. */
     public function flash(): static
     {
-        Inertia::flash(static::FLASH_KEY, [...static::flashed(), $this->toArray()]);
+        if (! $this->isPending()) {
+            Inertia::flash(static::FLASH_KEY, [...static::flashed(), $this->toArray()]);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add the toast for this request's page only. Unlike flash(), it isn't carried
+     * to the next request if this one renders something other than an Inertia page,
+     * though a redirect still carries it along like any Inertia flash data.
+     */
+    public function flashNow(): static
+    {
+        if (request()->hasSession() && ! $this->isPending()) {
+            request()->session()->now(SessionKey::FLASH_DATA, [
+                ...Inertia::getFlashed(),
+                static::FLASH_KEY => [...static::flashed(), $this->toArray()],
+            ]);
+        }
 
         return $this;
     }
@@ -89,6 +109,22 @@ class Toast implements Arrayable
         $toasts = Inertia::getFlashed()[static::FLASH_KEY] ?? [];
 
         return is_array($toasts) ? array_values($toasts) : [];
+    }
+
+    /**
+     * Whether the same toast is already waiting to show. Identical toasts on one page
+     * add nothing, and a reflash (e.g. Inertia reloading after an asset version
+     * change) would otherwise convert the same session message twice.
+     */
+    protected function isPending(): bool
+    {
+        $identity = fn (array $toast): array => [
+            $toast['type'] ?? null,
+            $toast['title'] ?? null,
+            $toast['description'] ?? null,
+        ];
+
+        return in_array($identity($this->toArray()), array_map($identity, static::flashed()), true);
     }
 
     /** @return array<string, mixed> */

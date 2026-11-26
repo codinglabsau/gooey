@@ -32,8 +32,10 @@ class FlashSessionMessagesAsToasts
             foreach (static::$keys as $key => $type) {
                 $message = $request->session()->get($key);
 
+                // For this request only: if a Blade page or JSON response uses the
+                // message instead, the toast mustn't turn up on a later page.
                 if (is_string($message) && $message !== '') {
-                    Toast::make($message, $type)->flash();
+                    Toast::make($message, $type)->flashNow();
                 }
             }
         }

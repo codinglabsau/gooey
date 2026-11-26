@@ -25,9 +25,6 @@ jobs:
       matrix:
         php: ['8.3', '8.4']
         laravel: ['12.*', '13.*']
-        exclude:
-          - php: '8.3'
-            laravel: '13.*'
     name: PHP ${{ matrix.php }} · Laravel ${{ matrix.laravel }}
     steps:
       - uses: actions/checkout@v7

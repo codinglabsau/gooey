@@ -14,8 +14,13 @@ function importLibraryFromPackage(): Plugin {
     name: "gooey:import-library-from-package",
     enforce: "pre",
     resolveId(id) {
-      if (id.startsWith("@/")) {
+      if (id === "@/components/flasher") {
         return { id: "@codinglabsau/gooey", external: true }
+      }
+
+      // Anything else would build fine as an external import yet fail in apps.
+      if (id.startsWith("@/")) {
+        this.error(`${id}: the inertia entry may only import modules the root entry re-exports`)
       }
     },
   }

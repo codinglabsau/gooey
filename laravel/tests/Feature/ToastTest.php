@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 beforeEach(function () {
-    Route::middleware('web')->get('/page', fn () => Inertia::render('Page'));
+    Route::middleware(INERTIA)->get('/page', fn () => Inertia::render('Page'));
 });
 
 it('flashes a toast for the next page', function () {
-    Route::middleware('web')->post('/save', function () {
+    Route::middleware(INERTIA)->post('/save', function () {
         Toast::success('Your profile is live')->title('Profile saved')->duration(8000)->flash();
 
         return back();
@@ -26,7 +26,7 @@ it('flashes a toast for the next page', function () {
 });
 
 it('gives every toast its own id', function () {
-    Route::middleware('web')->post('/save', function () {
+    Route::middleware(INERTIA)->post('/save', function () {
         Toast::info('First')->flash();
         Toast::info('Second')->flash();
 
@@ -55,8 +55,8 @@ it('rejects an unknown type name', function () {
 })->throws(ValueError::class);
 
 it('flashes from a redirect', function () {
-    Route::middleware('web')->post('/save', fn () => back()->toast('Saved'));
-    Route::middleware('web')->post('/delete', fn () => back()->toast(Toast::error('Could not delete')));
+    Route::middleware(INERTIA)->post('/save', fn () => back()->toast('Saved'));
+    Route::middleware(INERTIA)->post('/delete', fn () => back()->toast(Toast::error('Could not delete')));
 
     $this->post('/save')->assertRedirect();
     $this->post('/delete')->assertRedirect();
@@ -69,15 +69,31 @@ it('flashes from a redirect', function () {
 });
 
 it('flashes from an Inertia response, on that same response', function () {
-    Route::middleware('web')->get('/welcome', fn () => Inertia::render('Page')->toast('Welcome back', 'info'));
+    Route::middleware(INERTIA)->get('/welcome', fn () => Inertia::render('Page')->toast('Welcome back', 'info'));
 
     inertiaVisit('/welcome')
         ->assertJsonPath('flash.toasts.0.type', 'info')
         ->assertJsonPath('flash.toasts.0.description', 'Welcome back');
 });
 
+it('does not repeat an identical toast on one page', function () {
+    Route::middleware(INERTIA)->post('/save', function () {
+        Toast::success('Saved')->flash();
+        Toast::success('Saved')->flash();
+        Toast::success('Saved')->title('Profile')->flash();
+
+        return back()->with('success', 'Saved');
+    });
+
+    $this->post('/save');
+
+    inertiaVisit('/page')
+        ->assertJsonCount(2, 'flash.toasts')
+        ->assertJsonPath('flash.toasts.1.title', 'Profile');
+});
+
 it('shows a toast once', function () {
-    Route::middleware('web')->post('/save', fn () => back()->toast('Saved'));
+    Route::middleware(INERTIA)->post('/save', fn () => back()->toast('Saved'));
 
     $this->post('/save');
 

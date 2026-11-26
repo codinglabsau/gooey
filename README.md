@@ -31,7 +31,7 @@ npm install @inertiajs/vue3@^3
 composer require codinglabsau/gooey
 ```
 
-Mount `<InertiaFlasher />` from `@codinglabsau/gooey/inertia` in your layout. Existing `back()->with('success', 'Saved')` flashes then show as toasts, and `back()->toast(...)` or `Toast::success(...)->flash()` flash them directly. See the [Inertia Flasher docs](https://codinglabsau.github.io/gooey/components/inertia-flasher).
+Mount `<InertiaFlasher />` from `@codinglabsau/gooey/inertia` in your layout, in place of any `<Flasher>` fed from shared `info`/`success`/`warning`/`error` props (keeping both shows each message twice). Existing `back()->with('success', 'Saved')` flashes then show as toasts, and `back()->toast(...)` or `Toast::success(...)->flash()` flash them directly. See the [Inertia Flasher docs](https://codinglabsau.github.io/gooey/components/inertia-flasher).
 
 ## Features
 
