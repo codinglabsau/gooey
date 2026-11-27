@@ -14,9 +14,13 @@ import { cn } from "@/lib/utils"
 import {
   claimFlash,
   flasherTypes,
+  setFlasherTitles,
   show,
   useFlasher,
   type ErrorBag,
+  type FlashAction,
+  type FlasherOptions,
+  type FlasherTitles,
   type FlasherType,
   type FlashToast,
   type ObjectFormat,
@@ -31,6 +35,9 @@ const props = withDefaults(
     errors?: ErrorBag
     objectFormat?: ObjectFormat
     toasts?: FlashToast[]
+    titles?: Partial<FlasherTitles>
+    /** Handles a toast action; bind as `@action`. Without it, GET actions navigate. */
+    onAction?: (action: FlashAction, toast: FlashToast) => void
   }>(),
   {
     objectFormat: "value",
@@ -44,8 +51,42 @@ const {
   error: errorNotification,
 } = useFlasher()
 
+// Titles are set during setup so toasts raised on mount already use them.
+watch(
+  () => props.titles,
+  (titles) => {
+    if (titles) {
+      setFlasherTitles(titles)
+    }
+  },
+  { immediate: true, deep: true },
+)
+
+function runAction(action: FlashAction, flashToast: FlashToast) {
+  if (props.onAction) {
+    props.onAction(action, flashToast)
+
+    return
+  }
+
+  // Other methods need a request client (e.g. Inertia's router), so they need @action.
+  if ((action.method ?? "get").toLowerCase() === "get") {
+    window.location.assign(action.url)
+  }
+}
+
 function showToast(flashToast: FlashToast) {
-  const options = flashToast.duration === undefined ? {} : { duration: flashToast.duration }
+  const options: FlasherOptions = {}
+
+  if (flashToast.duration !== undefined) {
+    options.duration = flashToast.duration
+  }
+
+  if (flashToast.action) {
+    const action = flashToast.action
+
+    options.action = { label: action.label, onClick: () => runAction(action, flashToast) }
+  }
 
   // Server data: an unknown type falls back to a plain toast rather than throwing.
   const type = flasherTypes.includes(flashToast.type as FlasherType)
