@@ -26,7 +26,7 @@ const { info, success, warning, error, flash, track } = useFlasher()
 const mode = useColorMode()
 
 // Seed notification props from the URL query so a Flasher can mount with a
-// value already present — the server-driven (e.g. Inertia flash) case, and the
+// value already present — the server-driven case, and the
 // path exercised by the mount-time e2e tests.
 const route = useRoute()
 
@@ -266,8 +266,8 @@ const { info, success, warning, error } = useFlasher()
       <ComponentHeading>Via Props</ComponentHeading>
 
       <p class="mb-4">
-        Pass notification props directly to the Flasher component. Useful for server-driven
-        notifications (e.g., Inertia flash messages).
+        Pass notification props directly to the Flasher component, from local state or server data.
+        Inertia v3 apps should use InertiaFlasher, which reads flash data itself.
       </p>
 
       <div class="flex flex-wrap gap-2">
