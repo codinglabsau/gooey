@@ -18,14 +18,21 @@ jobs:
   publish-gpr:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: 22
           registry-url: https://npm.pkg.github.com/
           scope: '@codinglabsau'
 
       - run: npm ci
+
+      # dist is not committed; build it here rather than from a lifecycle hook,
+      # which `ignore-scripts` would silently skip and publish an empty package.
+      - run: npx vite build
+
+      - name: Verify the build produced a publishable dist
+        run: test -f dist/gooey.js && test -f dist/types/index.d.ts
 
       - run: npm publish
         env:

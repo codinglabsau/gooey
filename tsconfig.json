@@ -18,11 +18,7 @@
         "app/*"
       ]
     },
-    "outDir": "dist",
-    "noEmit": false,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationDir": "dist/types"
+    "noEmit": true
   },
   "include": [
     "src/**/*.ts",

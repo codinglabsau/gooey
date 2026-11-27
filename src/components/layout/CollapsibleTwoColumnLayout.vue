@@ -22,7 +22,10 @@ const props = withDefaults(
     class?: HTMLAttributes["class"]
   }>(),
   {
-    defaultOpen: !defaultDocument?.cookie.includes(`${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=false`),
+    // a factory, so the cookie is read when the component is created rather than when the
+    // module loads — reading document.cookie throws in sandboxed iframes without allow-same-origin
+    defaultOpen: () =>
+      !defaultDocument?.cookie.includes(`${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=false`),
     open: undefined,
     collapsible: "icon",
   },
@@ -43,9 +46,15 @@ const open = useVModel(props, "open", emits, {
 function setOpen(value: boolean) {
   open.value = value
 
-  // Persist state to cookies when collapsible is enabled
+  // Persist state to cookies when collapsible is enabled. Writing document.cookie
+  // throws in a sandboxed iframe without allow-same-origin, and anywhere cookies
+  // are blocked — the layout still works there, it just stops persisting.
   if (props.collapsible !== "none") {
-    document.cookie = `${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${COLLAPSIBLE_SIDEBAR_COOKIE_MAX_AGE}`
+    try {
+      document.cookie = `${COLLAPSIBLE_SIDEBAR_COOKIE_NAME}=${open.value}; path=/; max-age=${COLLAPSIBLE_SIDEBAR_COOKIE_MAX_AGE}`
+    } catch {
+      // state is kept in memory only
+    }
   }
 }
 

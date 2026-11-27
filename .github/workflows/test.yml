@@ -13,12 +13,50 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   test:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
-      - uses: actions/checkout@v4
-      - uses: cypress-io/github-action@v6
+      - uses: actions/checkout@v7
+
+      # Round-robin by file, so the split adapts as specs are added or removed
+      # rather than being a hardcoded list that silently drifts.
+      - id: specs
+        run: |
+          echo "list=$(find src -name '*.spec.ts' | sort | awk 'NR % 4 == ${{ matrix.shard }} % 4' | paste -sd, -)" >> "$GITHUB_OUTPUT"
+
+      - uses: cypress-io/github-action@v7
         with:
-          start: npm run dev
+          # Builds the library (the import-safety check reads its bundle) and the
+          # docs app, which is served as static files: the dev server transformed
+          # each route on first visit and that dominated the run.
+          build: npm run test:build
+          start: npm run test:serve
+          spec: ${{ steps.specs.outputs.list }}
+
+      # A file read and a regex — a plain Node check rather than a browser test.
+      # Shard 1 only: every shard builds an identical bundle.
+      - if: matrix.shard == 1
+        run: npm run check:import-safety
+
+  type-check:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run type-check
