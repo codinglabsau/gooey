@@ -5,6 +5,13 @@ import { SimpleSelect, type SelectOption } from "@/components/simple-select"
 import { CodeBlock, ComponentHeading } from "@app/components"
 
 const selected = ref<string>()
+const expiry = ref<number | null>(null)
+
+const expiries: SelectOption<number | null>[] = [
+  { value: null, label: "Never" },
+  { value: 7, label: "1 week" },
+  { value: 30, label: "1 month" },
+]
 
 const countries: SelectOption[] = [
   { value: "au", label: "Australia" },
@@ -62,6 +69,22 @@ const countries: SelectOption[] = [
     </div>
 
     <CodeBlock class="mt-4" lang="vue" :code="code" />
+
+    <ComponentHeading class="mt-8">Null Option</ComponentHeading>
+
+    <p class="mt-2 text-sm text-muted-foreground">
+      An option with a null value shows its label when selected, instead of the placeholder. Values
+      can also be numbers. Type such options as <code>SelectOption&lt;number | null&gt;[]</code>; a
+      bare SelectOption keeps a string value.
+    </p>
+
+    <div class="mt-4 flex items-center gap-4">
+      <SimpleSelect v-model="expiry" :options="expiries" class="w-[200px]" data-cy="null-option" />
+
+      <span class="text-sm text-muted-foreground" data-cy="null-option-value">
+        Selected: {{ JSON.stringify(expiry) }}
+      </span>
+    </div>
 
     <ComponentHeading class="mt-8">Disabled Options</ComponentHeading>
 

@@ -6,6 +6,10 @@ import { CodeBlock, ComponentHeading } from "@app/components"
 
 const basic = ref<number>()
 const integer = ref<number>()
+const nullable = ref<number | string | null>("")
+const numericString = ref<number | string | null>("1234.5")
+const blankString = ref<number | string | null>(" ")
+const formattedString = ref<number | string | null>("1,234.56")
 
 const code = `<script setup lang="ts">
 import { ref } from 'vue'
@@ -56,6 +60,39 @@ const quantity = ref<number>()
       <p v-if="integer !== undefined" class="text-sm text-muted-foreground" data-cy="integer-value">
         Value: {{ integer }}
       </p>
+    </div>
+
+    <ComponentHeading class="mt-8">Empty Values</ComponentHeading>
+
+    <p class="mt-2 text-sm text-muted-foreground">
+      An empty string renders as an empty input. Clearing the input leaves the v-model undefined,
+      which JSON.stringify drops from a form submission. Pass <code>:empty-value="null"</code> to
+      set it to null instead, so the server can clear the field.
+    </p>
+
+    <div class="mt-4 max-w-xs space-y-2">
+      <Number v-model="nullable" :empty-value="null" placeholder="Unlimited" data-cy="nullable" />
+
+      <p class="text-sm text-muted-foreground" data-cy="nullable-value">
+        Value: {{ JSON.stringify(nullable) }}
+      </p>
+    </div>
+
+    <ComponentHeading class="mt-8">String Values</ComponentHeading>
+
+    <p class="mt-2 text-sm text-muted-foreground">
+      A plain numeric string, as a backend might send for a decimal column, is read as a number. A
+      blank string renders as an empty input. A formatted string such as
+      <code>"1,234.56"</code> cannot be read reliably across locales, so it renders as an empty
+      input and logs a console warning.
+    </p>
+
+    <div class="mt-4 max-w-xs space-y-2">
+      <Number v-model="numericString" data-cy="numeric-string" />
+
+      <Number v-model="blankString" data-cy="blank-string" />
+
+      <Number v-model="formattedString" data-cy="formatted-string" />
     </div>
 
     <ComponentHeading class="mt-8">Disabled</ComponentHeading>

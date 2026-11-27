@@ -148,4 +148,16 @@ describe("template spec", () => {
       .get("[data-sonner-toast]")
       .contains("firstname: firstname is required")
   })
+
+  it("mounts with null errors", () => {
+    cy.visit("/components/flasher?errors=null", {
+      onBeforeLoad(win) {
+        cy.spy(win.console, "warn").as("consoleWarn")
+      },
+    })
+
+    cy.get('[data-cy="prop-info"]').should("exist")
+    cy.get("[data-sonner-toast]").should("not.exist")
+    cy.get("@consoleWarn").should("not.have.been.calledWithMatch", /Unhandled error/)
+  })
 })
