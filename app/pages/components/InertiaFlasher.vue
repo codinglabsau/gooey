@@ -76,7 +76,32 @@ import { InertiaFlasher } from '@codinglabsau/gooey/inertia'
   <slot />
 </template>`
 
-const serverCode = `// Existing flash messages just work
+const middlewareCode = `// app/Http/Middleware/HandleInertiaRequests.php
+public function share(Request $request): array
+{
+    return [
+        ...parent::share($request),
+        // Remove any info/success/warning/error keys shared for a Flasher:
+        // those session flashes now arrive as toasts.
+    ];
+}`
+
+const keysCode = `// app/Providers/AppServiceProvider.php
+use Codinglabs\\Gooey\\Http\\Middleware\\FlashSessionMessagesAsToasts;
+use Codinglabs\\Gooey\\ToastType;
+
+public function boot(): void
+{
+    // Defaults: info, success, warning and error.
+    FlashSessionMessagesAsToasts::$keys = [
+        'success' => ToastType::Success,
+        'notice' => ToastType::Info,
+    ];
+}`
+
+const serverCode = `use Codinglabs\\Gooey\\Toast;
+
+// Existing flash messages just work
 return back()->with('success', 'Saved');
 
 // Or flash a toast from a redirect or an Inertia response
@@ -115,6 +140,27 @@ Toast::success('Invoice sent')->flash();`
       <p class="mt-4">Mount it once in your layout, in place of a Flasher:</p>
 
       <CodeBlock class="mt-4" lang="vue" :code="layoutCode" />
+    </section>
+
+    <section>
+      <ComponentHeading>Laravel Setup</ComponentHeading>
+
+      <p>
+        The package needs Laravel 12 or 13 and inertia-laravel 3.8 or later. Its service provider is
+        auto-discovered and adds its middleware to the <code>web</code> group, after your Inertia
+        middleware, so there is nothing to register and no config to publish.
+      </p>
+
+      <p class="mt-4">
+        If your Inertia middleware shares flash messages as props for a Flasher, remove them. Those
+        session flashes now arrive as toasts, and keeping both shows each message twice.
+      </p>
+
+      <CodeBlock class="mt-4" lang="php" :code="middlewareCode" />
+
+      <p class="mt-4">To turn other session keys into toasts, set them when the app boots:</p>
+
+      <CodeBlock class="mt-4" lang="php" :code="keysCode" />
     </section>
 
     <section>
