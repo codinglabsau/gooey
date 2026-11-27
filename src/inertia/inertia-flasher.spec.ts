@@ -41,4 +41,12 @@ describe("InertiaFlasher", () => {
     cy.get("[data-sonner-toast]").should("be.visible").contains("Oh snap")
     cy.get("[data-sonner-toast]").contains("The email field is required.")
   })
+
+  it("hands a flashed toast's action to @action", () => {
+    cy.visit("/components/inertia-flasher")
+
+    cy.get('[data-cy="flash-action"]').click()
+    cy.get("[data-sonner-toast] [data-button]").contains("Undo").click()
+    cy.get('[data-cy="last-action"]').should("contain", "post /items/1/restore")
+  })
 })

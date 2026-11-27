@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Inertia\Support\SessionKey;
+use InvalidArgumentException;
 
 /**
  * A toast for the gooey Flasher, delivered through Inertia's flash data so it
@@ -23,6 +24,9 @@ class Toast implements Arrayable
     protected ?string $title = null;
 
     protected ?int $duration = null;
+
+    /** @var array{label: string, url: string, method: string}|null */
+    protected ?array $action = null;
 
     public function __construct(
         protected string $description,
@@ -68,6 +72,23 @@ class Toast implements Arrayable
     public function duration(int $milliseconds): static
     {
         $this->duration = $milliseconds;
+
+        return $this;
+    }
+
+    /**
+     * Add a button that visits the URL, e.g. ->action('Undo', route('items.restore', $item), 'post').
+     * InertiaFlasher makes the visit with Inertia's router.
+     */
+    public function action(string $label, string $url, string $method = 'get'): static
+    {
+        $method = strtolower($method);
+
+        if (! in_array($method, ['get', 'post', 'put', 'patch', 'delete'], true)) {
+            throw new InvalidArgumentException("Toast actions can't use the [{$method}] method.");
+        }
+
+        $this->action = ['label' => $label, 'url' => $url, 'method' => $method];
 
         return $this;
     }
@@ -136,6 +157,7 @@ class Toast implements Arrayable
             'title' => $this->title,
             'description' => $this->description,
             'duration' => $this->duration,
+            'action' => $this->action,
         ], fn (mixed $value): bool => $value !== null);
     }
 }

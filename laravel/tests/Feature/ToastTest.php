@@ -46,6 +46,26 @@ it('leaves out what was not set', function () {
         ->not->toHaveKeys(['title', 'duration']);
 });
 
+it('adds an action button', function () {
+    Route::middleware(INERTIA)->delete('/items/1', fn () => back()->toast(
+        Toast::success('Item removed')->action('Undo', '/items/1/restore', 'POST'),
+    ));
+
+    $this->delete('/items/1');
+
+    inertiaVisit('/page')
+        ->assertJsonPath('flash.toasts.0.description', 'Item removed')
+        ->assertJsonPath('flash.toasts.0.action', ['label' => 'Undo', 'url' => '/items/1/restore', 'method' => 'post']);
+});
+
+it('defaults an action to a GET visit', function () {
+    expect(Toast::info('Export ready')->action('Download', '/exports/1')->toArray()['action']['method'])->toBe('get');
+});
+
+it('rejects an action method a visit cannot make', function () {
+    Toast::info('Export ready')->action('Download', '/exports/1', 'options');
+})->throws(InvalidArgumentException::class);
+
 it('makes a toast from a type name', function () {
     expect(Toast::make('Saved', 'success')->toArray()['type'])->toBe(ToastType::Success->value);
 });

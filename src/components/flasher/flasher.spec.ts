@@ -157,4 +157,56 @@ describe("template spec", () => {
     cy.get("[data-sonner-toast]").contains("Profile saved")
     cy.get("[data-sonner-toast]").contains("Loose server toast")
   })
+
+  it("hands a server toast's action to @action", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="toast-action"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Item deleted")
+    cy.get("[data-sonner-toast]").contains("The hammer was removed")
+
+    cy.get("[data-sonner-toast] [data-button]").contains("Undo").click()
+    cy.get('[data-cy="last-action"]').should("contain", "post /cart/restore")
+  })
+
+  it("uses titles set on the Flasher", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="custom-titles"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Nice one")
+  })
+
+  it("overrides the title for one call", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="title-option"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Profile saved")
+    cy.get("[data-sonner-toast]").contains("Your profile is live")
+  })
+
+  it("shows an error from a plain message", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="error-string"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Payment failed")
+  })
+
+  it("tracks a visit from loading to success", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="track-success"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Saving changes")
+
+    cy.get("[data-sonner-toast]").should("have.length", 1).contains("Changes saved")
+    cy.get("[data-sonner-toast]").should("not.contain", "Saving changes")
+  })
+
+  it("tracks a visit from loading to its validation errors", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="track-error"]').click()
+    cy.get("[data-sonner-toast]").should("be.visible").contains("Saving changes")
+
+    cy.get("[data-sonner-toast]").should("have.length", 1).contains("name is required")
+  })
 })

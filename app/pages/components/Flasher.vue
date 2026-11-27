@@ -1,15 +1,27 @@
 <script setup lang="ts">
 /* eslint-disable no-useless-escape */
-import { ref } from "vue"
+import { nextTick, ref } from "vue"
 import { useRoute } from "vue-router"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
-import { Flasher, useFlasher, type FlashToast } from "@/components/flasher"
+import {
+  Flasher,
+  useFlasher,
+  type FlashAction,
+  type FlasherTitles,
+  type FlashToast,
+} from "@/components/flasher"
 import { Button } from "@/components/button"
-import { CodeBlock, ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
-import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
+import {
+  CodeBlock,
+  ComponentEvents,
+  ComponentHeading,
+  ComponentProps,
+  ComposableSection,
+} from "@app/components"
+import { type ComponentEvent, type ComponentProp, type ComposableMethod } from "@app/types/globals"
 
-const { info, success, warning, error, flash } = useFlasher()
+const { info, success, warning, error, flash, track } = useFlasher()
 
 const mode = useColorMode()
 
@@ -26,6 +38,7 @@ const flasherProps = ref<{
   errors?: Record<string, string>
   objectFormat?: "key" | "value" | "both"
   toasts?: FlashToast[]
+  titles?: Partial<FlasherTitles>
 }>({
   theme: mode.value === "auto" ? "system" : mode.value,
   info: route.query.info as string | undefined,
@@ -47,31 +60,82 @@ function flashServerToasts() {
   ]
 }
 
+const lastAction = ref<string>()
+
+function onAction(action: FlashAction) {
+  lastAction.value = `${action.method ?? "get"} ${action.url}`
+}
+
+function flashToastWithAction() {
+  flasherProps.value.toasts = [
+    {
+      type: "success",
+      title: "Item deleted",
+      description: "The hammer was removed from your cart.",
+      action: { label: "Undo", url: "/cart/restore", method: "post" },
+    },
+  ]
+}
+
+// Titles are shared app-wide, so the demo restores the defaults after its toast.
+async function customTitles() {
+  flasherProps.value.titles = { success: "Nice one" }
+  await nextTick()
+  success("Titles are set once on the Flasher")
+  flasherProps.value.titles = {}
+}
+
+// Simulates an Inertia visit by calling the callbacks track() returns.
+function simulateVisit(outcome: "success" | "error") {
+  const visit = track({
+    loading: "Saving changes…",
+    success: outcome === "success" ? "Changes saved" : undefined,
+  })
+
+  visit.onStart()
+
+  setTimeout(() => {
+    if (outcome === "success") {
+      visit.onSuccess()
+    } else {
+      visit.onError({ name: "name is required" })
+    }
+
+    visit.onFinish()
+  }, 800)
+}
+
 const composableMethods: ComposableMethod[] = [
   {
     name: "info",
-    signature: "(message: string, data?: ExternalToast)",
+    signature: "(message: string, data?: FlasherOptions)",
     description: "Displays an info notification with the given message.",
   },
   {
     name: "success",
-    signature: "(message: string, data?: ExternalToast)",
+    signature: "(message: string, data?: FlasherOptions)",
     description: "Displays a success notification with the given message.",
   },
   {
     name: "warning",
-    signature: "(message: string, data?: ExternalToast)",
+    signature: "(message: string, data?: FlasherOptions)",
     description: "Displays a warning notification with the given message.",
   },
   {
     name: "error",
-    signature: "(errors: ErrorBag, objectFormat?: ObjectFormat, data?: ExternalToast)",
-    description: "Displays an error notification from a validation error bag.",
+    signature: "(errors: ErrorBag | string, objectFormat?: ObjectFormat, data?: FlasherOptions)",
+    description: "Displays an error notification from a validation error bag or a plain message.",
   },
   {
     name: "flash",
     signature: "(heading: string, options?: ExternalToast)",
     description: "Displays a generic notification with a custom heading.",
+  },
+  {
+    name: "track",
+    signature: "(messages: TrackMessages, visitOptions?: object)",
+    description:
+      "Returns the visit options with callbacks that show a loading toast, then a success or error toast. Without a success message the loading toast is dismissed, so the server's flash shows instead.",
   },
 ]
 
@@ -109,6 +173,12 @@ const componentProps: ComponentProp[] = [
       "Server-shaped toasts: { id?, type?, title?, description?, duration? }. Each new array fires; a toast with an id shows once per id. With Inertia v3, use InertiaFlasher instead.",
   },
   {
+    name: "titles",
+    type: "Partial<FlasherTitles>",
+    description:
+      "Overrides the default info/success/warning/error titles app-wide (pass translated strings).",
+  },
+  {
     name: "theme",
     type: "string",
     default: "light",
@@ -130,6 +200,29 @@ const flasherProps = ref({ theme: 'system' })
   <button @click="flasherProps.success = 'Success!'">Success</button>
 </template>`
 
+const componentEvents: ComponentEvent[] = [
+  {
+    name: "action",
+    payload: "(action: FlashAction, toast: FlashToast)",
+    description:
+      "A toast action was clicked. Without a listener, GET actions navigate and other methods are ignored. InertiaFlasher handles it with an Inertia visit.",
+  },
+]
+
+const trackCode = `<script setup lang="ts">
+import { router } from '@inertiajs/vue3'
+import { useFlasher } from '@codinglabsau/gooey'
+
+const { track } = useFlasher()
+
+function save() {
+  router.post('/settings', { name: 'my-app' }, track(
+    { loading: 'Saving…', success: 'Settings saved' },
+    { preserveScroll: true },
+  ))
+}
+<\/script>`
+
 const composableCode = `<script setup lang="ts">
 import { Flasher, useFlasher } from '@codinglabsau/gooey'
 
@@ -146,7 +239,7 @@ const { info, success, warning, error } = useFlasher()
 </script>
 
 <template>
-  <Flasher v-bind="flasherProps" />
+  <Flasher v-bind="flasherProps" @action="onAction" />
 
   <div class="space-y-8">
     <section>
@@ -253,7 +346,15 @@ const { info, success, warning, error } = useFlasher()
         <Button variant="outline" data-cy="prop-toasts" @click="flashServerToasts">
           Server toasts
         </Button>
+
+        <Button variant="outline" data-cy="toast-action" @click="flashToastWithAction">
+          Toast with action
+        </Button>
       </div>
+
+      <p v-if="lastAction" class="mt-2 text-sm text-muted-foreground" data-cy="last-action">
+        Action: {{ lastAction }}
+      </p>
 
       <CodeBlock class="mt-4" lang="vue" :code="propsCode" />
     </section>
@@ -337,6 +438,22 @@ const { info, success, warning, error } = useFlasher()
           Errors (keys + values)
         </Button>
 
+        <Button variant="outline" data-cy="error-string" @click="error('Payment failed')">
+          Error (message)
+        </Button>
+
+        <Button
+          variant="outline"
+          data-cy="title-option"
+          @click="success('Your profile is live', { title: 'Profile saved' })"
+        >
+          Custom title
+        </Button>
+
+        <Button variant="outline" data-cy="custom-titles" @click="customTitles">
+          Custom titles
+        </Button>
+
         <Button
           variant="outline"
           data-cy="flash-custom"
@@ -364,6 +481,27 @@ const { info, success, warning, error } = useFlasher()
       <CodeBlock class="mt-4" lang="vue" :code="composableCode" />
     </section>
 
+    <section>
+      <ComponentHeading>Tracking a Visit</ComponentHeading>
+
+      <p class="mb-4">
+        <code>track()</code> wraps Inertia visit options with a loading toast that becomes a success
+        or error toast.
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        <Button variant="outline" data-cy="track-success" @click="simulateVisit('success')">
+          Visit succeeds
+        </Button>
+
+        <Button variant="outline" data-cy="track-error" @click="simulateVisit('error')">
+          Visit fails
+        </Button>
+      </div>
+
+      <CodeBlock class="mt-4" lang="vue" :code="trackCode" />
+    </section>
+
     <ComposableSection :methods="composableMethods">
       <p class="mb-4">
         The entire
@@ -380,5 +518,7 @@ const { info, success, warning, error } = useFlasher()
     </ComposableSection>
 
     <ComponentProps :props="componentProps" :meta="$route.meta" />
+
+    <ComponentEvents :events="componentEvents" />
   </div>
 </template>

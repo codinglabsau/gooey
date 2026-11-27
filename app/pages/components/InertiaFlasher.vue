@@ -1,6 +1,8 @@
 <script setup lang="ts">
 /* eslint-disable no-useless-escape */
+import { ref } from "vue"
 import { InertiaFlasher } from "@/inertia"
+import { type FlashAction } from "@/components/flasher"
 import { Button } from "@/components/button"
 import { CodeBlock, ComponentHeading } from "@app/components"
 
@@ -41,6 +43,23 @@ function flashTitled() {
   })
 }
 
+const lastAction = ref<string>()
+
+function flashWithAction() {
+  respond("flash", {
+    flash: {
+      toasts: [
+        {
+          id: `action-${++responseCount}`,
+          type: "success",
+          description: "Item removed",
+          action: { label: "Undo", url: "/items/1/restore", method: "post" },
+        },
+      ],
+    },
+  })
+}
+
 function failValidation() {
   respond("error", { errors: { email: "The email field is required." } })
 }
@@ -63,6 +82,7 @@ return back()->with('success', 'Saved');
 // Or flash a toast from a redirect or an Inertia response
 return back()->toast('Saved');
 return back()->toast(Toast::warning('You have used 90% of your storage.')->title('Plan limit'));
+return back()->toast(Toast::success('Item removed')->action('Undo', route('items.restore', $item), 'post'));
 return redirect()->route('dashboard')->toast('Welcome back', 'info');
 
 // Or from anywhere in the request
@@ -70,7 +90,10 @@ Toast::success('Invoice sent')->flash();`
 </script>
 
 <template>
-  <InertiaFlasher />
+  <!-- The docs app isn't an Inertia app, so the demo shows the action instead of visiting. -->
+  <InertiaFlasher
+    @action="(action: FlashAction) => (lastAction = `${action.method} ${action.url}`)"
+  />
 
   <div class="space-y-8">
     <section>
@@ -123,10 +146,18 @@ Toast::success('Invoice sent')->flash();`
           Flash a titled toast
         </Button>
 
+        <Button variant="outline" data-cy="flash-action" @click="flashWithAction">
+          Flash a toast with an action
+        </Button>
+
         <Button variant="outline" data-cy="validation-error" @click="failValidation">
           Fail validation
         </Button>
       </div>
+
+      <p v-if="lastAction" class="mt-2 text-sm text-muted-foreground" data-cy="last-action">
+        Action: {{ lastAction }}
+      </p>
     </section>
   </div>
 </template>

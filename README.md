@@ -75,7 +75,7 @@ If you discover any security related issues, create an issue on GitHub.
 
 - [Steve Thomas](https://github.com/stevethomas)
 - [All Contributors](../../contributors)
-- [Pascal Baljet](https://github.com/pascalbaljet), whose [Inertia Notifications](https://github.com/inertiaui/notifications) inspired the Flasher's server toasts, toast actions and visit tracking
+- [Pascal Baljet](https://github.com/pascalbaljet), whose [Inertia Notifications](https://github.com/inertiaui/notifications) inspired the Flasher's server toasts, toast actions and visit tracking, and the Laravel `Toast` API
 
 ## License
 
