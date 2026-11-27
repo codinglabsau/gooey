@@ -29,10 +29,10 @@ jobs:
 
       # dist is not committed; build it here rather than from a lifecycle hook,
       # which `ignore-scripts` would silently skip and publish an empty package.
-      - run: npx vite build
+      - run: npx vite build && npx vite build --config vite.inertia.config.ts
 
       - name: Verify the build produced a publishable dist
-        run: test -f dist/gooey.js && test -f dist/types/index.d.ts
+        run: test -f dist/gooey.js && test -f dist/types/index.d.ts && test -f dist/inertia.js && test -f dist/types/inertia/index.d.ts
 
       - run: npm publish
         env:

@@ -41,6 +41,7 @@ import {
   Empty,
   Field,
   Flasher,
+  InertiaFlasher,
   Form,
   Heading,
   HoverCard,
@@ -237,6 +238,12 @@ const routes = [
         path: "/components/hover-card",
         component: HoverCard,
         meta: { layout: ComponentLayout, shadcn: true, title: "Hover Card" },
+      },
+      {
+        name: "Inertia Flasher",
+        path: "/components/inertia-flasher",
+        component: InertiaFlasher,
+        meta: { layout: ComponentLayout, title: "Inertia Flasher" },
       },
       {
         name: "Item",

@@ -1,0 +1,23 @@
+# Composer installs from a git archive: ship only the Laravel package, not the
+# Vue library (npm publishes that from its own build).
+/.github export-ignore
+/app export-ignore
+/cypress export-ignore
+/public export-ignore
+/scripts export-ignore
+/src export-ignore
+/laravel/tests export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/components.json export-ignore
+/cypress.config.ts export-ignore
+/eslint.config.ts export-ignore
+/index.html export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/phpunit.xml export-ignore
+/tsconfig.json export-ignore
+/vite.config.ts export-ignore
+/vite.docs.config.ts export-ignore
+/vite.inertia.config.ts export-ignore
+/CLAUDE.md export-ignore

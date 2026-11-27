@@ -21,3 +21,9 @@ cypress/screenshots
 # could silently change what gets published.
 dist
 docs-dist
+
+# Composer
+/vendor
+composer.lock
+.phpunit.cache
+.phpunit.result.cache

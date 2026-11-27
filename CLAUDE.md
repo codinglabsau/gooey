@@ -30,16 +30,24 @@ npx cypress run --spec "src/components/button/button.spec.ts"
 
 # Format and lint
 npm run format
+
+# Laravel package (needs `composer install`)
+composer test
+composer format
 ```
 
 ## Architecture
 
-### Two Directories
+### Directories
 
 - **`src/`** - The publishable component library
   - `src/components/` - All components (both shadcn and custom)
   - `src/index.ts` - Library exports (all components must be exported here)
   - `src/lib/utils.ts` - Utility functions including `cn()` for class merging
+
+- **`src/inertia/`** - The optional `@codinglabsau/gooey/inertia` entry (Inertia v3 only). Built separately by `vite.inertia.config.ts`, which rewrites its `@/` imports to the package root so apps share one copy of the library. `@inertiajs/vue3` is an optional peer dependency and must never be imported from the root entry.
+
+- **`laravel/`** - The Laravel companion package (`codinglabsau/gooey` on Packagist, root `composer.json`): the `Toast` class, the `->toast()` macros, and middleware that turns plain `info`/`success`/`warning`/`error` session flashes into toasts. Its flash payload is the contract with `FlashToast` in `src/components/flasher/use-flasher.ts`; change both together.
 
 - **`app/`** - Documentation/showcase app (not published)
   - `app/pages/components/` - Showcase pages for each component

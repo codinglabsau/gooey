@@ -148,4 +148,13 @@ describe("template spec", () => {
       .get("[data-sonner-toast]")
       .contains("firstname: firstname is required")
   })
+
+  it("shows server toasts passed as props, falling back to a plain toast for an unknown type", () => {
+    cy.visit("/components/flasher")
+
+    cy.get('[data-cy="prop-toasts"]').click()
+    cy.get("[data-sonner-toast]").should("have.length", 2)
+    cy.get("[data-sonner-toast]").contains("Profile saved")
+    cy.get("[data-sonner-toast]").contains("Loose server toast")
+  })
 })
