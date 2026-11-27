@@ -71,12 +71,18 @@ const amount = ref<number>()
 
     <p class="mt-2 text-sm text-muted-foreground">
       Pass <code>currency-display="code"</code> to show the ISO code instead of a symbol, so that
-      currencies sharing a symbol can be told apart. Clearing the input sets the v-model to
-      <code>null</code>.
+      currencies sharing a symbol can be told apart. This example also sets an empty value of null,
+      so clearing the input sets the v-model to null rather than undefined.
     </p>
 
     <div class="mt-4 max-w-xs space-y-2">
-      <Price v-model="nzd" currency="NZD" currency-display="code" data-cy="code" />
+      <Price
+        v-model="nzd"
+        currency="NZD"
+        currency-display="code"
+        :empty-value="null"
+        data-cy="code"
+      />
 
       <p class="text-sm text-muted-foreground" data-cy="code-value">
         v-model: {{ JSON.stringify(nzd) }}

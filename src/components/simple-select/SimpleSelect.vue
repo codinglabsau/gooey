@@ -1,28 +1,29 @@
-<script setup lang="ts">
-import type { HTMLAttributes } from "vue"
-import { computed } from "vue"
+<script setup lang="ts" generic="T extends string | number | null = string">
+import type { HTMLAttributes, Ref } from "vue"
+import { computed, useModel } from "vue"
 import { cn } from "@/lib/utils"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/select"
-
-export interface SelectOption {
-  value: string | number | null
-  label: string
-  disabled?: boolean
-}
+import type { SelectOption } from "./types"
 
 const props = withDefaults(
   defineProps<{
-    options: SelectOption[]
+    options: SelectOption<T>[]
     placeholder?: string
     disabled?: boolean
     class?: HTMLAttributes["class"]
+    modelValue?: T
   }>(),
   {
     placeholder: "Select an option",
   },
 )
 
-const model = defineModel<string | number | null>()
+defineEmits<{
+  "update:modelValue": [value: T]
+}>()
+
+// The emit is declared apart from the prop so its type stays `T`, as defineModel would add undefined.
+const model: Ref<T | undefined> = useModel(props, "modelValue")
 
 // The underlying Select shows the placeholder for a null value, so null options use a sentinel.
 const NULL_VALUE = "__gooey_null__"
@@ -32,7 +33,7 @@ const hasNullOption = computed(() => props.options.some((option) => option.value
 const selectModel = computed({
   get: () => (model.value === null && hasNullOption.value ? NULL_VALUE : model.value),
   set: (value) => {
-    model.value = value === NULL_VALUE ? null : value
+    model.value = (value === NULL_VALUE ? null : value) as T
   },
 })
 

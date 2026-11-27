@@ -1,11 +1,12 @@
-<script setup lang="ts">
-import type { HTMLAttributes } from "vue"
-import { computed } from "vue"
+<script setup lang="ts" generic="TEmpty extends null | undefined = never">
+import type { HTMLAttributes, Ref } from "vue"
+import { computed, useModel } from "vue"
 import { NumberField, NumberFieldContent, NumberFieldInput } from "@/components/number-field"
-import { toNumberOrUndefined } from "@/lib/utils"
+import { toNumberOrUndefined } from "@/lib/number"
 
 /**
- * v-model is a `number` representing the amount in **dollars** (e.g. `19.99`), or `null` when empty.
+ * v-model is a `number` representing the amount in **dollars** (e.g. `19.99`). Clearing the input
+ * sets it to `emptyValue` (undefined unless set; pass `null` to keep the field in a JSON payload).
  * Consumers do not need to convert to/from cents.
  */
 const props = withDefaults(
@@ -19,6 +20,9 @@ const props = withDefaults(
     disabled?: boolean
     placeholder?: string
     class?: HTMLAttributes["class"]
+    modelValue?: number | string | null
+    /** What the v-model is set to when the input is cleared. Pass `null` so the field survives JSON serialisation. */
+    emptyValue?: TEmpty
   }>(),
   {
     currency: "AUD",
@@ -29,13 +33,17 @@ const props = withDefaults(
   },
 )
 
-const model = defineModel<number | string | null>()
+defineEmits<{
+  "update:modelValue": [value: number | TEmpty]
+}>()
 
-// Clearing emits null rather than undefined so the field survives JSON serialisation.
+// The emit is declared apart from the prop so its type stays `number` unless `emptyValue` is set.
+const model: Ref<number | string | null | undefined> = useModel(props, "modelValue")
+
 const numericModel = computed<number | undefined>({
   get: () => toNumberOrUndefined(model.value),
   set: (value) => {
-    model.value = value ?? null
+    model.value = value ?? props.emptyValue
   },
 })
 
