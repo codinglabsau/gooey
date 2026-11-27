@@ -45,6 +45,7 @@ export const navigation: NavigationGroup[] = [
       { name: "Empty", path: "/components/empty" },
       { name: "Flasher", path: "/components/flasher" },
       { name: "Hover Card", path: "/components/hover-card" },
+      { name: "Inertia Flasher", path: "/components/inertia-flasher" },
       { name: "Item", path: "/components/item" },
       { name: "Kbd", path: "/components/kbd" },
       { name: "Menubar", path: "/components/menubar" },

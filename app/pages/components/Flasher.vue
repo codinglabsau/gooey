@@ -1,29 +1,15 @@
 <script setup lang="ts">
 /* eslint-disable no-useless-escape */
-import { nextTick, ref } from "vue"
+import { ref } from "vue"
 import { useRoute } from "vue-router"
 import { Hammer } from "lucide-vue-next"
 import { useColorMode } from "@vueuse/core"
-import {
-  Flasher,
-  useFlasher,
-  type ErrorBag,
-  type FlashAction,
-  type FlasherTitles,
-  type FlashToast,
-  type ObjectFormat,
-} from "@/components/flasher"
+import { Flasher, useFlasher, type FlashToast } from "@/components/flasher"
 import { Button } from "@/components/button"
-import {
-  CodeBlock,
-  ComponentEvents,
-  ComponentHeading,
-  ComponentProps,
-  ComposableSection,
-} from "@app/components"
-import { type ComponentEvent, type ComponentProp, type ComposableMethod } from "@app/types/globals"
+import { CodeBlock, ComponentHeading, ComponentProps, ComposableSection } from "@app/components"
+import { type ComponentProp, type ComposableMethod } from "@app/types/globals"
 
-const { info, success, warning, error, flash, track } = useFlasher()
+const { info, success, warning, error, flash } = useFlasher()
 
 const mode = useColorMode()
 
@@ -37,127 +23,55 @@ const flasherProps = ref<{
   info?: string
   success?: string
   warning?: string
-  errors?: ErrorBag
-  objectFormat?: ObjectFormat
-  flashId?: string | number | null
+  errors?: Record<string, string>
+  objectFormat?: "key" | "value" | "both"
   toasts?: FlashToast[]
-  titles?: Partial<FlasherTitles>
 }>({
   theme: mode.value === "auto" ? "system" : mode.value,
   info: route.query.info as string | undefined,
   success: route.query.success as string | undefined,
   warning: route.query.warning as string | undefined,
   errors: route.query.errors ? { firstname: "firstname is required" } : undefined,
-  // Inertia shares a missing flash id as null.
-  flashId: route.query.nullFlashId ? null : undefined,
 })
 
-// Server-driven demos: each "response" carries a flash id, as a backend would. The id
-// is cleared once the Flasher has seen it so the "Via Props" demos keep firing per value.
-let responseCount = 0
-let replayId = "flash-b"
-
-async function flashWithId(message: string, id: string | number) {
-  flasherProps.value.success = message
-  flasherProps.value.flashId = id
-  await nextTick()
-  flasherProps.value.flashId = undefined
-}
-
-// Alternates between two ids, so the third click replays an id that was already shown.
-function replayFlashId() {
-  replayId = replayId === "flash-a" ? "flash-b" : "flash-a"
-  flashWithId("Replayable flash", replayId)
-}
-
-const lastAction = ref<string>()
-
-function onAction(action: FlashAction) {
-  lastAction.value = `${action.method ?? "get"} ${action.url}`
-}
-
-function flashToastWithAction() {
+// Server data as it arrives: a titled toast, and one with a type the Flasher doesn't know.
+function flashServerToasts() {
   flasherProps.value.toasts = [
     {
+      id: "profile",
       type: "success",
-      title: "Item deleted",
-      description: "The hammer was removed from your cart.",
-      action: { label: "Undo", url: "/cart/restore", method: "post" },
+      title: "Profile saved",
+      description: "Your changes are live.",
     },
+    { type: "notice" as FlashToast["type"], description: "Loose server toast" },
   ]
-}
-
-// Server data as it often arrives: a null id and a type the Flasher doesn't know.
-function flashLooseToast() {
-  flasherProps.value.toasts = [
-    { id: null, type: "notice" as FlashToast["type"], description: "Loose server toast" },
-  ]
-}
-
-// A new array with the same toast id each time: only the first one shows.
-function replayToastId() {
-  flasherProps.value.toasts = [{ id: "toast-1", type: "info", description: "Shown once per id" }]
-}
-
-// Titles are shared app-wide, so the demo restores the defaults after its toast.
-async function customTitles() {
-  flasherProps.value.titles = { success: "Nice one" }
-  await nextTick()
-  success("Titles are set once on the Flasher")
-  flasherProps.value.titles = {}
-}
-
-// Simulates an Inertia visit by calling the callbacks track() returns.
-function simulateVisit(outcome: "success" | "error") {
-  const visit = track({
-    loading: "Saving changes…",
-    success: outcome === "success" ? "Changes saved" : undefined,
-  })
-
-  visit.onStart()
-
-  setTimeout(() => {
-    if (outcome === "success") {
-      visit.onSuccess()
-    } else {
-      visit.onError({ name: "name is required" })
-    }
-
-    visit.onFinish()
-  }, 800)
 }
 
 const composableMethods: ComposableMethod[] = [
   {
     name: "info",
-    signature: "(message: string, data?: FlasherOptions)",
+    signature: "(message: string, data?: ExternalToast)",
     description: "Displays an info notification with the given message.",
   },
   {
     name: "success",
-    signature: "(message: string, data?: FlasherOptions)",
+    signature: "(message: string, data?: ExternalToast)",
     description: "Displays a success notification with the given message.",
   },
   {
     name: "warning",
-    signature: "(message: string, data?: FlasherOptions)",
+    signature: "(message: string, data?: ExternalToast)",
     description: "Displays a warning notification with the given message.",
   },
   {
     name: "error",
-    signature: "(errors: ErrorBag | string, objectFormat?: ObjectFormat, data?: FlasherOptions)",
-    description: "Displays an error notification from a validation error bag or a plain message.",
+    signature: "(errors: ErrorBag, objectFormat?: ObjectFormat, data?: ExternalToast)",
+    description: "Displays an error notification from a validation error bag.",
   },
   {
     name: "flash",
     signature: "(heading: string, options?: ExternalToast)",
     description: "Displays a generic notification with a custom heading.",
-  },
-  {
-    name: "track",
-    signature: "(messages: TrackMessages, visitOptions?: object)",
-    description:
-      "Returns the visit options with callbacks that show a loading toast, then a success or error toast. Without a success message the loading toast is dismissed, so the server's flash shows instead.",
   },
 ]
 
@@ -189,22 +103,10 @@ const componentProps: ComponentProp[] = [
     description: 'How to format error objects: "value" (default), "key", or "both"',
   },
   {
-    name: "flashId",
-    type: "string | number",
-    description:
-      "Identifies the flash behind info/success/warning. When set, they fire once per new id rather than per changed value, so a repeated message still shows and a seen id never replays. Errors are unaffected.",
-  },
-  {
     name: "toasts",
     type: "FlashToast[]",
     description:
-      "Server-shaped toasts: { id?, type?, title?, description?, duration?, action?: { label, url, method? } }. Each new array fires; a toast with an id shows once per id.",
-  },
-  {
-    name: "titles",
-    type: "Partial<FlasherTitles>",
-    description:
-      "Overrides the default info/success/warning/error titles app-wide (pass translated strings).",
+      "Server-shaped toasts: { id?, type?, title?, description?, duration? }. Each new array fires; a toast with an id shows once per id. With Inertia v3, use InertiaFlasher instead.",
   },
   {
     name: "theme",
@@ -228,45 +130,6 @@ const flasherProps = ref({ theme: 'system' })
   <button @click="flasherProps.success = 'Success!'">Success</button>
 </template>`
 
-const componentEvents: ComponentEvent[] = [
-  {
-    name: "action",
-    payload: "(action: FlashAction, toast: FlashToast)",
-    description:
-      "A toast action was clicked, e.g. handle it with router.visit(). Without a listener, GET actions navigate and other methods are ignored.",
-  },
-]
-
-const serverCode = `<script setup lang="ts">
-import { router } from '@inertiajs/vue3'
-import { Flasher } from '@codinglabsau/gooey'
-<\/script>
-
-<template>
-  <!-- Share \`toasts\` and a per-request \`flash_id\` from your Inertia middleware -->
-  <Flasher
-    :success="$page.props.success"
-    :flash-id="$page.props.flash_id"
-    :toasts="$page.props.toasts"
-    :titles="{ success: __('Success') }"
-    @action="(action) => router.visit(action.url, { method: action.method })"
-  />
-</template>`
-
-const trackCode = `<script setup lang="ts">
-import { router } from '@inertiajs/vue3'
-import { useFlasher } from '@codinglabsau/gooey'
-
-const { track } = useFlasher()
-
-function save() {
-  router.post('/settings', { name: 'my-app' }, track(
-    { loading: 'Saving…', success: 'Settings saved' },
-    { preserveScroll: true },
-  ))
-}
-<\/script>`
-
 const composableCode = `<script setup lang="ts">
 import { Flasher, useFlasher } from '@codinglabsau/gooey'
 
@@ -283,7 +146,7 @@ const { info, success, warning, error } = useFlasher()
 </script>
 
 <template>
-  <Flasher v-bind="flasherProps" @action="onAction" />
+  <Flasher v-bind="flasherProps" />
 
   <div class="space-y-8">
     <section>
@@ -386,6 +249,10 @@ const { info, success, warning, error } = useFlasher()
         >
           Errors (keys + values)
         </Button>
+
+        <Button variant="outline" data-cy="prop-toasts" @click="flashServerToasts">
+          Server toasts
+        </Button>
       </div>
 
       <CodeBlock class="mt-4" lang="vue" :code="propsCode" />
@@ -470,18 +337,6 @@ const { info, success, warning, error } = useFlasher()
           Errors (keys + values)
         </Button>
 
-        <Button variant="outline" data-cy="error-string" @click="error('Payment failed')">
-          Error (message)
-        </Button>
-
-        <Button
-          variant="outline"
-          data-cy="title-option"
-          @click="success('Your profile is live', { title: 'Profile saved' })"
-        >
-          Custom title
-        </Button>
-
         <Button
           variant="outline"
           data-cy="flash-custom"
@@ -509,72 +364,6 @@ const { info, success, warning, error } = useFlasher()
       <CodeBlock class="mt-4" lang="vue" :code="composableCode" />
     </section>
 
-    <section>
-      <ComponentHeading>Server-Driven Toasts</ComponentHeading>
-
-      <p class="mb-4">
-        Pair messages with a flash id so a repeated message still shows, send toasts with actions,
-        and set translated titles once.
-      </p>
-
-      <div class="flex flex-wrap gap-2">
-        <Button
-          variant="outline"
-          data-cy="flash-id-repeat"
-          @click="flashWithId('Stock updated', ++responseCount)"
-        >
-          Same message, new flash id
-        </Button>
-
-        <Button variant="outline" data-cy="flash-id-replay" @click="replayFlashId">
-          Replay a seen flash id
-        </Button>
-
-        <Button variant="outline" data-cy="toast-action" @click="flashToastWithAction">
-          Toast with action
-        </Button>
-
-        <Button variant="outline" data-cy="toast-id-replay" @click="replayToastId">
-          Toast with id
-        </Button>
-
-        <Button variant="outline" data-cy="toast-loose" @click="flashLooseToast">
-          Toast with no id
-        </Button>
-
-        <Button variant="outline" data-cy="custom-titles" @click="customTitles">
-          Custom titles
-        </Button>
-      </div>
-
-      <p v-if="lastAction" class="mt-2 text-sm text-muted-foreground" data-cy="last-action">
-        Action: {{ lastAction }}
-      </p>
-
-      <CodeBlock class="mt-4" lang="vue" :code="serverCode" />
-    </section>
-
-    <section>
-      <ComponentHeading>Tracking a Visit</ComponentHeading>
-
-      <p class="mb-4">
-        <code>track()</code> wraps Inertia visit options with a loading toast that becomes a success
-        or error toast.
-      </p>
-
-      <div class="flex flex-wrap gap-2">
-        <Button variant="outline" data-cy="track-success" @click="simulateVisit('success')">
-          Visit succeeds
-        </Button>
-
-        <Button variant="outline" data-cy="track-error" @click="simulateVisit('error')">
-          Visit fails
-        </Button>
-      </div>
-
-      <CodeBlock class="mt-4" lang="vue" :code="trackCode" />
-    </section>
-
     <ComposableSection :methods="composableMethods">
       <p class="mb-4">
         The entire
@@ -591,7 +380,5 @@ const { info, success, warning, error } = useFlasher()
     </ComposableSection>
 
     <ComponentProps :props="componentProps" :meta="$route.meta" />
-
-    <ComponentEvents :events="componentEvents" />
   </div>
 </template>
